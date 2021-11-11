@@ -1,0 +1,45 @@
+1. Uvod
+ 1.1 Motivacija
+ 1.2 Cilji
+
+2. Teoretična osnova
+ 2.1 Poslovne kritične aplikacije
+ 2.2 Neprekinjena integracija
+ 2.3 Neprekinjena dostava
+   2.3.1 Dostava izvorne kode
+   2.3.2 Neprekinjena namestitev
+
+3. Uporabljene tehnologije in aplikacije
+ 3.1. Uporabljena tehnologije in aplikacije
+   3.1.1 Repozitoriji programske opreme
+     Nexus (+ alternative)
+     Git
+     Docker registry
+   3.1.2 GitLab (Kaj je Gitlab?, Zakaj Gitlab?, naštete drugih alternativ)
+   3.1.3 Kubernetes (Kaj je kubernetes?, Zakaj kubernetes?, alternative)
+   3.1.4 Konfiguracijski strežniki
+     Consul
+     + alternative
+ 3.2 Zagotavljanje varnosti
+   3.2.1 Kubernetes v izoliranem produkcijskem okolju
+
+4. Implementacija 
+ 4.1 Zasnova celotnega procesa
+   4.1.1 Proces v podjetju
+   4.1.2 Proces pri naročniku
+   4.1.3 Proces neprekinjene dostave naročniku
+ 4.2 Razvoj komponente za neprekinjeno dostavo in integracijsko testiranje - MediusCD
+ 4.3 Postavitev projekta
+   4.3.1 Java + Maven
+   4.3.2 Java + Gradle
+   4.3.3 JavaScript + NPM
+   4.3.4 Python + setuptools
+   4.3.5 Python + Conda
+   4.3.6 Python + Poetry
+   4.3.7 Python + pip
+
+5. Rezultati
+  5.1 Predstavitev projekta
+  5.2 Uporaba implementiranega na projektu
+
+6. Zaključek
