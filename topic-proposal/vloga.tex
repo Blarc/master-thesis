@@ -32,7 +32,7 @@
 \newcommand{\StudijskiProgram}{Računalništvo in informatika, MAG} % Študijski program/smer
 \newcommand{\NaslovBivalisca}{ Cesta v log 18, 1330 Kočevje, Slovenija } % kandidatov naslov
 \newcommand{\SLONaslov}{Neprekinjena integracija in dostava poslovno kritičnih aplikacij: izzivi, prednosti in implementacija} % naslov dela v slovenščini
-\newcommand{\ENGNaslov}{Continuous integration and delivery for business critical applications: challenges, benefits and implementation} % naslov dela v angleščini
+\newcommand{\ENGNaslov}{Continuous integration and delivery for business critical applications: challenges, benefits, and implementation} % naslov dela v angleščini
 %%%%%%%%%%%%%%%%%%%%%%%%%% Konec izpolnjevanja %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -54,7 +54,7 @@ Večna pot 113, 1000 Ljubljana\\
 \large Kandidat: \Kandidat \\[10mm]}}
 
 
-\Kandidat, študent/-ka magistrskega programa na Fakulteti za računalništvo in informatiko, zaprošam Komisijo za študijske zadeve, da odobri predloženo temo magistrskega dela z naslovom:
+\Kandidat, študent magistrskega programa na Fakulteti za računalništvo in informatiko, zaprošam Komisijo za študijske zadeve, da odobri predloženo temo magistrskega dela z naslovom:
 
 %\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
 Slovenski: {\bf \SLONaslov}\\
@@ -72,9 +72,9 @@ Za mentorja/mentorico predlagam:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Izpolni kandidat! %%%%%%%%%%%%%%%%%%%%%%%%%%
 \hfill\begin{minipage}{\dimexpr\textwidth-2cm}
-Ime in priimek, naziv: Nejc Ilc, dr. doc \\
+Ime in priimek, naziv: Nejc Ilc, dr. doc. \\
 Ustanova: Fakulteta za Računalništvo in Informatiko \\
-Elektronski naslov: nejc.ilc@fri-lj.si
+Elektronski naslov: nejc.ilc@fri.uni-lj.si
 \end{minipage}
 
 Za somentorja/somentorico predlagam:
@@ -135,37 +135,40 @@ Predložena tema ni bila oddana in potrjena v preteklih letih.
 %Navodilo:
 %\cmnt{Pojasnite, kaj je problem, ki ga želite reševati, in podajte motivacijo za delo. Pri opisu motivacije se navežite na literaturo in nerešene probleme, ki jih bo naslavljala vaša magistrska naloga. Delo umestite v ožje področje dela. Okvirni obseg: ~300 besed (1/2 strani A4).}
 
-Pri razvoju večje programske opreme ali aplikacije je programje navadno razdeljeno na več zaključenih enot, ki jih različne razvojne skupine ali razvojna podjetja neodvisno razvijajo. Za slednje je pred delitvijo nalog vnaprej izbrano in specificirano tudi produkcijsko okolje. Na ta način si lahko razvojne skupine pripravijo razvojno okolje, ki ima čim bolj podobno infrastrukturo, kot je na voljo v produkcijskem okolju, za preverjanje realizacije izvedenega dela. Samo na ta način so posamezne skupine lahko dovolj samozavestne, da bo njihov izdelek pravilno deloval tudi v produkcijskem okolju.
+Pri razvoju večje programske opreme ali aplikacije je programje navadno razdeljeno na več zaključenih enot, ki jih različne razvojne skupine ali razvojna podjetja neodvisno razvijajo. Za slednje je pred delitvijo nalog vnaprej izbrano in specificirano tudi produkcijsko okolje. Na ta način si lahko razvojne skupine, za preverjanje realizacije izvedenega dela, pripravijo razvojno okolje, ki ima čim bolj podobno infrastrukturo, kot je na voljo v produkcijskem okolju. Samo tako so posamezne skupine lahko dovolj samozavestne, da bo njihovo programje pravilno delovalo tudi v produkcijskem okolju.
 
-Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje naročnika, ki se velikokrat pojavi pri poslovno kritičnih aplikacijah. V takšnem primeru je produkcijsko okolje razvijalcem nedostopno, kot tudi celotno omrežje naročnika. S tem je dostava programske kode v zaprto omrežje s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces neprekinjene dostave prilagoditi in upoštevati morebitne dodatne zaplete pri izdaji programske opreme v produkcijsko okolje.
+Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje naročnika, ki se velikokrat pojavi pri poslovno kritičnih aplikacijah. Poslovno kritične aplikacije so tiste aplikacije, ki so ključne za delovanje poslovnega procesa podjetja \cite{Hinchey2010, Syng2016}. V takšnem primeru je zaradi varnosti produkcijsko okolje pogosto razvijalcem nedostopno, kot tudi celotno omrežje naročnika. S tem je dostava programske kode v omrežje naročnika s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces neprekinjene dostave prilagoditi in upoštevati morebitne dodatne zaplete pri izdaji programske opreme v produkcijsko okolje.
 
-\textbf{Pri opisu motivacije se navežite na literaturo in nerešene probleme, ki jih bo naslavljala vaša magistrska naloga.}
+V magistrski nalogi bomo predstavili strategije in tehnologije, ki nam omogočajo postavitev takšnega sistema. Slednje bomo opisali na realnih projektih in pripravili orodja za izvajanje integracijskega ter dostavnega procesa. Bolj podrobno bomo opisali tudi proces neprekinjene integracije in dostave v okolje, kjer nimamo dostopa do nobenega izmed programskih okolij in nimamo možnosti odriva programske kode v naročnikovo omrežje.
 
 
 \subsection{Pregled sorodnih del}
 
 %Navodilo:
 %\cmnt{Opišite pregled sorodnih del na ožjem področju, na katerem nameravate opravljati magistrsko nalogo. Vsako delo naj bo na kratko opisano v nekaj stavkih, besedilo pa naj poudari njegove glavne prednosti, slabosti ali posebnosti. Sklicujte se na dela, navedena v razdelku \ref{literatura} Literatura in viri. Pregled naj bo fokusiran.  Okvirni obseg: 1/2 - 2/3 strani A4.}
-Zanimanje in motivacijo za vpeljevanje strategij razvoja in operacij smo našli v knjigi \cite{smith_2020}, kjer so predstavljene tehnike vpeljevanja strategij v realnih delovnih okoljih. V knjigi je velik poudarek na motivaciji in razlogih zakaj je vpeljava takšnih strategij potrebna in kako ugotoviti katera orodja zares potrebujemo. Predstavljen je tudi psihološki vidik uporabe takšnih orodji na zaposlene.
 
-V \cite{KOCEVAR_2019} so predstavljene raziskave na področju oblačnega računalništva in principov razvoja in operacij ter na osnovi tega opisane dve arhitekturni zasnovi. Pokaže, da je proces namestitve nove programske opreme veliko lažji in hitrejši, če ga avtomatiziramo in upoštevamo principe razvoja in operacij. Opiše tudi slabosti in prednosti tehnologije Kubernetes, ki jo bomo pri implementaciji tudi sami uporabljali.
+Zanimanje in motivacijo za vpeljevanje strategij razvoja in operacij smo našli v \cite{smith_2020}, kjer so predstavljene tehnike vpeljevanja strategij v realnih delovnih okoljih. Avtor daje velik poudarek motivaciji in razlogom zakaj je vpeljava takšnih strategij potrebna in kako ugotoviti, katera orodja zares potrebujemo. Predstavljen je tudi psihološki vidik uporabe takšnih orodji na zaposlene.
 
+V \cite{Ebert2016} so opisani posamezni koraki neprekinjene integracije in dostave ter orodja, ki se v posameznih korakih uporabljajo. Opisan je namen posameznih orodji in kako pripomorejo k bolj učinkovitemu delovanju integracijskega procesa. 
+
+V \cite{Chen2016} je podrobno opisana neprekinjena dostava po posameznih korakih v cevovodu na primeru velikega podjetja. V prispevku so opisane prednosti in izzivi vzpostavitve takšnega sistema.
+
+V \cite{KOCEVAR_2019} so predstavljene raziskave na področju oblačnega računalništva in uporaba principov razvoja ter operacij na oblačni programski rešitvi. Na osnovi tega, so opisane dve arhitekturni zasnovi. V rezultatih se izkaže, da je proces namestitve nove programske opreme veliko lažji in hitrejši, če ga avtomatiziramo in upoštevamo principe razvoja in operacij. Opiše tudi slabosti in prednosti tehnologije Kubernetes, ki jo bomo pri implementaciji tudi sami uporabljali.
 
 
 \subsection{Predvideni prispevki magistrske naloge}
 
 %Navodilo:
 %\cmnt{Opišite predvidene prispevke magistrske naloge s področja računalništva in informatike, ki so lahko strokovni ali znanstveni. Poudarite in opišite predvideni napredek ali novost vašega dela v primerjavi z obstoječim stanjem na strokovnem (ali znanstvenem) področju.  Okvirni obseg: 70 besed.}
-V delu bomo predstavili izzive, prednosti in rešitve razvoja poslovno kritičnih aplikacij z uporabo neprekinjene integracije in dostave programske opreme. Opisali bomo različne tehnologije, ki so del tega procesa in njihovo uporabo predstavili na realnem primeru. Za potrebe delovanja takšnega cevovoda, bomo razvili splošna orodja, ki nam omogočajo uporabo pripravljenega cevovoda na projektih s poljubno arhitekturo. \textbf{Poudarite in opišite predvideni napredek ali novost vašega dela v primerjavi z obstoječim stanjem na strokovnem (ali znanstvenem) področju.}
 
-
+V delu bomo predstavili izzive, prednosti in rešitve razvoja poslovno kritičnih aplikacij z uporabo neprekinjene integracije in dostave programske opreme. Opisali bomo različne tehnologije, ki so del tega procesa in njihovo uporabo predstavili na realnem primeru. Za potrebe delovanja takšnega cevovoda bomo razvili splošna orodja, ki nam omogočajo uporabo pripravljenega cevovoda na projektih s poljubno arhitekturo.  Vsa orodja, ki jih bomo uporabljali, bodo dostopna zgolj znotraj lokalnega omrežja. S tem bomo zagotovili visoko stopnjo varnosti, ki je pomembna pri poslovno kritičnih aplikacijah. Največji prednosti razvitega sistema bosta možnost prilagoditve sistema za skoraj poljuben projekt in možnost izvajanja celotnega procesa integracije v naročnikovem okolju, neodvisno od podjetja, ki je aplikacijo razvilo.
 
 \subsection{Metodologija}
 
 %Navodilo:
 %\cmnt{Na kratko opredelite metodologijo, ki jo nameravate uporabiti pri svojem delu. Metodologija vsebuje metode, ki jih nameravate uporabiti (npr. razvoj v izbranem programskem jeziku, izdelava strojne opreme itd.), postopek analize, postopek evalvacije vašega prispevka in primerjavo s sorodnimi deli.  Okvirni obseg: 1/4 - 1/3 A4 strani.}
-Pri pripravi cevovoda za neprekinjeno integracijo in neprekinjeno dostavo bomo uporabljali različne repozitorije programske opreme: Nexus, Git, register Docker, za upravljanje s cevovodom in organizacijo bomo uporabljali orodje GitLab, za upravljanje s kontejnerji bomo uporabljali Kubernetes, za upravljanje s konfiguracijami posameznih aplikacij bomo uporabljali konfiguracijski strežnik Consul. Za povezovanje vseh orodji pa bomo uporabljali jezik Bash. Implementiran cevovod in pripadajoča orodja bomo predstavili na realnem projektu in opisali njegove prednosti in slabosti.
 
+Pri pripravi cevovoda za neprekinjeno integracijo in neprekinjeno dostavo bomo uporabljali različne repozitorije programske opreme: Nexus, Git in register Docker. Za upravljanje s cevovodom in organizacijo dela bomo uporabljali platformo GitLab, delovanje vsebovalnikov Docker bomo upravljali s sistemom Kubernetes, konfiguracijo posameznih aplikacij pa s konfiguracijskim strežnikom Consul. Vsa orodja bomo medseboj povezali z uporabo skript napisanih v jeziku Bash. Izdelan cevovod in pripadajoča orodja bomo predstavili na realnem projektu in opisali njegove prednosti in slabosti.
 
 \subsection{Literatura in viri}
 \label{literatura}
