@@ -1,0 +1,275 @@
+%======================================================================================================================
+% SLO: definiraj strukturo dokumenta
+% ENG: define file structure
+%======================================================================================================================
+\documentclass[a4paper, 12pt]{book}
+\usepackage[T1]{fontenc}
+
+%======================================================================================================================
+% SLO: Odkomentiraj "\SLOtrue " za izbiro slovenskega jezika
+% ENG: Uncomment "\SLOfalse" to chose English languagge
+%======================================================================================================================
+\newif\ifSLO
+\newif\ifTRACKEXIST
+\newif\ifTRACKCS
+\newif\ifPROGRAMMM
+
+% ---------------------------------------------------------------------------------------------------------------------
+% IMPORTANT: Adjust the thesis language, your study program and course within this block
+%  --------------------------------------------------------------------------------------------------------------------
+% switch language
+\SLOtrue % Enables Slovenian language
+%\SLOfalse  % Enables English language
+
+% switch programs: Computer science and Multimedia. Set to false if the program is in Multimedia
+\PROGRAMMMfalse
+%\PROGRAMMMtrue
+
+% switch on if your program is divided into tracks CS and DS, otherwise leave it false
+% CAUTION: if you were first enrolled into your program before school year 2019/2020, your program is not divided
+% into tracks. In any case, be absolutely sure you select the correct variant. IF IN DOUBT, always contact the
+% student office to advise you.
+%
+\TRACKEXISTfalse
+%\TRACKEXISTtrue
+
+% default course name is "Computer science" if your course name is "Data science", set the following switch to false
+\TRACKCStrue % uncomment if the thesis is from course "Information science"
+%\TRACKCSfalse % uncomment if the thesis is from course "Data Science"
+% ---------------------------------------------------------------------------------------------------------------------
+% End of language, program and course adjustment
+% ---------------------------------------------------------------------------------------------------------------------
+
+
+%======================================================================================================================
+% SLO: vključi oblikovanje in pakete
+% ENG: include design and packages
+%======================================================================================================================
+\input{style/thesis_style}
+
+%----------------------------------------------------------------------------------------------------------------------
+% |||||||||||||||||||||| USTREZNO POPRAVI |||||||||||||||||||||||
+% |||||||||||||||||||||| EDIT ACCORDINGLY |||||||||||||||||||||||
+%----------------------------------------------------------------------------------------------------------------------
+\newcommand{\ttitle}{Neprekinjena integracija in dostava poslovno kritičnih aplikacij}
+\newcommand{\ttitleEn}{Continuous integration and delivery for business critical applications}
+\newcommand{\tsubject}{\ttitle}
+\newcommand{\tsubjectEn}{\ttitleEn}
+\newcommand{\tauthor}{Jakob Maležič}
+\newcommand{\temail}{jm6421@student.uni-lj.si}
+\newcommand{\myyear}{2022}
+\newcommand{\tkeywords}{neprekinjena integracija, neprekinjena dostava, poslovno kritične aplikacije}
+\newcommand{\tkeywordsEn}{continuous integration, continuous deployment, business critical applications}
+\newcommand{\mysupervisor}{doc.~dr.\ Nejc Ilc}
+\newcommand{\mycosupervisor}{dr.\ Tadej Justin}
+
+% include formatted front pages
+\input{style/thesis_front_pages}
+
+%================================================================
+% ENG: main pages of the thesis
+%================================================================
+
+%----------------------------------------------------------------
+% Poglavje 1
+%----------------------------------------------------------------
+
+
+\chapter{Uvod}
+\label{ch:uvod}
+
+Pri razvoju večje programske opreme ali aplikacije je programje navadno razdeljeno na več zaključenih enot, ki jih
+različne razvojne skupine ali razvojna podjetja neodvisno razvijajo.\ Za slednje je pred delitvijo nalog vnaprej
+izbrano in specificirano tudi produkcijsko okolje.\ Na ta način si lahko razvojne skupine, za preverjanje realizacije
+izvedenega dela, pripravijo razvojno okolje, ki ima čim bolj podobno infrastrukturo, kot je na voljo v produkcijskem
+okolju.\ Samo tako so posamezne skupine lahko dovolj samozavestne, da bo njihovo programje pravilno delovalo tudi v
+produkcijskem okolju.
+
+\section{Motivacija}
+\label{sec:motivacija}
+
+Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje naročnika, ki se velikokrat pojavi pri
+poslovno kritičnih aplikacijah. Poslovno kritične aplikacije so tiste aplikacije, ki so ključne za delovanje
+poslovnega procesa podjetja~\cite{Hinchey2010, Syng2016}. V takšnem primeru je zaradi varnosti produkcijsko okolje
+pogosto razvijalcem nedostopno, kot tudi celotno omrežje naročnika. S tem je dostava programske kode v omrežje
+naročnika s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces
+neprekinjene dostave prilagoditi in upoštevati morebitne dodatne zaplete pri izdaji programske opreme v produkcijsko
+okolje.
+
+\section{Cilji}
+\label{sec:cilji}
+
+V magistrski nalogi bomo predstavili strategije in tehnologije, ki nam omogočajo postavitev takšnega sistema. Slednje
+bomo opisali na realnih projektih in pripravili orodja za izvajanje integracijskega ter dostavnega procesa. Bolj
+podrobno bomo opisali tudi proces neprekinjene integracije in dostave v okolje, kjer nimamo dostopa do nobenega izmed
+programskih okolij in nimamo možnosti odriva programske kode v naročnikovo omrežje.
+
+
+%----------------------------------------------------------------
+% Poglavje 2
+%----------------------------------------------------------------
+
+
+\chapter{Teoretična osnova}
+\label{ch:teoretična-osnova}
+
+\section{Poslovno kritične aplikacije}
+\label{sec:poslovno-kritične-aplikacije}
+
+\section{Neprekinjena integracija}
+\label{sec:neprekinjena-integracija}
+
+\section{Neprekinjena dostava}
+\label{sec:neprekinjena-dostava}
+
+\subsection{Dostava izvorne kode}
+\label{subsec:dostava-izvorne-kode}
+
+\subsection{Neprekinjena namestitev}
+\label{subsec:neprekinjena-namestitev}
+
+\section{Organizacija projekta}
+\label{sec:organizacija-projekta}
+
+\subsection{Monorepo}
+\label{subsec:monorepo}
+
+\subsection{Polyrepo}
+\label{subsec:polyrepo}
+
+%----------------------------------------------------------------
+% Poglavje 3
+%----------------------------------------------------------------
+
+\chapter{Uporabljene tehnologije in aplikacije}
+\label{ch:uporabljene-tehnologije-in-aplikacije}
+ 
+\section{Repozitoriji programske opreme}
+\label{sec:repozitoriji-programske-opreme}
+
+\subsection{Nexus}
+\label{subsec:nexus}
+
+\subsection{Git}
+\label{subsec:git}
+
+\subsection{Register slik Docker}
+\label{subsec:register-slik-docker}
+
+\section{Gitlab}
+\label{sec:gitlab}
+
+\subsection{Gitlab neprekinjena integracija in dostava}
+\label{subsec:gitlab-neprekinjena-integracija-in-dostava}
+
+\subsection{Vzorci gitlab}
+\label{subsec:vzorci-gitlab}
+
+\section{Kubernetes}
+\label{sec:kubernetes}
+
+\section{Konfiguracijski strežniki}
+\label{sec:konfiguracijski-strežniki}
+
+\subsection{Consul}
+\label{subsec:consul}
+
+\section{Zagotavljanje varnosti}
+\label{sec:zagotavljanje-varnosti}
+
+\subsection{Kubernetes v izoliranem produkcijskem okolju}
+\label{subsec:kubernetes-v-izoliranem-produkcijskem-okolju}
+
+%----------------------------------------------------------------
+% Poglavje 4
+%----------------------------------------------------------------
+
+
+\chapter{Implementacija}
+\label{ch:implementacija}
+
+\section{Potek integracije in dostave}
+\label{sec:potek-integracije-in-dostave}
+
+\subsection{Proces v podjetju}
+\label{subsec:proces-v-podjetju}
+
+\subsection{Proces pri naročniku}
+\label{subsec:proces-pri-naročniku}
+
+\subsection{Proces neprekinjene dostave naročniku}
+\label{subsec:proces-neprekinjene-dostave-naročniku}
+
+\section{Razvoj komponente za neprekinjeno dostavo in integracijsko testiranje - Medius CD}
+\label{sec:razvoj-komponente-za-neprekinjeno-dostavo-in integracijsko testiranje-medius-cd}
+
+\section{Postavitev projekta}
+\label{subsec:postavitev-projekta}
+
+\subsection{Java in Maven}
+\label{subsec:java-in-maven}
+
+\subsection{Java in Gradle}
+\label{subsec:java-in-gradle}
+
+\subsection{JavaScript in NPM}
+\label{subsec:javascript-in-npm}
+
+
+
+%----------------------------------------------------------------
+% Poglavje 5
+%----------------------------------------------------------------
+
+
+\chapter{Rezultati}
+\label{ch:rezultati}
+
+\section{Predstavitev projekta}
+\label{sec:predstavitev-projekta}
+
+\section{Primer uporabe na projektu}
+\label{sec:primer-uporabe-na-projektu}
+
+\subsection{Java projekt}
+\label{subsec:java-projekt}
+
+\subsection{JavaScript projekt}
+\label{subsec:javascript-projekt}
+
+\subsection{Python projekt}
+\label{subsec:python-projekt}
+
+\subsection{Monorepo projekt}
+\label{subsec:monorepo-projekt}
+
+
+%----------------------------------------------------------------
+% Poglavje 5
+%----------------------------------------------------------------
+
+
+\chapter{Zaključek}
+\label{ch:zaključek}
+
+
+% ---------------------------------------------------------------
+% Appendix
+% ---------------------------------------------------------------
+\appendix
+
+
+%----------------------------------------------------------------
+% SLO: bibliografija
+% ENG: bibliography
+%----------------------------------------------------------------
+\bibliographystyle{elsarticle-num}
+
+%----------------------------------------------------------------
+% SLO: odkomentiraj za uporabo zunanje datoteke .bib (ne pozabi je potem prevesti!)
+% ENG: uncomment to use .bib file (don't forget to compile it!)
+%----------------------------------------------------------------
+\bibliography{bibliography}
+
+
+\end{document}
