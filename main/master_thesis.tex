@@ -57,7 +57,7 @@
 \newcommand{\tsubjectEn}{\ttitleEn}
 \newcommand{\tauthor}{Jakob Maležič}
 \newcommand{\temail}{jm6421@student.uni-lj.si}
-\newcommand{\myyear}{2022}
+\newcommand{\myyear}{2023}
 \newcommand{\tkeywords}{neprekinjena integracija, neprekinjena dostava, poslovno kritične aplikacije}
 \newcommand{\tkeywordsEn}{continuous integration, continuous deployment, business critical applications}
 \newcommand{\mysupervisor}{doc.~dr.\ Nejc Ilc}
@@ -88,11 +88,11 @@ produkcijskem okolju.
 \section{Motivacija}
 \label{sec:motivacija}
 
-Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje naročnika, ki se velikokrat pojavi pri
+Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje stranke, ki se velikokrat pojavi pri
 poslovno kritičnih aplikacijah. Poslovno kritične aplikacije so tiste aplikacije, ki so ključne za delovanje
 poslovnega procesa podjetja~\cite{Hinchey2010, Syng2016}. V takšnem primeru je zaradi varnosti produkcijsko okolje
-pogosto razvijalcem nedostopno, kot tudi celotno omrežje naročnika. S tem je dostava programske kode v omrežje
-naročnika s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces
+pogosto razvijalcem nedostopno, kot tudi celotno omrežje stranke. S tem je dostava programske kode v omrežje
+stranke s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces
 neprekinjene dostave prilagoditi in upoštevati morebitne dodatne zaplete pri izdaji programske opreme v produkcijsko
 okolje.
 
@@ -102,7 +102,7 @@ okolje.
 V magistrski nalogi bomo predstavili strategije in tehnologije, ki nam omogočajo postavitev takšnega sistema. Slednje
 bomo opisali na realnih projektih in pripravili orodja za izvajanje integracijskega ter dostavnega procesa. Bolj
 podrobno bomo opisali tudi proces neprekinjene integracije in dostave v okolje, kjer nimamo dostopa do nobenega izmed
-programskih okolij in nimamo možnosti odriva programske kode v naročnikovo omrežje.
+programskih okolij in nimamo možnosti odriva programske kode v strankino omrežje.
 
 
 %----------------------------------------------------------------
@@ -115,18 +115,69 @@ programskih okolij in nimamo možnosti odriva programske kode v naročnikovo omr
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
+Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. V primeru odpovedi takšne aplikacije ali prekinitve njenega delovanja, poslovanje podjetja ni mogoče. To lahko privede do tako kratkotrajnih kot tudi dolgotrajnih finančnih izgub podjetja. Lahko pride do zmanjšanja produktivnosti podjetja, izgube zaupanja strank itd.
+% poslovni proces
+
+Podjetja pogosto razdelijo svoje aplikacije v skupine, glede na velikost posledic, ki bi jih njihova odpoved prinesla. V večini primerov se delijo na: aplikacije s kritično nalogo, poslovno kritične aplikacije in ne-kritične aplikacije. Ločimo jih po škodi, ki jih povzroči njihov izpad.
+
+\subsection{Aplikacije s kritično nalogo}
+Odpovedi aplikacije s kritično nalogo, največkrat privede do napake pri doseganju nekega pomembnega cilja. Na primer: reševanje življenj, preprečevanje resnih poškodb, transport nujnih stvari ipd.
+
+Primerjava poslovno kritičnih z aplikacijami s kritično nalogo.
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
+Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi \cite{Travassos2016}. Cilj neprekinjene integracije je čim prej avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode, kot iskanju napak \cite{Fowler2006}. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v hitro spreminjajočih se okoljih razvoja \cite{Fowler2006}.
+
+Za sistem neprekinjene integracije in dostave so potrebni trije glavni elementi: centralni repozitorij, orodje za avtomatizacijo gradnje in orodje za preizkušanje \cite{Travassos et al., 2016}. Centralni repozitorij je mesto, kamor razvijalci oddajo spremembe svoje kode. Orodje za avtomatizacijo gradnje je odgovorno za avtomatsko gradnjo in objavljanje posodobljene kode. Orodje za preizkušanje pa izvaja avtomatsko testiranje na posodobljeni kodi, s čimer zagotovi da posodobljena koda deluje pravilno in dosega zahtevane standarde kakovosti \cite{Fowler2006}.
+
+% Travassos, G. H., Fernandes, E. B., de O. Costa, R. F., & Maldonado, J. C. (2016). Continuous integration: Best practices, patterns, and anti-patterns. Journal of Systems and Software, 120, 1-16.
+
+% Neprekinjena integracija pri razvoju programske opreme predstavlja večkratno dnevno združevanje delovnih različič programerjev v skupno celoto \cite{Fowler2006}.
+% Fowler, Martin (1 May 2006). "Continuous Integration". Retrieved 9 January 2014.
+
+\subsection{Razlogi za neprekinjeno integracijo}
+Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem, ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spremenijo temeljno programsko kodo. Zato se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Še več, razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte.
+
+Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode \cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe doda v glavno vejo.
+
+
+Če razvijalec predolgo odlaša z oddajo kode v glavno vejo, se njegova kopija lahko začne zelo razlikovati od kode v glavni veji in za integracijo svoje kode v glavno vejo porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi "integracijski pekel" \cite{Cunningham2009}.
+
+Implementacija neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi \cite{Travassos et al., 2016}. Vendar pa implementacija neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode \cite{Rios in da Costa, 2017}. 
 
 \section{Neprekinjena dostava}
 \label{sec:neprekinjena-dostava}
 
+Neprekinjena dostava je metoda razvoja in izdelave, ki temelji na stalnem izboljševanju procesov in izdelkov ter zagotavljanju neprekinjene dostave izdelkov ali storitev. To pomeni, da se procesi in izdelki izboljšujejo in nadgrajujejo neprekinjeno ter dostava izdelkov ali storitev ne povzroči prekinitev ali zastoja v procesu. 
+
+Cilj neprekinjene dostave je zmanjšanje časa med pisanjem kode in njene dostave končnim uporabnikom obenem pa zagotavljanje visoke kakovosti in zanesljivosti \cite{Humble2010}.
+
+Neprekinjena dostava je zato širši pomen, ki vključuje neprekinjeno integracijo in avtomatično testiranje obenem pa tudi izdajanje novih verzij in avtomatično objavo aplikacije v testno ali produkcijsko okolje. Pomemben del pa je tudi sistem za spremljanje napak in težav z zmogljivostjo, ki razvojni ekipi pošilja povratne informacije o delovanju aplikacije, ki jim pomaga identificirati in odpraviti napake \cite{Humble2010}.
+
 \subsection{Dostava izvorne kode}
 \label{subsec:dostava-izvorne-kode}
+Pomemben del neprekinjene dostave je dostava izvorne kode stranki ali končnim uporabnikom. Proces prenosa kode mora biti dobro zasnovan, da zagotovimo, da se izvorna koda pravilno in učinkovito prenese.
+
+Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je naredilo izvorno kodo. Za stranko je koristno, ker ni več odvisno od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del sami prevzamejo. To je lahko zelo koristno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore zaradi kakšnega drugega razloga. 
+
+% Skupaj lahko dostava izvorne kode stranki zagotovi večjo neodvisnost in prilagodljivost pri uporabi programske opreme, pa tudi priložnost prilagoditve programske opreme lastnim specifičnim potrebam in zahtevam (Humble et al., 2010).
+
+Dostava izvorne kode pa je koristna tudi za podjetje, ki je izvorno kodo naredilo, predvsem iz vidika, da podjetje ni več odgovorno za izvorno kodo:
+\begin{itemize}
+    \item Prenos odgovornosti: z dostavo izvorne kode stranki lahko podjetje prenese del odgovornosti programske opreme na stranko. To je lahko še posebej koristno, če stranka načrtuje prilagoditve ali spremembe programske opreme, saj podjetje ne bi odgovorno za morebitne težave ali napake, ki bi lahko nastali zaradi teh sprememb \cite{Humble2010}.
+    \item Zmanjšanje bremena vzdrževanja in podpore: dostava izvorne kode lahko zmanjša breme vzdrževanja in podpore podjetja. Če ima stranka dostop do izvorne kode, lahko sama odpravi težave in jih popravi, namesto da bi se zanašala na podjetje za podporo \cite{Humble2010}.
+\end{itemize}
 
 \subsection{Neprekinjena namestitev}
 \label{subsec:neprekinjena-namestitev}
+Najširši obseg pa predstavlja neprekinjena namestitev, ki je praska razvoja programske opreme, pri kateri se spremembe kode avtomatsko zgradijo, preizkusijo, oddajo naročniku in tudi objavijo v produkcijsko okolje, brez potrebe po človeškem posredovanju \cite{Travassos2016}. Predstavlja še en korak naprej od neprekinjene dostave, pri kateri se koda zgradi in preizkusi, vendar jih mora človek ročno objaviti v produkcijo \cite{Bass2015}.
+
+Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom \cite{Bass2015}. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in specifične prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati \cite{Wittig2016} - infrastruktura kot koda\cite{Humble2014}.
+
+Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve \cite{Jiang2016} in izboljša učinkovitost in hitrost razvojnega procesa aplikacije \cite{Travassos2016}.
+
+% Programerjem omogoča testiranje aplikacije v živo? Quality assurance?
 
 \section{Organizacija projekta}
 \label{sec:organizacija-projekta}
@@ -180,6 +231,9 @@ programskih okolij in nimamo možnosti odriva programske kode v naročnikovo omr
 \subsection{Kubernetes v izoliranem produkcijskem okolju}
 \label{subsec:kubernetes-v-izoliranem-produkcijskem-okolju}
 
+\subsection{Jsonnet}
+\label{subsec:jsonnet}
+
 %----------------------------------------------------------------
 % Poglavje 4 - Implementacija
 %----------------------------------------------------------------
@@ -194,14 +248,14 @@ programskih okolij in nimamo možnosti odriva programske kode v naročnikovo omr
 \subsection{Proces v podjetju}
 \label{subsec:proces-v-podjetju}
 
-\subsection{Proces pri naročniku}
-\label{subsec:proces-pri-naročniku}
+\subsection{Proces pri stranki}
+\label{subsec:proces-pri-stranki}
 
-\subsection{Proces neprekinjene dostave naročniku}
-\label{subsec:proces-neprekinjene-dostave-naročniku}
+\subsection{Proces neprekinjene dostave stranki}
+\label{subsec:proces-neprekinjene-dostave-stranki}
 
 \section{Razvoj komponente za neprekinjeno dostavo in integracijsko testiranje - Medius CD}
-\label{sec:razvoj-komponente-za-neprekinjeno-dostavo-in integracijsko testiranje-medius-cd}
+\label{sec:razvoj-komponente-za-neprekinjeno-dostavo-in integracijsko-testiranje-medius-cd}
 
 \section{Postavitev projekta}
 \label{subsec:postavitev-projekta}
