@@ -115,15 +115,34 @@ programskih okolij in nimamo možnosti odriva programske kode v strankino omrež
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
-Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. V primeru odpovedi takšne aplikacije ali prekinitve njenega delovanja, poslovanje podjetja ni mogoče. To lahko privede do tako kratkotrajnih kot tudi dolgotrajnih finančnih izgub podjetja. Lahko pride do zmanjšanja produktivnosti podjetja, izgube zaupanja strank itd.
-% poslovni proces
+Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. To so tiste aplikacije, ki bi v primeru odpovedi ali prekinitve delovanja močno vplivale na poslovanje podjetja in potencialno povzročile veliko finančne škode ali škodovale ugledu podjetja. Kritičnost aplikacije, ki ga neko podjetje uporablja, je odvisno od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so:
+\begin{itemize}
+    \item Aplikacije za elektronsko poslovanje: Spletne aplikacije, ki omogočajo podjetjem da tržijo svoje izdelke in storitve preko spleta.
+    \item Aplikacije za upravljanje s strankami (CRM): Aplikacije, ki pomagajo podjetjem upravljati poslovanje s strankami in hranijo podatke o strankah.
+    \item Dobavni sistemi (SCM): Sistemi, ki pomagajo podjetju upravljati z dobavo in prodajo, kot tudi z beleženjem inventarja in logistiko.
+    \item Sistem za načrtovanje virov (ERP): Sistem za nadzor poslovanja podjetja.
+    \item Sistemi poslovne inteligence: To so aplikacije ki pomagajo podjetju zbirati, hraniti in analizirati podatke za sklepanje boljših poslovnih odločitev.
+    \item Orodja za komunikacijo: Aplikacije, ki zaposlenim omogočajo komunikacijo kot na primer: elektronska pošta, sporočilni sistemi in aplikacije za video konference.
+\end{itemize}
 
-Podjetja pogosto razdelijo svoje aplikacije v skupine, glede na velikost posledic, ki bi jih njihova odpoved prinesla. V večini primerov se delijo na: aplikacije s kritično nalogo, poslovno kritične aplikacije in ne-kritične aplikacije. Ločimo jih po škodi, ki jih povzroči njihov izpad.
+Pri razvoju poslovno kritičnih aplikacij so pomembne naslednje lastnosti:
+\begin{itemize}
+    \item Zanesljivost: Aplikacija mora biti vedno na voljo in delovati konsistentno brez napak in zaustavitev.
+    \item Skalabilnost (razširljivost?): Ob rasti podjetja se količina prometa, ki jih mora aplikacija obdelati, lahko poveča. Aplikacija mora zato biti sposobna obvladovati velike količine prometa in podpreti rastoče zahteve podjetja.
+    \item Varnost: Poslovno kritične aplikacije pogosto hranijo občutljive podatke, na primer podatke o uporabnikih ali finančne podatke. Aplikacija mora zato biti varna in zaščitena pred kibernetskimi napadi, nepooblaščenim dostopom in drugim tveganji, da prepreči izlive takšnih podatkov.
+    \item Zmogljivost: Počasna ali neodzivna aplikacija negativno vpliva na produktivnosti. Aplikacija mora zato biti odzivna in delovati dobro tudi pod velikimi obremenitvami.
+    \item Vzdrževanje: Dobro vzdrževanje aplikacije je pomembno, da aplikacija ostane zanesljiva in zmogljiva. Aplikacija mora zato biti lahka za vzdrževanje in posodabljanje kot tudi jasno in dobro dokumentirana.
+    \item Uporabniška izkušnja: Dober uporabniški vmesnik in izkušnja lahko uporabnikom olajšata razumevanje in uporabo aplikacije, kar poveča produktivnost.
+    % \item Integracija: Aplikacija mora nuditi dober programski vmesnik, da se lahko druge aplikacije nanj integrirajo.
+    \item Prilagodljivost: Različna podjetja imajo različne potrebe, zato je pomembno, da je aplikacija prožna in prilagodljiva.
+\end{itemize}
 
-\subsection{Aplikacije s kritično nalogo}
-Odpovedi aplikacije s kritično nalogo, največkrat privede do napake pri doseganju nekega pomembnega cilja. Na primer: reševanje življenj, preprečevanje resnih poškodb, transport nujnih stvari ipd.
+% Podjetja pogosto razdelijo svoje aplikacije v skupine, glede na velikost posledic, ki bi jih njihova odpoved prinesla. V večini primerov se delijo na: aplikacije s kritično nalogo, poslovno kritične aplikacije in ne-kritične aplikacije. Ločimo jih po škodi, ki jih povzroči njihov izpad.
 
-Primerjava poslovno kritičnih z aplikacijami s kritično nalogo.
+% \subsection{Aplikacije s kritično nalogo}
+% Odpovedi aplikacije s kritično nalogo, največkrat privede do napake pri doseganju nekega pomembnega cilja. Na primer: reševanje življenj, preprečevanje resnih poškodb, transport nujnih stvari ipd.
+
+% Primerjava poslovno kritičnih z aplikacijami s kritično nalogo.
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
@@ -179,17 +198,62 @@ Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcion
 
 % Programerjem omogoča testiranje aplikacije v živo? Quality assurance?
 
-\section{Organizacija projekta}
-\label{sec:organizacija-projekta}
+\section{Struktura projekta}
+\label{sec:struktura-projekta}
+Struktura projekta opisuje kako je projekt organiziran in razmerja med različnimi deli projekta. Dobro strukturiran projekt pripomore k boljšemu razumevanju, vzdrževanju in razvijanju programske kode projekta. Obstaja veliko načinov strukturiranja projektov, seveda pa je struktura projekta odvisna od specifičnih potreb in ciljev projekta. Pri strukturiranju projekta so ključni deli:
+\begin{itemize}
+    \item Direktorijska struktura: Opisuje kako so datoteke in direktoriji razporejeni na datotečnem sistemu. Dobra direktorijska struktura združuje odvisne datoteke in vire ter olajša iskanje datotek.
+    \item Moduli in odvisnosti: V večini projektov, je programska koda logično razdeljena na več modulov ali komponent, kjer vsak izmed modulov zadolžen za en del projekta. Ti moduli so lahko tudi odvisni med sabo, zato jih je potrebno skrbno organizirati in poskrbeti da ne pride do cikličnih odvisnosti.
+    \item Skripti za gradnjo in namestitev projekta: Skripti opisujejo kako projekt zgraditi in namestiti na testna in produkcijsko okolje. Ti skripti so po navadi del neprekinjene namestitve in morajo zato biti dobro organizirani in enostavni za razumevanje.
+    \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (API), in druge dokumente, ki pomagajo razvijalcem pri razvoju in uporabnikom pri razumevanju delovanja projekta.
+\end{itemize}
+
+Na projektno strukturo močno vpliva tudi sistem za verzioniranje kode, ki ga uporabljamo \cite{Wiki_Architectural_pattern}, saj lahko kodo shranjujemo v enem skupnem repozitoriju ali pa jo razdelimo v več repozitorijev. Izbira repozitorijske strukture je ključna za strukturo projekta, saj ima vsaka repozitorijska struktura različne prednosti in slabosti \cite{Kokrehel2022}. Najbolj pogosti repozitorijski strukturi sta: monorepo in polyrepo.
 
 \subsection{Monorepo}
 \label{subsec:monorepo}
+Monorepo ali monolitni repozitorij je poimenovanje organizacije in verzioniranja izvorne kode z enim repozitorijem. Ta lahko vsebuje več projektov, paketov ali modulov in razvijalcem omogoča širok dostop do izvorne kode, skupnih orodji in skupni množici odvisnosti na enem mestu \cite{Jaspan2018}.
 
-\subsection{Polyrepo}
-\label{subsec:polyrepo}
+Prednosti monolitnega repozitorija so:
+\begin{itemize}
+    \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost in kvaliteto kode \cite{Jaspan2018, Shakikhanli2022}. 
+    \item Enostavne odvisnosti: Vsi paketi in moduli v repozitoriju imajo lahko enako verzijo in ni potrebno skrbeti katere verzije so med seboj kompatibilne.
+    \item Lažje spreminjanje odvisnih delov kode: Pri popravljanju in posodabljanju kode lahko popravimo tudi vse dele kode, ki so odvisni od spremenjene kode in vse skupaj oddamo v repozitorij kot eno spremembo.
+\end{itemize}
+
+Slabosti monolitnega repozitorija so:
+\begin{itemize}
+    \item Velikost repozitorija: Monolitni repozitorij lahko skozi razvoj zasede veliko prostora na podatkovnem sistemu. To lahko oteži prenos izvorne kode iz repozitorija in ostale operacije sistema za verzioniranje \cite{Harry2017}.
+    \item Kompleksen cevovod za neprekinjeno dostavo: Kompleksnost konfiguracije cevovoda za neprekinjeno dostavo se poveča, saj je potrebno vse korake izvesti na vseh modulih in projektih. Da ohranimo učinkovitost, pa nočemo vedno izvajati vseh korakov za vse module, saj to podaljša izvajanje cevovoda.
+    \item Veliki zahtevki za združitev vej: Ker repozitorij vsebuje vse odvisne dele kode, je ob posodobitvah lahko posodobljenih veliko vrstic izvorne kode. To lahko povzroči slabo preglednost sprememb v pregledu sprememb zahtevka za združitev \cite{Harry2017}.
+    \item Orodja za upravljanje: Za učinkovito upravljanje monolitnega repozitorija so velikokrat potrebna dodatna programska orodja kot so orodja za gradnjo aplikacije in upravljalci paketov. To lahko poveča kompleksnost razvijanja aplikacije.
+\end{itemize}
+
+\subsection{Polirepo}
+\label{subsec:polirepo}
+Polirepo je poimenovanje organizacije in verzioniranja izvorne kode z več repozitoriji. Ti vsebujejo vse pakete in komponente izvorne kode, ki skupaj tvorijo celotno aplikacijo \cite{Shakikhanli2022}.
+
+Prednosti uporabe več repozitorijev:
+\begin{itemize}
+    \item Poenostavljeno upravljanje: S posameznimi moduli ali paketi v ločenih repozitorijih je lažje slediti spremembam in ugotoviti, katere spremembe spadajo k posameznim projektom.
+    \item Ločitev odgovornosti: Shranjevanje posameznih projektov v ločenih repozitorijih lahko pomaga izolirati kodo in zmanjša tveganje za nastanek sporov med različnimi deli projekta.
+    \item Fleksibilnost: S posameznimi projekti v ločenih repozitorijih je lažje, da se različne ekipe ali razvijalci lahko posvečajo različnim delom projekta brez motenj od drugih ekip.
+    \item Velikost repozitorijev: Ker je celoten projekt razdeljen na več repozitorijev, so ti repozitoriji manjši in zato lažji za prenos in delo na lokalnih računalnikih, še posebej, če razvijalec dela samo na enem delu projekta.
+    \item Potencialno hitrejše gradnje: S posameznimi moduli ali paketi v ločenih repozitorijih jih je morda mogoče graditi neodvisno, kar lahko skrajša skupni čas gradnje.
+\end{itemize}
+
+Slabosti uporabe več repozitorijev:
+\begin{itemize}
+    \item Verzioniranje in določevanje odvisnosti: Potrebno je določiti kako se bodo moduli ali paketi v posameznih repozitorijih verzionirali in kako bodo določene odvisnosti med njimi.
+    \item Oteženo spreminjanje odvisnih delov kode: Po spremembi nekega dela kode, se velikokrat zgodi, da je potrebno popraviti še kodo v odvisnih modulih ali paketih. To pomeni, da je treba v vsakem izmed odvisnih repozitorijev dodati spremembo in po možnosti popraviti verzijo.
+\end{itemize}
+
+Oba pristopa imata prednosti in slabosti, in tisto, kar en razvijalec šteje za prednost, lahko drugemu predstavlja slabost. Na primer, nekatere osebe lahko vidijo enostavnost upravljanja enega samega repozitorija kot prednost uporabe monolitnega repozitorija, medtem ko druge lahko zaradi potencialne povečane zapletenosti vidijo to kot slabost. Podobno lahko nekatere osebe vidijo sposobnost enostavnega deljenja kode in virov med projekti kot prednost uporabe več repozitorijev, medtem ko druge lahko vidijo potrebo po upravljanju večih repozitorijev kot slabost. Zato je izbira med uporabo monolitnega repozitorija ali več repozitorijev največkrat stvar osebnega okusa in je odvisna od specifičnih potreb ter narave projekta kot tudi delovnih navad podjetja.
+
+
 
 %----------------------------------------------------------------
-% Poglavje 3 - Tehnologija
+% Poglavje 3 - Tehnologije
 %----------------------------------------------------------------
 
 \chapter{Uporabljene tehnologije in aplikacije}
@@ -210,7 +274,7 @@ Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcion
 \section{Gitlab}
 \label{sec:gitlab}
 
-\subsection{Gitlab neprekinjena integracija in dostava}
+\subsection{Neprekinjena integracija in dostava v Gitlab-u}
 \label{subsec:gitlab-neprekinjena-integracija-in-dostava}
 
 \subsection{Vzorci gitlab}
@@ -224,6 +288,9 @@ Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcion
 
 \subsection{Consul}
 \label{subsec:consul}
+
+\subsection{konfiguracijski strežnik Spring Boot}
+\label{subsec:spring-boot-configuration-server}
 
 \section{Zagotavljanje varnosti}
 \label{sec:zagotavljanje-varnosti}
