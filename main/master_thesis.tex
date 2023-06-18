@@ -115,20 +115,21 @@ programskih okolij in nimamo možnosti odriva programske kode v strankino omrež
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
-Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. To so tiste aplikacije, ki bi v primeru odpovedi ali prekinitve delovanja močno vplivale na poslovanje podjetja in potencialno povzročile veliko finančne škode ali škodovale ugledu podjetja \cite{Shen2015}. Kritičnost aplikacije, ki ga neko podjetje uporablja, je odvisno od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
+Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. Odpoved ali prekinitev delovanja takšni aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škodouje ugledu podjetja \cite{Shen2015}. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisno od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
 \begin{itemize}
     \item Aplikacije za elektronsko poslovanje: Spletne aplikacije, ki omogočajo podjetjem da tržijo svoje izdelke in storitve preko spleta.
     \item Aplikacije za upravljanje s strankami (CRM): Aplikacije, ki pomagajo podjetjem upravljati poslovanje s strankami in hranijo podatke o strankah.
     \item Dobavni sistemi (SCM): Sistemi, ki pomagajo podjetju upravljati z dobavo in prodajo, kot tudi z beleženjem inventarja in logistiko.
-    \item Sistem za načrtovanje virov (ERP): Sistem za nadzor poslovanja podjetja.
+    \item Sistem za načrtovanje virov (ERP): Aplikacije, ki jih podjetja uporabljajo za upravljanje dnevnih poslovnih aktivnosti kot so: vodenje računov, dobavljanje, upravljanje projektov,  upravljanje s tveganji in nadzor dobavne verige.
     \item Sistemi poslovne inteligence: To so aplikacije ki pomagajo podjetju zbirati, hraniti in analizirati podatke za sklepanje boljših poslovnih odločitev.
     \item Orodja za komunikacijo: Aplikacije, ki zaposlenim omogočajo komunikacijo kot na primer: elektronska pošta, sporočilni sistemi in aplikacije za video konference.
 \end{itemize}
 
+
 Pri razvoju poslovno kritičnih aplikacij so pomembne naslednje lastnosti \cite{Sarkis2004}:
 \begin{itemize}
     \item Zanesljivost: Aplikacija mora biti vedno na voljo in delovati konsistentno brez napak in zaustavitev.
-    \item Skalabilnost (razširljivost?): Ob rasti podjetja se količina prometa, ki jih mora aplikacija obdelati, lahko poveča. Aplikacija mora zato biti sposobna obvladovati velike količine prometa in podpreti rastoče zahteve podjetja.
+    \item Skalabilnost (razširljivost?): Ob rasti podjetja se količina prometa, ki jih mora aplikacija obdelati lahko poveča. Aplikacija mora zato biti sposobna obvladovati velike količine prometa in podpreti rastoče zahteve podjetja.
     \item Varnost: Poslovno kritične aplikacije pogosto hranijo občutljive podatke, na primer podatke o uporabnikih ali finančne podatke. Aplikacija mora zato biti varna in zaščitena pred kibernetskimi napadi, nepooblaščenim dostopom in drugim tveganji, da prepreči izlive takšnih podatkov.
     \item Zmogljivost: Počasna ali neodzivna aplikacija negativno vpliva na produktivnosti. Aplikacija mora zato biti odzivna in delovati dobro tudi pod velikimi obremenitvami.
     \item Vzdrževanje: Dobro vzdrževanje aplikacije je pomembno, da aplikacija ostane zanesljiva in zmogljiva. Aplikacija mora zato biti lahka za vzdrževanje in posodabljanje kot tudi jasno in dobro dokumentirana.
@@ -146,9 +147,9 @@ Pri razvoju poslovno kritičnih aplikacij so pomembne naslednje lastnosti \cite{
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
-Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi \cite{Travassos2016}. Cilj neprekinjene integracije je čim prej avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode kot iskanju napak \cite{Fowler2006}. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v hitro spreminjajočih se okoljih razvoja \cite{Fowler2006}.
+Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi \cite{Travassos2016}. Cilj neprekinjene integracije je čim prej avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode kot iskanju napak. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v hitro spreminjajočih se okoljih razvoja \cite{Fowler2006}.
 
-Za sistem neprekinjene integracije in dostave so potrebni trije glavni elementi: centralni repozitorij, orodje za avtomatizacijo gradnje in orodje za preizkušanje \cite{Travassos et al., 2016}. Centralni repozitorij je mesto, kamor razvijalci oddajo spremembe svoje kode. Orodje za avtomatizacijo gradnje je odgovorno za avtomatsko gradnjo in objavljanje posodobljene kode. Orodje za preizkušanje pa izvaja avtomatsko testiranje na posodobljeni kodi, s čimer zagotovi, da posodobljena koda deluje pravilno in dosega zahtevane standarde kakovosti \cite{Fowler2006}.
+Za sistem neprekinjene integracije in dostave so potrebni trije glavni elementi: centralni repozitorij, orodje za avtomatizacijo gradnje in orodje za preizkušanje \cite{Travassos2016}. Centralni repozitorij je mesto, kamor razvijalci oddajo spremembe svoje kode. Orodje za avtomatizacijo gradnje je odgovorno za avtomatsko gradnjo in objavljanje posodobljene kode. Orodje za preizkušanje pa izvaja avtomatsko testiranje na posodobljeni kodi, s čimer zagotovi, da posodobljena koda deluje pravilno in dosega zahtevane standarde kakovosti \cite{Fowler2006}.
 
 % Travassos, G. H., Fernandes, E. B., de O. Costa, R. F., & Maldonado, J. C. (2016). Continuous integration: Best practices, patterns, and anti-patterns. Journal of Systems and Software, 120, 1-16.
 
@@ -160,10 +161,9 @@ Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svoje
 
 Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode \cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe doda v glavno vejo.
 
-
 Če razvijalec predolgo odlaša z oddajo kode v glavno vejo, se njegova kopija lahko začne zelo razlikovati od kode v glavni veji in za integracijo svoje kode v glavno vejo porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi "integracijski pekel" \cite{Cunningham2009}.
 
-Implementacija neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi \cite{Travassos et al., 2016}. Vendar pa implementacija neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode \cite{Rios in da Costa, 2017}. 
+Implementacija neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi \cite{Travassos2016}. Vendar pa implementacija neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode \cite{Rios in da Costa, 2017}. 
 
 \section{Neprekinjena dostava}
 \label{sec:neprekinjena-dostava}
@@ -255,28 +255,52 @@ Oba pristopa imata prednosti in slabosti in tisto, kar en razvijalec šteje za p
 % Poglavje 3 - Tehnologije
 %----------------------------------------------------------------
 
-
 \chapter{Uporabljene tehnologije in aplikacije}
 \label{ch:uporabljene-tehnologije-in-aplikacije}
 V tem poglavju bomo predstavili uporabljene tehnologije in aplikacije, ki so bile uporabljene za postavitev cevovoda neprekinjene integracije in dostave (CI/CD). Opisali bomo repozitorije za nadzor različic in orodja za gradnjo, ki so bila uporabljena, pa tudi aplikacijo Gitlab in konfiguracijske strežnike. Prav tako bomo podrobneje obravnavali kako smo zagotovili varnost aplikacije in opisali pomožna orodja in njihov namen.
- 
+
+% Mogoče repozitoriji tu ni najboljša beseda, mogoče skladišče?
 \section{Repozitoriji za nadzor različic}
 \label{sec:repozitoriji-za-nadzor-različic}
+Za razvoj aplikacij uporabljamo več različnih repozitorijev, ki služijo različnim namenom. Izvorna koda se nahaja v repozitoriju s sistemom za nadzor različici, ki razvijalcem omogoča preprost pregled sprememb kode in združevanje sprememb iz različnih vej. Interne knjižnice, od katerih so projekti odvisni, so kot artefakti naložene na centralni upravljalec repozitorijev. Aplikacije na koncu pogosto zapakiramo v sliko Docker, ki so shranjene v registru Docker slik. V nadaljevanju predstavimo, katere implementacije posameznih repozitorijev smo uporabili.
 
+\subsection{Git}
+\label{subsec:git}
+Git je sistem za verzioniranje, ki se pogosto uporablja pri razvoju programske opreme. Omogoča, da več razvijalcev naenkrat dela na enaki izvorni kodi in razvijalcem pomaga slediti spremembam, ki so bile narejene.
+
+Uporaba sistema za verzioniranje Git deluje tako, da ima vsak razvijalec lokalno kopijo celotnega repozitorija vključno z vso zgodovino vseh sprememb, ki so bile narejene na izvorni kodi. Ko razvijalec razvija aplikacijo, spreminja zgolj lokalno kodo. Če želi spremembe oddati na oddaljen repozitorij, mora svoja spremembe s potrditivijo najprej dodati v lokalno verzionirano skladišče, nato pa jih lahko naloži še na oddaljen repozitorij.
+
+Drugi razvijalci lahko nato prenesejo spremembe iz oddaljenega repozitorija v svoje lastne lokalne kopije kode in združijo spremembe s svojo lastno kodo. Če so na oddaljenem repozitoriju nove spremembe kode na enakih delih kot spremembe v lokalnem okolju razvijalca, mora razvijalec, ki želi združiti kodo s svojo lastno lokalno kopijo, izbrati, katere spremembe bo obdržal. Git vsebuje orodja, ki ta postopek združevanja poenostavijo.
+
+Za neprekinjeno integracijo in dostavo aplikacij je Git pomemben predvsem zaradi sistema za sledenje spremembam in omogočanja da ekipa razvijalcev skupaj sodeluje pri razvoju. Pri neprekinjeni integraciji je zelo pomembno da lahko hitro in enostavno zaznamo in testiramo spremembe, ki so bile narejene, kot tudi da lahko združimo spremembe. Hkrati omogoča, da v primeru padanja testov ali drugih težav enostavno in hitro vrnemo aplikacijo na zadnje delujoče stanje.
 
 \subsection{Nexus}
 \label{subsec:nexus}
-Apache Nexus\footnote{https://www.sonatype.com/products/nexus-repository} je eden od najbolj priljubljenih odprtokodnih upravljalcev repozitorijev, ki se uporablja za gostovanje in upravljanje artefaktov, kot so datoteke tipa JAR in ostale binarne komponente, ki jih potrebujejo projekti za svojo gradnjo in delovanje. Pogosto se uporablja kot namestniski strežnik za zunanje repozitorije, kot je na primer centralni repozitorij Maven, in za gostovanje interno razvitih artefaktov. To lahko pomaga izboljšati hitrost gradnje aplikacije, ker se zmanjša število zunanjih odvisnosti, ki jih je potrebno prenesti iz spleta, hkrati pa omogoča dodatno varnost, tako da omogoča nadzor nad tem, kateri artefakti so na voljo za gradnjo \cite{Varanasi2019}.
+Apache Nexus\footnote{https://www.sonatype.com/products/nexus-repository} je eden od najbolj priljubljenih odprtokodnih upravljalcev repozitorijev, ki se uporablja za gostovanje in upravljanje artefaktov, kot so datoteke tipa JAR in ostale binarne komponente, ki jih potrebujejo projekti za svojo gradnjo in delovanje. Pogosto se uporablja kot namestniški strežnik za zunanje repozitorije, kot je na primer centralni repozitorij Maven, in za gostovanje interno razvitih artefaktov. To lahko pomaga izboljšati hitrost gradnje aplikacije, ker se zmanjša število zunanjih odvisnosti, ki jih je potrebno prenesti iz spleta, hkrati pa omogoča dodatno varnost, tako da omogoča nadzor nad tem, kateri artefakti so na voljo za gradnjo \cite{Varanasi2019}.
 
 Poleg gostovanja artefaktov Nexus omogoča tudi upravljanje in omejevanje uporabe artefaktov z pravili, ki jih lahko nastavimo. Na primer, da morajo biti vsi artefakti digitalno podpisani ali pa da morajo biti odobreni s strani administratorja, preden jih lahko uporabimo ob gradnji aplikacije.
 
 Nexus ponuja tudi uporabniški vmesnik, s katerim je enostavno poiskati in prenesti artefakte kot tudi naložiti nove artefakte v repozitorij ročno. Prav tako izpostavlja aplikacijski programski vmesnik z arhitekturnim slogom REST, ki se lahko uporablja za avtomatizacijo opravil upravljanja repozitorijev.
 
-\subsection{Git}
-\label{subsec:git}
+Za proces neprekinjene integracije in dostave aplikacij je Nexus pomemben zaradi več razlogov:
+\begin{itemize}
+    \item Pomaga poenotiti proces razvijanja aplikacije tako, da nudi enotno in konsistentno mesto za shranjevanje zgrajenih artefaktov.
+    \item Z nudenjem hitrega in zanesljivega načina za dostop do zgrajenih artefaktov, izboljša učinkovitost in hitrost procesa CI/CD.
+    \item Z nadzorom dostopa do artefaktov in dodatnimi pravili izboljša varnosti procesa CI/CD.
+    \item Z hranjenjem različnih verzij artefaktov, ki so bili zgrajeni iz nameščeni, izboljša sledljivost CI/CD procesa.
+\end{itemize}
 
 \subsection{Register slik Docker}
 \label{subsec:register-slik-docker}
+Register slik Docker je servis, ki omogoča hranjene in distribucijo slik Docker. V register lahko slike Docker naložimo ali pa jih iz registra prenesemo. Register je lahko javen ali privaten.
+
+Obstaja veliko javnih registrov, kot na primer Docker Hub, ki je privzeti register in ga vzdržuje Docker, Quay.io, IBM Cloud container registry\footnote{\url{https://www.ibm.com/cloud/container-registry}} in drugi \cite{Anwar2018}.
+
+Register slik Docker igra pomembno vlogo v procesu neprekinjene integracije in dostave, saj omogoča upravljanje slik Docker, ki jih uporabljamo za aplikacijo skozi celoten cevovod CI/CD. Slike docker, ki so shranjene v registru, lahko uporabimo za namestitev aplikacije na različna okolja.
+
+V kontekstu neprekinjene integracije nam register slik Docker omogoča hranjenje slik Docker, ki jih CI proces zgradi. Te slike lahko potem uporabimo za testiranje in validiranje pred oddajo v produkcijo. V kontekstu neprekinjene dostave, pa nam register omogoča upravljanje z različnimi verzijami aplikacijskih slik Docker in v primeru težav, hitro vračanje aplikacije na prejšno verzijo.
+
+Hkrati, če uporabljamo privatni register Docker slik, lahko omejimo dostop do slik Docker in s tem okrepimo varnost.
 
 \section{Orodja za gradnjo}
 \label{sec: orodja-za-gradnjo}
@@ -284,20 +308,73 @@ Nexus ponuja tudi uporabniški vmesnik, s katerim je enostavno poiskati in prene
 \subsection{Maven}
 \label{subsec:maven}
 
+Maven je orodje za avtomatizacijo gradnje projektov spisanih v jeziku Java. Razvijalcem pomaga avtomatizirati proces gradnje, testiranja in namestitve aplikacije. Uporablja deklarativen pristop, s katerim razvijalci naštejejo vse odvisnosti, vtičnike in ostale informacije, potrebne za gradnjo projekta, v eno datoteko v formatu xml. Ta datoteka se imenuje \textit{pom.xml} \cite{Varanasi2019}.
+
+Orodje Maven je pomemebno za neprekinjeno integracijo in dostavo aplikacij, ker omogoča konsistenten in ponovljiv način gradnje, testiranja in nameščanja aplikacije. Z orodjem Maven, lahko razvijalci opišejo vse potrebne korake za gradnjo projekta v eni konfiguracijski datoteki, ki jo v procesu CI/CD lahko nato uporabimo, za avtomatizacijo gradnje in namestitve projekta. Na ta način, je izdaja aplikacije bolj efektivna in zanesljiva. 
+
 \subsection{Gradle}
 \label{subsec:gradle}
 
-\subsection{Npm}
+Gradle je odprtokodno orodje za gradnjo projektov kot Maven, vendar je bolj fleksibilno. Tako kot Maven, se tudi Gradle večinoma uporablja za projekte spisane v programskem jeziku Java, vendar se lahko uporablja tudi za gradnjo projektov v drugih programskih jezikih kot na primer C++ ali Python. Za definicijo skript za gradnjo projekta uporablja domensko-specifičen jezik, ki je osnovan na jeziku Groovy in omogoča bolj zgoščene in ekspresivno napisane skripte, v primerjavi s skripti v formatu XML, ki ga uporablja Maven \cite{Ikkink2015}.
+
+Podobno kot Maven je Gradle pomemben za neprekinjeno integracijo in dostavo aplikacijo, ker omogoča avtomatizacijo gradnje in namestitve projekta. Gradle podpira tudi gradnjo več projektov hkrati in inkrementalno gradnjo ter je zato primeren tudi za velike in kompleksne projekte. Znan je tudi po svojem sistemu predpomnenja, ki z beleženjem vhodov in izhodov gradnje, ter ponovno uporabo le teh, pohitri gradnjo projekta. To je še posebej uporabno za proces CI/CD, kjer želimo projekt zgraditi čim hitreje.
+
+\subsection{Node Package Manager ali NPM}
 \label{subsec:npm}
 
-\subsection{Pnpm}
+Node Package manager je orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. Orodje je vključeno v namestitveni paket izvajalnega okolja Node.js, je avtomatsko nameščeno ob namestitvi Node.js in zato služi kot privzeti upravitelj paketov za Node.js. Uporablja se v ukazni vrstici in razvijalcem omogoča enostavno namestitev, upravljanje in deljenje paketov ali modulov. V datoteki \textit{package.json} lahko razvijalci določijo odvisnosti, ki jih projekt zahteva. Te odvisnosti lahko razvijalci nato enostavno namestijo z uporabo orodja NPM, ki avtomatsko poišče ustrezne pakete in jih prenese iz registra NPM ali iz drugih virov kot je npr. centralni repozitorij Nexus.
+
+Orodje NPM prav tako omogoča upravljanje različnih različič paketov, posodabljanje paketov, odstranjevanje paketov in objavljanje lastnih paketov v zasebne ali javne registre. Poskrbi tudi za razreševanje odvisnosti in zagotavlja, da so vsi zahtevani paketi in njihove odvisnosti pravilno nameščeni in združljivi med seboj.
+
+\subsection{Plug 'N' Play Package Manager ali PNPM}
 \label{subsec:pnpm}
+
+Plug 'N' Play Package Manager je prav tako orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. PNPM je alternativa orodju NPM, ki si prizadeva izboljšati efektivnost in učinkovitost namestitve in upravljanja paketov.
+
+Za razliko od orodja NPM, ki uporablja centralizirani predpomnilnik paketov in namešča odvisnosti projekta v mapo poimenovano \textit{node\_modules}, orodje PNPM uporablja virtualno shrambo. Namesto podvajanja odvisnosti za več projektov, jih orodje PNPM shrani na centralno mesto na datotečnem sistemu, kar omogoča, da si različni projekti odvisnosti delijo.
+
+Na ta način izboljšuje hitrost namestitve in zmanjšuje prostor, ki ga posamezni projekti zasedajo. Prav tako omogoča hitrejše in učinkovitejše posodobitve paketov, saj je ob posodobitvi potrebno posodobiti samo eno kopijo paketa v centralni virtualni shrambi.
+
+Orodje PNPM je združljivo z obstoječimi projekti Node.js in ga lahko uporabimo kot zamenjavo za orodje NPM. Ponuja podobne ukaze in je zato tudi enostavno za uporabo.
+
+\subsection{Pip Installs Packages ali PIP}
+\label{subsec:pip}
+
+Pip Installs Packages je privzeto orodje za upravljanje paketov, ki so napisani v programskem jeziku Python. PIP omogoča enostavno namestitev, nadgradnjo in upravljanje s paketi, ki niso del osnovne knjižnice za programski jezik Python. Orodje omogoča razvijalcem enostaven dostop in namestitev paketov iz Python Package Index-a (PyPI), ki gostuje odprto-kodne pakete za programski jezik Python.
+
+Orodje PIP je enostavno za uporabo in s preprostimi ukazi omogoča uporabnikom namestitev in brisanje paketov ter kreiranje virutalnega okolja za izolacijo projektnih odvisnosti. Zaradi splošne razširjenosti uporabe orodja PIP, služi kot ključno orodje za deljenje kode in učinkovito upravljanje paketov v projektih, ki uporabljajo programski jezik Python.
+
+\subsection{Setuptools}
+\label{subsec:setuptools}
+
+Setuptools je knjižnica, ki poenostavi razvoj in distribucijo paketov v programskem jeziku Python. Vsebuje zbirko uporabnih funkcij in razširitev, ki nam pomagajo pri pakiranju, distribuciji in namestitvi paketov za programski jezik Python.
+
+Glavne funkcionalnosti so:
+\begin{itemize}
+    \item Podpora za kreiranje paketov: knjižnica poenostavi proces kreiranje in gradnje paketov za programski jezik Python. Za definicijo meta podatkov o paketu, kot so ime, verzija, avtor, odvisnosti in vhodne točke uporablja datoteko \textit{setup.py}. Na ta način razvijalcu omogoči, da definira strukturo projekta in določi vire in dodatne datoteke, ki so del projekta.
+    \item Upravljanje odvisnosti: knjižnica s ključno besedo \textit{requires} v skripti \textit{setup.py} omogoča avtorjem paketa nastavitev odvisnosti, ki jih paket potrebuje. Knjižnica prav tako omogoča avtomatsko razrešitev in namestitev teh odvisnosti, kar poenostavi namestitev in uporabo paketa.
+    \item Vstopne točke: knjižnica omogoča uporabo vhodnih točk, ki na standarden način definirajo kako lahko ostali paketi in aplikacije razširijo funkcionalnosti paketa. Hkrati omogoča dinamično odkrivanje in namestitev vtičnikov brez navajanja eksplicitnih uvozov (importov?).
+    \item Integracija s PyPI: knjižnica je dobro integrirana s PyPI in vsebuje ukaze za nalaganje paketov na PyPI.
+    \item Razširitev osnovnih ukazov: razširja osnovne ukaze z ukazi, ki pomagajo pri gradnji različnih distribucij, generiranju dokumentacije in zagonu testov.
+\end{itemize}
 
 \subsection{Docker}
 \label{subsec:docker}
+% kontejner - vsebnik?
+Docker je odprtokodna platforma, ki omogoča razvoj, namestitev in zagon aplikacij z uporabo kontejnerizacije. Kontejnerizacija je način pakiranja aplikacij in njihovih odvisnosti v izolirane in preproste kontejnerje, ki jih lahko zanesljivo zaženemo v različnih programskih okoljih. Docker kontejnerji vsebujejo vse potrebno za zagon aplikacije: kodo, izvajalno okolje, knjižnice in sistemska orodja. Takšen standardiziran način pakiranja in distribucije olajša proces kreiranja, nameščanja in upravljanja z aplikacijami.
+
+Glavne prednosti orodja Docker so:
+\begin{itemize}
+    \item Prenosljivost: kontejnerji so neodvisni od operacijskega sistema, jih lahko zaženemo na kateremkoli sistemu, ki podpira Docker in zagotavlja konsistentno obnašanje v različnih okoljih.
+    \item Razširljivost: orodje Docker omogoča hitro razširljivost aplikacij z podvajanjem kontejnerjev, ki izvajajo isto aplikacijo in porazdelitvijo obremenitve med njimi. 
+    \item Izolacija: vsak kontejner deluje v svojem izoliranem okolju, kar zagotavlja izolacijo procesov in preprečuje konflikte med aplikacijami.
+    \item Učinkovita raba virov: kontejnerji si delijo računalniške vire sistema, na katerem delujejo.
+    \item Upravljanje različic: orodje Docker z označevanjem kontejnerskih slik omogoča enostavno verzioniranje in vračanje na starejše verzije.
+\end{itemize}
 
 \subsection{Kaniko}
 \label{subsec:kaniko}
+
 
 \section{Gitlab}
 \label{sec:gitlab}
@@ -327,13 +404,17 @@ Nexus ponuja tudi uporabniški vmesnik, s katerim je enostavno poiskati in prene
 \label{subsec:kubernetes-v-izoliranem-produkcijskem-okolju}
 
 \section{Pomožne tehnologije}
-\subsection{subsec:pomozne-tehnologije}
+\label{subsec:pomozne-tehnologije}
 
 \subsection{Jsonnet}
 \label{subsec:jsonnet}
 
 \subsection{Copier}
 \label{subsec:copier}
+
+\subsection{Urejevalnik kode IntelliJ}
+\label{subsec:intellij}
+
 
 %----------------------------------------------------------------
 % Poglavje 4 - Implementacija
