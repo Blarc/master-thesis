@@ -360,30 +360,50 @@ Glavne funkcionalnosti so:
 
 \subsection{Docker}
 \label{subsec:docker}
-% kontejner - vsebnik?
-Docker je odprtokodna platforma, ki omogoča razvoj, namestitev in zagon aplikacij z uporabo kontejnerizacije. Kontejnerizacija je način pakiranja aplikacij in njihovih odvisnosti v izolirane in preproste kontejnerje, ki jih lahko zanesljivo zaženemo v različnih programskih okoljih. Docker kontejnerji vsebujejo vse potrebno za zagon aplikacije: kodo, izvajalno okolje, knjižnice in sistemska orodja. Takšen standardiziran način pakiranja in distribucije olajša proces kreiranja, nameščanja in upravljanja z aplikacijami.
+Docker je odprtokodna platforma za razvoj, namestitev in zagon aplikacij z uporabo vsebnikov (angl. \textit{container}). Vsebniki so način pakiranja aplikacij in njihovih odvisnosti, ki zagotavljajo, da jih lahko zanesljivo zaženemo v različnih okoljih in vsebujejo vse potrebno za zagon aplikacije: kodo, izvajalno okolje, knjižnice in sistemska orodja. Takšen standardiziran način pakiranja in distribucije aplikacij znatno olajša proces razvoja, nameščanja in upravljanja z aplikacijami.
 
-Glavne prednosti orodja Docker so:
+Glavne prednosti tehnologije Docker so:
 \begin{itemize}
-    \item Prenosljivost: kontejnerji so neodvisni od operacijskega sistema, jih lahko zaženemo na kateremkoli sistemu, ki podpira Docker in zagotavlja konsistentno obnašanje v različnih okoljih.
-    \item Razširljivost: orodje Docker omogoča hitro razširljivost aplikacij z podvajanjem kontejnerjev, ki izvajajo isto aplikacijo in porazdelitvijo obremenitve med njimi. 
-    \item Izolacija: vsak kontejner deluje v svojem izoliranem okolju, kar zagotavlja izolacijo procesov in preprečuje konflikte med aplikacijami.
-    \item Učinkovita raba virov: kontejnerji si delijo računalniške vire sistema, na katerem delujejo.
-    \item Upravljanje različic: orodje Docker z označevanjem kontejnerskih slik omogoča enostavno verzioniranje in vračanje na starejše verzije.
+    \item Prenosljivost: vsebniki so neodvisni od operacijskega sistema, jih lahko zaženemo na kateremkoli sistemu, ki podpira Docker in zagotavljajo konsistentno obnašanje v različnih okoljih.
+    \item Razširljivost: orodje Docker omogoča hitro razširljivost aplikacij s podvajanjem vsebnikov, ki izvajajo enako aplikacijo in porazdelitvijo obremenitve med njimi. 
+    \item Izolacija: vsak vsebnik deluje v svojem izoliranem okolju, kar zagotavlja izolacijo procesov in preprečuje konflikte med aplikacijami.
+    \item Učinkovita raba virov: vsebniki si delijo računalniške vire sistema na katerem delujejo.
+    \item Upravljanje različic: orodje Docker z označevanjem vsebniških slik omogoča enostavno verzioniranje in vračanje na starejše verzije.
 \end{itemize}
 
 \subsection{Kaniko}
 \label{subsec:kaniko}
+% preveckrat beseda Docker
+Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtokodno orodje za gradnjo vsebniških slik Docker iz datotek Docker znotraj vsebnika ali na gruči Kubernetes. Za gradnjo vsebniških slik ne potrebuje privilegiranega dostopa do prikritega procesa Docker (angl. \textit{Docker daemon}), kar predstavlja glavno prednost pred načinom gradnje vsebniških slik, ki ga uporablja platforma Docker.
 
+Platforma Docker za gradnjo slik Docker uporablja prikriti proces Docker, ki potrebuje korenski dostop in visoke pravice na gostujočem sistemu. V nekaterih okoljih, kot je na primer Kubernetes ali sistem za neprekinjeno integracijo, zaradi varnostnih zahtev, uporabniki nimajo zahtevanih pravic za zagon prikritega procesa Docker.
+
+Kaniko to težavo reši z uporabo samostojnega orodja, ki se zažene znotraj vsebnika in zgradi sliko Docker brez priviligiranega dostopa. Vse potrebne operacije, kot so: prenos osnovnih slik Docker, izvajanje ukazov za gradnjo slike in kreiranje končne vsebniške slike, izvede s pravicami, ki jih ima vsak navaden uporabnik gostiteljskega sistema. To nam omogoča, da lahko slike Docker zgradimo na gruči Kubernetes ali drugih platformah za orkestracijo, brez privilegiranega dostopa.
 
 \section{Gitlab}
 \label{sec:gitlab}
 
-\subsection{Neprekinjena integracija in dostava v Gitlab-u}
-\label{subsec:gitlab-neprekinjena-integracija-in-dostava}
+Gitlab je spletna platforma za razvijalce in informacijske tehnologe (DevOps???), ki vsebuje velik nabor orodji za upravljanje in dostavo aplikacij. V osnovi se uporablja kot porazdeljen sistem za nadzor različic (angl. \textit{distributed version control system - DVCS}), v katerem lahko razvijalci gostijo svoje repozitorije izvorne kode, na podoben način kot v sistemu Git (\ref{subsec:git}). Glavne funkcionalnosti so:
+\begin{itemize}
+    \item Orodja za vodenje projekta: organiziranje projekta, sledenje nalogam, dodeljevanje nalog razvijalcem in določanje mejnikov.
+    \item Sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij.
+    \item Orodja za pregled kode in medsebojno sodelovanje, ki omogočajo: pregled kode, dodajanje komentarjev na posamezne vrstice v kodi, pregled zahtevkov za združitev in upravljanje vej.
+    \item Vgrajen register za shranjevanje in upravljanje z vsebniki Docker in njihovo uporabo v delovnih procesih.
+    \item Varnostna preverjanja in preverjanja skladnosti kode z industrijskimi standardi.
+    \item Možnost namestitve na lastni infrastrukturi ali v oblaku, kar omogoča skalabilnost in visoko razpoložljivost.
+\end{itemize}
 
-\subsection{Vzorci gitlab}
-\label{subsec:vzorci-gitlab}
+\subsection{Neprekinjena integracija in dostava z Gitlab CI/CD}
+\label{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd}
+
+Gitlab CI/CD je sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo Gitlab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme.
+
+Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsaka naloga ima določeno fazo v kateri se izvede in akcije, kot so na primer: gradnja, testiranje ali namestitev aplikacije. Vsak cevovod ima lahko več faz v kateri je lahko več nalog. S fazami tako zagotovimo pravilen vrstni red izvajanja nalog.
+
+Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo vse faze, naloge, akcije, ki jih naloge izvajajo, artefakte, ki jih naloge generirajo in potrebne odvisnosti ter okoljske spremenljivke.
+
+Za izvajanje nalog skrbijo izvajalci nalog Gitlab. To so agenti, ki skrbijo za izvajanje nalog, ki so definirane v konfiguracijski datoteki. Nameščeni so na lastni infrastrukturi ali v oblačnih virtualnih strojih, kar omogoča deljeno in paralelno izvajanje nalog. Slednje omogoča izvajanje več nalog hkrati, kar lahko znatno pohitri povprečen izvajalni čas cevovoda.
+
 
 \section{Kubernetes}
 \label{sec:kubernetes}
@@ -451,6 +471,9 @@ Glavne prednosti orodja Docker so:
 \subsection{JavaScript in NPM}
 \label{subsec:javascript-in-npm}
 
+\subsection{Vtičnik Gitlab Template Lint}
+\label{subsec:vtičnik-gitlab-template-lint}
+
 
 
 %----------------------------------------------------------------
@@ -487,7 +510,7 @@ Glavne prednosti orodja Docker so:
 
 \chapter{Zaključek}
 \label{ch:zaključek}
-
+Aleluja
 
 % ---------------------------------------------------------------
 % Appendix
