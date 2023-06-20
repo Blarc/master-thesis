@@ -115,7 +115,7 @@ programskih okolij in nimamo možnosti odriva programske kode v strankino omrež
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
-Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. Odpoved ali prekinitev delovanja takšni aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škodouje ugledu podjetja \cite{Shen2015}. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisno od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
+Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. Odpoved ali prekinitev delovanja takšni aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škoduje ugledu podjetja \cite{Shen2015}. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisno od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
 \begin{itemize}
     \item Aplikacije za elektronsko poslovanje: Spletne aplikacije, ki omogočajo podjetjem da tržijo svoje izdelke in storitve preko spleta.
     \item Aplikacije za upravljanje s strankami (CRM): Aplikacije, ki pomagajo podjetjem upravljati poslovanje s strankami in hranijo podatke o strankah.
@@ -378,7 +378,7 @@ Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtok
 
 Platforma Docker za gradnjo slik Docker uporablja prikriti proces Docker, ki potrebuje korenski dostop in visoke pravice na gostujočem sistemu. V nekaterih okoljih, kot je na primer Kubernetes ali sistem za neprekinjeno integracijo, zaradi varnostnih zahtev, uporabniki nimajo zahtevanih pravic za zagon prikritega procesa Docker.
 
-Kaniko to težavo reši z uporabo samostojnega orodja, ki se zažene znotraj vsebnika in zgradi sliko Docker brez priviligiranega dostopa. Vse potrebne operacije, kot so: prenos osnovnih slik Docker, izvajanje ukazov za gradnjo slike in kreiranje končne vsebniške slike, izvede s pravicami, ki jih ima vsak navaden uporabnik gostiteljskega sistema. To nam omogoča, da lahko slike Docker zgradimo na gruči Kubernetes ali drugih platformah za orkestracijo, brez privilegiranega dostopa.
+Kaniko to težavo reši z uporabo samostojnega orodja, ki se zažene znotraj vsebnika in zgradi sliko Docker brez priviligiranega dostopa. Vse potrebne operacije, kot so: prenos osnovnih slik Docker, izvajanje ukazov za gradnjo slike in kreiranje končne vsebniške slike, izvede s pravicami, ki jih ima vsak navaden uporabnik gostiteljskega sistema. To nam omogoča, da lahko slike Docker brez privilegiranega dostopa zgradimo na gruči Kubernetes ali drugih platformah za orkestracijo.
 
 \section{Gitlab}
 \label{sec:gitlab}
@@ -398,30 +398,53 @@ Gitlab je spletna platforma za razvijalce in informacijske tehnologe (DevOps???)
 
 Gitlab CI/CD je sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo Gitlab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme.
 
-Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsaka naloga ima določeno fazo v kateri se izvede in akcije, kot so na primer: gradnja, testiranje ali namestitev aplikacije. Vsak cevovod ima lahko več faz v kateri je lahko več nalog. S fazami tako zagotovimo pravilen vrstni red izvajanja nalog.
+Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsak cevovod ima lahko več faz v kateri je lahko več nalog. Z razporejanjem nalog po fazah, zagotovimo pravilen vrstni red izvajanja nalog. Vsaka naloga pa ima lahko več akcij.
 
 Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo vse faze, naloge, akcije, ki jih naloge izvajajo, artefakte, ki jih naloge generirajo in potrebne odvisnosti ter okoljske spremenljivke.
 
-Za izvajanje nalog skrbijo izvajalci nalog Gitlab. To so agenti, ki skrbijo za izvajanje nalog, ki so definirane v konfiguracijski datoteki. Nameščeni so na lastni infrastrukturi ali v oblačnih virtualnih strojih, kar omogoča deljeno in paralelno izvajanje nalog. Slednje omogoča izvajanje več nalog hkrati, kar lahko znatno pohitri povprečen izvajalni čas cevovoda.
+Za izvajanje nalog skrbijo izvajalci nalog Gitlab. Izvajajo se lahko na lastni infrastrukturi ali na oblačnih virtualnih strojih, kar omogoča deljeno in paralelno izvajanje nalog in lahko znatno pohitri povprečen izvajalni čas cevovoda. Izvajalci nalog so različnih tipov glede na to, katerim projektom so na voljo:
+\begin{itemize}
+    \item deljeni, ki so na voljo vsem projektom, ki obstajajo na instanci platforme Gitlab
+    \item skupinski, ki so na voljo samo projektom v specifični skupini
+    \item projektni, ki so na voljo samo specifičnemu projektu
+\end{itemize}
+Izvajalce nalog lahko prilagodimo svojim potrebam z omejitvijo števila vzporedni nalog, ki jih lahko izvajajo, omejitvami virov, ki so jim na voljo, in okoljskimi spremenljivkami. Lahko jim dodelimo tudi oznake, s katerimi lahko na nalogo natančno določimo njihovo izvajanje.
 
+Med posameznimi izvajalci nalog je zagotovljena izolacija, tako da se lahko naloge izvajajo neodvisno druga od druge. Hkrati je poskrbljeno za varnost z nadzorom dostopa in ustreznimi metodami verodostojnosti, ki zagotavljajo integriteto celotnega procesa.
 
 \section{Kubernetes}
 \label{sec:kubernetes}
+Kubernetes je odprtokodna rešitev za orkestracijo vsebnikov, ki avtomatizira namestitev, povečanje instanc (scaling??? mogoče skaliranje) in upravljanje aplikacij, nameščenih v vsebnikih. Glavni gradniki platforme Kubernetes so:
+\begin{itemize}
+    \item Vozlišča (angl. nodes) - stroji na katerih so nameščeni vsebniki. Izvajalno okolje vsakega vozlišča mora vsebovati orodja, ki so potrebna za upravljanje vsebnikov, kot je npr. platforma Docker
+    \item Stroki (angl. pods) - vozlišča gostijo stroke (angl. \textit{pods}), kjer tečejo vsebniki, ki so komponente vsebniške aplikacije. Vsebniki, ki tečejo na istem stroku si delijo omrežje, imenski prostor in prostor za hrambo podatkov.
+    \item Nabor podvajanj (angl. replica set) - njegovo naloga je ohraniti stabilen nabor kopiranih strokov, ki se lahko izvajajo kadarkoli. Uporablja se za zagotavljanje določenega števila enakih strokov.
+    \item Storitve (angl. services) - abstrakcija, ki predstavlja nabor strokov in definira način dostopa do njih. Omogočajo mehanizme za upravljanje z obremenitvijo in odkrivanje storitev.
+    \item Ingress - objekt API, ki upravlja zunanji dostop do storitev v gruči. Omogoča združevanje pravil usmerjanja v en sam vir in lahko izpostavi več storitev pod istim naslovom IP.
+    \item Volumni (angl. volumes) - shramba podatkov, ki je neodvisna od življenskega cikla vsebnika in na ta način omogoča dolgotrajno shrambo podatkov, tudi ob zaustavitvi ali ponovnem zagonu vsebnika.
+    \item Oznake in selektorji - oznake predstavljajo objekti v obliki ključ-vrednost, ki so dodani gradnikom platforme Kubernetes. Selektorji pa se uporabljajo za identifikacijo objektov na podlagi njihovih oznak.
+    \item Namestitive (angl. deployments) - omogočajo upravljanje namestitve in posodobitev vmesnikov. Definiramo jih z deklarativno konfiguracijsko datoteko in skrbijo za ustrezno skaliranje, posodobitve brez zaustavitve (angl. rolling updates) in vračanje na starejše verzije (angl. rollback).
+\end{itemize}
 
-\section{Konfiguracijski strežniki}
-\label{sec:konfiguracijski-strežniki}
+% \section{Konfiguracijski strežniki}
+% \label{sec:konfiguracijski-strežniki}
 
-\subsection{Consul}
-\label{subsec:consul}
+\section{Konfiguracijski strežnik Consul}
+\label{subsec:konfiguracijski-strežnik-consul}
 
-\subsection{Konfiguracijski strežnik Spring Boot}
-\label{subsec:spring-boot-configuration-server}
+Consul je porazdeljena omrežna platforma za upravljanje s storitvami, ki omogoča odkrivanje storitev, upravljanje konfiguracije in preverjanje zdravja storitev. Ena izmed glavnih komponent platforme Consul je konfiguracijski strežnik Consul, ki omogoča hranjenje in upravljanje aplikacijske konfiguracije na centralen način, ki je lahko dostopen.
 
-\section{Zagotavljanje varnosti}
-\label{sec:zagotavljanje-varnosti}
 
-\subsection{Kubernetes v izoliranem produkcijskem okolju}
-\label{subsec:kubernetes-v-izoliranem-produkcijskem-okolju}
+
+
+% \subsection{Konfiguracijski strežnik Spring Boot}
+% \label{subsec:spring-boot-configuration-server}
+
+% \section{Zagotavljanje varnosti}
+% \label{sec:zagotavljanje-varnosti}
+
+% \subsection{Kubernetes v izoliranem produkcijskem okolju}
+% \label{subsec:kubernetes-v-izoliranem-produkcijskem-okolju}
 
 \section{Pomožne tehnologije}
 \label{subsec:pomozne-tehnologije}
@@ -471,7 +494,7 @@ Za izvajanje nalog skrbijo izvajalci nalog Gitlab. To so agenti, ki skrbijo za i
 \subsection{JavaScript in NPM}
 \label{subsec:javascript-in-npm}
 
-\subsection{Vtičnik Gitlab Template Lint}
+\section{Vtičnik Gitlab Template Lint}
 \label{subsec:vtičnik-gitlab-template-lint}
 
 
