@@ -309,61 +309,45 @@ Hkrati, če uporabljamo privatni register Docker slik, lahko omejimo dostop do s
 \subsection{Maven}
 \label{subsec:maven}
 
-Maven\footnote{\url{https://maven.apache.org/}} je orodje za avtomatizacijo gradnje projektov spisanih v jeziku Java. Razvijalcem pomaga avtomatizirati proces gradnje, testiranja in namestitve aplikacije. Uporablja deklarativen pristop, s katerim razvijalci naštejejo vse odvisnosti, vtičnike in ostale informacije, potrebne za gradnjo projekta, v eno datoteko v formatu xml. Ta datoteka se imenuje \texttt{pom.xml} \cite{Varanasi2019}.
+Maven\footnote{\url{https://maven.apache.org/}} je orodje za avtomatizacijo gradnje projektov spisanih v jeziku Java, ki razvijalcem pomaga avtomatizirati proces gradnje, testiranja in namestitve aplikacije. Uporablja deklarativen pristop s katerim razvijalci naštejejo vse odvisnosti, vtičnike in ostale informacije potrebne za gradnjo projekta v datoteko \texttt{pom.xml} \cite{Varanasi2019}.
 
-Orodje Maven je pomemebno za neprekinjeno integracijo in dostavo aplikacij, ker omogoča konsistenten in ponovljiv način gradnje, testiranja in nameščanja aplikacije. Z orodjem Maven, lahko razvijalci opišejo vse potrebne korake za gradnjo projekta v eni konfiguracijski datoteki, ki jo v procesu CI/CD lahko nato uporabimo, za avtomatizacijo gradnje in namestitve projekta. Na ta način, je izdaja aplikacije bolj efektivna in zanesljiva. 
+Orodje je pomembno za neprekinjeno integracijo in dostavo aplikacij, ker omogoča konsistenten in ponovljiv način gradnje, testiranja in nameščanja aplikacije. Z orodjem lahko razvijalci opišejo vse potrebne korake za gradnjo projekta v eni konfiguracijski datoteki, ki jo v procesu CI/CD lahko nato uporabimo za avtomatizacijo gradnje in namestitve projekta.
 
 \subsection{Gradle}
 \label{subsec:gradle}
+Gradle\footnote{\url{https://gradle.org/}} je odprtokodno orodje za gradnjo projektov kot Maven, vendar je bolj fleksibilno. Tako kot Maven, se tudi Gradle primarno uporablja za projekte spisane v programskem jeziku Java, vendar se lahko uporablja tudi za gradnjo projektov v drugih programskih jezikih kot na primer C++ ali Python. Za definicijo skript za gradnjo projekta uporablja domensko-specifičen jezik, ki je osnovan na jeziku Groovy in omogoča bolj zgoščene in ekspresivno napisane skripte, v primerjavi s skripti v formatu XML, ki ga uporablja Maven \cite{Ikkink2015}.
 
-Gradle\footnote{\url{https://gradle.org/}} je odprtokodno orodje za gradnjo projektov kot Maven, vendar je bolj fleksibilno. Tako kot Maven, se tudi Gradle večinoma uporablja za projekte spisane v programskem jeziku Java, vendar se lahko uporablja tudi za gradnjo projektov v drugih programskih jezikih kot na primer C++ ali Python. Za definicijo skript za gradnjo projekta uporablja domensko-specifičen jezik, ki je osnovan na jeziku Groovy in omogoča bolj zgoščene in ekspresivno napisane skripte, v primerjavi s skripti v formatu XML, ki ga uporablja Maven \cite{Ikkink2015}.
-
-Podobno kot Maven je Gradle pomemben za neprekinjeno integracijo in dostavo aplikacijo, ker omogoča avtomatizacijo gradnje in namestitve projekta. Gradle podpira tudi gradnjo več projektov hkrati in inkrementalno gradnjo ter je zato primeren tudi za velike in kompleksne projekte. Znan je tudi po svojem sistemu predpomnenja, ki z beleženjem vhodov in izhodov gradnje, ter ponovno uporabo le teh, pohitri gradnjo projekta. To je še posebej uporabno za proces CI/CD, kjer želimo projekt zgraditi čim hitreje.
+Podobno kot Maven, je Gradle pomemben za neprekinjeno integracijo in dostavo aplikacijo, ker omogoča avtomatizacijo gradnje in namestitve projekta. Gradle podpira tudi gradnjo več projektov hkrati in inkrementalno gradnjo ter je zato primeren tudi za velike in kompleksne projekte. Znan je tudi po svojem sistemu predpomnenja, ki z beleženjem vhodov in izhodov gradnje, ter ponovno uporabo le teh, pohitri gradnjo projekta. To je še posebej uporabno za proces CI/CD, kjer želimo projekt zgraditi čim hitreje.
 
 \subsection{Node Package Manager ali NPM}
 \label{subsec:npm}
 
-Node Package manager\footnote{\url{https://www.npmjs.com/}} je orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. Orodje je vključeno v namestitveni paket izvajalnega okolja Node.js, je avtomatsko nameščeno ob namestitvi Node.js in zato služi kot privzeti upravitelj paketov za Node.js. Uporablja se v ukazni vrstici in razvijalcem omogoča enostavno namestitev, upravljanje in deljenje paketov ali modulov. V datoteki \texttt{package.json} lahko razvijalci določijo odvisnosti, ki jih projekt zahteva. Te odvisnosti lahko razvijalci nato enostavno namestijo z uporabo orodja NPM, ki avtomatsko poišče ustrezne pakete in jih prenese iz registra NPM ali iz drugih virov kot je npr. centralni repozitorij Nexus.
-
-Orodje NPM prav tako omogoča upravljanje različnih različič paketov, posodabljanje paketov, odstranjevanje paketov in objavljanje lastnih paketov v zasebne ali javne registre. Poskrbi tudi za razreševanje odvisnosti in zagotavlja, da so vsi zahtevani paketi in njihove odvisnosti pravilno nameščeni in združljivi med seboj.
+Node Package manager\footnote{\url{https://www.npmjs.com/}} je orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. Orodje je vključeno v namestitveni paket izvajalnega okolja Node.js in je avtomatsko nameščeno ob namestitvi Node.js, zato služi kot privzeti upravitelj paketov. Uporablja se v ukazni vrstici in razvijalcem omogoča enostavno namestitev, upravljanje in deljenje paketov. V datoteki \texttt{package.json} razvijalci določijo odvisnosti, ki jih projekt zahteva. Te odvisnosti nato enostavno namestijo z uporabo orodja NPM, ki avtomatsko poišče ustrezne pakete in jih prenese iz registra NPM ali iz drugih virov kot je npr. repozitorij Nexus. Prav tako omogoča upravljanje različnih različič paketov, posodabljanje paketov, odstranjevanje paketov in objavljanje lastnih paketov v zasebne ali javne repozitorije. Poskrbi tudi za razreševanje odvisnosti in zagotavlja, da so vsi zahtevani paketi in njihove odvisnosti pravilno nameščeni in združljivi med seboj \cite{Ali2013}.
 
 \subsection{Plug 'N' Play Package Manager ali PNPM}
 \label{subsec:pnpm}
-
-Plug 'N' Play Package Manager\footnote{\url{https://pnpm.io/}} je prav tako orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. PNPM je alternativa orodju NPM, ki si prizadeva izboljšati efektivnost in učinkovitost namestitve in upravljanja paketov.
-
-Za razliko od orodja NPM, ki uporablja centralizirani predpomnilnik paketov in namešča odvisnosti projekta v mapo poimenovano \texttt{node\_modules}, orodje PNPM uporablja virtualno shrambo. Namesto podvajanja odvisnosti za več projektov, jih orodje PNPM shrani na centralno mesto na datotečnem sistemu, kar omogoča, da si različni projekti odvisnosti delijo.
-
-Na ta način izboljšuje hitrost namestitve in zmanjšuje prostor, ki ga posamezni projekti zasedajo. Prav tako omogoča hitrejše in učinkovitejše posodobitve paketov, saj je ob posodobitvi potrebno posodobiti samo eno kopijo paketa v centralni virtualni shrambi.
-
-Orodje PNPM je združljivo z obstoječimi projekti Node.js in ga lahko uporabimo kot zamenjavo za orodje NPM. Ponuja podobne ukaze in je zato tudi enostavno za uporabo.
+Plug 'N' Play Package Manager\footnote{\url{https://pnpm.io/}} je alternativa orodju NPM, ki si prizadeva izboljšati efektivnost in učinkovitost namestitve in upravljanja paketov. Za razliko od orodja NPM, ki uporablja centralen predpomnilnik paketov in namešča odvisnosti projekta v mapo poimenovano \texttt{node\_modules}, uporablja virtualno shrambo. Namesto podvajanja odvisnosti za več projektov, jih shrani na centralno mesto na datotečnem sistemu, kar omogoča, da si različni projekti odvisnosti delijo. Na ta način izboljšuje hitrost namestitve in zmanjšuje prostor, ki ga posamezni projekti zasedajo. Prav tako omogoča hitrejše in učinkovitejše posodobitve paketov, saj je ob posodobitvi potrebno posodobiti samo eno kopijo paketa v centralni virtualni shrambi. Orodje je združljivo z obstoječimi projekti Node.js in ga lahko uporabimo kot zamenjavo za orodje NPM. Ponuja podobne ukaze in je zato tudi enostavno za uporabo \cite{Jacobs2019, PnpmBenchmarks2023}.
 
 \subsection{Pip Installs Packages ali PIP}
 \label{subsec:pip}
+Pip Installs Packages\footnote{\url{https://pypi.org/project/pip/}} je privzeto orodje za upravljanje paketov, ki so napisani v programskem jeziku Python. Omogoča enostavno namestitev, nadgradnjo in upravljanje s paketi, ki niso del osnovne knjižnice. Orodje omogoča razvijalcem enostaven dostop in namestitev paketov iz Python Package Index-a (PyPI), ki gostuje odprto-kodne pakete \cite{Pip2023}.
 
-Pip Installs Packages\footnote{\url{https://pypi.org/project/pip/}} je privzeto orodje za upravljanje paketov, ki so napisani v programskem jeziku Python. PIP omogoča enostavno namestitev, nadgradnjo in upravljanje s paketi, ki niso del osnovne knjižnice za programski jezik Python. Orodje omogoča razvijalcem enostaven dostop in namestitev paketov iz Python Package Index-a (PyPI), ki gostuje odprto-kodne pakete za programski jezik Python.
-
-Orodje PIP je enostavno za uporabo in s preprostimi ukazi omogoča uporabnikom namestitev in brisanje paketov ter kreiranje virutalnega okolja za izolacijo projektnih odvisnosti. Zaradi splošne razširjenosti uporabe orodja PIP, služi kot ključno orodje za deljenje kode in učinkovito upravljanje paketov v projektih, ki uporabljajo programski jezik Python.
+Orodje PIP je enostavno za uporabo in s preprostimi ukazi omogoča uporabnikom namestitev in brisanje paketov ter kreiranje virtualnega okolja za izolacijo projektnih odvisnosti. Zaradi splošne razširjenosti uporabe orodja PIP, služi kot ključno orodje za deljenje kode in učinkovito upravljanje paketov v projektih, ki uporabljajo programski jezik Python \cite{Pip2023}.
 
 \subsection{Setuptools}
 \label{subsec:setuptools}
-
-Setuptools\footnote{\url{https://pypi.org/project/setuptools/}} je knjižnica, ki poenostavi razvoj in distribucijo paketov v programskem jeziku Python. Vsebuje zbirko uporabnih funkcij in razširitev, ki nam pomagajo pri pakiranju, distribuciji in namestitvi paketov za programski jezik Python.
-
-Glavne funkcionalnosti so:
+Setuptools\footnote{\url{https://pypi.org/project/setuptools/}} je knjižnica, ki poenostavi razvoj in distribucijo paketov v programskem jeziku Python. Vsebuje zbirko uporabnih funkcij in razširitev, ki nam pomagajo pri pakiranju, distribuciji in namestitvi paketov. Glavne funkcionalnosti so \cite{Younker2008}:
 \begin{itemize}
-    \item Podpora za kreiranje paketov: knjižnica poenostavi proces kreiranje in gradnje paketov za programski jezik Python. Za definicijo meta podatkov o paketu, kot so ime, verzija, avtor, odvisnosti in vhodne točke uporablja datoteko \texttt{setup.py}. Na ta način razvijalcu omogoči, da definira strukturo projekta in določi vire in dodatne datoteke, ki so del projekta.
-    \item Upravljanje odvisnosti: knjižnica s ključno besedo \texttt{requires} v skripti \texttt{setup.py} omogoča avtorjem paketa nastavitev odvisnosti, ki jih paket potrebuje. Knjižnica prav tako omogoča avtomatsko razrešitev in namestitev teh odvisnosti, kar poenostavi namestitev in uporabo paketa.
-    \item Vstopne točke: knjižnica omogoča uporabo vhodnih točk, ki na standarden način definirajo kako lahko ostali paketi in aplikacije razširijo funkcionalnosti paketa. Hkrati omogoča dinamično odkrivanje in namestitev vtičnikov brez navajanja eksplicitnih uvozov (importov?).
-    \item Integracija s PyPI: knjižnica je dobro integrirana s PyPI in vsebuje ukaze za nalaganje paketov na PyPI.
-    \item Razširitev osnovnih ukazov: razširja osnovne ukaze z ukazi, ki pomagajo pri gradnji različnih distribucij, generiranju dokumentacije in zagonu testov.
+    \item Podpora za kreiranje paketov: knjižnica za konfiguracijo gradnje paketov in meta podatkov o paketu, kot so ime, verzija, avtor, odvisnosti in vhodne točke uporablja datoteko \texttt{setup.py}. Na ta način razvijalcu omogoči, da definira strukturo projekta in določi vire in dodatne datoteke, ki so del projekta.
+    \item Upravljanje odvisnosti: knjižnica s ključno besedo \texttt{requires} v konfiguracijski datoteki \texttt{setup.py} omogoča avtorjem paketa nastavitev odvisnosti, ki jih paket potrebuje. Knjižnica prav tako omogoča avtomatsko razrešitev in namestitev teh odvisnosti, kar poenostavi namestitev in uporabo paketa.
+    \item Vstopne točke: knjižnica omogoča uporabo vhodnih točk, ki na standarden način definirajo kako lahko ostali paketi in aplikacije razširijo funkcionalnosti paketa. Hkrati omogoča dinamično odkrivanje in namestitev vtičnikov brez navajanja eksplicitnih uvozov.
+    \item Integracija s PyPI: knjižnica je dobro integrirana s PyPI in vsebuje orodja za nalaganje paketov na PyPI.
+    \item Razširitev osnovnih ukazov: osnovne ukaze razširja z ukazi, ki pomagajo pri gradnji različnih distribucij, generiranju dokumentacije in zagonu testov.
 \end{itemize}
 
 \subsection{Docker}
 \label{subsec:docker}
-Docker je odprtokodna platforma za razvoj, namestitev in zagon aplikacij z uporabo vsebnikov (angl. \textit{container}). Vsebniki so način pakiranja aplikacij in njihovih odvisnosti, ki zagotavljajo, da jih lahko zanesljivo zaženemo v različnih okoljih in vsebujejo vse potrebno za zagon aplikacije: kodo, izvajalno okolje, knjižnice in sistemska orodja. Takšen standardiziran način pakiranja in distribucije aplikacij znatno olajša proces razvoja, nameščanja in upravljanja z aplikacijami.
-
-Glavne prednosti tehnologije Docker so:
+Docker\footnote{\url{https://www.docker.com/}} je odprtokodno orodje za razvoj, namestitev in zagon aplikacij z uporabo vsebnikov (angl. \textit{container}). Vsebniki so način pakiranja aplikacij in njihovih odvisnosti, ki zagotavljajo, da jih lahko zanesljivo zaženemo v različnih okoljih in vsebujejo vse potrebno za zagon aplikacije: kodo, izvajalno okolje, knjižnice in sistemska orodja. Takšen standardiziran način pakiranja in distribucije aplikacij znatno olajša proces razvoja, nameščanja in upravljanja z aplikacijami. Glavne prednosti orodja Docker so \cite{Rad2017}:
 \begin{itemize}
     \item Prenosljivost: vsebniki so neodvisni od operacijskega sistema, jih lahko zaženemo na kateremkoli sistemu, ki podpira Docker in zagotavljajo konsistentno obnašanje v različnih okoljih.
     \item Razširljivost: orodje Docker omogoča hitro razširljivost aplikacij s podvajanjem vsebnikov, ki izvajajo enako aplikacijo in porazdelitvijo obremenitve med njimi. 
@@ -374,19 +358,15 @@ Glavne prednosti tehnologije Docker so:
 
 \subsection{Kaniko}
 \label{subsec:kaniko}
-% preveckrat beseda Docker
-Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtokodno orodje za gradnjo vsebniških slik Docker iz datotek Docker znotraj vsebnika ali na gruči Kubernetes. Za gradnjo vsebniških slik ne potrebuje privilegiranega dostopa do prikritega procesa Docker (angl. \textit{Docker daemon}), kar predstavlja glavno prednost pred načinom gradnje vsebniških slik, ki ga uporablja platforma Docker.
+Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtokodno orodje za gradnjo vsebniških slik Docker iz datotek Docker (angl. \textit{Dockerfile}) znotraj vsebnika ali na gruči Kubernetes. Za gradnjo vsebniških slik ne potrebuje privilegiranega dostopa do prikritega procesa Docker (angl. \textit{Docker daemon}), kar predstavlja glavno prednost pred načinom gradnje vsebniških slik, ki ga uporablja platforma Docker \cite{Kaniko2023}.
 
-Platforma Docker za gradnjo slik Docker uporablja prikriti proces Docker, ki potrebuje korenski dostop in visoke pravice na gostujočem sistemu. V nekaterih okoljih, kot je na primer Kubernetes ali sistem za neprekinjeno integracijo, zaradi varnostnih zahtev, uporabniki nimajo zahtevanih pravic za zagon prikritega procesa Docker.
-
-Kaniko to težavo reši z uporabo samostojnega orodja, ki se zažene znotraj vsebnika in zgradi sliko Docker brez priviligiranega dostopa. Vse potrebne operacije, kot so: prenos osnovnih slik Docker, izvajanje ukazov za gradnjo slike in kreiranje končne vsebniške slike, izvede s pravicami, ki jih ima vsak navaden uporabnik gostiteljskega sistema. To nam omogoča, da lahko slike Docker brez privilegiranega dostopa zgradimo na gruči Kubernetes ali drugih platformah za orkestracijo.
+Platforma Docker za gradnjo slik uporablja prikriti proces, ki potrebuje korenski dostop in visoke pravice na gostujočem sistemu. Uporabniki v nekaterih okoljih, kot je na primer Kubernetes ali cevovod za neprekinjeno integracijo in dostavo, zaradi varnostnih zahtev nimajo zahtevanih pravic za zagon prikritega procesa. Kaniko to težavo reši z uporabo samostojnega orodja, ki se zažene znotraj vsebnika in zgradi sliko brez priviligiranega dostopa. Vse potrebne operacije, kot so: prenos osnovnih slik, izvajanje ukazov za gradnjo slike in kreiranje končne vsebniške slike, izvede s pravicami, ki jih ima navaden uporabnik gostiteljskega sistema. To nam omogoča, da lahko zgradimo slike na gruči Kubernetes ali drugih platformah za orkestracijo \cite{Kaniko2023}.
 
 \section{Gitlab}
 \label{sec:gitlab}
-
-Gitlab je spletna platforma za razvijalce in informacijske tehnologe (DevOps???), ki vsebuje velik nabor orodji za upravljanje in dostavo aplikacij. V osnovi se uporablja kot porazdeljen sistem za nadzor različic (angl. \textit{distributed version control system - DVCS}), v katerem lahko razvijalci gostijo svoje repozitorije izvorne kode, na podoben način kot v sistemu Git (\ref{subsec:git}). Glavne funkcionalnosti so:
+Gitlab\footnote{\url{https://about.gitlab.com/}} je spletna platforma za razvijalce in sistemske inženirje, ki vsebuje velik nabor orodji za upravljanje in dostavo aplikacij. Osnovni namen platforme je porazdeljen sistem za nadzor različic (angl. \textit{distributed version control system - DVCS}), v katerem lahko razvijalci gostijo svoje repozitorije izvorne kode, na podoben način kot v sistemu Git (\ref{subsec:git}), obenem pa vsebuje še veliko funkcionalnosti \cite{Gitlab2023}:
 \begin{itemize}
-    \item Orodja za vodenje projekta: organiziranje projekta, sledenje nalogam, dodeljevanje nalog razvijalcem in določanje mejnikov.
+    \item Orodja za vodenje projekta, ki olajšajo: organiziranje projekta, sledenje nalogam, dodeljevanje nalog razvijalcem in določanje mejnikov.
     \item Sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij.
     \item Orodja za pregled kode in medsebojno sodelovanje, ki omogočajo: pregled kode, dodajanje komentarjev na posamezne vrstice v kodi, pregled zahtevkov za združitev in upravljanje vej.
     \item Vgrajen register za shranjevanje in upravljanje z vsebniki Docker in njihovo uporabo v delovnih procesih.
@@ -397,32 +377,27 @@ Gitlab je spletna platforma za razvijalce in informacijske tehnologe (DevOps???)
 \subsection{Neprekinjena integracija in dostava z Gitlab CI/CD}
 \label{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd}
 
-Gitlab CI/CD je sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo Gitlab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme.
+Gitlab CI/CD je sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo Gitlab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme. Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsak cevovod ima lahko več faz v kateri je lahko več nalog, vsaka naloga pa ima lahko več akcij. Z razporejanjem nalog po fazah, zagotovimo pravilen vrstni red izvajanja nalog. Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo tudi vse artefakte, ki jih naloge generirajo, odvisnosti in okoljske spremenljivke \cite{Gitlab2023}.
 
-Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsak cevovod ima lahko več faz v kateri je lahko več nalog. Z razporejanjem nalog po fazah, zagotovimo pravilen vrstni red izvajanja nalog. Vsaka naloga pa ima lahko več akcij.
-
-Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo vse faze, naloge, akcije, ki jih naloge izvajajo, artefakte, ki jih naloge generirajo in potrebne odvisnosti ter okoljske spremenljivke.
-
-Za izvajanje nalog skrbijo izvajalci nalog Gitlab. Izvajajo se lahko na lastni infrastrukturi ali na oblačnih virtualnih strojih, kar omogoča deljeno in paralelno izvajanje nalog in lahko znatno pohitri povprečen izvajalni čas cevovoda. Izvajalci nalog so različnih tipov glede na to, katerim projektom so na voljo:
+Za izvajanje nalog skrbijo izvajalci nalog Gitlab. Izvajajo se lahko na lastni infrastrukturi ali na oblačnih virtualnih strojih in omogočajo paralelno izvajanje nalog, kar lahko znatno pohitri povprečen izvajalni čas cevovoda. Izvajalci nalog so različnih tipov glede na to katerim projektom so na voljo \cite{Gitlab2023}:
 \begin{itemize}
-    \item deljeni, ki so na voljo vsem projektom, ki obstajajo na instanci platforme Gitlab
-    \item skupinski, ki so na voljo samo projektom v specifični skupini
-    \item projektni, ki so na voljo samo specifičnemu projektu
+    \item deljeni: na voljo vsem projektom, ki obstajajo na instanci platforme Gitlab
+    \item skupinski: na voljo samo projektom v specifični skupini
+    \item projektni: na voljo samo specifičnemu projektu
 \end{itemize}
-Izvajalce nalog lahko prilagodimo svojim potrebam z omejitvijo števila vzporedni nalog, ki jih lahko izvajajo, omejitvami virov, ki so jim na voljo, in okoljskimi spremenljivkami. Lahko jim dodelimo tudi oznake, s katerimi lahko na nalogo natančno določimo njihovo izvajanje.
 
-Med posameznimi izvajalci nalog je zagotovljena izolacija, tako da se lahko naloge izvajajo neodvisno druga od druge. Hkrati je poskrbljeno za varnost z nadzorom dostopa in ustreznimi metodami verodostojnosti, ki zagotavljajo integriteto celotnega procesa.
+Izvajalce nalog lahko prilagodimo svojim potrebam z omejitvijo števila vzporednih nalog, ki jih lahko izvajajo, omejitvami virov, ki so jim na voljo, in okoljskimi spremenljivkami. Lahko jim dodelimo tudi oznake, s katerimi lahko na nalogo natančno določimo njihovo izvajanje. Med posameznimi izvajalci nalog je zagotovljena izolacija, tako da se lahko naloge izvajajo neodvisno druga od druge. Hkrati je z nadzorom dostopa in ustreznimi metodami verodostojnosti, ki zagotavljajo integriteto celotnega procesa, poskrbljeno za varnost \cite{Gitlab2023}.
 
 \section{Kubernetes}
 \label{sec:kubernetes}
-Kubernetes je odprtokodna rešitev za orkestracijo vsebnikov, ki avtomatizira namestitev, povečanje instanc (scaling??? mogoče skaliranje) in upravljanje aplikacij, nameščenih v vsebnikih. Glavni gradniki platforme Kubernetes so:
+Kubernetes\footnote{\url{https://kubernetes.io/}} je odprtokodna rešitev za orkestracijo vsebnikov, ki avtomatizira namestitev, povečevanje instanc in upravljanje aplikacij nameščenih v vsebnikih. Glavni gradniki platforme Kubernetes so \cite{Burns2022}:
 \begin{itemize}
-    \item Vozlišča (angl. nodes) - stroji na katerih so nameščeni vsebniki. Izvajalno okolje vsakega vozlišča mora vsebovati orodja, ki so potrebna za upravljanje vsebnikov, kot je npr. platforma Docker
-    \item Stroki (angl. pods) - vozlišča gostijo stroke (angl. \textit{pods}), kjer tečejo vsebniki, ki so komponente vsebniške aplikacije. Vsebniki, ki tečejo na istem stroku si delijo omrežje, imenski prostor in prostor za hrambo podatkov.
-    \item Nabor podvajanj (angl. replica set) - njegovo naloga je ohraniti stabilen nabor kopiranih strokov, ki se lahko izvajajo kadarkoli. Uporablja se za zagotavljanje določenega števila enakih strokov.
-    \item Storitve (angl. services) - abstrakcija, ki predstavlja nabor strokov in definira način dostopa do njih. Omogočajo mehanizme za upravljanje z obremenitvijo in odkrivanje storitev.
-    \item Ingress - objekt API, ki upravlja zunanji dostop do storitev v gruči. Omogoča združevanje pravil usmerjanja v en sam vir in lahko izpostavi več storitev pod istim naslovom IP.
-    \item Volumni (angl. volumes) - shramba podatkov, ki je neodvisna od življenjskega cikla vsebnika in na ta način omogoča dolgotrajno shrambo podatkov, tudi ob zaustavitvi ali ponovnem zagonu vsebnika.
+    \item Vozlišča (angl. nodes) - stroji na katerih so nameščeni vsebniki. Izvajalno okolje vsakega vozlišča mora vsebovati orodja, ki so potrebna za upravljanje vsebnikov, kot je npr. platforma Docker.
+    \item Stroki (angl. pods) - vozlišča gostijo stroke, kjer tečejo vsebniki, ki so komponente aplikacije. Vsebniki, ki tečejo na istem stroku si delijo omrežje, imenski prostor in prostor za hrambo podatkov.
+    \item Nabori podvajanj (angl. replica set) - njihova naloga je ohraniti stabilen nabor kopiranih strokov.
+    \item Storitve (angl. services) - abstrakcije, ki predstavljajo nabor strokov in definirajo način dostopa do njih. Omogočajo mehanizme za upravljanje z obremenitvijo in odkrivanje storitev.
+    \item Ingress - objekti API, ki upravljajo zunanji dostop do storitev v gruči. Omogočajo združevanje pravil usmerjanja v en sam vir in lahko izpostavijo več storitev pod istim naslovom IP.
+    \item Volumni (angl. volumes) - shrambe podatkov, ki so neodvisne od življenjskega cikla vsebnikov in na ta način omogočajo dolgotrajno shrambo podatkov, tudi ob zaustavitvi ali ponovnem zagonu vsebnikov.
     \item Oznake in selektorji - oznake predstavljajo objekti v obliki ključ-vrednost, ki so dodani gradnikom platforme Kubernetes. Selektorji pa se uporabljajo za identifikacijo objektov na podlagi njihovih oznak.
     \item Namestitive (angl. deployments) - omogočajo upravljanje namestitve in posodobitev vmesnikov. Definiramo jih z deklarativno konfiguracijsko datoteko in skrbijo za ustrezno skaliranje, posodobitve brez zaustavitve (angl. rolling updates) in vračanje na starejše verzije (angl. rollback).
 \end{itemize}
@@ -457,25 +432,27 @@ Kubernetes je odprtokodna rešitev za orkestracijo vsebnikov, ki avtomatizira na
 \subsection{Konfiguracijski strežnik Consul}
 \label{subsec:konfiguracijski-strežnik-consul}
 
-Consul je platforma za upravljanje s porazdeljenimi storitvami, ki omogoča odkrivanje storitev, upravljanje konfiguracije in preverjanje zdravja storitev. Ena izmed glavnih komponent platforme Consul je konfiguracijski strežnik Consul, ki omogoča hranjenje in upravljanje aplikacijske konfiguracije na centralen in lahko dostopen način.
+Consul\footnote{\url{https://www.consul.io/}} je platforma za upravljanje s porazdeljenimi storitvami, ki omogoča odkrivanje storitev, upravljanje konfiguracije in preverjanje zdravja storitev \cite{Sabharwal2021}.
 
-Konfiguracijski strežnik Consul uporablja hierarhično podatkovno shrambo, v kateri so podatki shranjeni v parih ključ-vrednost. To pomeni, da vsakemu ključu pripada vrednost, ki je lahko v poljubnem formatu. Dostop do teh vrednosti, pa je omogočen preko programskega vmesnika ali orodja za ukazno vrstico.
+Ena izmed glavnih komponent platforme Consul je konfiguracijski strežnik Consul, ki omogoča hranjenje in upravljanje aplikacijske konfiguracije na centralen in lahko dostopen način. Uporablja hierarhično podatkovno shrambo, v kateri so podatki shranjeni v parih ključ-vrednost. To pomeni, da vsakemu ključu pripada vrednost, ki je lahko v poljubnem formatu. Dostop do teh vrednosti, pa je omogočen preko programskega vmesnika ali orodja za ukazno vrstico \cite{Sabharwal2021}.
+
+Konfiguracijski strežnik Consul v procesu neprekinjene integracije in dostave uporabljamo kot centralno mesto konfiguracije cevovodov Gitlab kot tudi izvajalne konfiguracije aplikacij. Na ta način je konfiguracijo lažje najti in ob posodobitvi konfiguracije, aplikacije ni potrebno ponovno namestiti, saj jo lahko prenesemo preko programskega vmesnika.
 
 \subsection{Jsonnet}
 \label{subsec:jsonnet}
 
-Jsonnet\footnote{\url{https://jsonnet.org/}} je funkcijski jezik za kreiranje in upravljanje kompleksnih podatkovnih struktur v formatu JSON. Omogoča bolj natančen in fleksibilen način definicije in organizacije struktur JSON v primerjavi z navadni formatom JSON. Ponavadi se uporablja za definicijo dinamičnih ali parametriziranih struktur JSON, saj za kreiranje datotek v formatu JSON omogoča uporabo spremenljivk, funkcij, pogojnih stavkov, aritmetike in zank.
+Jsonnet\footnote{\url{https://jsonnet.org/}} je funkcijski jezik za kreiranje in upravljanje kompleksnih podatkovnih struktur v formatu JSON. Omogoča bolj natančen in fleksibilen način definicije in organizacije struktur, kot osnoven format JSON. Največkrat se uporablja za definicijo dinamičnih ali parametriziranih struktur, saj omogoča uporabo spremenljivk, funkcij, pogojnih stavkov, aritmetike in zank \cite{Jsonnet2023}.
 
-Ena glavnih prednosti uporabe jezika Jsonnet je tudi njegova modularnost in možnost ponovne uporabe z definicijo komponent, ki jih lahko večkrat uporabimo v različnih objektih JSON. Na ta način lahko znatno povečamo doslednost konfiguracije skozi projekt.
+Ena glavnih prednosti uporabe jezika Jsonnet je njegova modularnost in možnost ponovne uporabe z definicijo komponent, ki jih lahko večkrat uporabimo v različnih objektih. Na ta način lahko znatno povečamo doslednost konfiguracije skozi projekt. Prav tako nudi uvažanje definicij iz drugih datotek, kar omogoča sestavljanje kompleksnih objektov in komentarje, ki olajšajo dokumentiranje konfiguracije \cite{Jsonnet2023}.
 
-Prav tako omogoča tudi uvažanje definicij JSON iz drugih datotek, kar omogoča sestavljanje kompleksnih objektov JSON in komentarje, ki olajšajo dokumentiranje konfiguracije.
+Pri implementaciji cevovoda platforme Gitlab je Jsonnet ključnega pomena, saj nam omogoča dinamično kreiranje nalog in s tem znatno zmanjša količino vrstic v konfiguraciji cevovoda, kar poveča preglednost in razumljivost konfiguracije.
 
 % \subsection{Copier}
 % \label{subsec:copier}
 
 \subsection{Integrirano razvojno okolje IntelliJ IDEA}
 \label{subsec:integrirano-razvojno-okolje-intellij-idea}
-IntelliJ IDEA je integrirano razvojno okolje za razvoj programske opreme, ki vsebuje veliko dodatnih orodji in funkcionalnosti, ki povečajo produktivnost in poenostavijo proces razvoja programske opreme. Podpira veliko število različnih programskih jezikov in nudi napredno pomoč pri pisanju kode, analizo kode ter pomoč pri refaktoriranju kode, ki razvijalcem pomaga pri pisanju bolj berljive in učinkovite kode. Okolje vsebuje tudi vgrajeno podporo za sisteme za verzioniranje, upravljanje projekta in obsežno podporo za ogrodja za testiranje. Pomembna lastnost razvojnega okolja, ki je ključna za neprekinjeno integracijo, pa predstavlja tudi dobra integracija z orodji za gradnjo kot sta Maven in Gradle, ki olajša upravljanje z odvisnostmi in gradnjo projekta.
+IntelliJ IDEA\footnote{\url{https://www.jetbrains.com/idea/}} je integrirano razvojno okolje za razvoj programske opreme, ki vsebuje veliko dodatnih orodji in funkcionalnosti, ki povečajo produktivnost in poenostavijo proces razvoja programske opreme. Podpira veliko število različnih programskih jezikov in nudi napredno pomoč pri pisanju kode, analizo kode ter pomoč pri refaktoriranju kode, ki razvijalcem pomaga pri pisanju bolj berljive in učinkovite kode. Okolje vsebuje tudi vgrajeno podporo za sisteme za verzioniranje, upravljanje projekta in obsežno podporo za ogrodja za testiranje. Pomembna lastnost razvojnega okolja, ki je ključna za neprekinjeno integracijo in olajša upravljanje z odvisnostmi ter gradnjo projekta, pa predstavlja tudi dobra integracija z orodji za gradnjo kot sta Maven in Gradle \cite{Krochmalski2014}.
 
 
 %----------------------------------------------------------------
