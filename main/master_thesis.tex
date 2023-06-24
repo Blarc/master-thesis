@@ -248,7 +248,7 @@ Slabosti uporabe več repozitorijev:
     \item Oteženo spreminjanje odvisnih delov kode: Po spremembi nekega dela kode, se velikokrat zgodi, da je potrebno popraviti še kodo v odvisnih modulih ali paketih. To pomeni, da je treba v vsakem izmed odvisnih repozitorijev dodati spremembo in po možnosti popraviti verzijo.
 \end{itemize}
 
-Oba pristopa imata prednosti in slabosti in tisto, kar en razvijalec šteje za prednost, lahko drugemu predstavlja slabost. Na primer, nekatere osebe lahko vidijo enostavnost upravljanja enega samega repozitorija kot prednost uporabe monolitnega repozitorija, medtem ko druge lahko zaradi potencialne povečane zapletenosti vidijo to kot slabost. Podobno lahko nekatere osebe vidijo sposobnost enostavnega deljenja kode in virov med projekti kot prednost uporabe več repozitorijev, medtem ko druge lahko vidijo potrebo po upravljanju večih repozitorijev kot slabost. Zato je izbira med uporabo monolitnega repozitorija ali več repozitorijev največkrat stvar osebnega okusa in je odvisna od specifičnih potreb ter narave projekta kot tudi delovnih navad podjetja.
+Oba pristopa imata prednosti in slabosti in tisto, kar en razvijalec šteje za prednost, lahko drugemu predstavlja slabost. Na primer, nekatere osebe lahko vidijo enostavnost upravljanja enega samega repozitorija kot prednost uporabe monolitnega repozitorija, medtem ko druge lahko zaradi potencialne povečane zapletenosti vidijo to kot slabost. Podobno lahko nekatere osebe vidijo sposobnost enostavnega deljenja kode in virov med projekti kot prednost uporabe več repozitorijev, medtem ko druge lahko vidijo potrebo po upravljanju več repozitorijev kot slabost. Zato je izbira med uporabo monolitnega repozitorija ali več repozitorijev največkrat stvar osebnega okusa in je odvisna od specifičnih potreb ter narave projekta kot tudi delovnih navad podjetja.
 
 
 %----------------------------------------------------------------
@@ -266,35 +266,36 @@ Za razvoj aplikacij uporabljamo več različnih repozitorijev, ki služijo razli
 
 \subsection{Git}
 \label{subsec:git}
-Git je sistem za verzioniranje, ki se pogosto uporablja pri razvoju programske opreme. Omogoča, da več razvijalcev naenkrat dela na enaki izvorni kodi in razvijalcem pomaga slediti spremembam, ki so bile narejene.
+Git\footnote{\url{https://git-scm.com/}} je sistem za verzioniranje, ki se pogosto uporablja pri razvoju programske opreme. Omogoča, da več razvijalcev naenkrat dela na enaki izvorni kodi in razvijalcem pomaga slediti spremembam, ki so bile narejene \cite{loeliger2012version}.
 
-Uporaba sistema za verzioniranje Git deluje tako, da ima vsak razvijalec lokalno kopijo celotnega repozitorija vključno z vso zgodovino vseh sprememb, ki so bile narejene na izvorni kodi. Ko razvijalec razvija aplikacijo, spreminja zgolj lokalno kodo. Če želi spremembe oddati na oddaljen repozitorij, mora svoja spremembe s potrditivijo najprej dodati v lokalno verzionirano skladišče, nato pa jih lahko naloži še na oddaljen repozitorij.
+Uporaba sistema za verzioniranje Git deluje tako, da ima vsak razvijalec lokalno kopijo celotnega repozitorija vključno z vso zgodovino vseh sprememb, ki so bile narejene na izvorni kodi. Ko razvijalec razvija aplikacijo, spreminja zgolj lokalno kodo. Če želi spremembe oddati na oddaljen repozitorij, mora svoja spremembe s potrditivijo najprej dodati v lokalno verzionirano skladišče, nato pa jih lahko naloži še na oddaljen repozitorij \cite{loeliger2012version}.
 
-Drugi razvijalci lahko nato prenesejo spremembe iz oddaljenega repozitorija v svoje lastne lokalne kopije kode in združijo spremembe s svojo lastno kodo. Če so na oddaljenem repozitoriju nove spremembe kode na enakih delih kot spremembe v lokalnem okolju razvijalca, mora razvijalec, ki želi združiti kodo s svojo lastno lokalno kopijo, izbrati, katere spremembe bo obdržal. Git vsebuje orodja, ki ta postopek združevanja poenostavijo.
+Drugi razvijalci lahko nato prenesejo spremembe iz oddaljenega repozitorija v svoje lastne lokalne kopije kode in združijo spremembe s svojo lastno kodo. Če so na oddaljenem repozitoriju nove spremembe kode na enakih delih kot spremembe v lokalnem okolju razvijalca, mora razvijalec, ki želi združiti kodo s svojo lastno lokalno kopijo, izbrati, katere spremembe bo obdržal. Git vsebuje orodja, ki ta postopek združevanja poenostavijo \cite{loeliger2012version}.
 
-Za neprekinjeno integracijo in dostavo aplikacij je Git pomemben predvsem zaradi sistema za sledenje spremembam in omogočanja da ekipa razvijalcev skupaj sodeluje pri razvoju. Pri neprekinjeni integraciji je zelo pomembno da lahko hitro in enostavno zaznamo in testiramo spremembe, ki so bile narejene, kot tudi da lahko združimo spremembe. Hkrati omogoča, da v primeru padanja testov ali drugih težav enostavno in hitro vrnemo aplikacijo na zadnje delujoče stanje.
+Za neprekinjeno integracijo in dostavo aplikacij je Git pomemben predvsem zaradi sistema za sledenje spremembam in omogočanja da ekipa razvijalcev skupaj sodeluje pri razvoju. Pri neprekinjeni integraciji je zelo pomembno da lahko hitro in enostavno zaznamo in testiramo spremembe, ki so bile narejene, kot tudi da lahko združimo spremembe. Hkrati omogoča, da v primeru padanja testov ali drugih težav enostavno in hitro vrnemo aplikacijo na zadnje delujoče stanje \cite{Dingare2022}.
 
 \subsection{Nexus}
 \label{subsec:nexus}
-Apache Nexus\footnote{https://www.sonatype.com/products/nexus-repository} je eden od najbolj priljubljenih odprtokodnih upravljalcev repozitorijev, ki se uporablja za gostovanje in upravljanje artefaktov, kot so datoteke tipa JAR in ostale binarne komponente, ki jih potrebujejo projekti za svojo gradnjo in delovanje. Pogosto se uporablja kot namestniški strežnik za zunanje repozitorije, kot je na primer centralni repozitorij Maven, in za gostovanje interno razvitih artefaktov. To lahko pomaga izboljšati hitrost gradnje aplikacije, ker se zmanjša število zunanjih odvisnosti, ki jih je potrebno prenesti iz spleta, hkrati pa omogoča dodatno varnost, tako da omogoča nadzor nad tem, kateri artefakti so na voljo za gradnjo \cite{Varanasi2019}.
+Apache Nexus\footnote{\url{https://www.sonatype.com/products/nexus-repository}} je eden od najbolj priljubljenih odprtokodnih upravljalcev repozitorijev, ki se uporabljajo za gostovanje in upravljanje artefaktov, kot so datoteke tipa JAR in ostale binarne komponente, ki jih potrebujejo projekti za svojo gradnjo in delovanje. Poleg repozitorijev z interno razvitimi artefakti, se pogosto uporablja kot nadomestni strežnik za zunanje repozitorije, kot je na primer centralni repozitorij Maven\footnote{\url{https://mvnrepository.com/repos/central}}. Slednje zmanjša število zunanjih odvisnosti, ki jih je potrebno prenesti iz spleta, in izboljša hitrost gradnje aplikacije. Obenem pa z nadzorom artefaktov, ki so na voljo, izboljšuje varnost aplikacij \cite{Varanasi2019}.
 
-Poleg gostovanja artefaktov Nexus omogoča tudi upravljanje in omejevanje uporabe artefaktov z pravili, ki jih lahko nastavimo. Na primer, da morajo biti vsi artefakti digitalno podpisani ali pa da morajo biti odobreni s strani administratorja, preden jih lahko uporabimo ob gradnji aplikacije.
+Poleg upravljanja repozitorijev, Nexus omogoča tudi upravljanje in omejevanje uporabe artefaktov s pravili. Primer takšnega pravila je, da morajo biti vsi artefakti digitalno podpisani ali pa da morajo biti odobreni s strani administratorja, preden jih lahko uporabimo.
 
-Nexus ponuja tudi uporabniški vmesnik, s katerim je enostavno poiskati in prenesti artefakte kot tudi naložiti nove artefakte v repozitorij ročno. Prav tako izpostavlja aplikacijski programski vmesnik z arhitekturnim slogom REST, ki se lahko uporablja za avtomatizacijo opravil upravljanja repozitorijev.
+Nexus ponuja tudi uporabniški vmesnik, s katerim je enostavno poiskati in prenesti artefakte kot tudi ročno naložiti nove artefakte v repozitorij. Prav tako izpostavlja aplikacijski programski vmesnik z arhitekturnim slogom REST, ki se lahko uporablja za avtomatizacijo podobnih opravil.
 
 Za proces neprekinjene integracije in dostave aplikacij je Nexus pomemben zaradi več razlogov:
 \begin{itemize}
     \item Pomaga poenotiti proces razvijanja aplikacije tako, da nudi enotno in konsistentno mesto za shranjevanje zgrajenih artefaktov.
     \item Z nudenjem hitrega in zanesljivega načina za dostop do zgrajenih artefaktov, izboljša učinkovitost in hitrost procesa CI/CD.
-    \item Z nadzorom dostopa do artefaktov in dodatnimi pravili izboljša varnosti procesa CI/CD.
-    \item Z hranjenjem različnih verzij artefaktov, ki so bili zgrajeni iz nameščeni, izboljša sledljivost CI/CD procesa.
+    \item Z nadzorom dostopa do artefaktov in dodatnimi pravili izboljša varnost procesa CI/CD.
+    \item S hranjenjem različnih verzij artefaktov, ki so bili zgrajeni in nameščeni, izboljša sledljivost CI/CD procesa.
 \end{itemize}
 
 \subsection{Register slik Docker}
 \label{subsec:register-slik-docker}
-Register slik Docker je servis, ki omogoča hranjene in distribucijo slik Docker. V register lahko slike Docker naložimo ali pa jih iz registra prenesemo. Register je lahko javen ali privaten.
+% TODO: Tole ni v redu
+Register slik Docker je servis, ki omogoča hranjene in distribucijo slik Docker. V register lahko slike Docker naložimo ali pa jih iz registra prenesemo. Če je register javen, pomeni da dostop do njega ni omejen, če pa je privaten, pa je d.
 
-Obstaja veliko javnih registrov, kot na primer Docker Hub, ki je privzeti register in ga vzdržuje Docker, Quay.io, IBM Cloud container registry\footnote{\url{https://www.ibm.com/cloud/container-registry}} in drugi \cite{Anwar2018}.
+Obstaja veliko javnih registrov, kot je na primer Docker Hub, ki je privzeti register in ga vzdržuje Docker, Quay.io, IBM Cloud container registry\footnote{\url{https://www.ibm.com/cloud/container-registry}} in drugi \cite{Anwar2018}.
 
 Register slik Docker igra pomembno vlogo v procesu neprekinjene integracije in dostave, saj omogoča upravljanje slik Docker, ki jih uporabljamo za aplikacijo skozi celoten cevovod CI/CD. Slike docker, ki so shranjene v registru, lahko uporabimo za namestitev aplikacije na različna okolja.
 
@@ -308,30 +309,30 @@ Hkrati, če uporabljamo privatni register Docker slik, lahko omejimo dostop do s
 \subsection{Maven}
 \label{subsec:maven}
 
-Maven je orodje za avtomatizacijo gradnje projektov spisanih v jeziku Java. Razvijalcem pomaga avtomatizirati proces gradnje, testiranja in namestitve aplikacije. Uporablja deklarativen pristop, s katerim razvijalci naštejejo vse odvisnosti, vtičnike in ostale informacije, potrebne za gradnjo projekta, v eno datoteko v formatu xml. Ta datoteka se imenuje \textit{pom.xml} \cite{Varanasi2019}.
+Maven\footnote{\url{https://maven.apache.org/}} je orodje za avtomatizacijo gradnje projektov spisanih v jeziku Java. Razvijalcem pomaga avtomatizirati proces gradnje, testiranja in namestitve aplikacije. Uporablja deklarativen pristop, s katerim razvijalci naštejejo vse odvisnosti, vtičnike in ostale informacije, potrebne za gradnjo projekta, v eno datoteko v formatu xml. Ta datoteka se imenuje \texttt{pom.xml} \cite{Varanasi2019}.
 
 Orodje Maven je pomemebno za neprekinjeno integracijo in dostavo aplikacij, ker omogoča konsistenten in ponovljiv način gradnje, testiranja in nameščanja aplikacije. Z orodjem Maven, lahko razvijalci opišejo vse potrebne korake za gradnjo projekta v eni konfiguracijski datoteki, ki jo v procesu CI/CD lahko nato uporabimo, za avtomatizacijo gradnje in namestitve projekta. Na ta način, je izdaja aplikacije bolj efektivna in zanesljiva. 
 
 \subsection{Gradle}
 \label{subsec:gradle}
 
-Gradle je odprtokodno orodje za gradnjo projektov kot Maven, vendar je bolj fleksibilno. Tako kot Maven, se tudi Gradle večinoma uporablja za projekte spisane v programskem jeziku Java, vendar se lahko uporablja tudi za gradnjo projektov v drugih programskih jezikih kot na primer C++ ali Python. Za definicijo skript za gradnjo projekta uporablja domensko-specifičen jezik, ki je osnovan na jeziku Groovy in omogoča bolj zgoščene in ekspresivno napisane skripte, v primerjavi s skripti v formatu XML, ki ga uporablja Maven \cite{Ikkink2015}.
+Gradle\footnote{\url{https://gradle.org/}} je odprtokodno orodje za gradnjo projektov kot Maven, vendar je bolj fleksibilno. Tako kot Maven, se tudi Gradle večinoma uporablja za projekte spisane v programskem jeziku Java, vendar se lahko uporablja tudi za gradnjo projektov v drugih programskih jezikih kot na primer C++ ali Python. Za definicijo skript za gradnjo projekta uporablja domensko-specifičen jezik, ki je osnovan na jeziku Groovy in omogoča bolj zgoščene in ekspresivno napisane skripte, v primerjavi s skripti v formatu XML, ki ga uporablja Maven \cite{Ikkink2015}.
 
 Podobno kot Maven je Gradle pomemben za neprekinjeno integracijo in dostavo aplikacijo, ker omogoča avtomatizacijo gradnje in namestitve projekta. Gradle podpira tudi gradnjo več projektov hkrati in inkrementalno gradnjo ter je zato primeren tudi za velike in kompleksne projekte. Znan je tudi po svojem sistemu predpomnenja, ki z beleženjem vhodov in izhodov gradnje, ter ponovno uporabo le teh, pohitri gradnjo projekta. To je še posebej uporabno za proces CI/CD, kjer želimo projekt zgraditi čim hitreje.
 
 \subsection{Node Package Manager ali NPM}
 \label{subsec:npm}
 
-Node Package manager je orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. Orodje je vključeno v namestitveni paket izvajalnega okolja Node.js, je avtomatsko nameščeno ob namestitvi Node.js in zato služi kot privzeti upravitelj paketov za Node.js. Uporablja se v ukazni vrstici in razvijalcem omogoča enostavno namestitev, upravljanje in deljenje paketov ali modulov. V datoteki \textit{package.json} lahko razvijalci določijo odvisnosti, ki jih projekt zahteva. Te odvisnosti lahko razvijalci nato enostavno namestijo z uporabo orodja NPM, ki avtomatsko poišče ustrezne pakete in jih prenese iz registra NPM ali iz drugih virov kot je npr. centralni repozitorij Nexus.
+Node Package manager\footnote{\url{https://www.npmjs.com/}} je orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. Orodje je vključeno v namestitveni paket izvajalnega okolja Node.js, je avtomatsko nameščeno ob namestitvi Node.js in zato služi kot privzeti upravitelj paketov za Node.js. Uporablja se v ukazni vrstici in razvijalcem omogoča enostavno namestitev, upravljanje in deljenje paketov ali modulov. V datoteki \texttt{package.json} lahko razvijalci določijo odvisnosti, ki jih projekt zahteva. Te odvisnosti lahko razvijalci nato enostavno namestijo z uporabo orodja NPM, ki avtomatsko poišče ustrezne pakete in jih prenese iz registra NPM ali iz drugih virov kot je npr. centralni repozitorij Nexus.
 
 Orodje NPM prav tako omogoča upravljanje različnih različič paketov, posodabljanje paketov, odstranjevanje paketov in objavljanje lastnih paketov v zasebne ali javne registre. Poskrbi tudi za razreševanje odvisnosti in zagotavlja, da so vsi zahtevani paketi in njihove odvisnosti pravilno nameščeni in združljivi med seboj.
 
 \subsection{Plug 'N' Play Package Manager ali PNPM}
 \label{subsec:pnpm}
 
-Plug 'N' Play Package Manager je prav tako orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. PNPM je alternativa orodju NPM, ki si prizadeva izboljšati efektivnost in učinkovitost namestitve in upravljanja paketov.
+Plug 'N' Play Package Manager\footnote{\url{https://pnpm.io/}} je prav tako orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. PNPM je alternativa orodju NPM, ki si prizadeva izboljšati efektivnost in učinkovitost namestitve in upravljanja paketov.
 
-Za razliko od orodja NPM, ki uporablja centralizirani predpomnilnik paketov in namešča odvisnosti projekta v mapo poimenovano \textit{node\_modules}, orodje PNPM uporablja virtualno shrambo. Namesto podvajanja odvisnosti za več projektov, jih orodje PNPM shrani na centralno mesto na datotečnem sistemu, kar omogoča, da si različni projekti odvisnosti delijo.
+Za razliko od orodja NPM, ki uporablja centralizirani predpomnilnik paketov in namešča odvisnosti projekta v mapo poimenovano \texttt{node\_modules}, orodje PNPM uporablja virtualno shrambo. Namesto podvajanja odvisnosti za več projektov, jih orodje PNPM shrani na centralno mesto na datotečnem sistemu, kar omogoča, da si različni projekti odvisnosti delijo.
 
 Na ta način izboljšuje hitrost namestitve in zmanjšuje prostor, ki ga posamezni projekti zasedajo. Prav tako omogoča hitrejše in učinkovitejše posodobitve paketov, saj je ob posodobitvi potrebno posodobiti samo eno kopijo paketa v centralni virtualni shrambi.
 
@@ -340,19 +341,19 @@ Orodje PNPM je združljivo z obstoječimi projekti Node.js in ga lahko uporabimo
 \subsection{Pip Installs Packages ali PIP}
 \label{subsec:pip}
 
-Pip Installs Packages je privzeto orodje za upravljanje paketov, ki so napisani v programskem jeziku Python. PIP omogoča enostavno namestitev, nadgradnjo in upravljanje s paketi, ki niso del osnovne knjižnice za programski jezik Python. Orodje omogoča razvijalcem enostaven dostop in namestitev paketov iz Python Package Index-a (PyPI), ki gostuje odprto-kodne pakete za programski jezik Python.
+Pip Installs Packages\footnote{\url{https://pypi.org/project/pip/}} je privzeto orodje za upravljanje paketov, ki so napisani v programskem jeziku Python. PIP omogoča enostavno namestitev, nadgradnjo in upravljanje s paketi, ki niso del osnovne knjižnice za programski jezik Python. Orodje omogoča razvijalcem enostaven dostop in namestitev paketov iz Python Package Index-a (PyPI), ki gostuje odprto-kodne pakete za programski jezik Python.
 
 Orodje PIP je enostavno za uporabo in s preprostimi ukazi omogoča uporabnikom namestitev in brisanje paketov ter kreiranje virutalnega okolja za izolacijo projektnih odvisnosti. Zaradi splošne razširjenosti uporabe orodja PIP, služi kot ključno orodje za deljenje kode in učinkovito upravljanje paketov v projektih, ki uporabljajo programski jezik Python.
 
 \subsection{Setuptools}
 \label{subsec:setuptools}
 
-Setuptools je knjižnica, ki poenostavi razvoj in distribucijo paketov v programskem jeziku Python. Vsebuje zbirko uporabnih funkcij in razširitev, ki nam pomagajo pri pakiranju, distribuciji in namestitvi paketov za programski jezik Python.
+Setuptools\footnote{\url{https://pypi.org/project/setuptools/}} je knjižnica, ki poenostavi razvoj in distribucijo paketov v programskem jeziku Python. Vsebuje zbirko uporabnih funkcij in razširitev, ki nam pomagajo pri pakiranju, distribuciji in namestitvi paketov za programski jezik Python.
 
 Glavne funkcionalnosti so:
 \begin{itemize}
-    \item Podpora za kreiranje paketov: knjižnica poenostavi proces kreiranje in gradnje paketov za programski jezik Python. Za definicijo meta podatkov o paketu, kot so ime, verzija, avtor, odvisnosti in vhodne točke uporablja datoteko \textit{setup.py}. Na ta način razvijalcu omogoči, da definira strukturo projekta in določi vire in dodatne datoteke, ki so del projekta.
-    \item Upravljanje odvisnosti: knjižnica s ključno besedo \textit{requires} v skripti \textit{setup.py} omogoča avtorjem paketa nastavitev odvisnosti, ki jih paket potrebuje. Knjižnica prav tako omogoča avtomatsko razrešitev in namestitev teh odvisnosti, kar poenostavi namestitev in uporabo paketa.
+    \item Podpora za kreiranje paketov: knjižnica poenostavi proces kreiranje in gradnje paketov za programski jezik Python. Za definicijo meta podatkov o paketu, kot so ime, verzija, avtor, odvisnosti in vhodne točke uporablja datoteko \texttt{setup.py}. Na ta način razvijalcu omogoči, da definira strukturo projekta in določi vire in dodatne datoteke, ki so del projekta.
+    \item Upravljanje odvisnosti: knjižnica s ključno besedo \texttt{requires} v skripti \texttt{setup.py} omogoča avtorjem paketa nastavitev odvisnosti, ki jih paket potrebuje. Knjižnica prav tako omogoča avtomatsko razrešitev in namestitev teh odvisnosti, kar poenostavi namestitev in uporabo paketa.
     \item Vstopne točke: knjižnica omogoča uporabo vhodnih točk, ki na standarden način definirajo kako lahko ostali paketi in aplikacije razširijo funkcionalnosti paketa. Hkrati omogoča dinamično odkrivanje in namestitev vtičnikov brez navajanja eksplicitnih uvozov (importov?).
     \item Integracija s PyPI: knjižnica je dobro integrirana s PyPI in vsebuje ukaze za nalaganje paketov na PyPI.
     \item Razširitev osnovnih ukazov: razširja osnovne ukaze z ukazi, ki pomagajo pri gradnji različnih distribucij, generiranju dokumentacije in zagonu testov.
@@ -421,21 +422,13 @@ Kubernetes je odprtokodna rešitev za orkestracijo vsebnikov, ki avtomatizira na
     \item Nabor podvajanj (angl. replica set) - njegovo naloga je ohraniti stabilen nabor kopiranih strokov, ki se lahko izvajajo kadarkoli. Uporablja se za zagotavljanje določenega števila enakih strokov.
     \item Storitve (angl. services) - abstrakcija, ki predstavlja nabor strokov in definira način dostopa do njih. Omogočajo mehanizme za upravljanje z obremenitvijo in odkrivanje storitev.
     \item Ingress - objekt API, ki upravlja zunanji dostop do storitev v gruči. Omogoča združevanje pravil usmerjanja v en sam vir in lahko izpostavi več storitev pod istim naslovom IP.
-    \item Volumni (angl. volumes) - shramba podatkov, ki je neodvisna od življenskega cikla vsebnika in na ta način omogoča dolgotrajno shrambo podatkov, tudi ob zaustavitvi ali ponovnem zagonu vsebnika.
+    \item Volumni (angl. volumes) - shramba podatkov, ki je neodvisna od življenjskega cikla vsebnika in na ta način omogoča dolgotrajno shrambo podatkov, tudi ob zaustavitvi ali ponovnem zagonu vsebnika.
     \item Oznake in selektorji - oznake predstavljajo objekti v obliki ključ-vrednost, ki so dodani gradnikom platforme Kubernetes. Selektorji pa se uporabljajo za identifikacijo objektov na podlagi njihovih oznak.
     \item Namestitive (angl. deployments) - omogočajo upravljanje namestitve in posodobitev vmesnikov. Definiramo jih z deklarativno konfiguracijsko datoteko in skrbijo za ustrezno skaliranje, posodobitve brez zaustavitve (angl. rolling updates) in vračanje na starejše verzije (angl. rollback).
 \end{itemize}
 
 % \section{Konfiguracijski strežniki}
 % \label{sec:konfiguracijski-strežniki}
-
-\section{Konfiguracijski strežnik Consul}
-\label{subsec:konfiguracijski-strežnik-consul}
-
-Consul je porazdeljena omrežna platforma za upravljanje s storitvami, ki omogoča odkrivanje storitev, upravljanje konfiguracije in preverjanje zdravja storitev. Ena izmed glavnih komponent platforme Consul je konfiguracijski strežnik Consul, ki omogoča hranjenje in upravljanje aplikacijske konfiguracije na centralen način, ki je lahko dostopen.
-
-
-
 
 % \subsection{Konfiguracijski strežnik Spring Boot}
 % \label{subsec:spring-boot-configuration-server}
@@ -446,17 +439,43 @@ Consul je porazdeljena omrežna platforma za upravljanje s storitvami, ki omogo�
 % \subsection{Kubernetes v izoliranem produkcijskem okolju}
 % \label{subsec:kubernetes-v-izoliranem-produkcijskem-okolju}
 
+% \section{Beleženje dogodkov in zbiranje metrik}
+% \label{subsec:belezenje-dogodkov-in-zbiranje-metrik}
+
+% \subsection{Graylog}
+% \label{subsec:graylog}
+
+% \subsection{Elastic}
+% \label{subsec:elastic}
+
+% \subsection{Kibana}
+% \label{subsec:kibana}
+
 \section{Pomožne tehnologije}
 \label{subsec:pomozne-tehnologije}
+
+\subsection{Konfiguracijski strežnik Consul}
+\label{subsec:konfiguracijski-strežnik-consul}
+
+Consul je platforma za upravljanje s porazdeljenimi storitvami, ki omogoča odkrivanje storitev, upravljanje konfiguracije in preverjanje zdravja storitev. Ena izmed glavnih komponent platforme Consul je konfiguracijski strežnik Consul, ki omogoča hranjenje in upravljanje aplikacijske konfiguracije na centralen in lahko dostopen način.
+
+Konfiguracijski strežnik Consul uporablja hierarhično podatkovno shrambo, v kateri so podatki shranjeni v parih ključ-vrednost. To pomeni, da vsakemu ključu pripada vrednost, ki je lahko v poljubnem formatu. Dostop do teh vrednosti, pa je omogočen preko programskega vmesnika ali orodja za ukazno vrstico.
 
 \subsection{Jsonnet}
 \label{subsec:jsonnet}
 
-\subsection{Copier}
-\label{subsec:copier}
+Jsonnet\footnote{\url{https://jsonnet.org/}} je funkcijski jezik za kreiranje in upravljanje kompleksnih podatkovnih struktur v formatu JSON. Omogoča bolj natančen in fleksibilen način definicije in organizacije struktur JSON v primerjavi z navadni formatom JSON. Ponavadi se uporablja za definicijo dinamičnih ali parametriziranih struktur JSON, saj za kreiranje datotek v formatu JSON omogoča uporabo spremenljivk, funkcij, pogojnih stavkov, aritmetike in zank.
 
-\subsection{Urejevalnik kode IntelliJ}
-\label{subsec:intellij}
+Ena glavnih prednosti uporabe jezika Jsonnet je tudi njegova modularnost in možnost ponovne uporabe z definicijo komponent, ki jih lahko večkrat uporabimo v različnih objektih JSON. Na ta način lahko znatno povečamo doslednost konfiguracije skozi projekt.
+
+Prav tako omogoča tudi uvažanje definicij JSON iz drugih datotek, kar omogoča sestavljanje kompleksnih objektov JSON in komentarje, ki olajšajo dokumentiranje konfiguracije.
+
+% \subsection{Copier}
+% \label{subsec:copier}
+
+\subsection{Integrirano razvojno okolje IntelliJ IDEA}
+\label{subsec:integrirano-razvojno-okolje-intellij-idea}
+IntelliJ IDEA je integrirano razvojno okolje za razvoj programske opreme, ki vsebuje veliko dodatnih orodji in funkcionalnosti, ki povečajo produktivnost in poenostavijo proces razvoja programske opreme. Podpira veliko število različnih programskih jezikov in nudi napredno pomoč pri pisanju kode, analizo kode ter pomoč pri refaktoriranju kode, ki razvijalcem pomaga pri pisanju bolj berljive in učinkovite kode. Okolje vsebuje tudi vgrajeno podporo za sisteme za verzioniranje, upravljanje projekta in obsežno podporo za ogrodja za testiranje. Pomembna lastnost razvojnega okolja, ki je ključna za neprekinjeno integracijo, pa predstavlja tudi dobra integracija z orodji za gradnjo kot sta Maven in Gradle, ki olajša upravljanje z odvisnostmi in gradnjo projekta.
 
 
 %----------------------------------------------------------------
@@ -495,7 +514,7 @@ Consul je porazdeljena omrežna platforma za upravljanje s storitvami, ki omogo�
 \label{subsec:javascript-in-npm}
 
 \section{Vtičnik Gitlab Template Lint}
-\label{subsec:vtičnik-gitlab-template-lint}
+\label{sec:vtičnik-gitlab-template-lint}
 
 
 
