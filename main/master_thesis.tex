@@ -115,27 +115,27 @@ programskih okolij in nimamo možnosti odriva programske kode v strankino omrež
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
-Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. Odpoved ali prekinitev delovanja takšni aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škoduje ugledu podjetja \cite{Shen2015}. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisno od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
+Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. Odpoved ali prekinitev delovanja takšnih aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škoduje ugledu podjetja. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisna od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
 \begin{itemize}
-    \item Aplikacije za elektronsko poslovanje: Spletne aplikacije, ki omogočajo podjetjem da tržijo svoje izdelke in storitve preko spleta.
+    \item Aplikacije za elektronsko poslovanje: Spletne aplikacije, ki omogočajo podjetjem, da tržijo svoje izdelke in storitve preko spleta.
     \item Aplikacije za upravljanje s strankami (CRM): Aplikacije, ki pomagajo podjetjem upravljati poslovanje s strankami in hranijo podatke o strankah.
     \item Dobavni sistemi (SCM): Sistemi, ki pomagajo podjetju upravljati z dobavo in prodajo, kot tudi z beleženjem inventarja in logistiko.
-    \item Sistem za načrtovanje virov (ERP): Aplikacije, ki jih podjetja uporabljajo za upravljanje dnevnih poslovnih aktivnosti kot so: vodenje računov, dobavljanje, upravljanje projektov,  upravljanje s tveganji in nadzor dobavne verige.
-    \item Sistemi poslovne inteligence: To so aplikacije ki pomagajo podjetju zbirati, hraniti in analizirati podatke za sklepanje boljših poslovnih odločitev.
-    \item Orodja za komunikacijo: Aplikacije, ki zaposlenim omogočajo komunikacijo kot na primer: elektronska pošta, sporočilni sistemi in aplikacije za video konference.
+    \item Sistemi za načrtovanje virov (ERP): Aplikacije, ki jih podjetja uporabljajo za upravljanje dnevnih poslovnih aktivnosti kot so: vodenje računov, dobavljanje, upravljanje projektov,  upravljanje s tveganji in nadzor dobavne verige.
+    \item Sistemi poslovne inteligence: To so aplikacije, ki pomagajo podjetju zbirati, hraniti in analizirati podatke za sklepanje boljših poslovnih odločitev.
+    \item Orodja za komunikacijo: Aplikacije, ki zaposlenim omogočajo komunikacijo, kot so na primer: elektronska pošta, sporočilni sistemi in aplikacije za video konference.
 \end{itemize}
 
 
-Pri razvoju poslovno kritičnih aplikacij so pomembne naslednje lastnosti \cite{Sarkis2004}:
+Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti \cite{Sarkis2004}:
 \begin{itemize}
     \item Zanesljivost: Aplikacija mora biti vedno na voljo in delovati konsistentno brez napak in zaustavitev.
-    \item Skalabilnost (razširljivost?): Ob rasti podjetja se količina prometa, ki jih mora aplikacija obdelati lahko poveča. Aplikacija mora zato biti sposobna obvladovati velike količine prometa in podpreti rastoče zahteve podjetja.
-    \item Varnost: Poslovno kritične aplikacije pogosto hranijo občutljive podatke, na primer podatke o uporabnikih ali finančne podatke. Aplikacija mora zato biti varna in zaščitena pred kibernetskimi napadi, nepooblaščenim dostopom in drugim tveganji, da prepreči izlive takšnih podatkov.
-    \item Zmogljivost: Počasna ali neodzivna aplikacija negativno vpliva na produktivnosti. Aplikacija mora zato biti odzivna in delovati dobro tudi pod velikimi obremenitvami.
-    \item Vzdrževanje: Dobro vzdrževanje aplikacije je pomembno, da aplikacija ostane zanesljiva in zmogljiva. Aplikacija mora zato biti lahka za vzdrževanje in posodabljanje kot tudi jasno in dobro dokumentirana.
-    \item Uporabniška izkušnja: Dober uporabniški vmesnik in izkušnja lahko uporabnikom olajšata razumevanje in uporabo aplikacije, kar poveča produktivnost.
+    \item Skalabilnost (razširljivost?): Aplikacija mora biti sposobna obvladovati velike količine prometa in podpreti rastoče zahteve podjetja.
+    \item Varnost: Poslovno kritične aplikacije pogosto hranijo občutljive podatke, na primer podatke o uporabnikih ali finančne podatke. Aplikacija mora zato biti varna in zaščitena pred kibernetskimi napadi, nepooblaščenim dostopom ter drugim tveganji, da prepreči izlive občutljivih podatkov.
+    \item Zmogljivost: Aplikacija mora zato biti odzivna in delovati dobro tudi pod velikimi obremenitvami, saj počasna ali neodzivna aplikacija negativno vpliva na produktivnosti in odvrača uporabnike.
+    \item Lahko vzdrževanje: Aplikacija mora biti lahka za vzdrževanje in posodabljanje kot tudi jasno ter dobro dokumentirana, da ostane zanesljiva in zmogljiva.
+    \item Dobra uporabniška izkušnja: Dober uporabniški vmesnik in izkušnja lahko uporabnikom olajšata razumevanje in uporabo aplikacije, kar privablja nove uporabnike in poveča njihovo produktivnost.
     % \item Integracija: Aplikacija mora nuditi dober programski vmesnik, da se lahko druge aplikacije nanj integrirajo.
-    \item Prilagodljivost: Različna podjetja imajo različne potrebe, zato je pomembno, da je aplikacija prožna in prilagodljiva.
+    \item Prilagodljivost: Podjetja imajo različne potrebe, zato je pomembno, da je aplikacija prožna in prilagodljiva, da se lahko hitro prilagodi spremembam ali novim zahtevam.
 \end{itemize}
 
 % Podjetja pogosto razdelijo svoje aplikacije v skupine, glede na velikost posledic, ki bi jih njihova odpoved prinesla. V večini primerov se delijo na: aplikacije s kritično nalogo, poslovno kritične aplikacije in ne-kritične aplikacije. Ločimo jih po škodi, ki jih povzroči njihov izpad.
@@ -147,9 +147,12 @@ Pri razvoju poslovno kritičnih aplikacij so pomembne naslednje lastnosti \cite{
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
-Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi \cite{Travassos2016}. Cilj neprekinjene integracije je čim prej avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode kot iskanju napak. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v hitro spreminjajočih se okoljih razvoja \cite{Fowler2006}.
-
-Za sistem neprekinjene integracije in dostave so potrebni trije glavni elementi: centralni repozitorij, orodje za avtomatizacijo gradnje in orodje za preizkušanje \cite{Travassos2016}. Centralni repozitorij je mesto, kamor razvijalci oddajo spremembe svoje kode. Orodje za avtomatizacijo gradnje je odgovorno za avtomatsko gradnjo in objavljanje posodobljene kode. Orodje za preizkušanje pa izvaja avtomatsko testiranje na posodobljeni kodi, s čimer zagotovi, da posodobljena koda deluje pravilno in dosega zahtevane standarde kakovosti \cite{Fowler2006}.
+Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi. Cilj neprekinjene integracije je čim prej avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode kot iskanju napak. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v hitro spreminjajočih se okoljih razvoja. Za sistem neprekinjene integracije in dostave so potrebni trije glavni elementi \cite{Fowler2006}:
+\begin{itemize}
+    \item Centralni repozitorij, kamor razvijalci oddajo spremembe svoje kode.
+    \item Orodje za avtomatizacijo gradnje, ki je odgovorno za avtomatsko gradnjo in objavljanje posodobljene kode.
+    \item Orodje za preizkušanje, ki izvaja avtomatsko testiranje na posodobljeni kodi in s tem zagotavlja, da posodobljena koda deluje pravilno in dosega zahtevane standarde kakovosti.
+\end{itemize}
 
 % Travassos, G. H., Fernandes, E. B., de O. Costa, R. F., & Maldonado, J. C. (2016). Continuous integration: Best practices, patterns, and anti-patterns. Journal of Systems and Software, 120, 1-16.
 
@@ -157,44 +160,34 @@ Za sistem neprekinjene integracije in dostave so potrebni trije glavni elementi:
 % Fowler, Martin (1 May 2006). "Continuous Integration". Retrieved 9 January 2014.
 
 \subsection{Razlogi za neprekinjeno integracijo}
-Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spremenijo temeljno programsko kodo. Zato se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Še več, razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte.
+Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spremenijo temeljno programsko kodo. Zato se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Še več, razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte. Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode \cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe lahko doda v glavno vejo. Če razvijalec predolgo odlaša z oddajo kode v glavno vejo, se njegova kopija lahko začne zelo razlikovati od kode v glavni veji in za integracijo svoje kode v glavno vejo porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi integracijski pekel \cite{Cunningham2009}.
 
-Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode \cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe doda v glavno vejo.
-
-Če razvijalec predolgo odlaša z oddajo kode v glavno vejo, se njegova kopija lahko začne zelo razlikovati od kode v glavni veji in za integracijo svoje kode v glavno vejo porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi "integracijski pekel" \cite{Cunningham2009}.
-
-Implementacija neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi \cite{Travassos2016}. Vendar pa implementacija neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode \cite{Rios in da Costa, 2017}. 
+Implementacija neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi. Vendar pa implementacija neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode. 
 
 \section{Neprekinjena dostava}
 \label{sec:neprekinjena-dostava}
 
 Neprekinjena dostava je metoda razvoja in izdelave, ki temelji na stalnem izboljševanju procesov in izdelkov ter zagotavljanju neprekinjene dostave izdelkov ali storitev. To pomeni, da se procesi in izdelki izboljšujejo in nadgrajujejo neprekinjeno ter dostava izdelkov ali storitev ne povzroči prekinitev ali zastoja v procesu. 
 
-Cilj neprekinjene dostave je zmanjšanje časa med pisanjem kode in njene dostave končnim uporabnikom, obenem pa zagotavljanje visoke kakovosti in zanesljivosti \cite{Humble2010}.
-
-Neprekinjena dostava je zato širši pomen, ki vključuje neprekinjeno integracijo in avtomatično testiranje, obenem pa tudi izdajanje novih verzij in avtomatično objavo aplikacije v testno ali produkcijsko okolje. Pomemben del pa je tudi sistem za spremljanje napak in težav z zmogljivostjo, ki razvojni ekipi pošilja povratne informacije o delovanju aplikacije, ki jim pomaga identificirati in odpraviti napake \cite{Humble2010}.
+Cilj neprekinjene dostave je zmanjšanje časa med pisanjem kode in njene dostave končnim uporabnikom, obenem pa zagotavljanje visoke kakovosti in zanesljivosti. Neprekinjena dostava ima zato širši pomen, ki vključuje neprekinjeno integracijo in avtomatsko testiranje, obenem pa tudi izdajanje novih verzij in avtomatsko objavo aplikacije v testno ali produkcijsko okolje. Pomemben del pa je tudi sistem za spremljanje napak in težav z zmogljivostjo, ki razvojni ekipi pošilja povratne informacije o delovanju aplikacije in jim na ta način pomaga identificirati in odpraviti napake \cite{Humble2010}.
 
 \subsection{Dostava izvorne kode}
 \label{subsec:dostava-izvorne-kode}
-Pomemben del neprekinjene dostave je dostava izvorne kode stranki ali končnim uporabnikom. Proces prenosa kode mora biti dobro zasnovan, da zagotovimo, da se izvorna koda pravilno in učinkovito prenese.
-
-Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je naredilo izvorno kodo. Za stranko je koristno, ker ni več odvisno od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del sami prevzamejo. To je lahko zelo koristno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore zaradi kakšnega drugega razloga. 
+Ključen del neprekinjene dostave je tudi dostava izvorne kode stranki ali končnim uporabnikom. Proces prenosa kode mora biti dobro zasnovan, da zagotovimo, da se izvorna koda pravilno in učinkovito prenese.
 
 % Skupaj lahko dostava izvorne kode stranki zagotovi večjo neodvisnost in prilagodljivost pri uporabi programske opreme, pa tudi priložnost prilagoditve programske opreme lastnim specifičnim potrebam in zahtevam (Humble et al., 2010).
 
-Dostava izvorne kode pa je koristna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz vidika, da podjetje ni več odgovorno za izvorno kodo:
+Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je napisalo izvorno kodo. Za stranko je koristno, ker ni več odvisna od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del prevzame sama. To je lahko zelo koristno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore. Dostava izvorne kode pa je koristna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz dveh vidikov \cite{Humble2010}:
 \begin{itemize}
-    \item Prenos odgovornosti: z dostavo izvorne kode stranki lahko podjetje prenese del odgovornosti programske opreme na stranko. To je lahko še posebej koristno, če stranka načrtuje prilagoditve ali spremembe programske opreme, saj podjetje ne bi odgovorno za morebitne težave ali napake, ki bi lahko nastali zaradi teh sprememb \cite{Humble2010}.
-    \item Zmanjšanje bremena vzdrževanja in podpore: dostava izvorne kode lahko zmanjša breme vzdrževanja in podpore podjetja. Če ima stranka dostop do izvorne kode, lahko sama odpravi težave in jih popravi, namesto da bi se zanašala na podjetje za podporo \cite{Humble2010}.
+    \item Prenos odgovornosti: z dostavo izvorne kode stranki lahko podjetje prenese del odgovornosti vzdrževanja programske opreme na stranko. To je še posebej koristno, če stranka načrtuje prilagoditve ali spremembe programske opreme, saj podjetje ni odgovorno za morebitne težave ali napake, ki bi lahko nastale zaradi teh sprememb.
+    \item Zmanjšanje bremena vzdrževanja in podpore: dostava izvorne kode lahko zmanjša breme vzdrževanja in podpore podjetja. Če ima stranka dostop do izvorne kode, lahko sama odpravi težave in jih popravi, namesto, da bi se zanašala na podjetje za podporo.
 \end{itemize}
 
 \subsection{Neprekinjena namestitev}
 \label{subsec:neprekinjena-namestitev}
-Najširši obseg pa predstavlja neprekinjena namestitev, ki je praska razvoja programske opreme, pri kateri se spremembe kode avtomatsko zgradijo, preizkusijo, oddajo naročniku in tudi objavijo v produkcijsko okolje brez potrebe po človeškem posredovanju \cite{Travassos2016}. Predstavlja še en korak naprej od neprekinjene dostave, pri kateri se koda zgradi in preizkusi, vendar jih mora človek ročno objaviti v produkcijo \cite{Bass2015}.
+Najširši obseg pa predstavlja neprekinjena namestitev, ki je praksa razvoja programske opreme, pri kateri se spremembe kode avtomatsko zgradijo, preizkusijo, oddajo naročniku in tudi objavijo v produkcijsko okolje brez posredovanja človeka. Predstavlja še en korak naprej od neprekinjene dostave, pri kateri se koda zgradi in preizkusi, vendar jo mora človek ročno objaviti v produkcijo.
 
-Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom \cite{Bass2015}. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in specifične prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati \cite{Wittig2016} - infrastruktura kot koda\cite{Humble2014}.
-
-Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve \cite{Jiang2016} in izboljša učinkovitost in hitrost razvojnega procesa aplikacije \cite{Travassos2016}.
+Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati - infrastruktura kot koda. Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve in izboljša učinkovitost in hitrost razvojnega procesa aplikacije \cite{Wittig2016, Humble2014}.
 
 % Programerjem omogoča testiranje aplikacije v živo? Quality assurance?
 
@@ -203,37 +196,33 @@ Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcion
 Struktura projekta opisuje kako je projekt organiziran in razmerja med različnimi deli projekta. Dobro strukturiran projekt pripomore k boljšemu razumevanju, vzdrževanju in razvijanju programske kode projekta. Obstaja veliko načinov strukturiranja projektov, seveda pa je struktura projekta odvisna od specifičnih potreb in ciljev projekta. Pri strukturiranju projekta so ključni deli:
 \begin{itemize}
     \item Direktorijska struktura: Opisuje kako so datoteke in direktoriji razporejeni na datotečnem sistemu. Dobra direktorijska struktura združuje odvisne datoteke in vire ter olajša iskanje datotek.
-    \item Moduli in odvisnosti: V večini projektov, je programska koda logično razdeljena na več modulov ali komponent, kjer vsak izmed modulov zadolžen za en del projekta. Ti moduli so lahko tudi odvisni med sabo, zato jih je potrebno skrbno organizirati in poskrbeti da ne pride do cikličnih odvisnosti.
-    \item Skripti za gradnjo in namestitev projekta: Skripti opisujejo kako projekt zgraditi in namestiti na testna in produkcijsko okolje. Ti skripti so po navadi del neprekinjene namestitve in morajo zato biti dobro organizirani in enostavni za razumevanje.
-    \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (API), in druge dokumente, ki pomagajo razvijalcem pri razvoju in uporabnikom pri razumevanju delovanja projekta.
+    \item Moduli in odvisnosti: V večini projektov je programska koda logično razdeljena na več modulov ali komponent, kjer je vsak izmed modulov zadolžen za en del projekta. Ti moduli so lahko tudi odvisni med sabo, zato jih je potrebno skrbno organizirati in poskrbeti da ne pride do cikličnih odvisnosti.
+    \item Skripti za gradnjo in namestitev projekta: Skripti opisujejo kako projekt zgraditi in namestiti na testno in produkcijsko okolje. Ti skripti so po navadi del neprekinjene namestitve in morajo zato biti dobro organizirani in enostavni za razumevanje.
+    \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (API) in druge dokumente, ki pomagajo razvijalcem pri razvoju ter uporabnikom pri razumevanju delovanja projekta.
 \end{itemize}
 
-Na projektno strukturo močno vpliva tudi sistem za verzioniranje kode, ki ga uporabljamo \cite{Wiki_Architectural_pattern}, saj lahko kodo shranjujemo v enem skupnem repozitoriju ali pa jo razdelimo v več repozitorijev. Izbira repozitorijske strukture je ključna za strukturo projekta, saj ima vsaka repozitorijska struktura različne prednosti in slabosti \cite{Kokrehel2022}. Najbolj pogosti repozitorijski strukturi sta: monorepo in polyrepo.
+Na projektno strukturo močno vpliva tudi sistem za verzioniranje kode, ki ga uporabljamo, saj lahko kodo shranjujemo v enem skupnem repozitoriju ali pa jo razdelimo v več repozitorijev. Izbira repozitorijske strukture je ključna za strukturo projekta, saj ima vsaka repozitorijska struktura različne prednosti in slabosti. Najbolj pogosti repozitorijski strukturi sta: monorepo in polyrepo \cite{Wiki_Architectural_pattern, Kokrehel2022}.
 
 \subsection{Monorepo}
 \label{subsec:monorepo}
-Monorepo ali monolitni repozitorij je poimenovanje organizacije in verzioniranja izvorne kode z enim repozitorijem. Ta lahko vsebuje več projektov, paketov ali modulov in razvijalcem omogoča širok dostop do izvorne kode, skupnih orodji in skupni množici odvisnosti na enem mestu \cite{Jaspan2018}.
-
-Prednosti monolitnega repozitorija so:
+Monorepo ali monolitni repozitorij je poimenovanje organizacije in verzioniranja izvorne kode z enim repozitorijem. Ta lahko vsebuje več projektov, paketov ali modulov in razvijalcem omogoča širok dostop do izvorne kode, skupnih orodji in skupni množici odvisnosti na enem mestu. Prednosti monolitnega repozitorija so \cite{Jaspan2018, Shakikhanli2022}:
 \begin{itemize}
-    \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost in kvaliteto kode \cite{Jaspan2018, Shakikhanli2022}. 
+    \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost in kvaliteto kode. 
     \item Enostavne odvisnosti: Vsi paketi in moduli v repozitoriju imajo lahko enako verzijo in ni potrebno skrbeti katere verzije so med seboj kompatibilne.
-    \item Lažje spreminjanje odvisnih delov kode: Pri popravljanju in posodabljanju kode lahko popravimo tudi vse dele kode, ki so odvisni od spremenjene kode in vse skupaj oddamo v repozitorij kot eno spremembo.
-\end{itemize}
+    \item Lažje spreminjanje odvisnih delov kode: Pri popravljanju in posodabljanju kode lahko popravimo vse dele kode, ki so med seboj odvisni in vse skupaj oddamo v repozitorij kot eno spremembo.
+\end{itemize} 
 
-Slabosti monolitnega repozitorija so:
+Slabosti monolitnega repozitorija so \cite{Harry2017}:
 \begin{itemize}
-    \item Velikost repozitorija: Monolitni repozitorij lahko skozi razvoj zasede veliko prostora na podatkovnem sistemu. To lahko oteži prenos izvorne kode iz repozitorija in ostale operacije sistema za verzioniranje \cite{Harry2017}.
+    \item Velikost repozitorija: Monolitni repozitorij lahko skozi razvoj zasede veliko prostora na podatkovnem sistemu. To lahko oteži prenos izvorne kode iz repozitorija in ostale operacije sistema za verzioniranje.
     \item Kompleksen cevovod za neprekinjeno dostavo: Kompleksnost konfiguracije cevovoda za neprekinjeno dostavo se poveča, saj je potrebno vse korake izvesti na vseh modulih in projektih. Da ohranimo učinkovitost, pa nočemo vedno izvajati vseh korakov za vse module, saj to podaljša izvajanje cevovoda.
-    \item Veliki zahtevki za združitev vej: Ker repozitorij vsebuje vse odvisne dele kode, je ob posodobitvah lahko posodobljenih veliko vrstic izvorne kode. To lahko povzroči slabo preglednost sprememb v pregledu sprememb zahtevka za združitev \cite{Harry2017}.
+    \item Veliki zahtevki za združitev vej: Ker repozitorij vsebuje vse odvisne dele kode, je ob posodobitvah lahko posodobljenih veliko vrstic izvorne kode. To lahko povzroči slabo preglednost sprememb v pregledu sprememb zahtevka za združitev.
     \item Orodja za upravljanje: Za učinkovito upravljanje monolitnega repozitorija so velikokrat potrebna dodatna programska orodja kot so orodja za gradnjo aplikacije in upravljalci paketov. To lahko poveča kompleksnost razvijanja aplikacije.
 \end{itemize}
 
 \subsection{Polirepo}
 \label{subsec:polirepo}
-Polirepo je poimenovanje organizacije in verzioniranja izvorne kode z več repozitoriji. Ti vsebujejo vse pakete in komponente izvorne kode, ki skupaj tvorijo celotno aplikacijo \cite{Shakikhanli2022}.
-
-Prednosti uporabe več repozitorijev:
+Polirepo je poimenovanje organizacije in verzioniranja izvorne kode z več repozitoriji. Ti vsebujejo vse pakete in komponente izvorne kode, ki skupaj tvorijo celotno aplikacijo. Prednosti uporabe več repozitorijev so \cite{Shakikhanli2022}:
 \begin{itemize}
     \item Poenostavljeno upravljanje: S posameznimi moduli ali paketi v ločenih repozitorijih je lažje slediti spremembam in ugotoviti, katere spremembe spadajo k posameznim projektom.
     \item Ločitev odgovornosti: Shranjevanje posameznih projektov v ločenih repozitorijih lahko pomaga izolirati kodo in zmanjša tveganje za nastanek sporov med različnimi deli projekta.
@@ -242,13 +231,13 @@ Prednosti uporabe več repozitorijev:
     \item Potencialno hitrejše gradnje: S posameznimi moduli ali paketi v ločenih repozitorijih jih je morda mogoče graditi neodvisno, kar lahko skrajša skupni čas gradnje.
 \end{itemize}
 
-Slabosti uporabe več repozitorijev:
+Slabosti uporabe več repozitorijev so \cite{Shakikhanli2022}:
 \begin{itemize}
     \item Verzioniranje in določevanje odvisnosti: Potrebno je določiti kako se bodo moduli ali paketi v posameznih repozitorijih verzionirali in kako bodo določene odvisnosti med njimi.
-    \item Oteženo spreminjanje odvisnih delov kode: Po spremembi nekega dela kode, se velikokrat zgodi, da je potrebno popraviti še kodo v odvisnih modulih ali paketih. To pomeni, da je treba v vsakem izmed odvisnih repozitorijev dodati spremembo in po možnosti popraviti verzijo.
+    \item Oteženo spreminjanje odvisnih delov kode: Po spremembi enega dela kode, se velikokrat zgodi, da je potrebno popraviti še kodo v odvisnih modulih ali paketih. To pomeni, da je treba v vsakem izmed odvisnih repozitorijev dodati spremembo in mogoče popraviti tudi verzijo.
 \end{itemize}
 
-Oba pristopa imata prednosti in slabosti in tisto, kar en razvijalec šteje za prednost, lahko drugemu predstavlja slabost. Na primer, nekatere osebe lahko vidijo enostavnost upravljanja enega samega repozitorija kot prednost uporabe monolitnega repozitorija, medtem ko druge lahko zaradi potencialne povečane zapletenosti vidijo to kot slabost. Podobno lahko nekatere osebe vidijo sposobnost enostavnega deljenja kode in virov med projekti kot prednost uporabe več repozitorijev, medtem ko druge lahko vidijo potrebo po upravljanju več repozitorijev kot slabost. Zato je izbira med uporabo monolitnega repozitorija ali več repozitorijev največkrat stvar osebnega okusa in je odvisna od specifičnih potreb ter narave projekta kot tudi delovnih navad podjetja.
+Oba pristopa imata prednosti in slabosti in tisto, kar en razvijalec šteje za prednost, lahko drugemu predstavlja slabost. Na primer, nekateri razvijalci lahko vidijo enostavnost upravljanja enega samega repozitorija kot prednost uporabe monolitnega repozitorija, medtem ko drugi lahko zaradi potencialne povečane zapletenosti vidijo to kot slabost. Podobno lahko nekateri razvijalci vidijo sposobnost enostavnega deljenja kode in virov med projekti kot prednost uporabe več repozitorijev, medtem ko drugi lahko vidijo potrebo po upravljanju več repozitorijev kot slabost. Zato je izbira med uporabo monolitnega repozitorija ali več repozitorijev največkrat stvar osebnega okusa in je odvisna od specifičnih potreb ter narave projekta kot tudi delovnih navad podjetja.
 
 
 %----------------------------------------------------------------
@@ -262,46 +251,39 @@ V tem poglavju bomo predstavili uporabljene tehnologije in aplikacije, ki so bil
 % Mogoče repozitoriji tu ni najboljša beseda, mogoče skladišče?
 \section{Repozitoriji za nadzor različic}
 \label{sec:repozitoriji-za-nadzor-različic}
-Za razvoj aplikacij uporabljamo več različnih repozitorijev, ki služijo različnim namenom. Izvorna koda se nahaja v repozitoriju s sistemom za nadzor različici, ki razvijalcem omogoča preprost pregled sprememb kode in združevanje sprememb iz različnih vej. Interne knjižnice, od katerih so projekti odvisni, so kot artefakti naložene na centralni upravljalec repozitorijev. Aplikacije na koncu pogosto zapakiramo v sliko Docker, ki so shranjene v registru Docker slik. V nadaljevanju predstavimo, katere implementacije posameznih repozitorijev smo uporabili.
+Za razvoj aplikacij uporabljamo več različnih repozitorijev, ki služijo različnim namenom. Izvorna koda se nahaja v repozitoriju s sistemom za nadzor različici, ki razvijalcem omogoča preprost pregled sprememb kode in združevanje sprememb iz različnih vej. Interne knjižnice, od katerih so aplikacije odvisne, so v obliki artefaktov ali paketov naložene v repozitorij, katerega upravlja centralni upravljalec repozitorijev. Aplikacije po gradnji največkrat zapakiramo v sliko Docker, ki so shranjene v registru Docker slik. V nadaljevanju predstavimo, katere implementacije posameznih repozitorijev smo uporabili pri implementaciji cevovoda za neprekinjeno integracijo in dostavo.
 
 \subsection{Git}
 \label{subsec:git}
-Git\footnote{\url{https://git-scm.com/}} je sistem za verzioniranje, ki se pogosto uporablja pri razvoju programske opreme. Omogoča, da več razvijalcev naenkrat dela na enaki izvorni kodi in razvijalcem pomaga slediti spremembam, ki so bile narejene \cite{loeliger2012version}.
+Git\footnote{\url{https://git-scm.com/}} je sistem za verzioniranje, ki se pogosto uporablja pri razvoju programske opreme. Omogoča, da več razvijalcev naenkrat dela na enaki izvorni kodi in jim pomaga slediti spremembam, ki so bile narejene \cite{loeliger2012version}.
 
-Uporaba sistema za verzioniranje Git deluje tako, da ima vsak razvijalec lokalno kopijo celotnega repozitorija vključno z vso zgodovino vseh sprememb, ki so bile narejene na izvorni kodi. Ko razvijalec razvija aplikacijo, spreminja zgolj lokalno kodo. Če želi spremembe oddati na oddaljen repozitorij, mora svoja spremembe s potrditivijo najprej dodati v lokalno verzionirano skladišče, nato pa jih lahko naloži še na oddaljen repozitorij \cite{loeliger2012version}.
+Uporaba sistema za verzioniranje Git deluje tako, da ima vsak razvijalec kopijo celotnega repozitorija na svojemu računalniku vključno z vso zgodovino vseh sprememb, ki so bile narejene na izvorni kodi. Ko razvijalec razvija aplikacijo, spreminja zgolj kodo, ki jo ima shranjeno na svojem računalniku. Če želi spremembe oddati na oddaljen repozitorij, mora svoje spremembe s potrditvijo najprej dodati v svoje lokalno verzionirano skladišče, nato pa jih lahko naloži še na oddaljen repozitorij \cite{loeliger2012version}.
 
-Drugi razvijalci lahko nato prenesejo spremembe iz oddaljenega repozitorija v svoje lastne lokalne kopije kode in združijo spremembe s svojo lastno kodo. Če so na oddaljenem repozitoriju nove spremembe kode na enakih delih kot spremembe v lokalnem okolju razvijalca, mora razvijalec, ki želi združiti kodo s svojo lastno lokalno kopijo, izbrati, katere spremembe bo obdržal. Git vsebuje orodja, ki ta postopek združevanja poenostavijo \cite{loeliger2012version}.
+Drugi razvijalci lahko nato prenesejo spremembe iz oddaljenega repozitorija v svoje lokalno skladišče in združijo spremembe s svojo kopijo. Če so na oddaljenem repozitoriju nove spremembe kode na enakih delih kot spremembe v skladišču razvijalca, mora razvijalec, ki želi združiti kodo s svojo lokalno kopijo, izbrati katere spremembe bo obdržal. Git vsebuje orodja, ki ta postopek združevanja poenostavijo \cite{loeliger2012version}.
 
-Za neprekinjeno integracijo in dostavo aplikacij je Git pomemben predvsem zaradi sistema za sledenje spremembam in omogočanja da ekipa razvijalcev skupaj sodeluje pri razvoju. Pri neprekinjeni integraciji je zelo pomembno da lahko hitro in enostavno zaznamo in testiramo spremembe, ki so bile narejene, kot tudi da lahko združimo spremembe. Hkrati omogoča, da v primeru padanja testov ali drugih težav enostavno in hitro vrnemo aplikacijo na zadnje delujoče stanje \cite{Dingare2022}.
+Za neprekinjeno integracijo in dostavo aplikacij je Git pomemben predvsem zaradi sistema za sledenje spremembam in omogočanja da celotna ekipa razvijalcev naenkrat sodeluje pri razvoju. Pri neprekinjeni integraciji je zelo pomembno da lahko hitro in enostavno zaznamo in testiramo spremembe, ki so bile narejene, kot tudi da lahko združimo spremembe. Hkrati omogoča, da v primeru padanja testov ali drugih težav enostavno in hitro vrnemo aplikacijo na zadnje delujoče stanje \cite{Dingare2022}.
 
 \subsection{Nexus}
 \label{subsec:nexus}
-Apache Nexus\footnote{\url{https://www.sonatype.com/products/nexus-repository}} je eden od najbolj priljubljenih odprtokodnih upravljalcev repozitorijev, ki se uporabljajo za gostovanje in upravljanje artefaktov, kot so datoteke tipa JAR in ostale binarne komponente, ki jih potrebujejo projekti za svojo gradnjo in delovanje. Poleg repozitorijev z interno razvitimi artefakti, se pogosto uporablja kot nadomestni strežnik za zunanje repozitorije, kot je na primer centralni repozitorij Maven\footnote{\url{https://mvnrepository.com/repos/central}}. Slednje zmanjša število zunanjih odvisnosti, ki jih je potrebno prenesti iz spleta, in izboljša hitrost gradnje aplikacije. Obenem pa z nadzorom artefaktov, ki so na voljo, izboljšuje varnost aplikacij \cite{Varanasi2019}.
-
-Poleg upravljanja repozitorijev, Nexus omogoča tudi upravljanje in omejevanje uporabe artefaktov s pravili. Primer takšnega pravila je, da morajo biti vsi artefakti digitalno podpisani ali pa da morajo biti odobreni s strani administratorja, preden jih lahko uporabimo.
+Apache Nexus\footnote{\url{https://www.sonatype.com/products/nexus-repository}} je eden od najbolj priljubljenih odprtokodnih upravljalcev repozitorijev, ki se uporabljajo za gostovanje in upravljanje artefaktov, kot so datoteke tipa JAR in ostale binarne komponente, ki jih projekti potrebujejo za svojo gradnjo in delovanje. Poleg streženja repozitorijev z interno razvitimi artefakti, se pogosto uporablja kot nadomestni strežnik za zunanje repozitorije, kot je na primer centralni repozitorij Maven\footnote{\url{https://mvnrepository.com/repos/central}}. Takšen način uporabe zmanjša število zunanjih odvisnosti, ki jih je potrebno prenesti iz spleta, pohitri gradnjo aplikacij in izboljša njihovo varnost, z nadzorom artefaktov, ki so na voljo. Slednje omejuje s pravili, ki jih lahko nastavimo, kot npr. da morajo biti vsi artefakti digitalno podpisani ali pa da morajo biti odobreni s strani administratorja \cite{Varanasi2019}.
 
 Nexus ponuja tudi uporabniški vmesnik, s katerim je enostavno poiskati in prenesti artefakte kot tudi ročno naložiti nove artefakte v repozitorij. Prav tako izpostavlja aplikacijski programski vmesnik z arhitekturnim slogom REST, ki se lahko uporablja za avtomatizacijo podobnih opravil.
 
 Za proces neprekinjene integracije in dostave aplikacij je Nexus pomemben zaradi več razlogov:
 \begin{itemize}
     \item Pomaga poenotiti proces razvijanja aplikacije tako, da nudi enotno in konsistentno mesto za shranjevanje zgrajenih artefaktov.
-    \item Z nudenjem hitrega in zanesljivega načina za dostop do zgrajenih artefaktov, izboljša učinkovitost in hitrost procesa CI/CD.
-    \item Z nadzorom dostopa do artefaktov in dodatnimi pravili izboljša varnost procesa CI/CD.
-    \item S hranjenjem različnih verzij artefaktov, ki so bili zgrajeni in nameščeni, izboljša sledljivost CI/CD procesa.
+    \item Poveča učinkovitost in hitrost z zagotavljanjem hitrega in zanesljivega načina dostopa do zgrajenih artefaktov.
+    \item Izboljša varnost z nadzorom dostopa do artefaktov in dodatnimi pravili, ki omejujejo dostop.
+    \item Olajša sledljivost s hranjenjem različnih verzij artefaktov, ki so bili zgrajeni in nameščeni.
 \end{itemize}
 
 \subsection{Register slik Docker}
 \label{subsec:register-slik-docker}
-% TODO: Tole ni v redu
-Register slik Docker je servis, ki omogoča hranjene in distribucijo slik Docker. V register lahko slike Docker naložimo ali pa jih iz registra prenesemo. Če je register javen, pomeni da dostop do njega ni omejen, če pa je privaten, pa je d.
+Register slik Docker je sistem za centralizirano hranjene in distribucijo slik Docker. Služi kot sistem za verzioniranje slik, v katerega lahko slike shranjujemo, jih delimo z drugimi in jih prenašamo \cite{Anwar2018}.
 
-Obstaja veliko javnih registrov, kot je na primer Docker Hub, ki je privzeti register in ga vzdržuje Docker, Quay.io, IBM Cloud container registry\footnote{\url{https://www.ibm.com/cloud/container-registry}} in drugi \cite{Anwar2018}.
+Obstaja veliko javnih registrov, do katerih dostop ni omejen, kot so: Docker Hub, ki je privzeti register in ga vzdržuje Docker, Quay.io in IBM Cloud container registry\footnote{\url{https://www.ibm.com/cloud/container-registry}}. Na lastni infrastrukturi pa lahko postavimo tudi privatni register, do katerega omejimo dostop in s tem zagotovimo boljšo varnost \cite{Anwar2018}.
 
-Register slik Docker igra pomembno vlogo v procesu neprekinjene integracije in dostave, saj omogoča upravljanje slik Docker, ki jih uporabljamo za aplikacijo skozi celoten cevovod CI/CD. Slike docker, ki so shranjene v registru, lahko uporabimo za namestitev aplikacije na različna okolja.
-
-V kontekstu neprekinjene integracije nam register slik Docker omogoča hranjenje slik Docker, ki jih CI proces zgradi. Te slike lahko potem uporabimo za testiranje in validiranje pred oddajo v produkcijo. V kontekstu neprekinjene dostave, pa nam register omogoča upravljanje z različnimi verzijami aplikacijskih slik Docker in v primeru težav, hitro vračanje aplikacije na prejšno verzijo.
-
-Hkrati, če uporabljamo privatni register Docker slik, lahko omejimo dostop do slik Docker in s tem okrepimo varnost.
+V kontekstu neprekinjene integracije nam register slik Docker omogoča hranjenje slik Docker, ki jih proces CI zgradi. Te slike lahko potem uporabimo za postavitev testnega okolja pred oddajo v produkcijo. V kontekstu neprekinjene dostave pa nam register omogoča upravljanje z različnimi verzijami aplikacijskih slik Docker in v primeru težav hitro vračanje aplikacije na prejšnjo verzijo.
 
 \section{Orodja za gradnjo}
 \label{sec: orodja-za-gradnjo}
@@ -309,7 +291,7 @@ Hkrati, če uporabljamo privatni register Docker slik, lahko omejimo dostop do s
 \subsection{Maven}
 \label{subsec:maven}
 
-Maven\footnote{\url{https://maven.apache.org/}} je orodje za avtomatizacijo gradnje projektov spisanih v jeziku Java, ki razvijalcem pomaga avtomatizirati proces gradnje, testiranja in namestitve aplikacije. Uporablja deklarativen pristop s katerim razvijalci naštejejo vse odvisnosti, vtičnike in ostale informacije potrebne za gradnjo projekta v datoteko \texttt{pom.xml} \cite{Varanasi2019}.
+Maven\footnote{\url{https://maven.apache.org/}} je orodje za avtomatizacijo gradnje projektov napisanih v programskem jeziku Java, ki razvijalcem pomaga avtomatizirati proces gradnje, testiranja in namestitve aplikacije. Uporablja deklarativen pristop s katerim razvijalci naštejejo vse odvisnosti, vtičnike in ostale informacije potrebne za gradnjo projekta v datoteko \texttt{pom.xml} \cite{Varanasi2019}.
 
 Orodje je pomembno za neprekinjeno integracijo in dostavo aplikacij, ker omogoča konsistenten in ponovljiv način gradnje, testiranja in nameščanja aplikacije. Z orodjem lahko razvijalci opišejo vse potrebne korake za gradnjo projekta v eni konfiguracijski datoteki, ki jo v procesu CI/CD lahko nato uporabimo za avtomatizacijo gradnje in namestitve projekta.
 
