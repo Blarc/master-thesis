@@ -115,7 +115,7 @@ programskih okolij in nimamo možnosti odriva programske kode v strankino omrež
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
-Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. Odpoved ali prekinitev delovanja takšnih aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škoduje ugledu podjetja. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisna od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
+Poslovno kritične aplikacije so nujne za delovanje podjetja. Odpoved ali prekinitev delovanja takšnih aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škoduje ugledu podjetja. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisna od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so \cite{Shen2015}:
 \begin{itemize}
     \item Aplikacije za elektronsko poslovanje: Spletne aplikacije, ki omogočajo podjetjem, da tržijo svoje izdelke in storitve preko spleta.
     \item Aplikacije za upravljanje s strankami (CRM): Aplikacije, ki pomagajo podjetjem upravljati poslovanje s strankami in hranijo podatke o strankah.
@@ -129,8 +129,8 @@ Poslovno kritične aplikacije so aplikacije, ki so nujne za delovanje podjetja. 
 Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti \cite{Sarkis2004}:
 \begin{itemize}
     \item Zanesljivost: Aplikacija mora biti vedno na voljo in delovati konsistentno brez napak in zaustavitev.
-    \item Skalabilnost (razširljivost?): Aplikacija mora biti sposobna obvladovati velike količine prometa in podpreti rastoče zahteve podjetja.
-    \item Varnost: Poslovno kritične aplikacije pogosto hranijo občutljive podatke, na primer podatke o uporabnikih ali finančne podatke. Aplikacija mora zato biti varna in zaščitena pred kibernetskimi napadi, nepooblaščenim dostopom ter drugim tveganji, da prepreči izlive občutljivih podatkov.
+    \item Skalabilnost: Aplikacija mora biti sposobna obvladovati velike količine prometa in podpreti rastoče zahteve podjetja.
+    \item Varnost: Poslovno kritične aplikacije pogosto hranijo občutljive podatke, na primer podatke o uporabnikih ali finančne podatke. Aplikacija mora zato biti varna in zaščitena pred kibernetskimi napadi, nepooblaščenim dostopi ter drugim tveganji, da prepreči izlive občutljivih podatkov.
     \item Zmogljivost: Aplikacija mora zato biti odzivna in delovati dobro tudi pod velikimi obremenitvami, saj počasna ali neodzivna aplikacija negativno vpliva na produktivnosti in odvrača uporabnike.
     \item Lahko vzdrževanje: Aplikacija mora biti lahka za vzdrževanje in posodabljanje kot tudi jasno ter dobro dokumentirana, da ostane zanesljiva in zmogljiva.
     \item Dobra uporabniška izkušnja: Dober uporabniški vmesnik in izkušnja lahko uporabnikom olajšata razumevanje in uporabo aplikacije, kar privablja nove uporabnike in poveča njihovo produktivnost.
@@ -160,9 +160,9 @@ Neprekinjena integracija je praksa razvoja programske opreme, pri kateri program
 % Fowler, Martin (1 May 2006). "Continuous Integration". Retrieved 9 January 2014.
 
 \subsection{Razlogi za neprekinjeno integracijo}
-Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spremenijo temeljno programsko kodo. Zato se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Še več, razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte. Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode \cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe lahko doda v glavno vejo. Če razvijalec predolgo odlaša z oddajo kode v glavno vejo, se njegova kopija lahko začne zelo razlikovati od kode v glavni veji in za integracijo svoje kode v glavno vejo porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi integracijski pekel \cite{Cunningham2009}.
+Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem, ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spremenijo temeljno programsko kodo. Tako se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Ostali razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte. Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode \cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe lahko doda v glavno vejo. Če razvijalec predolgo odlaša z oddajo kode, se njegova kopija lahko zelo razlikuje od kode v glavni veji in za integracijo svoje kode porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi integracijski pekel \cite{Cunningham2009}.
 
-Implementacija neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi. Vendar pa implementacija neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode. 
+Vpeljava neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi. Vendar pa vpeljava neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode. 
 
 \section{Neprekinjena dostava}
 \label{sec:neprekinjena-dostava}
@@ -201,13 +201,13 @@ Struktura projekta opisuje kako je projekt organiziran in razmerja med različni
     \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (API) in druge dokumente, ki pomagajo razvijalcem pri razvoju ter uporabnikom pri razumevanju delovanja projekta.
 \end{itemize}
 
-Na projektno strukturo močno vpliva tudi sistem za verzioniranje kode, ki ga uporabljamo, saj lahko kodo shranjujemo v enem skupnem repozitoriju ali pa jo razdelimo v več repozitorijev. Izbira repozitorijske strukture je ključna za strukturo projekta, saj ima vsaka repozitorijska struktura različne prednosti in slabosti. Najbolj pogosti repozitorijski strukturi sta: monorepo in polyrepo \cite{Wiki_Architectural_pattern, Kokrehel2022}.
+Na projektno strukturo močno vpliva tudi sistem za verzioniranje kode, ki ga uporabljamo, saj lahko kodo shranjujemo v enem skupnem repozitoriju ali pa jo razdelimo v več repozitorijev. Izbira repozitorijske strukture je ključna za strukturo projekta, saj ima vsaka repozitorijska struktura različne prednosti in slabosti. Najbolj pogosti repozitorijski strukturi sta: monorepo in polirepo \cite{Wiki_Architectural_pattern, Kokrehel2022}.
 
 \subsection{Monorepo}
 \label{subsec:monorepo}
 Monorepo ali monolitni repozitorij je poimenovanje organizacije in verzioniranja izvorne kode z enim repozitorijem. Ta lahko vsebuje več projektov, paketov ali modulov in razvijalcem omogoča širok dostop do izvorne kode, skupnih orodji in skupni množici odvisnosti na enem mestu. Prednosti monolitnega repozitorija so \cite{Jaspan2018, Shakikhanli2022}:
 \begin{itemize}
-    \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost in kvaliteto kode. 
+    \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost razvijanja in kvaliteto kode. 
     \item Enostavne odvisnosti: Vsi paketi in moduli v repozitoriju imajo lahko enako verzijo in ni potrebno skrbeti katere verzije so med seboj kompatibilne.
     \item Lažje spreminjanje odvisnih delov kode: Pri popravljanju in posodabljanju kode lahko popravimo vse dele kode, ki so med seboj odvisni in vse skupaj oddamo v repozitorij kot eno spremembo.
 \end{itemize} 
