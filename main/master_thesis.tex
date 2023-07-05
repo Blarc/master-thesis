@@ -109,9 +109,23 @@ programskih okolij in nimamo možnosti odriva programske kode v strankino omrež
 % Poglavje 2 - Teorija
 %----------------------------------------------------------------
 
-
 \chapter{Teoretična osnova}
 \label{ch:teoretična-osnova}
+V tem poglavju bomo predstavili sorodna dela, ki so nam bila osnova in navdih za raziskovanje področja. Na kratko bomo opisali kaj posamezna dela obravnavajo in zakaj so za nas pomembna. Nato pojasnimo kaj so poslovno kritične aplikacije in navedemo nekaj primerov takšnih aplikacij. Sledi predstavitev neprekinjene integracije in neprekinjene dostave in razlaga zakaj predstavljata ključen del razvojnega procesa. Na koncu poglavja obravnavamo še pomembnost strukture projekta, njen vpliv na razvojni proces in dva načina upravljanja z različicami izvorne kode.
+
+\section{Pregled sorodnih del}
+\label{sec:pregled-sorodnih-del}
+
+Zanimanje in motivacijo za vpeljevanje strategij razvoja in operacij smo našli v~\cite{smith_2020}, kjer so predstavljene tehnike vpeljevanja strategij v realnih delovnih okoljih. Avtor daje velik poudarek motivaciji in razlogom zakaj je vpeljava takšnih strategij potrebna in kako ugotoviti, katera orodja zares potrebujemo. Predstavljen je tudi psihološki vidik uporabe takšnih orodji na zaposlene.
+
+V~\cite{Ebert2016} so opisani posamezni koraki neprekinjene integracije in dostave ter orodja, ki se v posameznih korakih uporabljajo. Opisan je namen posameznih orodji in kako pripomorejo k bolj učinkovitemu delovanju integracijskega procesa. 
+
+V~\cite{Chen2016} je podrobno opisana neprekinjena dostava po posameznih korakih v cevovodu na primeru velikega podjetja. V prispevku so opisane prednosti in izzivi vzpostavitve takšnega sistema.
+
+V~\cite{KOCEVAR_2019} so predstavljene raziskave na področju oblačnega računalništva in uporaba principov razvoja ter operacij na oblačni programski rešitvi. Na osnovi tega, so opisane dve arhitekturni zasnovi. V rezultatih se izkaže, da je proces namestitve nove programske opreme veliko lažji in hitrejši, če ga avtomatiziramo in upoštevamo principe razvoja in operacij. Opiše tudi slabosti in prednosti tehnologije Kubernetes, ki jo bomo pri implementaciji tudi sami uporabljali.
+
+Podobno je v~\cite{OKORN_2022} predstavljena neprekinjena integracija in dostava v okolju Kubernetes s poudarkom na različnih orodjih za vzpostavitev takšnega sistema. Opisana je implementacija z različnimi orodji, med katerimi je tudi Gitlab CI/CD, ki ga uporabimo tudi sami.
+
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
@@ -122,7 +136,7 @@ Poslovno kritične aplikacije so ključne za delovanje podjetja. Odpoved ali pre
     \item Upravljanje oskrbovalne verige (Supply Chain Management - SCM): sistemi, ki pomagajo podjetju upravljati z dobavo in prodajo, kot tudi z beleženjem inventarja in logistiko.
     \item Upravljanje podjetniških virov (Enterprise Resource Planning - ERP): aplikacije, ki jih podjetja uporabljajo za upravljanje dnevnih poslovnih aktivnosti kot so: vodenje računov, dobavljanje, upravljanje projektov,  upravljanje s tveganji in nadzor dobavne verige.
     \item Sistemi poslovne inteligence (Business Intelligence - BI): to so aplikacije, ki pomagajo podjetju zbirati, hraniti in analizirati podatke za sklepanje boljših poslovnih odločitev.
-    \item Orodja za komunikacijo: Aplikacije, ki zaposlenim omogočajo sporazumevanje po digitalnih kanalih, kot so na primer: elektronska pošta, sistemi za neposredno sporočanje in aplikacije za video konference.
+    \item Orodja za komunikacijo: aplikacije, ki zaposlenim omogočajo sporazumevanje po digitalnih kanalih, kot so na primer: elektronska pošta, sistemi za neposredno sporočanje in aplikacije za video konference.
 \end{itemize}
 
 
@@ -135,7 +149,7 @@ Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti~\
     \item Lahko vzdrževanje: aplikacija mora biti lahka za vzdrževanje in posodabljanje kot tudi jasno ter dobro dokumentirana, da ostane zanesljiva in zmogljiva.
     \item Dobra uporabniška izkušnja: dober uporabniški vmesnik in izkušnja lahko uporabnikom olajšata razumevanje in uporabo aplikacije, kar privablja nove uporabnike in poveča njihovo produktivnost.
     % \item Integracija: Aplikacija mora nuditi dober programski vmesnik, da se lahko druge aplikacije nanj integrirajo.
-    \item Prilagodljivost: Podjetja imajo različne potrebe, zato je pomembno, da je aplikacija prožna in prilagodljiva, da se lahko hitro prilagodi spremembam ali novim zahtevam.
+    \item Prilagodljivost: podjetja imajo različne potrebe, zato je pomembno, da je aplikacijska koda prožna in prilagodljiva, da se lahko hitro prilagodi spremembam ali novim zahtevam.
 \end{itemize}
 
 % Podjetja pogosto razdelijo svoje aplikacije v skupine, glede na velikost posledic, ki bi jih njihova odpoved prinesla. V večini primerov se delijo na: aplikacije s kritično nalogo, poslovno kritične aplikacije in ne-kritične aplikacije. Ločimo jih po škodi, ki jih povzroči njihov izpad.
@@ -147,7 +161,7 @@ Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti~\
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
-Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi. Cilj neprekinjene integracije je čim prej avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode kot iskanju napak. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v hitro spreminjajočih se okoljih razvoja. Za sistem neprekinjene integracije so potrebni trije glavni elementi~\cite{Fowler2006}:
+Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi. Cilj neprekinjene integracije je čim prej avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode kot iskanju napak. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v razvojnih okoljih, kjer se aplikacijska koda hitro spreminja. Za sistem neprekinjene integracije so potrebni trije glavni elementi~\cite{Fowler2006}:
 \begin{itemize}
     \item Centralni repozitorij, kamor razvijalci oddajo spremembe svoje kode.
     \item Orodje za avtomatizacijo gradnje, ki je odgovorno za avtomatsko gradnjo in objavljanje posodobljene kode.
@@ -173,11 +187,11 @@ Cilj neprekinjene dostave je zmanjšanje časa med pisanjem kode in njene dostav
 
 \subsection{Dostava izvorne kode}
 \label{subsec:dostava-izvorne-kode}
-Ključen del neprekinjene dostave je tudi dostava izvorne kode stranki ali končnim uporabnikom. Proces prenosa kode mora biti dobro zasnovan, da zagotovimo, da se izvorna koda pravilno in učinkovito prenese.
+Ključen del neprekinjene dostave je tudi dostava izvorne kode stranki ali končnim uporabnikom. Proces prenosa kode mora biti dobro zasnovan, da zagotovimo, da se izvorna koda pravilno in učinkovito prenese. Dostava izvorne kode sicer ni nujna za vsak projekt in je odvisna od pogodbe med podjetjem in naročnikom ter poslovnega modela podjetja, ki je kodo napisalo. Vseeno pa se večkrat izkaže kot pomembna zahteva pri poslovno kritičnih aplikacijah, ker so bistvene za poslovanje podjetja in si zato podjetje želi ostati neodvisno od podjetja, ki je kodo napisalo.
 
 % Skupaj lahko dostava izvorne kode stranki zagotovi večjo neodvisnost in prilagodljivost pri uporabi programske opreme, pa tudi priložnost prilagoditve programske opreme lastnim specifičnim potrebam in zahtevam (Humble et al., 2010).
 
-Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je napisalo izvorno kodo. Za stranko je koristno, ker ni več odvisna od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del prevzame sama. To je lahko zelo koristno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore. Dostava izvorne kode pa je koristna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz dveh vidikov~\cite{Humble2010}:
+Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je napisalo izvorno kodo. Za stranko je koristna, ker ni več odvisna od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del prevzame sama. To je lahko zelo koristno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore. Dostava izvorne kode pa je koristna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz dveh vidikov~\cite{Humble2010}:
 \begin{itemize}
     \item Prenos odgovornosti: z dostavo izvorne kode stranki lahko podjetje prenese del odgovornosti vzdrževanja programske opreme na stranko. To je še posebej koristno, če stranka načrtuje prilagoditve ali spremembe programske opreme, saj podjetje ni odgovorno za morebitne težave ali napake, ki bi lahko nastale zaradi teh sprememb.
     \item Zmanjšanje bremena vzdrževanja in podpore: če ima stranka dostop do izvorne kode, lahko sama odpravi težave in jih popravi, namesto, da bi se zanašala na podjetje za podporo.
@@ -187,7 +201,7 @@ Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podje
 \label{subsec:neprekinjena-namestitev}
 Najširši obseg pa predstavlja neprekinjena namestitev, ki je praksa razvoja programske opreme, pri kateri se spremembe kode avtomatsko zgradijo, preizkusijo, oddajo naročniku in tudi objavijo v produkcijsko okolje brez posredovanja človeka. Predstavlja še en korak naprej od neprekinjene dostave, pri kateri se koda zgradi in preizkusi, vendar jo mora človek ročno objaviti v produkcijo.
 
-Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati - infrastruktura kot koda. Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve in izboljša učinkovitost in hitrost razvojnega procesa aplikacije~\cite{Wittig2016, Humble2014}.
+Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati - infrastruktura kot koda (Infrastructure as Code - IaC). Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve in izboljša učinkovitost in hitrost razvojnega procesa aplikacije~\cite{Wittig2016, Humble2014}.
 
 % Programerjem omogoča testiranje aplikacije v živo? Quality assurance?
 
@@ -198,7 +212,7 @@ Struktura projekta opisuje kako je projekt organiziran in razmerja med različni
     \item Struktura imenika: Opisuje kako so datoteke in imeniki razporejeni na datotečnem sistemu. Dobra struktura imenika združuje odvisne datoteke in vire ter olajša iskanje datotek.
     \item Moduli in odvisnosti: V večini projektov je programska koda logično razdeljena na več modulov ali komponent, kjer je vsak izmed modulov zadolžen za le en del projekta. Ti moduli so lahko tudi odvisni med sabo, zato jih je potrebno skrbno organizirati in poskrbeti, da ne pride do krožnih odvisnosti.
     \item Skripti za gradnjo in namestitev projekta: Skripti opisujejo, kako projekt zgraditi in namestiti na testno in produkcijsko okolje. Ti skripti so po navadi del neprekinjene namestitve in morajo zato biti dobro organizirani in enostavni za razumevanje.
-    \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (API) in druge dokumente, ki pomagajo razvijalcem pri razvoju ter uporabnikom pri razumevanju delovanja projekta.
+    \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (Application programming interface - API) in druge dokumente, ki pomagajo razvijalcem pri razvoju ter uporabnikom pri razumevanju delovanja projekta.
 \end{itemize}
 
 Na projektno strukturo močno vpliva tudi sistem za spremljanje različic kode, ki ga uporabljamo, saj lahko kodo shranjujemo v enem skupnem ali pa jo razdelimo v več ločenih repozitorijev. Izbira repozitorijske strukture je ključna za strukturo projekta, saj ima vsaka repozitorijska struktura svoje prednosti in slabosti. Najbolj pogosti repozitorijski strukturi sta: \textit{monorepo} in \textit{polirepo}~\cite{Wiki_Architectural_pattern, Kokrehel2022}.
