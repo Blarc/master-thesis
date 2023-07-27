@@ -7,7 +7,7 @@
 
 %======================================================================================================================
 % SLO: Odkomentiraj "\SLOtrue " za izbiro slovenskega jezika
-% ENG: Uncomment "\SLOfalse" to chose English languagge
+% ENG: Uncomment "\SLOfalse" to chose English language
 %======================================================================================================================
 \newif\ifSLO
 \newif\ifTRACKEXIST
@@ -111,7 +111,7 @@ programskih okolij in nimamo možnosti odriva programske kode v strankino omrež
 
 \chapter{Teoretična osnova}
 \label{ch:teoretična-osnova}
-V tem poglavju bomo predstavili sorodna dela, ki so nam bila osnova in navdih za raziskovanje področja. Na kratko bomo opisali kaj posamezna dela obravnavajo in zakaj so za nas pomembna. Nato pojasnimo kaj so poslovno kritične aplikacije in navedemo nekaj primerov takšnih aplikacij. Sledi predstavitev neprekinjene integracije in neprekinjene dostave in razlaga zakaj predstavljata ključen del razvojnega procesa. Na koncu poglavja obravnavamo še pomembnost strukture projekta, njen vpliv na razvojni proces in dva načina upravljanja z različicami izvorne kode.
+V tem poglavju bomo predstavili sorodna dela, ki so nam bila osnova in navdih za raziskovanje področja. Na kratko bomo opisali kaj posamezna dela obravnavajo in zakaj so za nas pomembna. Nato pojasnimo kaj so poslovno kritične aplikacije in navedemo nekaj primerov takšnih aplikacij. Sledi predstavitev pojma DevOps in podrobnejši opis neprekinjene integracije in neprekinjene dostave ter razlaga zakaj predstavljata ključen del razvojnega procesa. Na koncu poglavja obravnavamo še pomembnost strukture projekta, njen vpliv na razvojni proces in dva načina upravljanja z različicami izvorne kode.
 
 \section{Pregled sorodnih del}
 \label{sec:pregled-sorodnih-del}
@@ -132,10 +132,10 @@ Podobno je v~\cite{OKORN_2022} predstavljena neprekinjena integracija in dostava
 Poslovno kritične aplikacije so ključne za delovanje podjetja. Odpoved ali prekinitev delovanja takšnih aplikacij močno vpliva na poslovanje podjetja in potencialno povzroči veliko finančno škodo ali škoduje ugledu podjetja. Kritičnost aplikacije, ki jo neko podjetje uporablja, je odvisna od podjetja in narave dela, ki ga to podjetje opravlja. Primeri poslovno kritičnih aplikacij so~\cite{Shen2015}:
 \begin{itemize}
     \item Aplikacije za elektronsko poslovanje: spletne aplikacije, ki omogočajo podjetjem, da tržijo svoje izdelke in storitve preko spleta.
-    \item Aplikacije za upravljanje odnosov s strankami (Customer Relationship Management - CRM): aplikacije, ki pomagajo podjetjem upravljati poslovanje s strankami in hranijo podatke o strankah.
-    \item Upravljanje oskrbovalne verige (Supply Chain Management - SCM): sistemi, ki pomagajo podjetju upravljati z dobavo in prodajo, kot tudi z beleženjem inventarja in logistiko.
-    \item Upravljanje podjetniških virov (Enterprise Resource Planning - ERP): aplikacije, ki jih podjetja uporabljajo za upravljanje dnevnih poslovnih aktivnosti kot so: vodenje računov, dobavljanje, upravljanje projektov,  upravljanje s tveganji in nadzor dobavne verige.
-    \item Sistemi poslovne inteligence (Business Intelligence - BI): to so aplikacije, ki pomagajo podjetju zbirati, hraniti in analizirati podatke za sklepanje boljših poslovnih odločitev.
+    \item Aplikacije za upravljanje odnosov s strankami (ang. Customer Relationship Management - CRM): aplikacije, ki pomagajo podjetjem upravljati poslovanje s strankami in hranijo podatke o strankah.
+    \item Upravljanje oskrbovalne verige (ang. Supply Chain Management - SCM): sistemi, ki pomagajo podjetju upravljati z dobavo in prodajo, kot tudi z beleženjem inventarja in logistiko.
+    \item Upravljanje podjetniških virov (ang. Enterprise Resource Planning - ERP): aplikacije, ki jih podjetja uporabljajo za upravljanje dnevnih poslovnih aktivnosti kot so: vodenje računov, dobavljanje, upravljanje projektov,  upravljanje s tveganji in nadzor dobavne verige.
+    \item Sistemi poslovne inteligence (ang. Business Intelligence - BI): to so aplikacije, ki pomagajo podjetju zbirati, hraniti in analizirati podatke za sklepanje boljših poslovnih odločitev.
     \item Orodja za komunikacijo: aplikacije, ki zaposlenim omogočajo sporazumevanje po digitalnih kanalih, kot so na primer: elektronska pošta, sistemi za neposredno sporočanje in aplikacije za video konference.
 \end{itemize}
 
@@ -149,7 +149,7 @@ Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti~\
     \item Lahko vzdrževanje: aplikacija mora biti lahka za vzdrževanje in posodabljanje kot tudi jasno ter dobro dokumentirana, da ostane zanesljiva in zmogljiva.
     \item Dobra uporabniška izkušnja: dober uporabniški vmesnik in izkušnja lahko uporabnikom olajšata razumevanje in uporabo aplikacije, kar privablja nove uporabnike in poveča njihovo produktivnost.
     % \item Integracija: Aplikacija mora nuditi dober programski vmesnik, da se lahko druge aplikacije nanj integrirajo.
-    \item Prilagodljivost: podjetja imajo različne potrebe, zato je pomembno, da je aplikacijska koda prožna in prilagodljiva, da se lahko hitro prilagodi spremembam ali novim zahtevam.
+    \item Prilagodljivost: podjetja imajo različne potrebe, zato je pomembno, da je aplikacijska koda prožna in prilagodljiva, da se lahko hitro prilagodi spremembam ali novim zahtevam. Na primer, da prevodov besedil ne zapečemo v kodo, vendar jih shranjujemo v posebej določeni datoteki, kjer jih je lažje posodobiti.
 \end{itemize}
 
 % Podjetja pogosto razdelijo svoje aplikacije v skupine, glede na velikost posledic, ki bi jih njihova odpoved prinesla. V večini primerov se delijo na: aplikacije s kritično nalogo, poslovno kritične aplikacije in ne-kritične aplikacije. Ločimo jih po škodi, ki jih povzroči njihov izpad.
@@ -158,6 +158,12 @@ Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti~\
 % Odpovedi aplikacije s kritično nalogo, največkrat privede do napake pri doseganju nekega pomembnega cilja. Na primer: reševanje življenj, preprečevanje resnih poškodb, transport nujnih stvari ipd.
 
 % Primerjava poslovno kritičnih z aplikacijami s kritično nalogo.
+
+\section{DevOps}
+\label{sec:devops}
+Kratica DevOps združuje besedi razvoj in operativo (ang. Development and Operations) in predstavlja orodja, filozofijo in način razvoja programske opreme, ki avtomatizira in povezuje procese med razvijalci programske opreme in operaterji informacijske tehnologije. Sestavljajo ga nabori dobrih praks kot so: neprekinjena integracija (ang. Continuous Integration - CI), neprekinjena dostava (ang. Continuous Deployment - CD), infrastruktura kot koda (ang. Infrastructure as Code - IaC), avtomatizacija, sodelovanje, nadzor in spremljanje povratne informacije in nadzor različic~\cite{ebert2016devops}.
+
+Z uvedbo teh dobrih praks lahko v podjetju dosežemo hitrejše razvojne cikle, hitrejšo objavo aplikacij v produkcijsko okolje, boljšo kvaliteto programske opreme in usklajenost implementacije s poslovnimi zahtevami. Obenem razvojnim ekipam omogočimo hitrejšo odzivnost na povratno informacijo strank in na zahteve trga~\cite{ebert2016devops}.
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
@@ -183,7 +189,7 @@ Vpeljava neprekinjene integracije lahko prinese številne koristi pri razvoju pr
 
 Neprekinjena dostava je metoda razvoja in izdelave, ki temelji na stalnem izboljševanju procesov in izdelkov ter zagotavljanju neprekinjene dostave izdelkov ali storitev. To pomeni, da se procesi in izdelki izboljšujejo in nadgrajujejo neprekinjeno ter dostava izdelkov ali storitev ne povzroči prekinitev ali zastoja v procesu. 
 
-Cilj neprekinjene dostave je zmanjšanje časa med pisanjem kode in njene dostave končnim uporabnikom, obenem pa zagotavljanje visoke kakovosti in zanesljivosti. Neprekinjena dostava ima zato širši pomen, ki vključuje neprekinjeno integracijo in avtomatsko testiranje, obenem pa tudi izdajanje novih verzij in avtomatsko objavo aplikacije v testno ali produkcijsko okolje. Pomemben del pa je tudi sistem za spremljanje napak in težav z zmogljivostjo, ki razvojni ekipi pošilja povratne informacije o delovanju aplikacije in jim na ta način pomaga identificirati in odpraviti napake~\cite{Humble2010}.
+Cilj neprekinjene dostave je zmanjšanje časa med pisanjem kode in njene dostave končnim uporabnikom, obenem pa zagotavljanje visoke kakovosti in zanesljivosti. Neprekinjena dostava ima zato širši pomen, ki vključuje neprekinjeno integracijo in avtomatsko testiranje, obenem pa tudi izdajanje novih različic in avtomatsko objavo aplikacije v testno ali produkcijsko okolje. Pomemben del pa je tudi sistem za spremljanje napak in težav z zmogljivostjo, ki razvojni ekipi pošilja povratne informacije o delovanju aplikacije in jim na ta način pomaga identificirati in odpraviti napake~\cite{Humble2010}.
 
 \subsection{Dostava izvorne kode}
 \label{subsec:dostava-izvorne-kode}
@@ -201,7 +207,7 @@ Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podje
 \label{subsec:neprekinjena-namestitev}
 Najširši obseg pa predstavlja neprekinjena namestitev, ki je praksa razvoja programske opreme, pri kateri se spremembe kode avtomatsko zgradijo, preizkusijo, oddajo naročniku in tudi objavijo v produkcijsko okolje brez posredovanja človeka. Predstavlja še en korak naprej od neprekinjene dostave, pri kateri se koda zgradi in preizkusi, vendar jo mora človek ročno objaviti v produkcijo.
 
-Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati - infrastruktura kot koda (Infrastructure as Code - IaC). Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve in izboljša učinkovitost in hitrost razvojnega procesa aplikacije~\cite{Wittig2016, Humble2014}.
+Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati - infrastruktura kot koda. Eno izmed takšnih tehnologij predstavlja platforma Kubernetes, ki smo jo sami uporabili in nam omogoča, da v formatu YAML (ang. YAML Ain't Markup Language) definiramo konfiguracijo namestitve naše aplikacije in jo s preprostim ukazom tudi namestimo. Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve in izboljša učinkovitost in hitrost razvojnega procesa aplikacije~\cite{Wittig2016, Humble2014}.
 
 % Programerjem omogoča testiranje aplikacije v živo? Quality assurance?
 
@@ -212,7 +218,7 @@ Struktura projekta opisuje kako je projekt organiziran in razmerja med različni
     \item Struktura imenika: Opisuje kako so datoteke in imeniki razporejeni na datotečnem sistemu. Dobra struktura imenika združuje odvisne datoteke in vire ter olajša iskanje datotek.
     \item Moduli in odvisnosti: V večini projektov je programska koda logično razdeljena na več modulov ali komponent, kjer je vsak izmed modulov zadolžen za le en del projekta. Ti moduli so lahko tudi odvisni med sabo, zato jih je potrebno skrbno organizirati in poskrbeti, da ne pride do krožnih odvisnosti.
     \item Skripti za gradnjo in namestitev projekta: Skripti opisujejo, kako projekt zgraditi in namestiti na testno in produkcijsko okolje. Ti skripti so po navadi del neprekinjene namestitve in morajo zato biti dobro organizirani in enostavni za razumevanje.
-    \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (Application programming interface - API) in druge dokumente, ki pomagajo razvijalcem pri razvoju ter uporabnikom pri razumevanju delovanja projekta.
+    \item Dokumentacija: Dobra dokumentacija je pomemben del vsakega projekta. Ta lahko vključuje uporabniška navodila, dokumentacijo aplikacijskega programskega vmesnika (ang. Application programming interface - API) in druge dokumente, ki pomagajo razvijalcem pri razvoju ter uporabnikom pri razumevanju delovanja projekta.
 \end{itemize}
 
 Na projektno strukturo močno vpliva tudi sistem za spremljanje različic kode, ki ga uporabljamo, saj lahko kodo shranjujemo v enem skupnem ali pa jo razdelimo v več ločenih repozitorijev. Izbira repozitorijske strukture je ključna za strukturo projekta, saj ima vsaka repozitorijska struktura svoje prednosti in slabosti. Najbolj pogosti repozitorijski strukturi sta: \textit{monorepo} in \textit{polirepo}~\cite{Wiki_Architectural_pattern, Kokrehel2022}.
@@ -222,7 +228,7 @@ Na projektno strukturo močno vpliva tudi sistem za spremljanje različic kode, 
 Monorepo ali monolitni repozitorij je poimenovanje organizacije in upravljanje različic izvorne kode z enim repozitorijem. Ta lahko vsebuje več projektov, paketov ali modulov in razvijalcem omogoča širok dostop do izvorne kode, skupnih orodji in skupne množice odvisnosti na enem mestu. Prednosti monolitnega repozitorija so~\cite{Jaspan2018, Shakikhanli2022}:
 \begin{itemize}
     \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost razvijanja in kvaliteto kode. 
-    \item Enostavne odvisnosti: Vsi paketi in moduli v repozitoriju imajo lahko enako različico in ni potrebno skrbeti katere verzije so med seboj kompatibilne.
+    \item Enostavne odvisnosti: Vsi paketi in moduli v repozitoriju imajo lahko enako različico in ni potrebno skrbeti katere različice so med seboj kompatibilne.
     \item Lažje spreminjanje odvisnih delov kode: Pri popravljanju in posodabljanju kode lahko popravimo vse dele kode, ki so med seboj odvisni in vse skupaj oddamo v repozitorij kot eno spremembo.
 \end{itemize} 
 
@@ -248,7 +254,7 @@ Polirepo je poimenovanje organizacije in načina upravljanja z različicami izvo
 Slabosti uporabe več repozitorijev so~\cite{Shakikhanli2022}:
 \begin{itemize}
     \item Upravljanje različic in določevanje odvisnosti: Potrebno je določiti, kako se bodo spreminjale različice modulov ali paketov v posameznih repozitorijih in kako bodo določene odvisnosti med njimi.
-    \item Oteženo spreminjanje odvisnih delov kode: Po spremembi enega dela kode, se velikokrat zgodi, da je potrebno popraviti še kodo v odvisnih modulih ali paketih. To pomeni, da je treba v vsakem izmed odvisnih repozitorijev dodati spremembo in mogoče popraviti tudi verzijo.
+    \item Oteženo spreminjanje odvisnih delov kode: Po spremembi enega dela kode, se velikokrat zgodi, da je potrebno popraviti še kodo v odvisnih modulih ali paketih. To pomeni, da je treba v vsakem izmed odvisnih repozitorijev dodati spremembo in mogoče popraviti tudi številko različice.
 \end{itemize}
 
 Oba pristopa imata prednosti in slabosti in tisto, kar en razvijalec šteje za prednost, lahko drugemu predstavlja slabost. Na primer, nekateri razvijalci lahko vidijo enostavnost upravljanja enega samega repozitorija kot prednost uporabe monolitnega repozitorija, medtem ko drugi lahko zaradi potencialne povečane zapletenosti vidijo to kot slabost. Podobno lahko nekateri razvijalci vidijo sposobnost enostavnega deljenja kode in virov med projekti kot prednost uporabe več repozitorijev, medtem ko drugi lahko vidijo potrebo po upravljanju več repozitorijev kot slabost. Zato je izbira med uporabo monolitnega repozitorija ali več repozitorijev največkrat stvar osebnega okusa in je odvisna od specifičnih potreb ter narave projekta kot tudi delovnih navad podjetja.
@@ -264,13 +270,13 @@ V tem poglavju bomo predstavili tehnologije in aplikacije, ki so bile uporabljen
 
 \section{Repozitoriji za nadzor različic}
 \label{sec:repozitoriji-za-nadzor-različic}
-Za razvoj aplikacij uporabljamo več repozitorijev, ki služijo različnim namenom. Izvorna koda se nahaja v repozitoriju s sistemom za nadzor različic, ki razvijalcem omogoča preprost pregled sprememb kode in združevanje sprememb iz različnih vej. Interne knjižnice, od katerih so aplikacije odvisne, so v obliki artefaktov ali paketov naložene v repozitorij, katerega upravlja centralni upravitelj repozitorijev. Aplikacije po gradnji največkrat zapakiramo v sliko Docker, ki so shranjene v registru slik. V nadaljevanju predstavimo, katere implementacije posameznih repozitorijev smo uporabili pri implementaciji cevovoda za neprekinjeno integracijo in dostavo.
+Za razvoj aplikacij uporabljamo več repozitorijev, ki služijo različnim namenom. Izvorna koda se nahaja v repozitoriju s sistemom za nadzor različic, ki razvijalcem omogoča preprost pregled sprememb kode in združevanje sprememb iz različnih vej. Interne knjižnice, od katerih so aplikacije odvisne, so v obliki artefaktov ali paketov, naloženih v repozitorij, katerega upravlja centralni upravitelj repozitorijev. Aplikacije po gradnji največkrat zapakiramo v sliko Docker, ki so shranjene v registru slik. V nadaljevanju predstavimo, katere implementacije posameznih repozitorijev smo uporabili pri implementaciji cevovoda za neprekinjeno integracijo in dostavo.
 
 \subsection{Git}
 \label{subsec:git}
 Git\footnote{\url{https://git-scm.com/}} je sistem za upravljanje različic, ki se pogosto uporablja pri razvoju programske opreme. Omogoča, da več razvijalcev naenkrat dela na enaki izvorni kodi in jim pomaga slediti spremembam, ki so bile narejene~\cite{loeliger2012version}.
 
-Uporaba sistema za upravljanje različic Git deluje tako, da ima vsak razvijalec kopijo celotnega repozitorija na svojemu računalniku vključno z vso zgodovino vseh sprememb, ki so bile narejene na izvorni kodi. Ko razvijalec razvija aplikacijo, spreminja zgolj kodo, ki jo ima shranjeno na svojem računalniku. Če želi spremembe oddati na oddaljen repozitorij, mora svoje spremembe s potrditvijo najprej dodati v svoje lokalno verzionirano skladišče, nato pa jih lahko naloži še na oddaljen repozitorij~\cite{loeliger2012version}.
+Uporaba sistema za upravljanje različic Git deluje tako, da ima vsak razvijalec kopijo celotnega repozitorija na svojemu računalniku vključno z vso zgodovino vseh sprememb, ki so bile narejene na izvorni kodi. Ko razvijalec razvija aplikacijo, spreminja zgolj kodo, ki jo ima shranjeno na svojem računalniku. Če želi spremembe oddati na oddaljen repozitorij, mora svoje spremembe s potrditvijo najprej dodati v svoje lokalno skladišče, nato pa jih lahko naloži še na oddaljen repozitorij~\cite{loeliger2012version}.
 
 Drugi razvijalci lahko nato prenesejo spremembe iz oddaljenega repozitorija v svoje lokalno skladišče in združijo spremembe s svojo kopijo. Če so na oddaljenem repozitoriju nove spremembe kode na enakih delih kot spremembe v skladišču razvijalca, mora razvijalec, ki želi združiti kodo s svojo lokalno kopijo, izbrati katere spremembe bo obdržal. Git vsebuje orodja, ki ta postopek združevanja poenostavijo~\cite{loeliger2012version}.
 
@@ -292,7 +298,7 @@ Za proces neprekinjene integracije in dostave aplikacij je Nexus pomemben zaradi
 
 \subsection{Register slik Docker}
 \label{subsec:register-slik-docker}
-Register slik Docker je sistem za centralizirano hranjene in distribucijo slik Docker. Služi kot sistem za upravljanje različic slik, v katerega lahko slike shranjujemo, jih delimo z drugimi in jih prenašamo~\cite{Anwar2018}.
+Register slik Docker je sistem za centralizirano hranjene in distribucijo slik Docker, ki so podrobneje predstavljene v poglavju \ref{subsec:docker}. Služi kot sistem za upravljanje različic slik, v katerega lahko slike shranjujemo, jih delimo z drugimi in jih prenašamo~\cite{Anwar2018}.
 
 Obstaja veliko javnih registrov, do katerih dostop ni omejen, kot so: Docker Hub\footnote{\url{https://hub.docker.com/}}, ki je privzeti register in ga vzdržuje Docker, Quay\footnote{\url{https://quay.io/}} in IBM Cloud container registry\footnote{\url{https://www.ibm.com/cloud/container-registry}}. Na lastni infrastrukturi pa lahko postavimo tudi privatni register, do katerega omejimo dostop in s tem zagotovimo boljšo varnost~\cite{Anwar2018}.
 
@@ -325,15 +331,13 @@ Performant Node Package Manager\footnote{\url{https://pnpm.io/}} je alternativa 
 
 \subsection{Pip Installs Packages ali PIP}
 \label{subsec:pip}
-Pip Installs Packages\footnote{\url{https://pypi.org/project/pip/}} je privzeto orodje za upravljanje paketov, ki so napisani v programskem jeziku Python. Omogoča enostavno namestitev, nadgradnjo in upravljanje s paketi, ki niso del osnovne knjižnice. Orodje omogoča razvijalcem enostaven dostop in namestitev paketov iz Python Package Index-a (PyPI), ki gostuje odprto-kodne pakete~\cite{Pip2023}.
-
-Orodje PIP je enostavno za uporabo in s preprostimi ukazi omogoča uporabnikom namestitev in brisanje paketov ter kreiranje virtualnega okolja za izolacijo projektnih odvisnosti. Zaradi splošne razširjenosti uporabe orodja PIP, služi kot ključno orodje za deljenje kode in učinkovito upravljanje paketov v projektih, ki uporabljajo programski jezik Python~\cite{Pip2023}.
+Pip Installs Packages\footnote{\url{https://pypi.org/project/pip/}} je privzeto orodje za upravljanje paketov, ki so napisani v programskem jeziku Python. Omogoča enostavno namestitev, nadgradnjo in upravljanje s paketi, ki niso del osnovne knjižnice. Orodje omogoča razvijalcem enostaven dostop in namestitev paketov iz Python Package Index-a (PyPI), ki gostuje odprto-kodne pakete~\cite{Pip2023}. Seznam paketov, ki jih projekt potrebuje, prebere iz datoteke \texttt{requirements.txt}, ki v vsaki vrstici vsebuje ime paketa in njegovo verzijo.
 
 \subsection{Setuptools}
 \label{subsec:setuptools}
 Setuptools\footnote{\url{https://pypi.org/project/setuptools/}} je knjižnica, ki poenostavi razvoj in distribucijo paketov v programskem jeziku Python. Vsebuje zbirko uporabnih funkcij in razširitev, ki nam pomagajo pri pakiranju, distribuciji in namestitvi paketov. Glavne funkcionalnosti so~\cite{Younker2008}:
 \begin{itemize}
-    \item Podpora za kreiranje paketov: knjižnica za konfiguracijo gradnje paketov in meta podatkov o paketu, kot so ime, verzija, avtor, odvisnosti in vhodne točke uporablja datoteko \texttt{setup.py}. Na ta način razvijalcu omogoči, da definira strukturo projekta in določi vire in dodatne datoteke, ki so del projekta.
+    \item Podpora za kreiranje paketov: knjižnica za konfiguracijo gradnje paketov in meta podatkov o paketu, kot so ime, različica, avtor, odvisnosti in vhodne točke uporablja datoteko \texttt{setup.py}. Na ta način razvijalcu omogoči, da definira strukturo projekta in določi vire in dodatne datoteke, ki so del projekta.
     \item Upravljanje odvisnosti: knjižnica s ključno besedo \texttt{requires} v konfiguracijski datoteki \texttt{setup.py} omogoča avtorjem paketa nastavitev odvisnosti, ki jih paket potrebuje. Knjižnica prav tako omogoča avtomatsko razrešitev in namestitev teh odvisnosti, kar poenostavi namestitev in uporabo paketa.
     \item Vstopne točke: knjižnica omogoča uporabo vhodnih točk, ki na standarden način definirajo, kako lahko ostali paketi in aplikacije razširijo funkcionalnosti paketa. Hkrati omogoča dinamično odkrivanje in namestitev vtičnikov brez navajanja eksplicitnih uvozov modulov s stavkom \texttt{import}.
     \item Integracija s PyPI: knjižnica je dobro integrirana s PyPI in vsebuje orodja za nalaganje paketov na PyPI.
@@ -342,7 +346,7 @@ Setuptools\footnote{\url{https://pypi.org/project/setuptools/}} je knjižnica, k
 
 \subsection{Docker}
 \label{subsec:docker}
-Docker\footnote{\url{https://www.docker.com/}} je odprtokodno orodje za razvoj, namestitev in zagon aplikacij z uporabo vsebnikov (angl. \textit{container}). Vsebniki so način pakiranja aplikacij in njihovih odvisnosti, ki zagotavljajo, da jih lahko zanesljivo zaženemo v različnih okoljih in vsebujejo vse potrebno za zagon aplikacije: kodo, izvajalno okolje, knjižnice in sistemska orodja. Takšen standardiziran način pakiranja in distribucije aplikacij znatno olajša proces razvoja, nameščanja in upravljanja z aplikacijami. Glavne prednosti orodja Docker so~\cite{Rad2017}:
+Docker\footnote{\url{https://www.docker.com/}} je odprtokodno orodje za razvoj, namestitev in zagon aplikacij z uporabo slik Docker ter njihovih vsebnikov (ang. \textit{container}). Slike Docker so način pakiranja aplikacij in njihovih odvisnosti, ki zagotavljajo, da jih lahko zanesljivo zaženemo v različnih okoljih in vsebujejo vse potrebno za zagon aplikacije: kodo, izvajalno okolje, knjižnice in sistemska orodja. Vsebniki pa so zagnani primerki slike Docker. Takšen standardiziran način pakiranja in distribucije aplikacij znatno olajša proces razvoja, nameščanja in upravljanja z aplikacijami. Glavne prednosti orodja Docker so~\cite{Rad2017}:
 \begin{itemize}
     \item Prenosljivost: vsebniki so neodvisni od operacijskega sistema, lahko jih zaženemo na kateremkoli sistemu, ki podpira Docker in zagotavljajo konsistentno obnašanje v različnih okoljih.
     \item Skalabilnost: orodje Docker omogoča hitro razširljivost aplikacij s podvajanjem vsebnikov, ki izvajajo enako aplikacijo in porazdelitvijo obremenitve med njimi. 
@@ -353,13 +357,13 @@ Docker\footnote{\url{https://www.docker.com/}} je odprtokodno orodje za razvoj, 
 
 \subsection{Kaniko}
 \label{subsec:kaniko}
-Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtokodno orodje za gradnjo vsebniških slik Docker iz datotek Docker (angl. \textit{Dockerfile}) znotraj vsebnika ali na gruči Kubernetes. Za gradnjo vsebniških slik ne potrebuje privilegiranega dostopa do prikritega procesa Docker (angl. \textit{Docker daemon}), kar predstavlja glavno prednost pred načinom gradnje vsebniških slik, ki ga uporablja platforma Docker~\cite{Kaniko2023}.
+Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtokodno orodje za gradnjo vsebniških slik Docker iz datotek Docker (ang. \textit{Dockerfile}) znotraj vsebnika ali na gruči Kubernetes. Za gradnjo vsebniških slik ne potrebuje privilegiranega dostopa do prikritega procesa Docker (ang. \textit{Docker daemon}), kar predstavlja glavno prednost pred načinom gradnje vsebniških slik, ki ga uporablja platforma Docker.
 
 Platforma Docker za gradnjo slik uporablja prikriti proces, ki potrebuje korenski dostop in visoke pravice na gostujočem sistemu. Uporabniki v nekaterih okoljih, kot je na primer Kubernetes ali cevovod za neprekinjeno integracijo in dostavo zaradi varnostnih zahtev nimajo zahtevanih pravic za zagon prikritega procesa. Kaniko to težavo reši z uporabo samostojnega orodja, ki se zažene znotraj vsebnika in zgradi sliko brez priviligiranega dostopa. Vse potrebne operacije, kot so: prenos osnovnih slik, izvajanje ukazov za gradnjo slike in kreiranje končne slike vsebnika, izvede s pravicami, ki jih ima navaden uporabnik gostiteljskega sistema. To nam omogoča, da lahko zgradimo slike na gruči Kubernetes ali drugih platformah za orkestracijo~\cite{Kaniko2023}.
 
 \section{Gitlab}
 \label{sec:gitlab}
-Gitlab\footnote{\url{https://about.gitlab.com/}} je spletna platforma za razvijalce in sistemske inženirje, ki vsebuje velik nabor orodji za upravljanje in dostavo aplikacij. Osnovni namen platforme je porazdeljen sistem za nadzor različic (angl. \textit{distributed version control system - DVCS}), v katerem lahko razvijalci gostijo svoje repozitorije izvorne kode, na podoben način kot v sistemu Git (\ref{subsec:git}), obenem pa vsebuje še veliko funkcionalnosti~\cite{Gitlab2023}:
+Gitlab\footnote{\url{https://about.gitlab.com/}} je spletna platforma za razvijalce in sistemske inženirje, ki vsebuje velik nabor orodji za upravljanje in dostavo aplikacij. Osnovni namen platforme je porazdeljen sistem za nadzor različic (ang. \textit{distributed version control system - DVCS}), v katerem lahko razvijalci gostijo svoje repozitorije izvorne kode, na podoben način kot v sistemu Git (\ref{subsec:git}), obenem pa vsebuje še veliko funkcionalnosti~\cite{Gitlab2023}:
 \begin{itemize}
     \item Orodja za vodenje projekta, ki olajšajo: organiziranje projekta, sledenje nalogam, dodeljevanje nalog razvijalcem in določanje mejnikov.
     \item Sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij.
@@ -372,29 +376,29 @@ Gitlab\footnote{\url{https://about.gitlab.com/}} je spletna platforma za razvija
 \subsection{Neprekinjena integracija in dostava z Gitlab CI/CD}
 \label{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd}
 
-Gitlab CI/CD je sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo Gitlab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme. Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsak cevovod ima lahko več faz v kateri je lahko več nalog, vsaka naloga pa ima lahko več akcij. Z razporejanjem nalog po fazah, zagotovimo pravilen vrstni red izvajanja nalog. Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo tudi vse artefakte, ki jih naloge generirajo, odvisnosti in okoljske spremenljivke~\cite{Gitlab2023}.
+Gitlab CI/CD je sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo Gitlab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme. Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsak cevovod ima lahko več faz v kateri je lahko več nalog, vsaka naloga pa ima lahko več akcij. Z razporejanjem nalog po fazah, zagotovimo pravilen vrstni red izvajanja nalog. Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo tudi vse artefakte, ki jih naloge generirajo, odvisnosti in okoljske spremenljivke.
 
-Za izvajanje nalog skrbijo izvajalci nalog Gitlab. Izvajajo se lahko na lastni infrastrukturi ali na oblačnih virtualnih strojih in omogočajo paralelno izvajanje nalog, kar lahko znatno pohitri povprečen izvajalni čas cevovoda. Izvajalci nalog so različnih tipov glede na to, katerim projektom so na voljo~\cite{Gitlab2023}:
+Za izvajanje nalog skrbijo izvajalci nalog Gitlab. Izvajajo se lahko na lastni infrastrukturi ali na oblačnih virtualnih strojih in omogočajo paralelno izvajanje nalog, kar lahko znatno pohitri povprečen izvajalni čas cevovoda. Izvajalci nalog so različnih tipov glede na to, katerim projektom so na voljo:
 \begin{itemize}
     \item deljeni: na voljo vsem projektom, ki obstajajo na instanci platforme Gitlab,
     \item skupinski: na voljo samo projektom v specifični skupini in
     \item projektni: na voljo samo specifičnemu projektu.
 \end{itemize}
 
-Izvajalce nalog lahko prilagodimo svojim potrebam z omejitvijo števila vzporednih nalog, ki jih lahko izvajajo, omejitvami virov, ki so jim na voljo, in okoljskimi spremenljivkami. Lahko jim dodelimo tudi oznake, s katerimi lahko na nalogo natančno določimo njihovo izvajanje. Med posameznimi izvajalci nalog je zagotovljena izolacija, tako da se lahko naloge izvajajo neodvisno druga od druge. Hkrati je z nadzorom dostopa in ustreznimi metodami verodostojnosti, ki zagotavljajo integriteto celotnega procesa, poskrbljeno za varnost~\cite{Gitlab2023}.
+Izvajalce nalog lahko prilagodimo svojim potrebam z omejitvijo števila vzporednih nalog, ki jih lahko izvajajo, omejitvami virov, ki so jim na voljo, in okoljskimi spremenljivkami. Lahko jim dodelimo tudi oznake, s katerimi lahko na nalogo natančno določimo njihovo izvajanje. Med posameznimi izvajalci nalog je zagotovljena izolacija, tako da se lahko naloge izvajajo neodvisno druga od druge. Hkrati je z nadzorom dostopa in ustreznimi metodami verodostojnosti, ki zagotavljajo integriteto celotnega procesa, poskrbljeno za varnost.
 
 \section{Kubernetes}
 \label{sec:kubernetes}
 Kubernetes\footnote{\url{https://kubernetes.io/}} je odprtokodna rešitev za orkestracijo vsebnikov, ki avtomatizira namestitev, skaliranje instanc in upravljanje aplikacij nameščenih v vsebnikih. Glavni gradniki platforme Kubernetes so~\cite{Burns2022}:
 \begin{itemize}
-    \item Vozlišča (angl. nodes) - stroji, na katerih so nameščeni vsebniki. Izvajalno okolje vsakega vozlišča mora vsebovati orodja, ki so potrebna za upravljanje vsebnikov, kot je npr. platforma Docker.
-    \item Stroki (angl. pods) - vozlišča gostijo stroke, kjer tečejo vsebniki, ki so komponente aplikacije. Vsebniki, ki tečejo na istem stroku si delijo omrežje, imenski prostor in prostor za hrambo podatkov.
-    \item Nabori podvajanj (angl. replica set) - njihova naloga je ohraniti stabilen nabor kopiranih strokov.
+    \item Vozlišča (ang. nodes) - stroji, na katerih so nameščeni vsebniki. Izvajalno okolje vsakega vozlišča mora vsebovati orodja, ki so potrebna za upravljanje vsebnikov, kot je npr. platforma Docker.
+    \item Stroki (ang. pods) - vozlišča gostijo stroke, kjer tečejo vsebniki, ki so komponente aplikacije. Vsebniki, ki tečejo na istem stroku si delijo omrežje, imenski prostor in prostor za hrambo podatkov.
+    \item Nabori podvajanj (ang. replica set) - njihova naloga je ohraniti stabilen nabor kopiranih strokov.
     \item Storitve - abstrakcije, ki predstavljajo nabor strokov in definirajo način dostopa do njih. Omogočajo mehanizme za upravljanje z obremenitvijo in odkrivanje storitev.
     \item Ingress - objekti programskega vmesnika, ki upravljajo zunanji dostop do storitev v gruči. Omogočajo združevanje pravil usmerjanja v en sam vir in lahko izpostavijo več storitev pod istim naslovom IP.
-    \item Shrambe podatkov (angl. volumes) - rezervirani podatkovni prostor na datotečnem sistemu, ki je neodvisen od življenjskega cikla vsebnikov in na ta način omogočajo dolgotrajno shrambo podatkov, tudi ob zaustavitvi ali ponovnem zagonu vsebnikov.
+    \item Shrambe podatkov (ang. volumes) - rezervirani podatkovni prostor na datotečnem sistemu, ki je neodvisen od življenjskega cikla vsebnikov in na ta način omogočajo dolgotrajno shrambo podatkov, tudi ob zaustavitvi ali ponovnem zagonu vsebnikov.
     \item Oznake in selektorji - oznake predstavljajo objekti v obliki ključ-vrednost, ki so dodani gradnikom platforme Kubernetes. Selektorji pa se uporabljajo za identifikacijo objektov na podlagi njihovih oznak.
-    \item Namestitive (angl. deployments) - omogočajo upravljanje namestitve in posodobitev vmesnikov. Definiramo jih z deklarativno konfiguracijsko datoteko in skrbijo za ustrezno skaliranje, posodobitve brez zaustavitve (angl. rolling updates) in vračanje na starejše različice (angl. rollback).
+    \item Namestitive (ang. deployments) - omogočajo upravljanje namestitve in posodobitev vmesnikov. Definiramo jih z deklarativno konfiguracijsko datoteko in skrbijo za ustrezno skaliranje, posodobitve brez zaustavitve (ang. rolling updates) in vračanje na starejše različice (ang. rollback).
 \end{itemize}
 
 % \section{Konfiguracijski strežniki}
@@ -436,9 +440,9 @@ Konfiguracijski strežnik Consul v procesu neprekinjene integracije in dostave u
 \subsection{Jsonnet}
 \label{subsec:jsonnet}
 
-Jsonnet\footnote{\url{https://jsonnet.org/}} je funkcijski jezik za kreiranje in upravljanje kompleksnih podatkovnih struktur v formatu JSON. Omogoča bolj natančen in fleksibilen način definicije in organizacije struktur, kot osnoven format JSON. Največkrat se uporablja za definicijo dinamičnih ali parametriziranih struktur, saj omogoča uporabo spremenljivk, funkcij, pogojnih stavkov, aritmetike in zank~\cite{Jsonnet2023}.
+Jsonnet\footnote{\url{https://jsonnet.org/}} je funkcijski jezik za kreiranje in upravljanje kompleksnih podatkovnih struktur v formatu JSON. Omogoča bolj natančen in fleksibilen način definicije in organizacije struktur, kot osnoven format JSON. Največkrat se uporablja za definicijo dinamičnih ali parametriziranih struktur, saj omogoča uporabo spremenljivk, funkcij, pogojnih stavkov, aritmetike in zank.
 
-Ena glavnih prednosti uporabe jezika Jsonnet je njegova modularnost in možnost ponovne uporabe z definicijo komponent, ki jih lahko večkrat uporabimo v različnih objektih. Na ta način lahko znatno povečamo doslednost konfiguracije skozi projekt. Prav tako nudi uvažanje definicij iz drugih datotek, kar omogoča sestavljanje kompleksnih objektov in komentarje, ki olajšajo dokumentiranje konfiguracije~\cite{Jsonnet2023}.
+Ena glavnih prednosti uporabe jezika Jsonnet je njegova modularnost in možnost ponovne uporabe z definicijo komponent, ki jih lahko večkrat uporabimo v različnih objektih. Na ta način lahko znatno povečamo doslednost konfiguracije skozi projekt. Prav tako nudi uvažanje definicij iz drugih datotek, kar omogoča sestavljanje kompleksnih objektov in komentarje, ki olajšajo dokumentiranje konfiguracije.
 
 Pri implementaciji cevovoda platforme Gitlab je Jsonnet ključnega pomena, saj nam omogoča dinamično kreiranje nalog in s tem znatno zmanjša količino vrstic v konfiguraciji cevovoda, kar poveča preglednost in razumljivost konfiguracije.
 
