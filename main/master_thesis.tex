@@ -4,6 +4,8 @@
 %======================================================================================================================
 \documentclass[a4paper, 12pt]{book}
 \usepackage[T1]{fontenc}
+% to doda lomljenje besed v več vrstic, a je to v redu?
+\usepackage[htt]{hyphenat}
 
 %======================================================================================================================
 % SLO: Odkomentiraj "\SLOtrue " za izbiro slovenskega jezika
@@ -65,6 +67,7 @@
 
 % include formatted front pages
 \input{style/thesis_front_pages}
+
 
 %================================================================
 % ENG: main pages of the thesis
@@ -461,21 +464,188 @@ IntelliJ IDEA\footnote{\url{https://www.jetbrains.com/idea/}} je integrirano raz
 
 \chapter{Implementacija}
 \label{ch:implementacija}
+V tem poglavju bomo najprej predstavili potek integracije in dostave po korakih, ki so del razvitega cevovoda. Nato bomo predstavili kako se ta cevovod uporablja v podjetju, kjer se aplikacijska koda razvija in kako se cevovod uporablja pri stranki, ki ji aplikacijsko kodo oddamo. Nekaj besed bomo namenili tudi različnim načinom dostave kode stranki, nato pa bomo opisali komponento Medius CD, ki je bila razvita za namen vzpostavitev cevovoda. 
+
+% Na koncu bomo predstavili še vtičnik Gitlab Template Lint za integrirano razvojno okolje IntelliJ IDEA, ki smo ga razvili in nudi pomoč pri pisanju konfiguracijskih datotek za vzpostavitev cevovoda na spletni platformi Gitlab.
 
 \section{Potek integracije in dostave}
 \label{sec:potek-integracije-in-dostave}
+V poglavju \ref{sec:neprekinjena-integracija} smo omenili, da je neprekinjena integracija praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Preden pa spremembe združimo v glavno vejo, je pomembno da preverimo ali je nova koda sintaktično in semantično pravilna. To naredimo tako, da ob vsakem odrivu kode na katerokoli vejo v repozitoriju zaženemo cevovod, ki to kodo preveri z gradnjo aplikacije, testi enot in integracijskimi testi.
+
+% manjka kaj so testi enot in kaj so integracijski testi
+% manjka kaj je to zbiranje logov
+Temu sledi gradnja aplikacijske slike Docker in njen odriv v register slik Docker. Zgrajeno sliko nato uporabimo za namestitev aplikacije na gručo platforme Kubernetes, ki je namenjena za izvajanje integracijskih testov, ki jih po uspešni namestitvi na gručo tudi zaženemo. Na tem mestu lahko zaženemo tudi orodja za preverjanje kvalitete in varnosti kode. V kolikor so bili vsi predhodni koraki do sedaj uspešni, se aplikacijska slika Docker označi z ustrezno številko različice. Nato se ustvarijo naloge za namestitev aplikacije v različna testna okolja, ki omogočajo razvijalcem in zaposlenim, ki skrbijo za zagotavljanje kvalitete, da aplikacijo tudi sami preizkusijo in pogledajo.
+
+Na koncu cevovoda pa so na voljo tudi naloge za izdajanje novih verzij, ki jih razvijalci lahko ročno zaženejo.
 
 \subsection{Proces v podjetju}
 \label{subsec:proces-v-podjetju}
+Razvoj aplikacije v podjetju največkrat poteka po nalogah, ki jih dodelimo razvijalcem. Spletna platforma Gitlab omogoča, da te naloge kreiramo, opišemo njihov cilj, jim dodelimo prioritetno stopnjo, jih komentiramo, jim dodelimo zadolženega razvijalca in drugo. Implementacija naloge poteka v naslednjih korakih:
+\begin{itemize}
+    \item Razvijalec prebere opis naloge in doda vprašanja glede razvoja.
+    \item Ko se vprašanja razrešijo, si kreira novo repozitorijsko vejo na kateri bo nalogo razvil.
+    \item Razvijalec razvija novo funkcionalnost ali popravke in sproti dodaja spremembe na svojo vejo v oddaljenem repozitoriju.
+    \item Ob vsakem odrivu aplikacijske kode, se izvede cevovod, ki preveri njegovo kodo.
+    \item Ko razvijalec konča z razvojem naloge, kreira zahtevek za združitev v spletni platformi Gitlab in nanj dodeli pregledovalca.
+    \item Pregledovalec preveri dodane spremembe in odobri zahtevek ali pa ga zavrne ter v komentarjih pojasni kaj je potrebno popravit.
+    \item Ko so vsi komentarji v zahtevku za združitev razrešeni, razvijalec zahtevek dodeli nekomu v projektu, ki ima pravice za združitev kode v glavno vejo.
+    \item Razvijalec, ki ima pravice za združitev kode v glavno vejo, ob primernem času združi kodo v glavno vejo.
+    \item Naloga se po združitvi označi za končano in bo na voljo v naslednji izdani verziji aplikacije.
+\end{itemize}
 
 \subsection{Proces pri stranki}
 \label{subsec:proces-pri-stranki}
+V poglavju \ref{subsec:dostava-izvorne-kode} smo opisali zakaj je dostava izvorne kode stranki koristna tako za stranko kot tudi za podjetje. Da bi bila stranka čim bolj neodvisna od podjetja, enak cevovod z manjšimi prilagoditvami izvedemo tudi na primerku spletne platforme Gitlab pri stranki. Ob izdaji nove verzije se zgodi naslednje:
+\begin{itemize}
+    \item Vse spremembe v repozitoriju od zadnje izdane verzije združimo v eno spremembo in jo dodamo na posebno vejo imenovano \texttt{release}.
+    \item Stranki sporočimo, da smo izdali novo verzijo.
+    \item Stranka zažene posebno nalogo, ki je del strankinega cevovoda in prenese spremembe v njihov repozitorij.
+    \item Ko se sprememba prenese, se zažene enak cevovod kot v podjetju z nalogami za namestitev v strankina testna in produkcijska okolja.
+\end{itemize}
+Na ta način smo stranki omogočili, da lahko sama enostavno namesti aplikacijo v svoja okolja in je na ta način bolj neodvisna od podjetja, ki je aplikacijo razvilo.
 
-\subsection{Proces neprekinjene dostave stranki}
-\label{subsec:proces-neprekinjene-dostave-stranki}
+V kolikor stranka ne uporablja spletne platforme Gitlab za upravljanje in nadzor različic aplikacij, pa se dogovorimo za drugačen način prevzema sprememb in namestitve aplikacij v strankina okolja.
+
+%\subsection{Proces neprekinjene dostave stranki}
+%\label{subsec:proces-neprekinjene-dostave-stranki}
+
+% Verzioniranje aplikacij?
 
 \section{Razvoj komponente za neprekinjeno dostavo in integracijsko testiranje - Medius CD}
 \label{sec:razvoj-komponente-za-neprekinjeno-dostavo-in integracijsko-testiranje-medius-cd}
+Projekt Medius CD je nastal z željo po poenotenju cevovodov na projektih, zmanjšanju podvojene konfiguracije in kode ter olajšanju vzdrževanja. Sestavljen je iz dveh delov: predlog Gitlab in skript napisanih v jeziku Bash.
+
+Kot omenjeno v poglavju \ref{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd} je cevovod definiran z datoteko \texttt{.gitlab-ci.yml}, ki se nahaja na korenu projekta. Če ta datoteka obstaja v oddaljenem repozitoriju jo Gitlab avtomatsko prepozna in ob vsakem odrivu kode v oddaljen repozitorij kreira cevovod.
+
+Naloge v cevovodu izvajajo izvajalci nalog Gitlab, ki smo jih opisali v poglavju \ref{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd}. V konfiguraciji cevovoda, pa lahko s ključno besedo \texttt{image} nastavimo tudi sliko Docker, v kateri izvajalec nalogo zažene. Takšne slike imenujemo zagonske slike. Na ta način lahko v naprej pripravimo okolje, v katerem se naloge izvajajo. Zagonske slike pa je potrebno v naprej zgraditi in naložiti na register slik Docker, iz katerega lahko izvajalci slike prenesejo.
+
+Najprej smo zagonske slike gradili in hranili v enem projektu Gitlab. To nam je omogočalo, da smo isto sliko lahko večkrat uporabili v cevovodih različnih projektov. Kmalu pa smo ugotovili, da takšen način vodenja slik, zaradi specifik projektov, znatno oteži vzdrževanje, saj smo morali veliko slik prilagajati posameznim projektom. Odločili smo se, da bomo zagonske slike hranili in gradili v vsakemu projektu posebej. Kljub temu, pa smo pripravili sliko Docker, ki vsebuje operacijski sistem \texttt{rockylinux} in nameščena orodja, ki jih potrebujemo za izvajanje cevovoda. To sliko smo naložili na Dockerhub, tako da jo lahko uporabimo za osnovo katerekoli zagonske slike.
+
+Datoteke Docker, ki jih uporabljamo za gradnjo zagonskih slik, hranimo v imeniku \texttt{runner-images}, ki se nahaja v korenskem imeniku projekta. V njih definiramo vse potrebno za izvedbo nalog cevovoda specifičnega projekta: interpreter programske kode, navidezne stroje, certifikate, orodja za gradnjo projekta, orodja za izvajanje testov ipd. Gradnjo zagonskih slik pa smo avtomatizirali s posebnim projektnim cevovodom, ki se zažene, če pred zagonom cevovoda nastavimo spremenljivko Gitlab \texttt{BUILD\_RUNNERS} na \texttt{true} ali pa sporočilo spremembe začnemo z besedilom \texttt{build-runners}. To smo naredili tako, da v datoteki \texttt{.gitlab-ci.yml} s ključnima besedama \texttt{include} in \texttt{rules} pogojno dodamo konfiguracijo glavnega cevovoda, ki se nahaja v \texttt{.gitlab/main.yml} ali pa konfiguracijo cevovoda za gradnjo zagonske slike, ki se nahaja v \texttt{.gitlab/build-runners.yml}.
+
+\subsection{Datoteka \texttt{config\_file}}
+
+Platforma Gitlab omogoča nastavljanje skupinskih in projektnih spremenljivk, ki so na voljo med izvajanjem nalog. Na ta način, lahko v naloge dodamo občutljive podatke, kot so gesla in certifikati ali pa nastavimo vrednost, ki je specifična za določen projekt. Ker smo želeli, da bi bil razvit cevovod uporaben za vse projekte, smo morali upoštevati različne zahteve, ki jih prinesejo različne specifike projektov. To smo večinoma reševali z dodajanjem spremenljivk Gitlab, ki so spremenile izvajanje posameznih nalog. Ker je bilo takšnih spremenljivk veliko, je postalo vzdrževanje le teh oteženo. Zato smo razvili mehanizem za nastavljanje spremenljivk v cevovodu preko datoteke v formatu YAML, ki jo na začetku cevovoda prenesemo iz konfiguracijskega strežnika ali spremenljivke Gitlab. Datoteko smo poimenovali \texttt{config\_file} in vsebuje naslednje lastnosti:
+\begin{itemize}
+    \item \texttt{include} - url ali spremenljivka Gitlab, ki vsebuje obstoječo konfiguracijsko datoteko in jo trenutna datoteka razširja.
+    \item \texttt{variables} - spremenljivke, ki so na voljo v vseh nalogah.
+    \item \texttt{services} - seznam aplikacij, za katere želimo zgraditi slike Docker. Vsebujejo naslednje atribute:
+    \begin{itemize}
+        \item \texttt{name} - ime aplikacije.
+        \item \texttt{dir} - korenski imenik aplikacije.
+        \item \texttt{variables} - spremenljivke, ki so na voljo v nalogah, ki se tičejo te aplikacij.
+        \item \texttt{environments} - seznam okolji, v katera želimo aplikacijo namestiti. Vsebujejo naslednje atribute:
+        \begin{itemize}
+            \item \texttt{name} - ime okolja.
+            \item \texttt{variables} - spremenljivke, ki so na voljo pri namestitvi aplikacije v to okolje.
+        \end{itemize}
+    \end{itemize}
+    \item \texttt{it} - konfiguracija namestitve odvisnih aplikacij, potrebnih za zagon integracijskih testov.
+    \begin{itemize}
+        \item \texttt{variables} - spremenljivke, ki so na voljo pri namestitvi okolja za integracijske teste
+        \item \texttt{deployments} - seznam aplikacij, ki jih želimo namestiti v okolje za integracijske teste. Vsebujejo naslednje atribute:
+        \begin{itemize}
+            \item \texttt{project}: pot do projekta na platformi Gitlab
+            \item \texttt{branch}: veja, ki se uporabi za namestitev
+            \item \texttt{source}: datoteka iz katere preberemo številko različice aplikacije, ki jo želimo namestiti
+            \item \texttt{property}: pot do atributa, ki ga želimo prebrati iz datoteke nastavljene v atributu \texttt{source}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+Primer datoteke \texttt{config\_file}:
+\begin{verbatim}
+include: "http://config:8500/v1/kv/medius-cd/CONFIG_FILE"
+variables:
+  VARIABLE_NAME: "variable_value"
+services:
+  - name: "MY_PROJECT"
+    dir: "./service_dir"
+    variables:
+      VARIABLE_NAME: "variable_value"
+    environments:
+      - name: "environment_name_1"
+        variables:
+          VARIABLE_NAME: "variable_value"
+      - "environment_name_2"
+it:
+  variables:
+    VARIABLE_NAME: "variable_value"
+  deployments:
+    - project: "medius/ci-tools/medius-cd"
+      branch: "dev"
+    - project: "medius/ci-tools/medius-cd"
+      source: "pom.xml"
+      property: "version.medius-cd"
+\end{verbatim}
+
+Osnovna enota cevovoda na platformi Gitlab je naloga. Najbolj preprosta naloga je sestavljena iz imena naloge in dela \texttt{script}:
+
+\begin{verbatim}
+    hello-world-job:
+      script:
+        - echo "Hello World!"    
+\end{verbatim}
+
+Nalogi pa lahko nastavimo še veliko drugih atributov, ki definirajo njeno delovanje. Najbolj pogosto uporabljeni so:
+\begin{itemize}
+    \item \texttt{artifacts} - datoteke in imeniki, ki so po uspešno izvedeni nalogi na voljo za prenos.
+    \item \texttt{before\_script} - množica ukazov, ki se izvedejo preden se izvede naloga.
+    \item \texttt{cache} - seznam datotek, ki se shranijo v začasno shrambo in so na voljo med zaporednimi izvajanji cevovoda.
+    \item \texttt{dependencies} - seznam predhodnih nalog, iz katerih se prenesejo artefakti.
+    \item \texttt{extends} - seznam predhodnih konfiguracij, ki jih ta naloga deduje.
+    \item \texttt{needs} - seznam predhodnih nalog, po katerih se naloga takoj zažene, ne glede na to, v katerem koraku izvajanja se cevovod nahaja.
+    \item \texttt{rules} - seznam pogojev, ki določijo ali se naloga kreira ali ne.
+    \item \texttt{script} - lupinski skript, ki ga naloga izvede.
+    \item \texttt{stage} - korak cevovoda, v katerem se bo naloga izvedla.
+    \item \texttt{variables} - spremenljivke, ki so na voljo v nalogi.
+    \item \texttt{when} - kdaj se naloga zažene.
+\end{itemize}
+
+V delu \texttt{script} lahko uporabimo jezik Bash, da definiramo kaj naloga naredi. Tak način definicije nalog je dober za preproste naloge, ki ne potrebujejo veliko vrstic kode in kompleksne logike. Za definicijo bolj kompleksnih nalog pa se boljše izkažejo skripti, ki jih napišemo v ločeni datoteki in jih v okviru naloge zaženemo. Na ta način lahko skripte tudi testiramo in uporabimo na več mestih. Zato smo logiko bolj kompleksnih nalog definirali v samostojnih skriptah, napisanih v jeziku Bash. V okviru cevovoda projekta Medius CD jih zapakiramo v različne formate, ki jih naložimo na centralni repozitorij Nexus, od koder jih lahko enostavno prenesemo in uporabljamo.
+
+Ker se projekti lahko močno razlikujejo tako vsebinsko kot tudi tehnično - programski jezik, orodja za gradnjo, orodja za zagon testov, smo pripravili več manjših predlog Gitlab, ki jih lahko večkrat uporabimo, da kreiramo različne cevovode. Pripravljene predloge se nahajajo v repozitoriju komponente Medius CD in jih lahko dodamo v predloge ostalih projektov s ključno besedo \texttt{include}. Ta nam omogoča dodajanje predlog na tri načine:
+\begin{itemize}
+    \item pot do datoteke v lokalnem imeniku,
+    \item spletni naslov do datoteke,
+    \item kombinacija projekta Gitlab, reference v obliki veje ali označbe Git v oddaljenem repozitoriju in poti do datoteke v oddaljenem projektu. Primer: \begin{verbatim}
+include:
+  - project: 'medius/ci-tools/medius-cd'
+    ref: v2.3.5
+    file:
+      - '/gitlab-ci/templates/generic/.build.docker.yml'
+\end{verbatim}
+\end{itemize}
+
+
+\subsection{Inicializacija komponente Medius CD}
+Prva naloga vseh cevovodov je inicializacija komponente Medius CD. Naloga poskusi najprej preberati datoteko \texttt{config\_file.yaml} iz konfiguracijskega strežnika ali Gitlab variable. V kolikor datoteka obstaja, pripravi dve novi datoteki, ki sta dodani kot artefakta:
+\begin{itemize}
+    \item \texttt{config\_file.json} - pretvorjen \texttt{config\_file.yaml} iz formata YAML v format JSON z nekaterimi dodanimi privzetimi spremenljivkami, če še niso bile dodane v \texttt{config\_file.yaml}.
+    \item \texttt{config.env} - datoteka, ki ima v vsaki vrstici po eno spremenljivko in njeno vrednost, ločeno z enačajem. To so tiste spremenljivke, ki morajo biti na voljo v vseh nalogah. To datoteko nastavimo kot poseben artefakt pod atribut \texttt{artifacts.reports.dotenv}, ki na začetku vsake naloge, ki je odvisna od te naloge, nastavi vse spremenljivke v tej datoteki kot okoljske spremenljivke.
+\end{itemize}
+
+Naloga nato poskusi prebrati številko različice komponente medius-cd, ki je definirana pod ključno besedo \texttt{include} v datoteki \texttt{.gitlab/.main.yml}. Številka različice se uporabi za prenos komponente iz centralnega repozitorija Nexus. Če številka različice ni definirana ali jo naloga ne zna prebrati, se prenese zadnja objavljena različica. Naloga paket razširi v imenik, ki je nastavljen s spremenljivko \texttt{MEDIUS\_CD\_PATH} in ga doda med artefakte, kjer je na voljo za ostale naloge.
+
+\subsection{Gradnja projekta in testi enot}
+
+Naslednji dve nalogi sta gradnja projekta in zagon testov enot. Obe nalogi sta odvisni od programskega jezika in orodji, ki jih projekt uporablja. V projektu medius-cd imamo pripravljene naloge za gradnjo in zagon testov enot projektov, ki uporabljajo programski jezik Javo in orodje Maven, Python, setuptools in tox ter Javascript in npm ali pnpm.
+
+\subsection{Gradnja slik Docker}
+
+Po uspešni gradnji projekta in testih enot se zažene naloga, ki zgradi aplikacijsko sliko Docker. Naloga je odvisna od gradnje projekta, saj velikokrat potrebujemo rezultat gradnje projekta za gradnjo slike Docker.
+
+
+
+\subsection{Preverjanje kakovosti kode}
+
+\subsection{Integracijski testi}
+
+\subsection{Izdaja slike Docker}
+
+\subsection{Namestitev aplikacije}
+
+\subsection{Izdaja nove verzije}
 
 \section{Postavitev projekta}
 \label{subsec:postavitev-projekta}
@@ -483,14 +653,17 @@ IntelliJ IDEA\footnote{\url{https://www.jetbrains.com/idea/}} je integrirano raz
 \subsection{Java in Maven}
 \label{subsec:java-in-maven}
 
-\subsection{Java in Gradle}
-\label{subsec:java-in-gradle}
+%\subsection{Java in Gradle}
+%\label{subsec:java-in-gradle}
 
 \subsection{JavaScript in NPM}
 \label{subsec:javascript-in-npm}
 
-\section{Vtičnik Gitlab Template Lint}
-\label{sec:vtičnik-gitlab-template-lint}
+\subsection{Python in Setuptools}
+\label{subsec:python-in-setuptools}
+
+%\section{Vtičnik Gitlab Template Lint}
+%\label{sec:vtičnik-gitlab-template-lint}
 
 
 
