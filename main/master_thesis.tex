@@ -524,6 +524,7 @@ Najprej smo zagonske slike gradili in hranili v enem projektu Gitlab. To nam je 
 Datoteke Docker, ki jih uporabljamo za gradnjo zagonskih slik, hranimo v imeniku \texttt{runner-images}, ki se nahaja v korenskem imeniku projekta. V njih definiramo vse potrebno za izvedbo nalog cevovoda specifičnega projekta: interpreter programske kode, navidezne stroje, certifikate, orodja za gradnjo projekta, orodja za izvajanje testov ipd. Gradnjo zagonskih slik pa smo avtomatizirali s posebnim projektnim cevovodom, ki se zažene, če pred zagonom cevovoda nastavimo spremenljivko Gitlab \texttt{BUILD\_RUNNERS} na \texttt{true} ali pa sporočilo spremembe začnemo z besedilom \texttt{build-runners}. To smo naredili tako, da v datoteki \texttt{.gitlab-ci.yml} s ključnima besedama \texttt{include} in \texttt{rules} pogojno dodamo konfiguracijo glavnega cevovoda, ki se nahaja v \texttt{.gitlab/main.yml} ali pa konfiguracijo cevovoda za gradnjo zagonske slike, ki se nahaja v \texttt{.gitlab/build-runners.yml}.
 
 \subsection{Datoteka \texttt{config\_file}}
+\label{subsec:datoteka-config-file}
 
 Platforma Gitlab omogoča nastavljanje skupinskih in projektnih spremenljivk, ki so na voljo med izvajanjem nalog. Na ta način, lahko v naloge dodamo občutljive podatke, kot so gesla in certifikati ali pa nastavimo vrednost, ki je specifična za določen projekt. Ker smo želeli, da bi bil razvit cevovod uporaben za vse projekte, smo morali upoštevati različne zahteve, ki jih prinesejo različne specifike projektov. To smo večinoma reševali z dodajanjem spremenljivk Gitlab, ki so spremenile izvajanje posameznih nalog. Ker je bilo takšnih spremenljivk veliko, je postalo vzdrževanje le teh oteženo. Zato smo razvili mehanizem za nastavljanje spremenljivk v cevovodu preko datoteke v formatu YAML, ki jo na začetku cevovoda prenesemo iz konfiguracijskega strežnika ali spremenljivke Gitlab. Datoteko smo poimenovali \texttt{config\_file} in vsebuje naslednje lastnosti:
 \begin{itemize}
@@ -616,6 +617,7 @@ include:
       - '/gitlab-ci/templates/generic/.build.docker.yml'
 \end{verbatim}
 \end{itemize}
+V nadaljevanju opišemo posamezne naloge v standardnem cevovodu.
 
 
 \subsection{Inicializacija komponente Medius CD}
@@ -629,38 +631,84 @@ Naloga nato poskusi prebrati številko različice komponente medius-cd, ki je de
 
 \subsection{Gradnja projekta in testi enot}
 
-Naslednji dve nalogi sta gradnja projekta in zagon testov enot. Obe nalogi sta odvisni od programskega jezika in orodji, ki jih projekt uporablja. V projektu medius-cd imamo pripravljene naloge za gradnjo in zagon testov enot projektov, ki uporabljajo programski jezik Javo in orodje Maven, Python, setuptools in tox ter Javascript in npm ali pnpm.
-
+Naslednji dve nalogi sta gradnja projekta in zagon testov enot. Obe nalogi sta odvisni od programskega jezika in orodji, ki jih projekt uporablja. V projektu medius-cd imamo pripravljene naloge za gradnjo in zagon testov enot projektov, ki uporabljajo:
+\begin{itemize}
+    \item programski jezik Javo in orodje Maven,
+    \item Python, setuptools in tox,
+    \item Javascript in npm in
+    \item Javascript in pnpm.
+\end{itemize}
 \subsection{Gradnja slik Docker}
 
-Po uspešni gradnji projekta in testih enot se zažene naloga, ki zgradi aplikacijsko sliko Docker. Naloga je odvisna od gradnje projekta, saj velikokrat potrebujemo rezultat gradnje projekta za gradnjo slike Docker.
-
-
+Po uspešni gradnji projekta in testih enot se zaženejo naloge, ki zgradijo aplikacijske slike Docker. Projekt je lahko sestavljen iz več modulov in je zato lahko potrebno zgraditi več različnih aplikacijskih slik Docker. To naredimo tako, da v konfiguracijski datoteki \texttt{config\_file} pod ključno besedo \texttt{services} definiramo več servisov. Prva naloga v koraku gradnje slik Docker na podlagi konfiguracijske datoteke in z uporabo orodja \texttt{jsonnet} pripravi konfiguracijsko datoteko Gitlab v formatu JSON, ki vsebuje naloge za gradnjo vseh aplikacijskih slik definiranih v konfiguracijski datoteki. Ta datoteka se nato uporabi v nalogi tipa \texttt{trigger}, ki na podlagi prejete datoteke kreira nov otroški cevovod (ang. child pipeline), ki vsebuje definirane naloge. Te naloge pa zaženejo skript napisan v programskem jeziku Bash, ki na podlagi datoteke Docker in z uporabo orodja \texttt{kaniko} zgradi sliko Docker, jo naloži v projektni register slik Docker in jo označi s številko SHA trenutnega sporočila. Tako je slika pripravljena za zagon integracijskih testov ali namestitev na testna okolja.
 
 \subsection{Preverjanje kakovosti kode}
+Vzporedno z gradnjo slik Docker lahko ročno zaženemo nalogo za preverjanje kakovosti kode. Ta je ponovno odvisna od programskega jezika in orodji, ki jih projekt uporablja. Orodja preverjajo ali koda vsebuje primere slabih praks in znane varnostne pomanjkljivosti. Rezultati teh nalog se zapišejo v datoteke, ki so na voljo med artefakti, in naložijo na platformo SonarQube, ki rezultate na pregleden način prikazuje. 
 
+% trigger -> nov pipeline -> trigger, ki kreira nov pipeline s deploy it in trigger na druge projekte
 \subsection{Integracijski testi}
+Po uspešni gradnji slik Docker lahko ročno zaženemo nalogo za integracijske teste. Zaradi daljšega trajanja jih ne želimo avtomatsko zagnati v vseh cevovodih. Za testiranje integracije potrebujemo postavljeno testno bazo, če aplikacija za delovanje potrebuje bazo, aplikacijo in vse aplikacije, na katere se aplikacija integrira. Zato  je naloga, ki zažene integracijske teste, tipa \texttt{trigger} in kreira otroški cevovod, ki je definiran s konfiguracijsko datoteko Gitlab trenutnega projekta, vendar nastavljeno spremenljivko Gitlab \texttt{IT\_FORCE} na \texttt{true}. To povzroči, da otroški cevovod vsebuje naslednje naloge:
+\begin{itemize}
+    \item \texttt{initialize-database} - na podlagi datotek , ki so dodane v repozitorij, pripravi bazo
+    \item \texttt{initialize-it-runtime} - iz konfiguracijske datoteke \texttt{config\_file} pripravi datoteko v formatu \texttt{properties}, ki vsebuje spremenljivke za zagon integracijskih testov - spletni naslov aplikacije, naslov baze ipd.
+    \item \texttt{prepare-deploy-it} - naloga tipa \texttt{trigger}, ki na podlagi konfiguracije pod ključno besedo \texttt{it} v konfiguracijski datoteki \texttt{config\_file}, kreira otroški cevovod z nalogami, ki namestijo vse odvisne aplikacije. Naloge za namestitve drugih aplikacij, so zopet tipa \texttt{trigger}, saj zaženejo cevovod druge aplikacije s tako nastavljenimi spremenljivkami Gitlab, da se namestijo v enako okolje kot testirana aplikacija.
+    \item \texttt{test} - po uspešni namestitvi aplikacij s pomočjo orodja za testiranje zažene integracijske teste
+    \item \texttt{clean-up-database} - po končanem izvajanju testov izbriše bazo, ki je bila kreirana za namen integracijskih testov.
+    \item \texttt{clean-up-namespace} - po končanem izvajanju testov izbriše okolje na platformi Kubernetes, ki je bilo uporabljeno za namestitev aplikacij.
+\end{itemize}
 
-\subsection{Izdaja slike Docker}
+\subsection{Izdaja paketov in slik Docker}
+Nekatere naloge želimo izvesti samo na določenih vejah repozitorija. To lahko naredimo s ključnima besedama \texttt{rules} in \texttt{if} s katerima določimo logični pogoj, ki definira kdaj naj se naloga doda v cevovod. Takšni nalogi sta tudi izdaja paketov in izdaja slik Docker, ki ju dodamo v cevovod samo ob spremembah na vejah imenovanih \texttt{dev} ali \texttt{main} in novih značkah.
+
+Naloga "Izdaja paketov" pride v poštev za projekte, ki se uporabljajo kot knjižnice v drugih projektih. Naloga zapakira kodo v paket in ga naloži na centralni repozitorij Nexus, od koder ga lahko ostali projekti prenesejo in uporabijo. Na ta način se na centralnem repozitoriju vedno nahajajo vse verzije kot tudi trenutna razvojna verzija projekta, ki se nahaja v veji \texttt{dev} ali \texttt{main}.
+
+Podobno velja tudi za nalogo "Izdaja slik Docker", ki pa se uporablja za vse projekte, ki gradijo slike Docker. V koraku gradnje, za namene testiranja, slike najprej označimo s številko SHA trenutnega sporočila. Ta naloga, pa po uspešno izvedenih testih, enako sliko označi s trenutno številko različice projekta. Na ta način lahko enostavno zamenjamo različico aplikacije, ki je nameščena.
 
 \subsection{Namestitev aplikacije}
+\label{subsec:namestitev-aplikacije}
+Naloge za namestitev aplikacije v različna okolja se podobno kot pri gradnji slik Docker in integracijskih testih dodajo dinamično s pomočjo naloge tipa \texttt{trigger}. Ta naloga prebere konfiguracijo okolji, ki je za vsak servis posebej definirana v konfiguracijski datoteki \texttt{config\_file} in kreira nove naloge za namestitev aplikacije v različna okolja. Te naloge najprej zaženejo skript \texttt{init-kube-openshift.sh}, ki pripravi konfiguracijsko datoteko za povezavo na platformo Kubernetes, nato pa še skript \texttt{job-deploy.sh}, ki naredi naslednje:
+\begin{itemize}
+    \item Prebere datoteko \texttt{/deploy/k8s/deployment.yml.in}, ki se nahaja v repozitoriju in predstavlja predlogo namestitve.
+    \item V prebrani datoteki poišče vse besede, ki se začnejo in končajo z dvemi podčrtaji npr. \texttt{\_\_SERVICE\_NAME\_\_}. Te besede predstavljajo spremenljivke, ki jih je potrebno zamenjati z vrednostmi.
+    \item Vse spremenljivke v datoteki zamenja z vrednostmi, ki jih imajo okoljske spremenljivke z enakim imenom, vendar brez podčrtajev npr. \texttt{SERVICE\_NAME} in ustvari novo konfiguracijsko datoteko za namestitev na platformi Kubernetes imenovano \texttt{deployment.yml}.
+    \item S programom \texttt{kubectl} in ustvarjeno datoteko kreira novo namestitev na platformi Kubernetes.
+    \item S programom \texttt{kubectl} dokler aplikacija ni uspešno nameščena ali pa preteče 10 minut preverja stanje namestitve.
+\end{itemize}
 
-\subsection{Izdaja nove verzije}
+\subsection{Izdaja nove različice}
+Naloga za izdajo nove različice se nahaja v zadnjem koraku cevovoda in jo je potrebno zagnati ročno. Naloga zažene skript \texttt{job-release-src-to-branch.sh}, ki naredi naslednje:
+\begin{itemize}
+    \item Združi vse spremembe od zadnje izdane verzije v eno spremembo.
+    \item Datoteki \texttt{.gitlab/main.yml} in \texttt{.gitlab/build-runners.yml}, oziroma datoteke, ki so nastavljene s spremenljivko \texttt{GITLAB\_CI\_PATH}, posodobi z uporabo končne točke programskega vmesnika Gitlab, ki vse dodane predloge preko ključne besede \texttt{include} in ostalo vsebino združi v eno datoteko. Na ta način lahko stranka zažene cevovod tudi v svoji instanci platforme Gitlab, ki nima dostopa do predlog, ki se nahajajo v projektu \texttt{medius-cd}.
+    \item Iz številke različice aplikacije odstrani \texttt{-SNAPSHOT} oziroma \texttt{-rc}.
+    \item Doda številko različice v datoteko \texttt{CHANGELOG.md}, ki vsebuje povzetek sprememb, ki so bile narejene v tej verziji.
+    \item Vse našteto doda kot eno spremembo v vejo \texttt{release}.
+\end{itemize}
+Na ta način se v veji \texttt{release} za vsako različico nahaja po ena sprememba, kar omogoča, da si lahko stranka spremembe enostavno prenese v svoj repozitorij.
 
-\section{Postavitev projekta}
-\label{subsec:postavitev-projekta}
+Nato naloga zažene še skripta \texttt{gitlab-create-tag-with-notes.sh}, ki ustvari novo značko Git s pripono \texttt{-SNAPSHOT} ali \texttt{-rc}, in \texttt{bump-version.sh}, ki poveča trenutno številko različice v razvoju, npr. iz \texttt{0.3.0-SNAPSHOT} v \texttt{0.4.0-SNAPSHOT} in doda spremembo v vejo, na kateri je bil pognan cevovod.
 
-\subsection{Java in Maven}
-\label{subsec:java-in-maven}
+\subsection{Prilagajanje nalog}
+\label{subsec:prilagajanje-nalog}
+V kolikor vnaprej pripravljene predloge cevovodov ne zadoščajo potrebam projekta, lahko vzdrževalec projekta z uporabo predlog posameznih nalog kreira cevovod po meri. Predloge nalog so narejene tako, da ne uporabljajo ključne besede \texttt{before\_script}. To omogoča, da lahko naloge v končnem projektu dodamo preko ključne besede \texttt{include} nato pa jih prilagodimo z dodajanjem skript v delu \texttt{before\_script}. Obenem je možno naloge konfigurirati preko spremenljivk, ki so opisane v dokumentaciji.
+
+% \section{Dokumentacija}
+% Dokumentacija projekta \texttt{medius-cd} je narejena z uporabo orodja \texttt{sphinx} in funkcionalnosti \texttt{gitlab-pages} platforme Gitlab.
+
+% \section{Postavitev projekta}
+% \label{subsec:postavitev-projekta}
+
+% \subsection{Java in Maven}
+% \label{subsec:java-in-maven}
 
 %\subsection{Java in Gradle}
 %\label{subsec:java-in-gradle}
 
-\subsection{JavaScript in NPM}
-\label{subsec:javascript-in-npm}
+% \subsection{JavaScript in NPM}
+% \label{subsec:javascript-in-npm}
 
-\subsection{Python in Setuptools}
-\label{subsec:python-in-setuptools}
+% \subsection{Python in Setuptools}
+% \label{subsec:python-in-setuptools}
 
 %\section{Vtičnik Gitlab Template Lint}
 %\label{sec:vtičnik-gitlab-template-lint}
@@ -674,24 +722,373 @@ Po uspešni gradnji projekta in testih enot se zažene naloga, ki zgradi aplikac
 
 \chapter{Rezultati}
 \label{ch:rezultati}
+V poglavju bomo predstavili uporabo razvite komponente na resničnih projektih, ki se še razvijajo ali pa so že v fazi produkcije. Najprej bomo opisali kako smo izboljšali pripravo zagonskih slik. Nato bomo predstavili še eno prednost uporabe konfiguracijske datoteke \texttt{config\_file}. Na koncu bomo predstavili kako lahko z uporabo razvite komponente enostavno postavimo cevovod projekta za razvoj aplikacije in projekta za razvoj programske knjižnice.
 
-\section{Predstavitev projekta}
-\label{sec:predstavitev-projekta}
+% \section{Predstavitev projekta}
+% \label{sec:predstavitev-projekta}
 
-\section{Primer uporabe na projektu}
-\label{sec:primer-uporabe-na-projektu}
+% \section{Primer uporabe na projektu}
+% \label{sec:primer-uporabe-na-projektu}
+\section{Gradnja zagonskih slik}
+\label{sec:gradnja-zagonskih-slik}
+V poglavju \ref{sec:razvoj-komponente-za-neprekinjeno-dostavo-in integracijsko-testiranje-medius-cd} smo opisali kako zgradimo zagonske slike, ki jih uporabljajo izvajalci nalog Gitlab ali pa jih potrebujemo za gradnjo aplikacijskih slik Docker. Omenili smo tudi, da smo pred razvojem komponente \texttt{medius-cd} te slike gradili in hranili v enem projektu, kar je otežilo vzdrževanje le teh. Večino končnih zagonskih slik je bilo zgrajenih na osnovi drugih slik, ki pa so bile zgrajene na osnovi še drugih in tako dalje. Tako se je cevovod zelo razvejal, kar lahko vidimo tudi na sliki \ref{fig:gradnja-zagonskih-slik-pred}. V primeru, da se je spremenila osnovna slika na vrhu korenu hierarhije, je bilo potrebno skoraj vse slike ponovno zgraditi, kar je lahko trajalo tudi več kot 30 minut. 
 
-\subsection{Java projekt}
-\label{subsec:java-projekt}
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=13cm]{figures/gradnja-zagonskih-slik-2.png}
+    \end{center}
+\caption{Cevovod za gradnjo zagonskih slik pred razvojem komponente.}
+\label{fig:gradnja-zagonskih-slik-pred}
+\end{figure}
 
-\subsection{JavaScript projekt}
-\label{subsec:javascript-projekt}
+V razviti komponenti smo uvedli poseben cevovod za gradnjo zagonskih slik, ki je del vsakega projekta in ga lahko ročno zaženemo. To nam zelo olajša vzdrževanje zagonskih slik, saj cevovod vsebuje samo naloge za gradnjo slik, ki jih posamezen projekt potrebuje. Zato cevovod ostane obvladljiv in se tudi hitreje izvede. Obenem zgrajeno sliko hranimo v registru projekta in jo uporabljamo samo za projekt, v katerem je bila zgrajena. To nam omogoča, da lahko sliko čim bolj prilagodimo potrebam projekta.
 
-\subsection{Python projekt}
-\label{subsec:python-projekt}
+\section{Prilagajanje cevovoda}
+V poglavju \ref{subsec:datoteka-config-file} smo predstavili datoteko \texttt{config\_file}, ki nam omogoča konfiguracijo cevovoda z datoteko v formatu YAML. Poleg olajšanja vzdrževanja vseh spremenljivk, ki so potrebne za prilagoditev cevovoda projektnim specifikam, nam ta datoteka olajša tudi prilagajanje cevovoda stranki. Stranka največkrat uporablja svoj centralni repozitorij, konfiguracijski strežnik, register slik Docker in drugo. Hkrati se namestitvena okolja v podjetju in pri stranki razlikujejo. Konfiguracijska datoteka omogoča, da lahko stranka sama enostavno spremeni nastavitve svojega cevovoda. To znatno olajša razvoj aplikacije, saj konfiguracija cevovoda ni dodana v sistem za nadzor različic in za spremembo obnašanja cevovoda ni potrebno izdajati nove različice aplikacije.
 
-\subsection{Monorepo projekt}
-\label{subsec:monorepo-projekt}
+\section{Cevovod aplikacije}
+\label{sec:projekt-aplikacije}
+Z novo razvito komponento je cevovod za razvoj aplikacije enostavno dodati. V korenski imenik projekta dodamo naslednje imenike in datoteke:
+\begin{itemize}
+    \item Imenik \texttt{runner-images} v katerega dodamo datoteko Docker, ki vsebuje ukaze za namestitev orodji, ki jih potrebujemo za gradnjo aplikacije in aplikacijske slike Docker. Za osnovno lahko uporabimo pripravljeno sliko \texttt{rocky-with-tools}, ki že vsebuje vsa osnovna orodja potrebna za izvajanje nalog.
+    \item Imenik \texttt{deploy/docker} v katerega dodamo datoteko Docker, ki vsebuje ukaze za namestitev in zagon aplikacije v vsebniku.
+    \item Imenik \texttt{deploy/k8s} v katerega dodamo datoteko \texttt{deployment.yml.in}, ki vsebuje konfiguracijo za namestitev na gručo na platformi Kubernetes.
+    \item Vnaprej pripravljeno datoteko \texttt{.gitlab-ci.yml}, ki pogojno doda konfiguracijski datoteki za cevovod za gradnjo zagonskih slik ali aplikacijski cevovod.
+    \item Imenik \texttt{.gitlab} v katerega dodamo datoteki \texttt{.build-runners.yml}, ki uporabi predlogo za gradnjo zagonskih slik, in \texttt{.main.yml}, ki uporabi predlogo aplikacijskega cevovoda.
+\end{itemize}
+
+\section{Cevovod programske knjižnice}
+Za postavitev cevovoda za razvoj programske knjižnice potrebujemo enake imenike in datoteke, z izjemo imenika \texttt{deploy}, ki ga ne potrebujemo. Tudi vsebina datotek ostane v večini enaka, edina razlika je v datoteki \texttt{.main.yml}, v kateri moramo uporabiti predlogo cevovoda za programsko knjižnico.
+
+\section{Projekt v programskem jeziku Java}
+\label{sec:java-projekt}
+V tem poglavju bomo predstavili postavitev cevovoda projekta, ki je napisan v programskem jeziku Java in za gradnjo uporablja orodje Maven. Aplikacija uporablja aplikacijski strežnik Wildfly in preko programskega vmesnika izpostavlja končne točke za izvajanje poslovnih operacij. Za shranjevanje podatkov uporablja podatkovno bazo Oracle.
+
+Stranka ima postavljeno svojo instanco platforme Gitlab na kateri se cevovod izvaja. Zaradi varnosti je stranka zahtevala, da se celoten cevovod izvaja brez povezave na internet. To pomeni, da morajo biti vse odvisnosti projekta dostopne preko internih repozitorijev in registrov.
+
+\subsection{Cevovod v podjetju}
+\label{subsec:java-projekt-cevovod-v-projektu}
+Ker želimo, da je cevovod v podjetju čim bolj podoben cevovodu pri stranki, smo pripravili izvajalec nalog Gitlab, ki nima dostopa do interneta. Dodali smo mu posebno značko in jo shranili v spremenljivko Gitlab imenovani \texttt{RUNNER\_TAGS}. Na ta način razviti cevovod ve katerega izvajalca nalog mora uporabiti. 
+
+Na konfiguracijski strežnik Consul smo dodali konfiguracijsko datoteko \texttt{config\_file}, ki vsebuje zgolj vrstico s ključno besedo \texttt{include}, ki doda vsebino konfiguracijske datoteke, ki se nahaja na podanem spletnem naslovu:
+\begin{verbatim}
+include: "http://config-reg:8500/v1/kv/ls/CONFIG_FILE"
+\end{verbatim}
+Na ta način lahko eno konfiguracijsko datoteko uporabimo za več projektov, lahko pa jo tudi prilagodimo, tako da za vrstico s ključno besedo \texttt{include} dodamo konfiguracijo po meri. Dodana konfiguracijska datoteka vsebuje naslednje nastavitve:
+\begin{verbatim}
+# Globalne spremenljivke
+variables:
+  KUBECONFIG_CONSUL_PATH: "default/.kube/config.v24"
+  K8S_DEPLOY_DIR: "./deploy/k8s.v24"
+  EXPOSED_SUFFIX: apps.kubetest5.int.medius.si
+# Servisi
+services:
+  - environments:
+      - name: "test1"
+        variables:
+          KUBECONFIG: "KUBECONFIG_TEST"
+          AUTO_DEPLOY: "true"
+      - test2
+      - test3
+\end{verbatim}
+Najprej nastavimo nekaj globalnih spremenljivk, ki se uporabijo v vseh nalogah cevovoda in spremenijo privzete nastavitve:
+\begin{itemize}
+    \item \texttt{KUBECONFIG\_CONSUL\_PATH} - pot do konfiguracijske datoteke \texttt{kubeconfig}, ki vsebuje podatke za povezavo in avtentikacijo s platformo Kubernetes na katero želimo aplikacijo namestiti.
+    \item \texttt{K8S\_DEPLOY\_DIR} - pot do imenika v repozitoriju, kjer se nahajajo konfiguracijske datoteke za namestitev aplikacije z uporabo orodja \texttt{kubectl}. Na ta način lahko vzdržujemo različne konfiguracijske datoteke, ki se uporabljajo za namestitve na različne verzije gruč Kubernetes.
+    \item \texttt{EXPOSED\_SUFFIX} - pripona spletnega naslova, na kateri bo aplikacija dostopna.
+\end{itemize}
+Nato pa nastavimo še servise in okolja namestitve servisov. V tem primeru imamo samo en servis in lahko ime servisa spustimo, saj se privzeto uporabi ime projekta Gitlab v katerem se cevovod izvaja. Za okolja pa nastavimo \texttt{test1}, \texttt{test2}, \texttt{test3} in pri okolju \texttt{test1} nastavimo še dve spremenljivki:
+\begin{itemize}
+    \item \texttt{KUBECONFIG} - ime konfiguracijske datoteke \texttt{kubeconfig}, ki se uporabi pri namestitvi na to okolje. Ime mora biti skladno z imenom spremenljivke Gitlab, ki je tipa datoteka.
+    \item \texttt{AUTO\_DEPLOY} - logična vrednost, ki določi ali se aplikacija avtomatsko namesti ob zagonu cevovoda na glavni veji (npr. \texttt{dev} ali \texttt{main}). 
+\end{itemize}
+
+\subsection{Cevovod pri stranki}
+\label{subsec:java-projekt-cevovod-pri-stranki}
+Pri stranki se uporablja enak cevovod vendar brez uporabe konfiguracijskega strežnika Consul. To pomeni, da morajo vse datoteke, ki se sicer prenesejo iz konfiguracijskega strežnika, shraniti v spremenljivke Gitlab tipa datoteka. Nastaviti morajo naslednje spremenljivke:
+\begin{itemize}
+    \item \texttt{DNF\_REPOS\_FILE} - Nastavitve za povezavo in avtentikacijo z repozitoriji DNF.
+    \item \texttt{MAVEN\_SETTINGS\_FILE} - Nastavitve za povezavo in avtentikacijo z orodjem Maven na centralni repozitorij.
+    \item \texttt{CONFIG\_FILE} - Vsebina datoteke je zelo podobna tisti, ki se uporablja v podjetju. Razlikuje se zgolj v okoljih, ki jih stranka uporablja za namestitve in imenih spremenljivk Gitlab, ki vsebujejo datoteke za konfiguracijo povezave in avtentikacije na platformo Kubernetes.
+    \item \texttt{KUBECONFIG\_FILE\_1} - Nastavitve za povezavo in avtentikacijo z orodjem \texttt{kubectl} na gručo na platformi Kubernetes.
+\end{itemize}
+
+\subsection{Zagonske slike}
+\label{subsec:java-projekt-zagonske-slike}
+Ker med izvajanjem cevovoda nimamo dostopa do interneta, moramo najprej ročno prenesti naslednji sliki Docker: 
+\begin{itemize}
+    \item \texttt{kaniko-tools} - vsebuje orodje \texttt{kaniko} in osnovna orodja potrebna za gradnjo slik Docker.
+    \item \texttt{rocky-with-tools} - se uporablja za osnovno pri gradnji zagonskih in aplikacijskih slik.
+\end{itemize}
+Nato je potrebno sliki naložiti v register slik, ki je dostopen med izvajanjem cevovoda in nastaviti naslednji spremenljivki Gitlab:
+\begin{itemize}
+    \item \texttt{DOCKER\_BUILDER\_IMAGE} - naslov do slike \texttt{kaniko-tools}.
+    \item \texttt{DOCKER\_FROM\_REGISTRY} - naslov do registra slik Docker, ki vsebuje slike, ki se uporabljajo kot osnova pri gradnji zagonskih in aplikacijskih slik.
+\end{itemize}
+V imenik \texttt{runner-images} smo dodali dve datoteki Docker, ki definirata dve zagonski sliki:
+\begin{itemize}
+    \item \texttt{jdk} - vsebuje razvojno okolje Java in orodje Maven. Uporablja se za zagon vseh nalog v cevovodu.
+    \item \texttt{wildfly} - osnova za gradnjo aplikacijske slike Docker, ki prav tako vsebuje razvojno okolje Java in orodje Maven ter dodatno še aplikacijski strežnik Wildfly.
+\end{itemize}
+Obe datoteki pod ključno besedo \texttt{FROM} uporabita spremenljivko \texttt{DOCKER\_FROM\_REGISTRY}, ki smo jo shranili kot spremenljivko Gitlab in se pri gradnji slik poda kot argument gradnje. Na ta način se za osnovo slik uporabijo slike iz registra, ki je dostopen med izvajanjem cevovoda.
+
+\subsection{Aplikacijska slika Docker}
+\label{subsec:java-projekt-aplikacijska-slika-docker}
+Datoteka Docker, ki definira aplikacijsko sliko Docker se nahaja v imeniku \texttt{deploy/docker}. Za osnovo, pod ključno besedo \texttt{FROM}, uporablja zgrajeno zagonsko sliko \texttt{wildfly}. Ostali ukazi iz repozitorija skopirajo vse potrebne datoteke za zagon aplikacije in nastavijo skript, ki se ob zagonu slike Docker zažene.
+
+\subsection{Konfiguracijske datoteke platforme Kubernetes}
+\label{subsec:java-projekt-k8s}
+V imeniku \texttt{deploy} se nahajata imenika \texttt{k8s.v15} in \texttt{k8s.v25}, ki vsebujeta konfiguracijske datoteke za namestitev na različni verziji gruče Kubernetes. Obe vsebujeta datoteko \texttt{deployment.yml.in}, ki vsebuje gradnike platforme Kubernetes: namestitev, servis in ingress. Oba imenika vsebujeta tudi gnezdena imenika:
+\begin{itemize}
+    \item \texttt{config} - vsebuje datoteko \texttt{config.yml.in} z gradnikom \texttt{ConfigMap}, ki hrani naslove do podatkovne baze in druge neobčutljive podatke.
+    \item \texttt{secrets} - vsebuje datoteko \texttt{secrets.yml.in} z gradnikom \texttt{Secrets}, ki hrani uporabniška imena in gesla.
+\end{itemize}
+
+\subsection{Konfiguracijske datoteke cevovoda}
+Za definicijo cevovoda smo v korenski imenik dodali datoteko \texttt{.gitlab-ci.yml}, kot omenjeno v poglavju \ref{sec:projekt-aplikacije}, in uporabili vnaprej pripravljeni predlogi, ki smo ju dodali v datoteki v imeniku \texttt{.gitlab}. V datoteki \texttt{.gitlab/main.yml} smo uporabili predlogo za cevovod projekta, ki uporablja programski jezik Java in orodje Maven:
+\begin{verbatim}
+include:
+  - project: 'medius/ci-tools/medius-cd'
+    ref: v4.5.1
+    file:
+      - '/gitlab-ci/templates/maven/.maven-all.yaml'
+\end{verbatim}
+V datoteki \texttt{.gitlab/build-runners.yml} pa smo uporabili predlogo za cevovod gradnje zagonskih slik \texttt{jdk} in \texttt{wildfly}:
+\begin{verbatim}
+include:
+  - project: 'medius/ci-tools/medius-cd'
+    ref: v4.5.1
+    file:
+      - '/gitlab-ci/templates/runners/jobs/.jdk-wildfly.yaml' 
+\end{verbatim}
+
+\subsection{Delovanje cevovoda}
+\label{subsec:java-projekt-delovanje-cevovoda}
+Za zagon cevovoda aplikacije potrebujemo zagonske slike. Zgradimo jih lahko tako, da poženemo cevovod za gradnjo zagonskih slik. To naredimo tako, da pred zagonom cevovoda nastavimo vrednost spremenljivke \texttt{BUILD\_RUNNERS} na \texttt{true}. Zažene se cevovod, ki ima dva koraka: inicializacija, ki vsebuje nalogo za pripravo komponente Medius CD, in gradnja zagonskih slik, ki vsebuje nalogi za gradnjo zagonskih slik \texttt{jdk} ter \texttt{wildfly}. Cevovod lahko vidimo na sliki \ref{fig:java-projekt-gradnja-zagonskih-slik}.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=10cm]{figures/java-projekt-cevovod-zagonske-slike.png}
+    \end{center}
+\caption{Cevovod za gradnjo zagonskih slik.}
+\label{fig:java-projekt-gradnja-zagonskih-slik}
+\end{figure}
+
+Nato lahko zaženemo cevovod aplikacije, ki ga lahko vidimo na sliki \ref{TODO} in vsebuje naslednje naloge:
+\begin{itemize}
+    \item priprava komponente Medius CD
+    \item gradnja aplikacije
+    \item gradnja slik Docker, ki dinamično kreira naloge z v otroškem cevovodu,
+    \item preverjanje kakovosti, ki jo lahko ročno zaženemo,
+    \item izdaja slik Docker
+    \item namestitev aplikacije v različna okolja, ki dinamično kreira naloge v otroškem cevovodu,
+    \item naloge za izdajo nove verzije
+\end{itemize}
+
+\section{Projekt v programskem jeziku TypeScript}
+\label{sec:typescript-projekt}
+V tem poglavju bomo predstavili postavitev cevovoda projekta, ki je napisan v programskem jeziku TypeScript in za gradnjo uporablja orodje pnpm. Projekt vsebuje interno razvito knjižnico za razvoj čelnih aplikacij z ogrodjem Angular. Obenem vsebuje tudi čelno aplikacijo, ki se uporablja za demonstracijske namene uporabe knjižnice, ki se povezuje na zaledni sistem, ki je del drugega projekta.
+
+\subsection{Konfiguracija cevovoda}
+Podobno kot pri prejšnem projektu, smo na konfiguracijski strežnik Consul dodali datoteko \texttt{config\_file} z naslednjo vsebino:
+\begin{verbatim}
+# Globalne spremenljivke
+variables:
+  KUBECONFIG_CONSUL_PATH: "default/.kube/config.v24"
+  EXPOSED_SUFFIX: "apps.kubetest5.int.medius.si"
+# Servisi
+services:
+- dir: "./apps/sampler"
+  environments:
+  - name: "sbm1"
+    variables:
+      AUTO_DEPLOY: "true"
+      coreBasePath: "https://qs-sbm1-qs.apps.medius.si"
+# Integracijski testi
+it:
+  deployments:
+    - project: "medius/angular-common/medius-angular"
+      branch: "dev"
+    - project: "medius/angular-common/quarkus-sampler"
+      branch: "dev"
+\end{verbatim}
+
+Ponovno smo nastavili globalni spremenljivki \texttt{KUBECONFIG\_CONSUL\_PATH} in \texttt{EXPOSED\_SUFFIX} in dodali nastavitve servisa, ki predstavlja čelno aplikacijo. Servisu smo s ključno besedo \texttt{dir} spremnili privzeti imenik v repozitoriju v katerem se nahaja in dodali spremenljivko \texttt{coreBasePath}, ki jo potrebuje za namestitev. Nato smo pod ključno besedo \texttt{it} definirali še namestitvi, ki jih cevovod potrebuje za izvajanje integracijskih testov. Prva namestitev je čelna aplikacija, druga namestitev pa je zaledna aplikacija, s katero čelna aplikacija komunicira.
+
+\subsection{Zagonske slike}
+V imenik \texttt{runner-images} smo dodali datoteko Docker, ki definira zagonsko sliko imenovano \texttt{node-pnpm} za izvajanje nalog v cevovodu. Za osnovo, pod ključno besedo \texttt{FROM}, uporablja sliko \texttt{rocky-with-tools}. Nato sledijo ukazi za namestitev dodatnih orodji, ki jih potrebujemo za izvajanje nalog, med drugimi tudi Node in pnpm.
+
+\subsection{Aplikacijska slika Docker}
+Datoteka Docker, ki definira aplikacijsko sliko Docker za osnovo uporablja sliko \texttt{nginx}. Ostali ukazi, ki ji datoteka vsebuje, skopirajo vse potrebne datoteke za zagon aplikacije in nastavijo skript, ki se ob zagonu slike zažene.
+
+\subsection{Konfiguracijske datoteke platforme Kubernetes}
+Konfiguracijske datoteke za namestitev aplikacije na gručo platforme Kubernetes so zelo podobne tistim v prejšnjem projektu. Razlika je zgolj v tem, da se tu vse nahajajo v imenik \texttt{k8s}, saj vedno nameščamo aplikacijo na gručo iste verzije.
+
+\subsection{Konfiguracijske datoteke cevovoda}
+Tudi tu za definicijo cevovoda dodamo enake datoteke kot prej. V datoteki \texttt{.gitlab/.build-runners.yml} uporabimo predlogo za gradnje zagonske slike \texttt{node-pnpm}:
+\begin{verbatim}
+include:
+  - project: 'medius/ci-tools/medius-cd'
+    ref: v4.5.1
+    file:
+      - '/gitlab-ci/templates/runners/jobs/.node-pnpm.yaml' 
+\end{verbatim}
+V datoteki \texttt{.gitlab/.main.yml} pa uporabimo predlogo za cevovod projekta, ki uporablja okolje Node in orodje pnpm, nastavimo nekaj spremenljivk na vrednost \texttt{true}, kar v cevovod doda nekaj nalog:
+\begin{itemize}
+    \item \texttt{RELEASE\_PACKAGE} - objava paketa na centralni repozitorij Nexus.
+    \item \texttt{RELEASE\_PACKAGE\_PUBLIC} - objava paketa na register npm.
+    \item \texttt{IT\_RUN} - zagon integracijskih testov.
+    \item \texttt{IT\_DEPLOY} - namestitev aplikacij v okolje za integracijske teste.
+    \item \texttt{IT\_NAMESPACE\_CLEAN\_UP} - brisanje okolja integracijskih testov.
+\end{itemize}
+in prilagodimo nalogo za gradnjo aplikacije tako, da v artefakte naloge zapakira dodatne datoteke. Celotna vsebina datoteke izgleda tako:
+\begin{verbatim}
+include:
+  - project: 'medius/ci-tools/medius-cd'
+    ref: v4.5.1
+    file:
+      - '/gitlab-ci/templates/node/pnpm/.pnpm-all.yaml' 
+
+variables:
+  RELEASE_PACKAGE: "true"
+  RELEASE_PACKAGE_PUBLIC: "true"
+  IT_RUN: "true"
+  IT_DEPLOY: "true"
+  IT_NAMESPACE_CLEAN_UP: "true"
+
+build:
+  artifacts:
+    paths:
+      - "${CACHE_PATH}/apps/*/dist/"
+      - "${CACHE_PATH}/libs/*/dist/"
+      - pnpm-lock.yaml
+\end{verbatim}
+
+\subsection{Delovanje cevovoda}
+Po zgrajenih zagonskih slikah s cevovodom za gradnjo zagonskih slik, lahko zaženemo cevovod aplikacije, ki ga lahko vidimo na sliki \ref{TODO} in vsebuje naslednje naloge:
+\begin{itemize}
+    \item priprava spremenljivk za integracijske teste
+    \item priprava komponente Medius CD
+    \item gradnja aplikacije
+    \item statična analiza kode (ang. lint)
+    \item testi enot
+    \item gradnja slik Docker
+    \item namestitev aplikacij v integracijsko okolje
+    \item integracijskih testi
+    \item preverjanje kakovosti kode
+    \item izdaja slike Docker
+    \item naloge za izdajo paketa na centralni repozitorij Nexus in register npm
+    \item namestitev aplikacije na gručo Kubernetes
+    \item brisanje okolja integracijskih testov
+    \item naloge za izdajo novih verzij
+\end{itemize}
+
+\section{Projekt v programskem jeziku Python}
+\label{sec:python-projekt}
+V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje dve aplikaciji napisani v programskem jeziku Python, ki za gradnjo uporabljata orodje setuptools. Aplikaciji uporabljata knjižnico FastAPI, s katero izpostavljata končne točke za izvajanje poslovnih operacij.
+
+Stranka ne uporablja platforme Gitlab, zato se cevovod izvaja samo v podjetju. TODO
+
+\subsection{Konfiguracija cevovoda}
+Zaradi večje občutljivosti projekta, smo pri temu projektu datoteko \texttt{config\_file} raje shranili v spremenljivko Gitlab. Datoteka ima naslednjo vsebino:
+\begin{verbatim}
+variables:
+    EXPOSED_SUFFIX: "apps.kubetest-ai.int.medius.si"
+    CREATE_NAMESPACE: "false"
+    AUTO_DEPLOY: "true"
+services:
+  - name: anonymizer
+    variables:
+      DOCKERFILE_PATH: "Dockerfile.stagebuild-anonymizer"
+      APP_PORT: 8001
+      GPU_CORE: 0
+    environments:
+      - name: "prod"
+        variables:
+          KUBECONFIG: "TEST_KUBECONFIG"
+          AUTO_DEPLOY: "false"
+      - name: "dev"
+        variables:
+          KUBECONFIG: "DEV_KUBECONFIG"
+      - name: "stg"
+        variables:
+          KUBECONFIG: "STG_KUBECONFIG"
+  - name: analyzer
+    variables:
+      DOCKERFILE_PATH: "Dockerfile.stagebuild"
+      APP_PORT: 8000
+      GPU_CORE: 0
+      BUILD_ARGS: "NER_VERSION=1.2.3,SLONER_VERSION=1.2.3"
+    environments:
+      - name: "prod"
+        variables:
+          KUBECONFIG: "TEST_KUBECONFIG"
+          AUTO_DEPLOY: "false"
+      - name: "dev"
+        variables:
+          KUBECONFIG: "DEV_KUBECONFIG"
+      - name: "stg"
+        variables:
+          KUBECONFIG: "STG_KUBECONFIG"
+          GPU_CORE: 1
+\end{verbatim}
+Zopet smo nastavili globalno spremenljivko \texttt{EXPOSED\_SUFFIX} in dodali dve dodatni globalni spremenljivki: 
+\begin{itemize}
+    \item \texttt{CREATE\_NAMESPACE} z vrednostjo \texttt{false}, ki izklopi ustvarjanje imenskega prostora na gruči Kubernetes, če ta še ne obstaja.
+    \item \texttt{AUTO\_DEPLOY} z vrednostjo na \texttt{true}, ki povzroči, da se vse naloge za namestitev aplikacij na glavni veji avtomatsko izvedejo.
+\end{itemize}
+Ker projekt vsebuje dve aplikaciji oziroma servisa, smo pod ključno besedo \texttt{services} definirali dva servisa: \texttt{anonymizer} in \texttt{analyzer}. Obema smo s spremenljivko \texttt{DOCKERFILE\_PATH} spremenili privzeto pot do aplikacijske datoteke Docker in nastavili še nekaj spremenljivk, ki jih potrebujeta za namestitev. Pri servisu \texttt{analyzer} smo dodali tudi spremenljivko \texttt{BUILD\_ARGS}, ki vsebuje argumente v formatu \texttt{ime\_spremenljivke=vrednost}, ločene z vejico, ki se uporabijo ob gradnji slike. Oba servisa imata tri okolja: \texttt{prod}, \texttt{dev} in \texttt{stg}. Vsako okolje uporablja drugo gručo Kubernetes, zato ima vsako okolje s spremenljivko \texttt{KUBECONFIG} nastavljeno svojo konfiguracijsko datoteko za povezavo in avtentikacijo na gručo Kubernetes. Za okolje \texttt{prod} smo prepisali globalno spremenljivko \texttt{AUTO\_DEPLOY} z vrednostjo \texttt{false}.
+
+\subsection{Zagonske slike}
+V imenik \texttt{runner-images} smo dodali datoteko Docker, ki definira zagonsko sliko \texttt{python} za izvajanje nalog v cevovodu. Za osnovo uporablja \texttt{rocky-with-tools}. Nato sledijo ukazi za namestitev prevajalnika za programski jezik Python in knjižnic wheel, twine in tox.
+
+\subsection{Aplikacijski sliki Docker}
+Projekt vsebuje dva servisa, ki uporabljata različni sliki Docker. V konfiguracijski datoteki cevovoda \texttt{config\_file} smo spremenili privzeti poti do slik, saj se obe nahajata v korenskem imeniku projekta. Datoteka Docker, ki se uporablja za namestitev servisa \texttt{analyzer}, za osnovo uporablja sliko \texttt{python:3.9-slim} in je sestavljena iz več delov v katerih pripravi okolje, namesti odvisnosti ter zgradi aplikacijo in jo na koncu tudi zažene. Datoteka Docker, ki se uporablja za namestitev servisa \texttt{anonymizer}, deluje na enak način. Posebnost teh dveh datotek Docker je, da ne potrebujeta vnaprej zgrajene aplikacije, vendar se aplikacija zgradi v procesu gradnje slike.
+
+\subsection{Konfiguracijske datoteke platforme Kubernetes}
+Tudi tu so konfiguracijske datoteke za namestitev aplikacije podobne tistim v prejšnjima projektoma. Nahajajo se v imeniku \texttt{k8s} in se uporabljajo za oba servisa. Vse vrednosti, ki se morda razlikujejo med servisoma, so dodane kot spremenljivke, ki se pred namestitvijo na gručo Kubernetes nadomestijo s pravilnimi vrednostmi, kot smo opisali v poglavju \ref{subsec:namestitev-aplikacije}.
+
+\subsection{Konfiguracijske datoteke cevovoda}
+Ponovno smo dodali enake datoteke kot prej, vendar smo v datoteki \texttt{.gitlab/.build-runners.yml} uporabili predlogo za gradnjo zagonske slike \texttt{python}:
+\begin{verbatim}
+include:
+  - project: 'medius/ci-tools/medius-cd'
+    ref: v4.5.1
+    file:
+      - '/gitlab-ci/templates/runners/jobs/.python.yaml' 
+\end{verbatim}
+V datoteki \texttt{.gitlab/.main.yml} pa smo uporabili predlogo za cevovod aplikacije, ki uporablja programski jezik Python. Ker naloga za gradnjo slik Docker ne potrebuje zgrajene aplikacije, smo nastavili vrednost spremenljivke \texttt{DOCKER\_NEEDS\_BUILD} na \texttt{false} in z pravili odstranili nalogo za gradnjo aplikacije. Odstranili pa smo tudi nalogo za izvajanje testov enot, ker projekt trenutno še nima testov enot.
+\begin{verbatim}
+include:
+  - project: 'medius/ci-tools/medius-cd'
+    ref: v4.5.1
+    file:
+      - '/gitlab-ci/templates/python/.python-all.yaml'
+
+variables:
+  DOCKER_NEEDS_BUILD: "false"
+
+build:
+  rules:
+    - when: never
+
+test:
+  rules:
+    - when: never
+\end{verbatim}
+
+\subsection{Delovanje cevovoda}
+Po zgrajenih zagonskih slikah s cevovodom za gradnjo zagonskih slik, lahko zaženemo cevovod aplikacije, ki ga lahko vidimo na sliki \ref{} in vsebuje naslednje naloge:
+\begin{itemize}
+    \item priprava komponente Medius CD
+    \item gradnja slik Docker
+    \item izdaja slik Docker
+    \item namestitev aplikacij v različna okolja
+    \item naloge za izdajo novih verzij
+\end{itemize}
+
+% \section{Monorepo projekt}
+% \label{sec:monorepo-projekt}
 
 
 %----------------------------------------------------------------
@@ -701,7 +1098,13 @@ Po uspešni gradnji projekta in testih enot se zažene naloga, ki zgradi aplikac
 
 \chapter{Zaključek}
 \label{ch:zaključek}
-Aleluja
+V predstavljenem delu smo opisali poslovno kritične aplikacije in njihove lastnosti. Predstavili smo proces neprekinjene integracije in dostave ter zakaj predstavlja pomemben del pri razvoju poslovno kritičnih aplikacijah. Opisali smo tudi dva primera strukture projekta, ki vplivata na organizacijo razvoja in tehnologije ter aplikacije, ki smo jih uporabili za razvoj cevovoda neprekinjene integracije in dostave.
+
+Razvili smo komponento za vzpostavitev neprekinjene integracije in dostave na platformi Gitlab imenovano Medius CD. Cilj komponente je poenotenje cevovodov, zmanjšanje podvojene konfiguracije in kode ter olajšanje vzdrževanja. To smo dosegli z uporabo konfiguracijskih datotek Gitlab, ki definirajo naloge v cevovodu in skript v jeziku Bash, ki jih te naloge uporabljajo. Uvedli smo nov način gradnje zagonskih slik, ki olajša vzdrževanje le teh, in konfiguracijsko datoteko \texttt{config\_file}, ki olajša vzdrževanje spremenljivk, s katerimi prilagajamo cevovod. Na ta način lahko v cevovodu enostavno zgradimo več različnih aplikacijskih slik Docker, zaženemo integracijske teste in namestimo aplikacijo v različna okolja. Za enostavno postavitev cevovoda smo pripravili več konfiguracijskih datotek Gitlab za različne programske jezike, ki jih lahko v projektih uporabimo.
+
+
+
+
 
 % ---------------------------------------------------------------
 % Appendix
