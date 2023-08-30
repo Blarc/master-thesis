@@ -107,15 +107,15 @@ Konkretni cilji predlaganega dela so:
 \section{Pregled sorodnih del}
 \label{sec:pregled-sorodnih-del}
 
-Zanimanje in motivacijo za vpeljevanje strategij razvoja in operacij smo našli v~\cite{smith_2020}, kjer so predstavljene tehnike vpeljevanja strategij v realnih delovnih okoljih. Avtor daje velik poudarek motivaciji in razlogom zakaj je vpeljava takšnih strategij potrebna in kako ugotoviti, katera orodja zares potrebujemo. Predstavljen je tudi psihološki vidik uporabe takšnih orodji na zaposlene.
+% Zanimanje in motivacijo za vpeljevanje strategij razvoja in operacij smo našli v~\cite{smith_2020}, kjer so predstavljene tehnike vpeljevanja strategij v realnih delovnih okoljih. Avtor daje velik poudarek motivaciji in razlogom zakaj je vpeljava takšnih strategij potrebna in kako ugotoviti, katera orodja zares potrebujemo. Predstavljen je tudi psihološki vidik uporabe takšnih orodji na zaposlene.
 
-V raziskavi ~\cite{Azad2023} so na podlagi obstoječih člankov poskušali določiti deset kritičnih faktorjev za uspešno vzpostavitev praks DevOps, ki so jih razdelili v tri skupine:
+V raziskavi~\cite{Azad2023} so na podlagi obstoječih člankov poskušali določiti deset kritičnih dejavnikov za uspešno vzpostavitev praks DevOps, ki so jih razdelili v tri skupine:
 \begin{itemize}
-    \item tehnični - opisujejo pomembnost tehnologij, ki jih podjetja uporabljajo. Nekateri izmed tehničnih kritičnih faktorjev za uspeh DevOps so: dobra integracija procesov DevOps, avtomatizacija gradnje in testiranja aplikacij ter infrastruktura, ki jo je enostavno uporabiti za namestitev aplikacij.
-    \item organizacijski - opisujejo lastnosti organizacije, ki uspešno uporabljajo prakse DevOps. V članku kot organizacijske kritične faktorje za uspeh DevOps navedejo: dobro sodelovanje in komunikacija med razvojem in operacijami, določitev voditelja ekipe in pripravljenost sprejemanja zahtev od nadrejenih ter strateško planiranje.
+    \item tehnični - opisujejo pomembnost tehnologij, ki jih podjetja uporabljajo. Nekateri izmed tehničnih kritičnih dejavnikov za uspeh DevOps so: dobra integracija procesov DevOps, avtomatizacija gradnje in testiranja aplikacij ter infrastruktura, ki jo je enostavno uporabiti za namestitev aplikacij.
+    \item organizacijski - opisujejo lastnosti organizacije, ki uspešno uporabljajo prakse DevOps. V članku kot organizacijske kritične dejavnike za uspeh DevOps navedejo: dobro sodelovanje in komunikacija med razvojem in operacijami, določitev voditelja ekipe in pripravljenost sprejemanja zahtev od nadrejenih ter strateško planiranje.
     \item socialni in kulturni - opisujejo pomembnost dobrega počutja razvojne ekipe in pripravljenosti za sprejemanje kulturnih sprememb.
 \end{itemize}
-Predstavljeni kritični faktorji za uspešno vzpostavitev praks DevOps služijo kot koristne smernice pri vpeljavi praks DevOps v podjetju in razvoju komponente za neprekinjeno integracijo in dostavo. Obenem opozarjajo, da za uspešno vpeljavo praks ni dovolj zgolj tehnična podpora vendar je pomembna tudi dobra organizacija in kultura podjetja.
+Predstavljeni kritični dejavniki za uspešno vzpostavitev praks DevOps služijo kot koristne smernice pri vpeljavi praks DevOps v podjetju in razvoju komponente za neprekinjeno integracijo in dostavo. Obenem opozarjajo, da za uspešno vpeljavo praks ni dovolj zgolj tehnična podpora vendar je pomembna tudi dobra organizacija in kultura podjetja.
 
 % V~\cite{Ebert2016} so opisani posamezni koraki neprekinjene integracije in dostave ter pomembnost orodji, ki se v posameznih korakih uporabljajo. Opisan je namen posameznih orodji in kako pripomorejo k bolj učinkovitemu delovanju integracijskega procesa. 
 
@@ -129,9 +129,13 @@ V~\cite{Chen2015} je podrobno opisana neprekinjena dostava po posameznih korakih
     \item zadovoljstvo strank - zaradi zanesljivejše objave in kvalitetnejšega produkta so stranke bolj zadovoljne.
 \end{itemize}
 
-V~\cite{KOCEVAR_2019} so predstavljene raziskave na področju oblačnega računalništva in uporaba principov razvoja ter operacij na oblačni programski rešitvi. Na osnovi tega, so opisane dve arhitekturni zasnovi. V rezultatih se izkaže, da je proces namestitve nove programske opreme veliko lažji in hitrejši, če ga avtomatiziramo in upoštevamo principe razvoja in operacij. Opiše tudi slabosti in prednosti tehnologije Kubernetes, ki jo bomo pri implementaciji tudi sami uporabljali.
+V~\cite{Donca2022} je predstavljen generator cevovoda neprekinjene integracije in dostave za gibčne (ang. agile) projekte programske opreme. V članku predlagajo rešitev v obliki generatorja, ki v repozitoriju Git avtomatsko prepozna datoteke potrebne za gradnjo in namestitev projekta in avtomatsko kreira cevovod, ki to tudi naredi. Generator je napisan v programskem jeziku Bash, kar omogoča lažjo integracijo v različne platforme, in pripravi konfiguracijsko datoteko na podlagi katere se kreira cevovod na platformi GitLab, ki jo uporabimo tudi sami. Tako kot mi, za gradnjo slik Docker uporabijo orodje Kaniko in aplikacije namestijo na gručo platforme Kubernetes. Kot glavne prednosti navedejo zmanjšanje časa potrebnega za pripravo cevovodov, izboljšana struktura cevovodov, zmanjšanje podvojenosti konfiguracije cevovodov, zmanjšanje finančnih stroškov, ker se razvijalcem ni potrebno ukvarjati s kreiranjem, upravljanjem, popravljanjem in nadzorom cevovodov ter zmanjšanje dvoumnosti glede principov CI/CD, kar poveča standardizacijo in kvaliteto procesov v podjetju.
 
-Podobno je v~\cite{OKORN_2022} predstavljena neprekinjena integracija in dostava v okolju Kubernetes s poudarkom na različnih orodjih za vzpostavitev takšnega sistema. Opisana je implementacija z različnimi orodji, med katerimi je tudi GitLab CI/CD, ki ga uporabimo tudi sami.
+V~\cite{Pooya2023} predstavijo orodja za vzpostavitev CI/CD, ki se največ uporabljajo, glavne razloge za uporabo praks CI/CD, katere aktivnosti so največkrat avtomatizirane z uporabo orodji neprekinjene integracije in kaj so prednosti in slabosti posameznih orodji. Med najbolj uporabljenimi orodji za neprekinjeno integracijo navedejo GitHub Actions, Jenkins, GitLab CI/CD, CircleCI in Azure DevOps. Kot glavne razloge za vpeljavo orodji naštejejo večjo zanesljivost, boljšo kvaliteto kode, večjo produktivnost, hitrejšo dostavo produktov, zmanjšanje finančnih stroškov in dela, hitrejšo povratno informacijo ter večjo transparentnost procesa gradnje projekta. Aktivnosti, ki jih orodja največkrat avtomatizirajo so: gradnja projekta, zagon testov enot, zagon integracijskih testov, zagon testov od konca do konca (ang. end-to-end), analiza pokritosti kode s testi, analiza kvalitete kode, analiza varnosti, pakiranje in namestitev ter upravljanje z odvisnostmi. Kot najbolj pomembne funkcionalnosti orodji navedejo dobro integracijo s platformo, ki gostuje kodo, enostavnost uporabe, podporo za specifične operacijske sisteme in možnost namestitve na lastni infrastrukturi. Kot najbolj popularno orodje se izkaže GitHub Actions, predvsem zaradi dobre integracije s platformo GitHub, ki je zelo razširjena in priljubljena med razvijalci. Glavna prednost orodja GitLab, ki ga tudi sami uporabimo in ga razlikuje od orodja GitHub Actions, pa je možnost namestitve na lastni infrastrukturi. Poleg tega nudi tudi dobro integracijo s platformo GitLab, enostavno uporabo privatnih računalniških virov za zagon procesov in dobro podporo za vsebnike.
+
+% V~\cite{KOCEVAR_2019} so predstavljene raziskave na področju oblačnega računalništva in uporaba principov razvoja ter operacij na oblačni programski rešitvi. Na osnovi tega, so opisane dve arhitekturni zasnovi. V rezultatih se izkaže, da je proces namestitve nove programske opreme veliko lažji in hitrejši, če ga avtomatiziramo in upoštevamo principe razvoja in operacij. Opiše tudi slabosti in prednosti tehnologije Kubernetes, ki jo bomo pri implementaciji tudi sami uporabljali. 
+
+% Podobno je v~\cite{OKORN_2022} predstavljena neprekinjena integracija in dostava v okolju Kubernetes s poudarkom na različnih orodjih za vzpostavitev takšnega sistema. Opisana je implementacija z različnimi orodji, med katerimi je tudi GitLab CI/CD, ki ga uporabimo tudi sami.
 
 
 %----------------------------------------------------------------
@@ -140,7 +144,9 @@ Podobno je v~\cite{OKORN_2022} predstavljena neprekinjena integracija in dostava
 
 \chapter{Teoretično ozadje}
 \label{ch:teoretično-ozadje}
-V tem poglavju bomo predstavili sorodna dela, ki so nam bila osnova in navdih za raziskovanje področja. Na kratko bomo opisali kaj posamezna dela obravnavajo in zakaj so za nas pomembna. Nato pojasnimo kaj so poslovno kritične aplikacije in navedemo nekaj primerov takšnih aplikacij. Sledi predstavitev pojma DevOps in podrobnejši opis neprekinjene integracije in neprekinjene dostave ter razlaga zakaj predstavljata ključen del razvojnega procesa. Na koncu poglavja obravnavamo še pomembnost strukture projekta, njen vpliv na razvojni proces in dva načina upravljanja z različicami izvorne kode.
+% V tem poglavju bomo predstavili sorodna dela, ki so nam bila osnova in navdih za raziskovanje področja. Na kratko bomo opisali kaj posamezna dela obravnavajo in zakaj so za nas pomembna. Nato pojasnimo kaj so
+
+V tem poglavju bomo predstavili poslovno kritične aplikacije in opisali nekaj primerov takšnih aplikacij. Sledi predstavitev pojma DevOps in podrobnejši opis neprekinjene integracije in neprekinjene dostave ter razlaga zakaj predstavljata ključen del razvojnega procesa. Na koncu poglavja obravnavamo še pomembnost strukture projekta, njen vpliv na razvojni proces in dva načina upravljanja z različicami izvorne kode.
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
@@ -182,20 +188,23 @@ Z uvedbo naštetih praks lahko v podjetju dosežemo hitrejše razvojne cikle, hi
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
-Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi. Cilj neprekinjene integracije je pred objavo sprememb avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode, kot iskanju napak. Avtomatska gradnja, preizkušanje in objavljanje kode tudi pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v razvojnih okoljih, kjer se aplikacijska koda hitro spreminja. Za sistem neprekinjene integracije so potrebni trije glavni elementi~\cite{Fowler2006}:
+Neprekinjena integracija je praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Ta koda se nato avtomatsko zgradi, preizkusi in objavi. Cilj neprekinjene integracije je pred objavo sprememb avtomatsko odkriti napake, tako da lahko programerji posvečajo več časa pisanju kode, kot iskanju napak. Obenem pomaga ekipam, da objavijo posodobitve pogosteje in z večjim zaupanjem, kar je še posebej pomembno v razvojnih okoljih, kjer se aplikacijska koda hitro spreminja. Za sistem neprekinjene integracije so potrebni trije glavni elementi~\cite{Fowler2006}:
 \begin{itemize}
     \item Centralni repozitorij, kamor razvijalci oddajo spremembe svoje kode.
     \item Orodje za avtomatizacijo gradnje, ki je odgovorno za avtomatsko gradnjo in objavljanje posodobljene kode.
     \item Orodje za preizkušanje, ki izvaja avtomatsko testiranje na posodobljeni kodi in s tem zagotavlja, da posodobljena koda deluje pravilno in dosega zahtevane standarde kakovosti.
 \end{itemize}
 
-% Travassos, G. H., Fernandes, E. B., de O. Costa, R. F., & Maldonado, J. C. (2016). Continuous integration: Best practices, patterns, and anti-patterns. Journal of Systems and Software, 120, 1-16.
-
-% Neprekinjena integracija pri razvoju programske opreme predstavlja večkratno dnevno združevanje delovnih različič programerjev v skupno celoto \cite{Fowler2006}.
-% Fowler, Martin (1 May 2006). "Continuous Integration". Retrieved 9 January 2014.
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=13cm]{figures/diagram-neprekinjene-integracije.drawio (1).png}
+    \end{center}
+\caption{Diagram neprekinjene integracije.}
+\label{fig:diagram-neprekinjene-integracije}
+\end{figure}
 
 \subsection{Razlogi za neprekinjeno integracijo}
-Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem, ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spreminjajo temeljno programsko kodo. Tako se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Ostali razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte. Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode~\cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe lahko doda v glavno vejo. Če razvijalec predolgo odlaša z oddajo kode, se njegova kopija lahko zelo razlikuje od kode v glavni veji in za integracijo svoje kode porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi integracijski pekel~\cite{Cunningham2009}.
+Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem, ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spreminjajo temeljno programsko kodo. Tako se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Ostali razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte. Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode~\cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe lahko doda v glavno vejo. Če razvijalec predolgo odlaša z oddajo kode, se njegova kopija lahko zelo razlikuje od kode v glavni veji in za integracijo svoje kode porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi integracijski pekel~\cite{Cunningham2009}. Zato je ključno, da so naloge primerno razdeljene in smiselno umeščene v časovnico projekta.
 
 Vpeljava neprekinjene integracije lahko prinese številne koristi pri razvoju programske opreme, vključno z izboljšano kakovostjo kode, hitrejšim objavljanjem posodobitev in zmanjšanjem tveganja napak pri integraciji in objavi. Vendar pa vpeljava neprekinjene integracije predstavlja tudi nekaj izzivov, kot je potreba po namestitvi in vzdrževanju infrastrukture za neprekinjeno integracijo in potreba po zagotavljanju učinkovitega postopka preizkušanja programske kode. 
 
@@ -224,6 +233,14 @@ Najširši obseg pa predstavlja neprekinjena namestitev, ki je praksa razvoja pr
 
 Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hitreje dostavijo končnim uporabnikom. Da bi to dosegli, uporabljamo neprekinjeno integracijo, neprekinjeno dostavo in prakse neprekinjene namestitve, kot je proces upravljanja in rezervacije računalniških virov z uporabo datotek, ki jih računalnik zna prebrati - infrastruktura kot koda. Eno izmed takšnih tehnologij predstavlja platforma Kubernetes, ki smo jo sami uporabili in nam omogoča, da v formatu YAML (ang. YAML Ain't Markup Language) definiramo konfiguracijo namestitve naše aplikacije in jo s preprostim ukazom tudi namestimo. Neprekinjena namestitev lahko pomaga podjetju, da pogosteje objavi nove funkcionalnosti in posodobitve in izboljša učinkovitost in hitrost razvojnega procesa aplikacije~\cite{Wittig2016, Humble2014}.
 
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=13cm]{figures/diagram-neprekinjene-namestitve.drawio.png}
+    \end{center}
+\caption{Diagram neprekinjene integracije in namestitve.}
+\label{fig:diagram-neprekinjene-integracije-in-namestitve}
+\end{figure}
+
 % Programerjem omogoča testiranje aplikacije v živo? Quality assurance?
 
 \section{Organizacija projekta}
@@ -245,7 +262,15 @@ Monorepo ali monolitni repozitorij je poimenovanje organizacije in upravljanje r
     \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost razvijanja in kvaliteto kode. 
     \item Enostavne odvisnosti: Vsi paketi in moduli v repozitoriju imajo lahko enako različico in ni potrebno skrbeti katere različice so med seboj kompatibilne.
     \item Lažje spreminjanje odvisnih delov kode: Pri popravljanju in posodabljanju kode lahko popravimo vse dele kode, ki so med seboj odvisni in vse skupaj oddamo v repozitorij kot eno spremembo.
-\end{itemize} 
+\end{itemize}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=11cm]{figures/monorepo.png}
+    \end{center}
+\caption{Vizualizacija organizacije z načinom monorepo.}
+\label{fig:monorepo}
+\end{figure}
 
 Slabosti monolitnega repozitorija so~\cite{Harry2017}:
 \begin{itemize}
@@ -254,6 +279,8 @@ Slabosti monolitnega repozitorija so~\cite{Harry2017}:
     \item Veliki zahtevki za združitev vej: Ker repozitorij vsebuje vse odvisne dele kode, je ob posodobitvah lahko posodobljenih veliko vrstic izvorne kode. To lahko povzroči slabo preglednost sprememb v pregledu sprememb zahtevka za združitev.
     \item Orodja za upravljanje: Za učinkovito upravljanje monolitnega repozitorija so velikokrat potrebna dodatna programska orodja, kot so orodja za gradnjo aplikacije in upravitelji paketov. To lahko poveča kompleksnost razvijanja aplikacije.
 \end{itemize}
+
+
 
 \subsection{Polirepo}
 \label{subsec:polirepo}
@@ -265,6 +292,14 @@ Polirepo je poimenovanje organizacije in načina upravljanja z različicami izvo
     \item Velikost repozitorijev: Ker je celoten projekt razdeljen na več repozitorijev, so ti repozitoriji manjši in zato lažji za prenos in delo na lokalnih računalnikih, še posebej, če razvijalec dela samo na enem delu projekta.
     \item Potencialno hitrejše gradnje: S posameznimi moduli ali paketi v ločenih repozitorijih jih je morda mogoče graditi neodvisno, kar lahko skrajša skupni čas gradnje.
 \end{itemize}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=11cm]{figures/polyrepo.png}
+    \end{center}
+\caption{Vizualizacija organizacije z načinom polirepo.}
+\label{fig:polyrepo}
+\end{figure}
 
 Slabosti uporabe več repozitorijev so~\cite{Shakikhanli2022}:
 \begin{itemize}
