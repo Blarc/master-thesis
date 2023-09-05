@@ -85,23 +85,22 @@
 % Lepp
 Zaradi visoke konkurence na trgu programske opreme, organizacije namenjajo veliko pozornosti pospešitvi razvoja in dostave kvalitetne programske kode~\cite{Phillips2015}. Neprekinjena integracija (ang. Continuous Integration - CI) je v industriji razvoja programske opreme razširjena razvojna praksa, ki vzpodbuja redno dodajanje in združevanje sprememb programske kode, na primer večkrat na dan~\cite{Shahin2017}. CI omogoča podjetjem, ki razvijajo programsko kodo, da skrajšajo čas in povečajo pogostost razvojnega cikla, izboljšajo kvaliteto programske kode in povečajo produktivnost razvojne ekipe~\cite{Fitzgerald2017}. Glavna dela CI sta avtomatska gradnja in testiranje programske opreme~\cite{Leppanen2015}.
 
-Pri razvoju obsežnejše programske opreme ali aplikacije je programje navadno razdeljeno na več zaključenih enot, ki jih različne razvojne skupine ali razvojna podjetja neodvisno razvijajo~\cite{Abrahamsson_2002}. Neprekinjena dostava (ang. Continuous Deployment - CD) je metodologija sestavljen iz praks CI in avtomatske dostave programske opreme, ki si prizadeva zagotoviti, da je aplikacija po uspešno izvedenih testih in preverjanju kakovosti vedno pripravljena za namestitev~\cite{Weber2016}. Za slednje sta pred delitvijo nalog vnaprej izbrana in specificirana produkcijsko in razvojno okolje, ki si ga ponudnik vzpostavi sam ali pa je zagotovljeno na infrastrukturi naročnika. Na ta način si lahko razvojne skupine, za preverjanje realizacije izvedenega dela, pripravijo razvojno okolje, ki ima čim bolj podobno infrastrukturo, kot je na voljo v produkcijskem okolju. Samo tako so posamezne skupine lahko dovolj samozavestne, da bo njihovo programje pravilno delovalo tudi v produkcijskem okolju~\cite{smith_2020}.
+Pri razvoju obsežnejše programske opreme ali aplikacije je programje navadno razdeljeno na več zaključenih enot, ki jih različne razvojne skupine ali razvojna podjetja neodvisno razvijajo~\cite{Abrahamsson_2002}. Neprekinjena dostava (ang. Continuous Deployment - CD) je metodologija sestavljen iz praks CI in avtomatske dostave programske opreme, ki si prizadeva zagotoviti, da je aplikacija po uspešno izvedenih testih in preverjanju kakovosti vedno pripravljena za namestitev~\cite{Weber2016}. Za slednje sta pred delitvijo nalog vnaprej izbrana in specificirana produkcijsko ter razvojno okolje, ki si ga ponudnik vzpostavi sam ali pa je zagotovljeno na infrastrukturi naročnika. Na ta način si lahko razvojne skupine, za preverjanje realizacije izvedenega dela, pripravijo razvojno okolje, ki ima čim bolj podobno infrastrukturo, kot je na voljo v produkcijskem okolju. Samo tako so posamezne skupine lahko dovolj samozavestne, da bo njihovo programje pravilno delovalo tudi v produkcijskem okolju~\cite{smith_2020}.
 
 Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje stranke, ki se velikokrat pojavi pri poslovno kritičnih aplikacijah. Poslovno kritične aplikacije so tiste aplikacije, ki so ključne za delovanje poslovnega procesa podjetja~\cite{Hinchey2010, Syng2016}. V takšnem primeru je zaradi varnosti produkcijsko okolje pogosto razvijalcem nedostopno, kot tudi celotno omrežje stranke. S tem je dostava programske kode v omrežje stranke s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces neprekinjene dostave prilagoditi in upoštevati morebitne dodatne zaplete pri izdaji programske opreme v produkcijsko okolje.
 
-DevOps predstavlja zbirko praks razvoja programske opreme, ki združuje mentaliteto razvoja s preostalimi funkcijami v organizaciji. Glavni poudarek pristopa DevOps je delitev odgovornosti med vse ekipe celotnega življenjskega cikla razvoja programske opreme. V okviru tega se meje med različnimi vlogami postopno zabrisujejo, saj člani operativne ekipe prevzemajo naloge, ki so tradicionalno bolj usmerjene v razvijalce, in člani razvojne ekipe počnejo enako. Čeprav se izraz DevOps najpogosteje povezuje z razvojem (ang. Development - Dev) in operacijami (ang. Operations - Ops) informacijske tehnologije, pa lahko ta pristop razširimo tudi na druge skupine znotraj organizacije, kot so varnost, kontrola kakovosti (ang. Quality Analysis - QA), upravljanje podatkovnih baz ter omrežne storitve. Zato je poleg programske opreme, ki deluje po specifikaciji, ključno dostaviti stranki tudi operativne funkcije za delo s kodo, enostavno namestitev aplikacij v več različnih okolji, možnost prenosa kode k drugemu izvajalcu in podobno~\cite{smith_2020}.
+Izraz DevOps predstavlja zbirko praks razvoja programske opreme, ki združuje mentaliteto razvoja s preostalimi funkcijami v organizaciji. Glavni poudarek pristopa DevOps je delitev odgovornosti med vse ekipe celotnega življenjskega cikla razvoja programske opreme. V okviru tega se meje med različnimi vlogami postopno zabrisujejo, saj člani operativne ekipe prevzemajo naloge, ki so tradicionalno bolj usmerjene v razvijalce, in člani razvojne ekipe počnejo enako. Čeprav se izraz DevOps najpogosteje povezuje z razvojem (ang. Development - Dev) in operacijami (ang. Operations - Ops) informacijske tehnologije, pa lahko ta pristop razširimo tudi na druge skupine znotraj organizacije, kot so varnost, kontrola kakovosti (ang. Quality Analysis - QA), upravljanje podatkovnih baz ter omrežne storitve. Zato je poleg programske opreme, ki deluje po specifikaciji, ključno dostaviti stranki tudi operativne funkcije za delo s kodo, enostavno namestitev aplikacij v več različnih okolji, možnost prenosa kode k drugemu izvajalcu in podobno~\cite{smith_2020}.
 
 \section{Cilji in doprinosi}
 \label{sec:cilji-in-doprinosi}
 
-Namen magistrskega dela je predstaviti izzive pri razvoju poslovno kritičnih aplikacij in prakse razvoja, ki nam pomagajo pri reševanju teh izzivov. Najprej opišemo strategije in tehnologije, ki nam omogočajo postavitev razvojnega okolja v katerem lahko prakse DevOps izvajamo. Nato predstavimo razvoj komponente, ki znatno olajša postavitev cevovoda neprekinjene integracije in dostave na platformi GitLab. Praktično uporabnost komponente pokažemo s študijo primerov iz realnih projektov. Bolj podrobno opišemo proces neprekinjene integracije in dostave v okolje, kjer nimamo dostopa do omrežja stranke in posledično nimamo dostopa do izvajalnega okolja ter možnosti nameščanje programske opreme v izvajalno okolje.
+Namen magistrskega dela je predstaviti izzive pri razvoju poslovno kritičnih aplikacij in dobre prakse razvoja programske opreme, ki nam pomagajo pri reševanju teh izzivov. V delu predstavimo strategije in tehnologije, ki nam omogočajo postavitev razvojnega okolja v katerem lahko prakse DevOps izvajamo. Bolj podrobno opišemo proces neprekinjene integracije in dostave v okolje, kjer nimamo dostopa do omrežja stranke in posledično nimamo dostopa do izvajalnega okolja ter možnosti nameščanje programske opreme v izvajalno okolje. Na koncu predstavimo tudi razviti vtičnik Gitlab Template Lint, ki v integrirano okolje IntelliJ doda funkcionalnost, ki smo jo med razvojem komponente za neprekinjeno integracijo in dostavo pogrešali.
 
 Konkretni cilji predlaganega dela so:
 \begin{enumerate}
-    \item opisati izzive pri razvoju poslovno kritičnih aplikacij in dobre prakse razvoja programske opreme, ter na ta način prispevati k boljšemu razumevanju procesov in korakov potrebnih za pospešitev razvoja in dostave kvalitetne programske kode.
-    \item Predstaviti tehnologije in platforme potrebne za izvajanje dobrih praks razvoja programske opreme ter na ta način olajšati načrtovanje sistema neprekinjene integracije in dostave.
-    \item Razviti prilagodljivo komponento, ki poenoti in poenostavi vzpostavitev cevovoda za neprekinjeno integracijo in dostavo poslovno kritičnih aplikacij ter rešuje problematiko podvojenosti konfiguracije.
-    \item Prikazati uporabnost razvite komponente na realnih projektih.
+    \item Razviti prilagodljivo komponento, ki poenoti in poenostavi vzpostavitev cevovoda za neprekinjeno integracijo in dostavo poslovno kritičnih aplikacij z uporabo orodja GitLab CI/CD ter rešuje problematiko podvojenosti konfiguracije.
+    \item Prikazati uporabnost razvite komponente s študijo primerov realnih projektov.
+    \item Razviti odprtokodni vtičnik za integrirano okolje IntelliJ, ki znotraj okolja preverja konfiguracijske datoteke GitLab CI/CD in prikazuje združeno vsebino vseh dodanih predlog.
 \end{enumerate}
 
 \section{Pregled sorodnih del}
@@ -129,9 +128,9 @@ V~\cite{Chen2015} je podrobno opisana neprekinjena dostava po posameznih korakih
     \item zadovoljstvo strank - zaradi zanesljivejše objave in kvalitetnejšega produkta so stranke bolj zadovoljne.
 \end{itemize}
 
-V~\cite{Donca2022} je predstavljen generator cevovoda neprekinjene integracije in dostave za gibčne (ang. agile) projekte programske opreme. V članku predlagajo rešitev v obliki generatorja, ki v repozitoriju Git avtomatsko prepozna datoteke potrebne za gradnjo in namestitev projekta in avtomatsko kreira cevovod, ki to tudi naredi. Generator je napisan v programskem jeziku Bash, kar omogoča lažjo integracijo v različne platforme, in pripravi konfiguracijsko datoteko na podlagi katere se kreira cevovod na platformi GitLab, ki jo uporabimo tudi sami. Tako kot mi, za gradnjo slik Docker uporabijo orodje Kaniko in aplikacije namestijo na gručo platforme Kubernetes. Kot glavne prednosti navedejo zmanjšanje časa potrebnega za pripravo cevovodov, izboljšana struktura cevovodov, zmanjšanje podvojenosti konfiguracije cevovodov, zmanjšanje finančnih stroškov, ker se razvijalcem ni potrebno ukvarjati s kreiranjem, upravljanjem, popravljanjem in nadzorom cevovodov ter zmanjšanje dvoumnosti glede principov CI/CD, kar poveča standardizacijo in kvaliteto procesov v podjetju.
+V~\cite{Pooya2023} predstavijo orodja za vzpostavitev CI/CD, ki se največ uporabljajo, glavne razloge za uporabo praks CI/CD, katere aktivnosti so največkrat avtomatizirane z uporabo orodji neprekinjene integracije in kaj so prednosti in slabosti posameznih orodji. Med najbolj uporabljenimi orodji za neprekinjeno integracijo navedejo GitHub Actions, Jenkins, GitLab CI/CD, CircleCI in Azure DevOps. Kot glavne razloge za vpeljavo orodji naštejejo večjo zanesljivost, boljšo kvaliteto kode, večjo produktivnost, hitrejšo dostavo produktov, zmanjšanje finančnih stroškov in dela, hitrejšo povratno informacijo ter večjo transparentnost procesa gradnje projekta. Aktivnosti, ki jih orodja največkrat avtomatizirajo so: gradnja projekta, zagon testov enot, zagon integracijskih testov, zagon testov od konca do konca (ang. end-to-end), analiza pokritosti kode s testi, analiza kvalitete kode, analiza varnosti, pakiranje in namestitev ter upravljanje z odvisnostmi. Kot najbolj pomembne funkcionalnosti orodji navedejo dobro integracijo s platformo, ki gostuje kodo, enostavnost uporabe, podporo za specifične operacijske sisteme in možnost namestitve na lastni infrastrukturi. Kot najbolj popularno orodje se izkaže GitHub Actions, predvsem zaradi dobre integracije s platformo GitHub, ki je zelo razširjena in priljubljena med razvijalci. Glavna prednost orodja GitLab CI/CD, ki ga tudi sami uporabimo in ga razlikuje od orodja GitHub Actions, pa je možnost namestitve na lastni infrastrukturi. Poleg tega nudi tudi dobro integracijo s platformo GitLab, ki jo uporabljamo, enostavno uporabo privatnih računalniških virov za zagon procesov in dobro podporo za vsebnike.
 
-V~\cite{Pooya2023} predstavijo orodja za vzpostavitev CI/CD, ki se največ uporabljajo, glavne razloge za uporabo praks CI/CD, katere aktivnosti so največkrat avtomatizirane z uporabo orodji neprekinjene integracije in kaj so prednosti in slabosti posameznih orodji. Med najbolj uporabljenimi orodji za neprekinjeno integracijo navedejo GitHub Actions, Jenkins, GitLab CI/CD, CircleCI in Azure DevOps. Kot glavne razloge za vpeljavo orodji naštejejo večjo zanesljivost, boljšo kvaliteto kode, večjo produktivnost, hitrejšo dostavo produktov, zmanjšanje finančnih stroškov in dela, hitrejšo povratno informacijo ter večjo transparentnost procesa gradnje projekta. Aktivnosti, ki jih orodja največkrat avtomatizirajo so: gradnja projekta, zagon testov enot, zagon integracijskih testov, zagon testov od konca do konca (ang. end-to-end), analiza pokritosti kode s testi, analiza kvalitete kode, analiza varnosti, pakiranje in namestitev ter upravljanje z odvisnostmi. Kot najbolj pomembne funkcionalnosti orodji navedejo dobro integracijo s platformo, ki gostuje kodo, enostavnost uporabe, podporo za specifične operacijske sisteme in možnost namestitve na lastni infrastrukturi. Kot najbolj popularno orodje se izkaže GitHub Actions, predvsem zaradi dobre integracije s platformo GitHub, ki je zelo razširjena in priljubljena med razvijalci. Glavna prednost orodja GitLab, ki ga tudi sami uporabimo in ga razlikuje od orodja GitHub Actions, pa je možnost namestitve na lastni infrastrukturi. Poleg tega nudi tudi dobro integracijo s platformo GitLab, enostavno uporabo privatnih računalniških virov za zagon procesov in dobro podporo za vsebnike.
+V~\cite{Donca2022} so vzporedno z nami razvili generator cevovoda neprekinjene integracije in dostave za gibčne (ang. agile) projekte programske opreme, ki na podoben način rešuje problematiko kreiranja cevovodov. V članku predlagajo rešitev v obliki generatorja, ki v repozitoriju Git avtomatsko prepozna datoteke potrebne za gradnjo in namestitev projekta in avtomatsko kreira cevovod, ki to tudi naredi. Generator je napisan v programskem jeziku Bash, kar omogoča lažjo integracijo v različne platforme, in pripravi konfiguracijsko datoteko na podlagi katere se kreira cevovod na platformi GitLab, ki jo uporabimo tudi sami. Tako kot mi, za gradnjo vsebniških slik uporabijo orodje Kaniko in aplikacije namestijo na gručo platforme Kubernetes. Kot glavne prednosti navedejo zmanjšanje potrebnega časa za pripravo cevovodov, izboljšana struktura cevovodov, zmanjšanje podvojenosti konfiguracije cevovodov, zmanjšanje finančnih stroškov, ker se razvijalcem ni potrebno ukvarjati s kreiranjem, upravljanjem, popravljanjem in nadzorom cevovodov ter zmanjšanje dvoumnosti glede principov CI/CD, kar poveča standardizacijo in kvaliteto procesov v podjetju. Bistvena razlika med našim pristopom in njihovim pa je, da oni za kreiranje cevovoda razvijejo generator medtem, ko mi cevovode sestavimo iz vnaprej pripravljenih predlog.
 
 % V~\cite{KOCEVAR_2019} so predstavljene raziskave na področju oblačnega računalništva in uporaba principov razvoja ter operacij na oblačni programski rešitvi. Na osnovi tega, so opisane dve arhitekturni zasnovi. V rezultatih se izkaže, da je proces namestitve nove programske opreme veliko lažji in hitrejši, če ga avtomatiziramo in upoštevamo principe razvoja in operacij. Opiše tudi slabosti in prednosti tehnologije Kubernetes, ki jo bomo pri implementaciji tudi sami uporabljali. 
 
@@ -146,7 +145,7 @@ V~\cite{Pooya2023} predstavijo orodja za vzpostavitev CI/CD, ki se največ upora
 \label{ch:teoretično-ozadje}
 % V tem poglavju bomo predstavili sorodna dela, ki so nam bila osnova in navdih za raziskovanje področja. Na kratko bomo opisali kaj posamezna dela obravnavajo in zakaj so za nas pomembna. Nato pojasnimo kaj so
 
-V tem poglavju bomo predstavili poslovno kritične aplikacije in opisali nekaj primerov takšnih aplikacij. Sledi predstavitev pojma DevOps in podrobnejši opis neprekinjene integracije in neprekinjene dostave ter razlaga zakaj predstavljata ključen del razvojnega procesa. Na koncu poglavja obravnavamo še pomembnost strukture projekta, njen vpliv na razvojni proces in dva načina upravljanja z različicami izvorne kode.
+V tem poglavju bomo predstavili poslovno kritične aplikacije in opisali nekaj primerov takšnih aplikacij. Sledi podrobnejši opis neprekinjene integracije in neprekinjene dostave ter razlaga zakaj predstavljata ključen del razvojnega procesa. Na koncu poglavja obravnavamo še pomembnost strukture projekta, njen vpliv na razvojni proces in dva načina upravljanja z različicami izvorne kode.
 
 \section{Poslovno kritične aplikacije}
 \label{sec:poslovno-kritične-aplikacije}
@@ -170,7 +169,7 @@ Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti~\
     \item Lahko vzdrževanje: aplikacija mora biti lahka za vzdrževanje in posodabljanje kot tudi jasno ter dobro dokumentirana, da ostane zanesljiva in zmogljiva.
     \item Dobra uporabniška izkušnja: dober uporabniški vmesnik in izkušnja lahko uporabnikom olajšata razumevanje in uporabo aplikacije, kar privablja nove uporabnike in poveča njihovo produktivnost.
     % \item Integracija: Aplikacija mora nuditi dober programski vmesnik, da se lahko druge aplikacije nanj integrirajo.
-    \item Prilagodljivost: podjetja imajo različne potrebe, zato je pomembno, da je aplikacijska koda prožna in prilagodljiva, da se lahko hitro prilagodi spremembam ali novim zahtevam. Na primer, da prevodov besedil ne zapečemo v kodo, vendar jih shranjujemo v posebej določeni datoteki, kjer jih je lažje posodobiti.
+    \item Prilagodljivost: podjetja imajo različne potrebe, zato je pomembno, da je aplikacijska koda prožna in prilagodljiva, predvsem v smislu možnosti hitre integracije novih zahtev ali sprememb. Na primer, da prevodov besedil ne zapečemo v kodo, vendar jih shranjujemo v posebej določeni datoteki, kjer jih je lažje posodobiti.
 \end{itemize}
 
 % Podjetja pogosto razdelijo svoje aplikacije v skupine, glede na velikost posledic, ki bi jih njihova odpoved prinesla. V večini primerov se delijo na: aplikacije s kritično nalogo, poslovno kritične aplikacije in ne-kritične aplikacije. Ločimo jih po škodi, ki jih povzroči njihov izpad.
@@ -180,11 +179,11 @@ Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti~\
 
 % Primerjava poslovno kritičnih z aplikacijami s kritično nalogo.
 
-\section{DevOps}
-\label{sec:devops}
-Kratica DevOps združuje besedi razvoj in operativo (ang. Development and Operations) in predstavlja orodja, filozofijo in način razvoja programske opreme, ki avtomatizira in povezuje procese med razvijalci programske opreme in operaterji informacijske tehnologije. Sestavljajo ga nabori dobrih praks kot so: neprekinjena integracija, neprekinjena dostava, infrastruktura kot koda (ang. Infrastructure as Code - IaC), avtomatizacija, sodelovanje, nadzor in spremljanje povratne informacije in nadzor različic~\cite{ebert2016devops}.
+% \section{DevOps}
+% \label{sec:devops}
+% Kratica DevOps združuje besedi razvoj in operativo (ang. Development and Operations) in predstavlja orodja, filozofijo in način razvoja programske opreme, ki avtomatizira in povezuje procese med razvijalci programske opreme in operaterji informacijske tehnologije. Sestavljajo ga nabori dobrih praks kot so: neprekinjena integracija, neprekinjena dostava, infrastruktura kot koda (ang. Infrastructure as Code - IaC), avtomatizacija, sodelovanje, nadzor in spremljanje povratne informacije in nadzor različic~\cite{ebert2016devops}.
 
-Z uvedbo naštetih praks lahko v podjetju dosežemo hitrejše razvojne cikle, hitrejšo objavo aplikacij v produkcijsko okolje, boljšo kvaliteto programske opreme in usklajenost implementacije s poslovnimi zahtevami. Obenem razvojnim ekipam omogočimo hitrejšo odzivnost na povratno informacijo strank in na zahteve trga~\cite{ebert2016devops}.
+% Z uvedbo naštetih praks lahko v podjetju dosežemo hitrejše razvojne cikle, hitrejšo objavo aplikacij v produkcijsko okolje, boljšo kvaliteto programske opreme in usklajenost implementacije s poslovnimi zahtevami. Obenem razvojnim ekipam omogočimo hitrejšo odzivnost na povratno informacijo strank in na zahteve trga~\cite{ebert2016devops}.
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
@@ -197,11 +196,21 @@ Neprekinjena integracija je praksa razvoja programske opreme, pri kateri program
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=13cm]{figures/diagram-neprekinjene-integracije.drawio (1).png}
+        \includegraphics[width=13.5cm]{figures/diagram-neprekinjene-integracije-2.png}
     \end{center}
 \caption{Diagram neprekinjene integracije.}
 \label{fig:diagram-neprekinjene-integracije}
 \end{figure}
+
+\subsection{Testi enot}
+\label{subsec:testi-enot}
+Testi enot so testi, ki preverjajo posamezne enote ali skupine odvisnih enot programske opreme. Namen testov enot je pokazati, da programska koda naredi kar je bilo določeno v specifikaciji programske opreme. Razvijalci napišejo teste enot tako, da definirajo vhodne podatke posamezne enote in preverijo ali vrnejo pravilne rezultate, če predpostavimo, da vsi ostali deli sistema delujejo pravilno. Zato je za razvoj takšnih testov pogosto potrebna predpriprava okolja in ponarejanje rezultatov klicev funkcij, ki niso del trenutno testirane enote~\cite{Runeson2006}.
+
+Za razvoj testov enot se pogosto uporabljajo knjižnice, kot so: \textit{JUnit}\footnote{https://junit.org/junit5/}, \textit{pytest}\footnote{https://docs.pytest.org/en/latest/} in \textit{cypress}\footnote{https://www.cypress.io/}. Medtem, ko se za izvajanje testov uporabljajo različna orodja, kot so: \textit{Maven}, \textit{Tox}, \textit{npm} in \textit{pnpm}.
+
+\subsection{Integracijski testi}
+\label{subsec:integracijski-test}
+Integracijski testi so testi, ki testirajo delujoč program. Testi se izvajajo nad moduli namesto nad posameznimi enotami, kot pri testih enot. Cilj integracijskih testov je postaviti posamezne enote v njihovo predvideno okolje in čim bolj celovito preizkusiti njihove medsebojne interakcije~\cite{Leung1990, Delmaro2001}. Primera takšnih testov sta preverjanje interakcije z bazo in testiranje interakcije med mikroservisi. Ponavadi se tudi dalj časa izvajajo, saj je za izvajanje testov potrebno namestiti posamezne dele aplikacije.
 
 \subsection{Razlogi za neprekinjeno integracijo}
 Ko razvijalec želi dodati nekaj novega v programsko kodo aplikacije, si v svojem okolju ustvari kopijo temeljne programske kode, ki je v tistem trenutku aktualna. Medtem, ko razvijalec v svojem okolju razvija nove funkcionalnosti ali pripravlja popravke, lahko ostali razvijalci spreminjajo temeljno programsko kodo. Tako se lokalna kopija razvijalca čedalje bolj razlikuje od temeljne programske kode. Ostali razvijalci lahko v temeljno programsko kodo dodajo nove funkcionalnosti, nove knjižnice ali druge vire, ki lahko ustvarijo dodatne odvisnosti in potencialne konflikte. Dalj časa kot razvijalec svoje lokalne kopije ne združi s temeljno programsko kodo, večje je tveganje integracijskih konfliktov in napak pri združevanju kode~\cite{Duvall2007}. Preden razvijalec svoje spremembe doda v glavno vejo, mora najprej posodobiti svojo lokalno kopijo, da pridobi vse spremembe, ki so bile v vmesnem času dodane v glavno vejo. Več kot je bilo sprememb dodanih v vmesnem času, več dela ima razvijalec, preden svoje spremembe lahko doda v glavno vejo. Če razvijalec predolgo odlaša z oddajo kode, se njegova kopija lahko zelo razlikuje od kode v glavni veji in za integracijo svoje kode porabi več časa, kot ga je za razvoj sprememb. Temu rečemo tudi integracijski pekel~\cite{Cunningham2009}. Zato je ključno, da so naloge primerno razdeljene in smiselno umeščene v časovnico projekta.
@@ -221,7 +230,7 @@ Ključen del neprekinjene dostave je tudi dostava izvorne kode stranki ali konč
 
 % Skupaj lahko dostava izvorne kode stranki zagotovi večjo neodvisnost in prilagodljivost pri uporabi programske opreme, pa tudi priložnost prilagoditve programske opreme lastnim specifičnim potrebam in zahtevam (Humble et al., 2010).
 
-Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je napisalo izvorno kodo. Za stranko je koristna, ker ni več odvisna od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del prevzame sama. To je lahko zelo koristno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore. Dostava izvorne kode pa je koristna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz dveh vidikov~\cite{Humble2010}:
+Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je napisalo izvorno kodo. Za stranko je koristna, ker ni več odvisna od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del prevzame sama. To se izkaže zelo uporabno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore. Dostava izvorne kode pa je smiselna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz dveh vidikov~\cite{Humble2010}:
 \begin{itemize}
     \item Prenos odgovornosti: z dostavo izvorne kode stranki lahko podjetje prenese del odgovornosti vzdrževanja programske opreme na stranko. To je še posebej koristno, če stranka načrtuje prilagoditve ali spremembe programske opreme, saj podjetje ni odgovorno za morebitne težave ali napake, ki bi lahko nastale zaradi teh sprememb.
     \item Zmanjšanje bremena vzdrževanja in podpore: če ima stranka dostop do izvorne kode, lahko sama odpravi težave in jih popravi, namesto, da bi se zanašala na podjetje za podporo.
@@ -235,7 +244,7 @@ Cilj neprekinjene namestitve je, da se nove funkcionalnosti in popravki čim hit
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=13cm]{figures/diagram-neprekinjene-namestitve.drawio.png}
+        \includegraphics[width=13.5cm]{figures/diagram-neprekinjene-namestitve.png}
     \end{center}
 \caption{Diagram neprekinjene integracije in namestitve.}
 \label{fig:diagram-neprekinjene-integracije-in-namestitve}
@@ -280,8 +289,6 @@ Slabosti monolitnega repozitorija so~\cite{Harry2017}:
     \item Orodja za upravljanje: Za učinkovito upravljanje monolitnega repozitorija so velikokrat potrebna dodatna programska orodja, kot so orodja za gradnjo aplikacije in upravitelji paketov. To lahko poveča kompleksnost razvijanja aplikacije.
 \end{itemize}
 
-
-
 \subsection{Polirepo}
 \label{subsec:polirepo}
 Polirepo je poimenovanje organizacije in načina upravljanja z različicami izvorne kode z več repozitoriji. Ti vsebujejo vse pakete in komponente izvorne kode, ki skupaj tvorijo celotno aplikacijo. Prednosti uporabe več repozitorijev so~\cite{Shakikhanli2022}:
@@ -295,7 +302,7 @@ Polirepo je poimenovanje organizacije in načina upravljanja z različicami izvo
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=11cm]{figures/polyrepo.png}
+        \includegraphics[width=9cm]{figures/polirepo.png}
     \end{center}
 \caption{Vizualizacija organizacije z načinom polirepo.}
 \label{fig:polyrepo}
@@ -320,7 +327,7 @@ V tem poglavju bomo predstavili tehnologije in aplikacije, ki so bile uporabljen
 
 \section{Repozitoriji za nadzor različic}
 \label{sec:repozitoriji-za-nadzor-različic}
-Za razvoj aplikacij uporabljamo več repozitorijev, ki služijo različnim namenom. Izvorna koda se nahaja v repozitoriju s sistemom za nadzor različic, ki razvijalcem omogoča preprost pregled sprememb kode in združevanje sprememb iz različnih vej. Interne knjižnice, od katerih so aplikacije odvisne, so v obliki artefaktov ali paketov, naloženih v repozitorij, katerega upravlja centralni upravitelj repozitorijev. Aplikacije po gradnji največkrat zapakiramo v sliko Docker, ki so shranjene v registru slik. V nadaljevanju predstavimo, katere implementacije posameznih repozitorijev smo uporabili pri implementaciji cevovoda za neprekinjeno integracijo in dostavo.
+Za razvoj aplikacij uporabljamo več repozitorijev, ki služijo različnim namenom. Izvorna koda se nahaja v repozitoriju s sistemom za nadzor različic, ki razvijalcem omogoča preprost pregled sprememb kode in združevanje sprememb iz različnih vej. Interne knjižnice, od katerih so aplikacije odvisne, so v obliki artefaktov ali paketov, naloženih v repozitorij, katerega upravlja centralni upravitelj repozitorijev. Aplikacije po gradnji največkrat zapakiramo v vsebniško sliko, ki so shranjene v registru slik. V nadaljevanju predstavimo, katere implementacije posameznih repozitorijev smo uporabili pri implementaciji cevovoda za neprekinjeno integracijo in dostavo.
 
 \subsection{Git}
 \label{subsec:git}
@@ -346,16 +353,17 @@ Za proces neprekinjene integracije in dostave aplikacij je Nexus pomemben zaradi
     \item Olajša sledljivost s hranjenjem različnih različic artefaktov, ki so bili zgrajeni in nameščeni.
 \end{itemize}
 
-\subsection{Register slik Docker}
-\label{subsec:register-slik-docker}
-Register slik Docker je sistem za centralizirano hranjene in distribucijo slik Docker, ki so podrobneje predstavljene v poglavju \ref{subsec:docker}. Služi kot sistem za upravljanje različic slik, v katerega lahko slike shranjujemo, jih delimo z drugimi in jih prenašamo~\cite{Anwar2018}.
+\subsection{Register slik vsebnikov}
+\label{subsec:register-slik-vsebnikov}
+Register slik vsebnikov je sistem za centralizirano hranjene in distribucijo slik vsebnikov, ki so podrobneje predstavljene v poglavju \ref{subsec:docker}. Služi kot sistem za upravljanje različic slik, v katerega lahko slike shranjujemo, jih delimo z drugimi in jih prenašamo~\cite{Anwar2018}.
 
 Obstaja veliko javnih registrov, do katerih dostop ni omejen, kot so: Docker Hub\footnote{\url{https://hub.docker.com/}}, ki je privzeti register in ga vzdržuje Docker, Quay\footnote{\url{https://quay.io/}} in IBM Cloud container registry\footnote{\url{https://www.ibm.com/cloud/container-registry}}. Na lastni infrastrukturi pa lahko postavimo tudi privatni register, do katerega omejimo dostop in s tem zagotovimo boljšo varnost~\cite{Anwar2018}.
 
-V kontekstu neprekinjene integracije nam register slik Docker omogoča hranjenje slik Docker, ki jih proces CI zgradi. Te slike lahko potem uporabimo za postavitev testnega okolja pred oddajo v produkcijo. V kontekstu neprekinjene dostave pa nam register omogoča upravljanje z različnimi različicami aplikacijskih slik Docker in v primeru težav hitro vračanje aplikacije na predhodno delujočo in preverjeno različico.
+V kontekstu neprekinjene integracije nam register slik vsebnikov omogoča hranjenje slik vsebnikov, ki jih proces CI zgradi. Te slike lahko potem uporabimo za postavitev testnega okolja pred oddajo v produkcijo. V kontekstu neprekinjene dostave pa nam register omogoča upravljanje z različnimi različicami aplikacijskih slik vsebnikov in v primeru težav hitro vračanje aplikacije na predhodno delujočo in preverjeno različico.
 
 \section{Orodja za gradnjo}
 \label{sec:orodja-za-gradnjo}
+V tem poglavju bomo predstavili orodja za gradnjo aplikacij razvitih v programskih jezikih Java, Python, JavaScript in TypeScript in orodji za gradnjo vsebniških slik, ki smo jih v cevovodu neprekinjene integracije in dostave uporabili.
 
 \subsection{Maven}
 \label{subsec:maven}
@@ -373,7 +381,7 @@ Podobno kot Maven, je Gradle pomemben za neprekinjeno integracijo in dostavo apl
 \subsection{Node Package Manager ali NPM}
 \label{subsec:npm}
 
-Node Package manager\footnote{\url{https://www.npmjs.com/}} je orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript in se uporabljajo v izvajalnem okolju Node.js. Orodje je vključeno v namestitveni paket izvajalnega okolja Node.js in je avtomatsko nameščeno ob namestitvi Node.js, zato služi kot privzeti upravitelj paketov. Uporablja se v ukazni vrstici in razvijalcem omogoča enostavno namestitev, upravljanje in deljenje paketov. V datoteki \texttt{package.json} razvijalci določijo odvisnosti, ki jih projekt zahteva. Te odvisnosti nato enostavno namestijo z uporabo orodja NPM, ki avtomatsko poišče ustrezne pakete in jih prenese iz registra NPM ali iz drugih virov kot je npr. repozitorij Nexus. Prav tako omogoča upravljanje različič paketov, posodabljanje paketov, odstranjevanje paketov in objavljanje lastnih paketov v zasebne ali javne repozitorije. Poskrbi tudi za razreševanje odvisnosti in zagotavlja, da so vsi zahtevani paketi in njihove odvisnosti pravilno nameščeni in združljivi med seboj~\cite{Ali2013}.
+Node Package manager\footnote{\url{https://www.npmjs.com/}} je orodje za upravljanje paketov, ki so napisani v programskem jeziku JavaScript ali TypeScript in se uporabljajo v izvajalnem okolju Node.js. Orodje je vključeno v namestitveni paket izvajalnega okolja Node.js in je avtomatsko nameščeno ob namestitvi Node.js, zato služi kot privzeti upravitelj paketov. Uporablja se v ukazni vrstici in razvijalcem omogoča enostavno namestitev, upravljanje in deljenje paketov. V datoteki \texttt{package.json} razvijalci določijo odvisnosti, ki jih projekt zahteva. Te odvisnosti nato enostavno namestijo z uporabo orodja NPM, ki avtomatsko poišče ustrezne pakete in jih prenese iz registra NPM ali iz drugih virov kot je npr. repozitorij Nexus. Prav tako omogoča upravljanje različič paketov, posodabljanje paketov, odstranjevanje paketov in objavljanje lastnih paketov v zasebne ali javne repozitorije. Poskrbi tudi za razreševanje odvisnosti in zagotavlja, da so vsi zahtevani paketi in njihove odvisnosti pravilno nameščeni in združljivi med seboj~\cite{Ali2013}.
 
 \subsection{Performant Node Package Manager ali PNPM}
 \label{subsec:pnpm}
@@ -407,7 +415,7 @@ Docker\footnote{\url{https://www.docker.com/}} je odprtokodno orodje za razvoj, 
 
 \subsection{Kaniko}
 \label{subsec:kaniko}
-Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtokodno orodje za gradnjo vsebniških slik Docker iz datotek Docker (ang. \textit{Dockerfile}) znotraj vsebnika ali na gruči Kubernetes. Za gradnjo vsebniških slik ne potrebuje privilegiranega dostopa do prikritega procesa Docker (ang. \textit{Docker daemon}), kar predstavlja glavno prednost pred načinom gradnje vsebniških slik, ki ga uporablja platforma Docker.
+Kaniko\footnote{\url{https://github.com/GoogleContainerTools/kaniko}} je odprtokodno orodje za gradnjo vsebniških slik iz datotek Docker (ang. \textit{Dockerfile}) znotraj vsebnika ali na gruči Kubernetes. Za gradnjo vsebniških slik ne potrebuje privilegiranega dostopa do prikritega procesa Docker (ang. \textit{Docker daemon}), kar predstavlja glavno prednost pred načinom gradnje vsebniških slik, ki ga uporablja platforma Docker.
 
 Platforma Docker za gradnjo slik uporablja prikriti proces, ki potrebuje korenski dostop in visoke pravice na gostujočem sistemu. Uporabniki v nekaterih okoljih, kot je na primer Kubernetes ali cevovod za neprekinjeno integracijo in dostavo zaradi varnostnih zahtev nimajo zahtevanih pravic za zagon prikritega procesa. Kaniko to težavo reši z uporabo samostojnega orodja, ki se zažene znotraj vsebnika in zgradi sliko brez priviligiranega dostopa. Vse potrebne operacije, kot so: prenos osnovnih slik, izvajanje ukazov za gradnjo slike in kreiranje končne slike vsebnika, izvede s pravicami, ki jih ima navaden uporabnik gostiteljskega sistema. To nam omogoča, da lahko zgradimo slike na gruči Kubernetes ali drugih platformah za orkestracijo~\cite{Kaniko2023}.
 
@@ -418,15 +426,15 @@ GitLab\footnote{\url{https://about.gitlab.com/}} je spletna platforma za razvija
     \item Orodja za vodenje projekta, ki olajšajo: organiziranje projekta, sledenje nalogam, dodeljevanje nalog razvijalcem in določanje mejnikov.
     \item Sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij.
     \item Orodja za pregled kode in medsebojno sodelovanje, ki omogočajo: pregled kode, dodajanje komentarjev na posamezne vrstice v kodi, pregled zahtevkov za združitev in upravljanje vej.
-    \item Vgrajen register za shranjevanje in upravljanje z vsebniki Docker in njihovo uporabo v delovnih procesih.
+    \item Vgrajen register za shranjevanje in upravljanje z vsebniki in njihovo uporabo v delovnih procesih.
     \item Varnostna preverjanja in preverjanja skladnosti kode z industrijskimi standardi.
     \item Možnost namestitve na lastni infrastrukturi ali v oblaku, kar omogoča skalabilnost in visoko razpoložljivost.
 \end{itemize}
 
-\subsection{Neprekinjena integracija in dostava z GitLab CI/CD}
-\label{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd}
+\subsection{Orodje GitLab CI/CD}
+\label{subsec:orodje-gitlab-ci-cd}
 
-GitLab CI/CD je sistem za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo GitLab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme. Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsak cevovod ima lahko več faz v kateri je lahko več nalog, vsaka naloga pa ima lahko več akcij. Z razporejanjem nalog po fazah, zagotovimo pravilen vrstni red izvajanja nalog. Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo tudi vse artefakte, ki jih naloge generirajo, odvisnosti in okoljske spremenljivke.
+GitLab CI/CD je orodje za gradnjo in zagon cevovodov za neprekinjeno integracijo in dostavo aplikacij, ki je integriran v platformo GitLab. Razvijalcem omogoča avtomatizacijo gradnje, testiranja in namestitve aplikacij in s tem olajša proces dostave programske opreme. Temelji na konceptu cevovodov, ki jih predstavljajo zaporedja nalog. Vsak cevovod ima lahko več faz v kateri je lahko več nalog, vsaka naloga pa ima lahko več akcij. Z razporejanjem nalog po fazah, zagotovimo pravilen vrstni red izvajanja nalog. Cevovode definiramo v konfiguracijski datoteki \texttt{.gitlab-ci.yml}, v formatu YAML, ki se mora nahajati v korenskem direktoriju projekta. V tej datoteki specificiramo tudi vse artefakte, ki jih naloge generirajo, odvisnosti in okoljske spremenljivke.
 
 Za izvajanje nalog skrbijo izvajalci nalog GitLab. Izvajajo se lahko na lastni infrastrukturi ali na oblačnih virtualnih strojih in omogočajo paralelno izvajanje nalog, kar lahko znatno pohitri povprečen izvajalni čas cevovoda. Izvajalci nalog so različnih tipov glede na to, katerim projektom so na voljo:
 \begin{itemize}
@@ -475,8 +483,22 @@ Kubernetes\footnote{\url{https://kubernetes.io/}} je odprtokodna rešitev za ork
 % \subsection{Kibana}
 % \label{subsec:kibana}
 
+\section{Zagotavljanje kakovosti kode}
+\label{sec:zagotavljanje-kakovost-kode}
+V tem poglavju bomo predstavili orodja za zagotavljanje kakovosti kode. To so orodja, ki naredijo statično analizo kode, kar pomeni, da kodo analizirajo brez zagona aplikacije, in nas opozorijo na znane pomanjkljivosti.
+
+\subsection{SonarQube}
+\label{sec:sonarqube}
+SonarQube\footnote{https://www.sonarsource.com/products/sonarqube/} je odprtokodna platforma za avtomatsko preverjanje kakovosti kode z namenom zaznave napak, slabo napisane kode (ang. code smell) in varnostnih pomanjkljivosti v programski kodi. Podpira več kot 25 programskih jezikov in se uporablja v več kot 85000 organizacijah. Orodje deluje na osnovi pravil in konfiguracij, ki jih lahko tudi sami dodamo ter služijo kot standardi programske kode. V primeru da del kode krši katerega izmed pravil, nas orodje opozori na napako. Poleg že vgrajenih pravil, uporablja tudi pravila drugih popularnih orodji za preverjanje kakovosti kode kot sta \textit{FindBugs} in \textit{PMD}~\cite{Marcilio2019}.
+
+Platforma je sestavljena iz orodji in programskih vtičnikov, ki jih lahko uporabimo za zagon analize kvalitete kode lokalno ali v cevovodu CI, ter spletnega vmesnika, ki prikazuje podrobna poročila in metrike kakovosti kode, kar razvojnim ekipam olajša spremljanje napredka in dodeljevanje nalog za izboljšanje kakovosti.
+
+\subsection{ESLint}
+ESLint\footnote{https://eslint.org/} je najbolj priljubljeno odprtokodno orodje za statično analizo programske kode, ki je napisana v programskih jezikih JavaScript, TypeScript ali ECMAScript. Orodje sestavlja 236 osnovnih pravil, ki jih razvijalci lahko poljubno vklopijo ali izklopijo in razvijalce opozarjajo na potencialno problematične dele kode~\cite{Tomasdottir2017}.
+
 \section{Pomožne tehnologije}
 \label{subsec:pomozne-tehnologije}
+V tem poglavju bomo predstavili pomožne tehnologije, ki smo jih uporabili vzpostavitev cevovoda CI/CD. To so tehnologije, ki niso nujno potrebne vendar so nam olajšale razvoj in namestitev aplikacij.
 
 \subsection{Konfiguracijski strežnik Consul}
 \label{subsec:konfiguracijski-strežnik-consul}
@@ -519,9 +541,17 @@ V tem poglavju bomo najprej predstavili potek integracije in dostave po korakih,
 \label{sec:potek-integracije-in-dostave}
 V poglavju \ref{sec:neprekinjena-integracija} smo omenili, da je neprekinjena integracija praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Preden pa spremembe združimo v glavno vejo, je pomembno da preverimo, ali je nova koda sintaktično in semantično pravilna. V razvitem cevovodu smo to naredili tako, da ob vsakem odrivu (ang. push) kode na katerokoli vejo v repozitoriju zaženemo cevovod, ki to kodo preveri z gradnjo aplikacije, testi enot in integracijskimi testi.
 
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=13.5cm]{figures/osnoven-cevovod.png}
+    \end{center}
+\caption{Osnovni koraki cevovoda.}
+\label{fig:osnoven-cevovod}
+\end{figure}
+
+
 % manjka kaj so testi enot in kaj so integracijski testi
-% manjka kaj je to zbiranje logov
-Temu sledi gradnja aplikacijske slike Docker in njen odriv v register slik Docker. Zgrajeno sliko nato uporabimo za namestitev aplikacije na gručo platforme Kubernetes, ki je namenjena izvajanju integracijskih testov, ki jih po uspešni namestitvi na gručo tudi zaženemo. Na tem mestu lahko ročno zaženemo tudi orodja za preverjanje kvalitete in varnosti kode. V kolikor so bili vsi predhodni koraki do sedaj uspešni, se aplikacijska slika Docker označi z ustrezno številko različice. Nato se ustvarijo naloge za namestitev aplikacije v različna testna okolja, ki omogočajo razvijalcem in zaposlenim, ki skrbijo za zagotavljanje kvalitete, da aplikacijo tudi sami preizkusijo in pogledajo. Čisto na koncu cevovoda pa so na voljo tudi naloge za izdajanje novih verzij, ki jih razvijalci lahko ročno zaženejo.
+Temu sledi gradnja aplikacijske vsebniške slike in njen odriv v register vsebniških slik. Zgrajeno sliko nato uporabimo za namestitev aplikacije na gručo platforme Kubernetes, ki je namenjena izvajanju integracijskih testov, ki jih po uspešni namestitvi na gručo tudi zaženemo. Na tem mestu lahko ročno zaženemo tudi orodja za preverjanje kakvosti in varnosti kode. V kolikor so bili vsi predhodni koraki do sedaj uspešni, se aplikacijska vsebniška slika označi z ustrezno številko različice. Nato se ustvarijo naloge za namestitev aplikacije v različna testna okolja, ki omogočajo razvijalcem in zaposlenim, ki skrbijo za zagotavljanje kvalitete, da aplikacijo tudi sami preizkusijo in pogledajo. Čisto na koncu cevovoda pa so na voljo tudi naloge za izdajanje novih verzij, ki jih razvijalci lahko ročno zaženejo.
 
 \subsection{Proces v podjetju}
 \label{subsec:proces-v-podjetju}
@@ -531,7 +561,7 @@ Razvoj aplikacije v podjetju največkrat poteka po nalogah, ki jih dodelimo razv
     \item Ko se vprašanja razrešijo, ustvari v repozitoriju novo vejo, na kateri bo razvil nalogo.
     \item Razvijalec razvija novo funkcionalnost ali popravke in sproti dodaja spremembe na svojo vejo v oddaljenem repozitoriju.
     \item Ob vsakem odrivu aplikacijske kode se izvede cevovod, ki preveri oddano kodo in razvijalca obvesti o morebitnih težavah.
-    \item Ko razvijalec konča z razvojem naloge, ustbari zahtevek za združitev v glavno vejo v spletni platformi GitLab in nanj dodeli pregledovalca.
+    \item Ko razvijalec konča z razvojem naloge, ustvari zahtevek za združitev v glavno vejo v spletni platformi GitLab in nanj dodeli pregledovalca.
     \item Pregledovalec preveri dodane spremembe in odobri zahtevek ali pa ga zavrne ter v komentarjih pojasni, kaj je potrebno popraviti.
     \item Ko so vsi komentarji v zahtevku za združitev razrešeni, razvijalec zahtevek dodeli nekomu v projektu, ki ima pravice za združitev kode v glavno vejo.
     \item Razvijalec, ki ima pravice za združitev kode v glavno vejo, ob primernem času združi kodo v glavno vejo.
@@ -556,15 +586,15 @@ Na ta način smo stranki omogočili, da lahko sama enostavno namesti aplikacijo 
 
 \section{Razvoj komponente Medius CD}
 \label{sec:razvoj-komponente-medius-cd}
-Komponenta za vzpostavitev cevovoda neprekinjene integracije in dostave - Medius CD je nastala z željo po poenotenju cevovodov na projektih, zmanjšanju količine podvojene konfiguracije in kode ter lažjemu vzdrževanju. Sestavljen je iz dveh delov: predlog GitLab in skript napisanih v jeziku Bash.
+Komponenta za vzpostavitev cevovoda neprekinjene integracije in dostave - Medius CD je nastala z željo po poenotenju cevovodov na projektih, zmanjšanju količine podvojene konfiguracije in kode ter lažjemu vzdrževanju. Sestavljen je iz dveh delov: predlog GitLab in skript napisanih v jeziku Bash, ki omogoča lažjo integracijo z različnimi operacijskimi sistemi vsebnikov, ki jih lahko uporabljajo izvajalci nalog GitLab.
 
-Kot omenjeno v poglavju \ref{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd} je cevovod definiran z datoteko \texttt{.gitlab-ci.yml}, ki se nahaja na korenu projekta. Če ta datoteka obstaja v oddaljenem repozitoriju, jo GitLab avtomatsko prepozna in ob vsakem odrivu kode v oddaljen repozitorij kreira cevovod.
+Kot omenjeno v poglavju \ref{subsec:orodje-gitlab-ci-cd} je cevovod definiran z datoteko \texttt{.gitlab-ci.yml}, ki se nahaja na korenu projekta. Če ta datoteka obstaja v oddaljenem repozitoriju, jo GitLab avtomatsko prepozna in ob vsakem odrivu kode v oddaljen repozitorij kreira cevovod.
 
-Naloge v cevovodu poganjajo izvajalci nalog GitLab, ki smo jih opisali v poglavju \ref{subsec:neprekinjena-integracija-in-dostava-z-gitlab-ci-cd}. V konfiguraciji cevovoda pa lahko s ključno besedo \texttt{image} nastavimo tudi sliko Docker, v kateri izvajalec nalogo zažene. Takšne slike imenujemo izvajalne slike. Na ta način lahko v naprej pripravimo okolje, v katerem se naloge izvajajo. Izvajalne slike pa je potrebno naprej zgraditi in naložiti na register slik Docker, s katerega lahko izvajalci slike prenesejo.
+Naloge v cevovodu poganjajo izvajalci nalog GitLab, ki smo jih opisali v poglavju \ref{subsec:orodje-gitlab-ci-cd}. V konfiguraciji cevovoda pa lahko s ključno besedo \texttt{image} nastavimo tudi vsebniško sliko, v kateri izvajalec nalogo zažene. Takšne slike imenujemo izvajalne slike. Na ta način lahko v naprej pripravimo okolje, v katerem se naloge izvajajo. Izvajalne slike pa je potrebno naprej zgraditi in naložiti na register vsebniških slik, s katerega lahko izvajalci slike prenesejo.
 
-Pred razvojem komponente smo izvajalne slike gradili in hranili v enem projektu GitLab. To nam je omogočalo, da smo isto sliko lahko večkrat uporabili v cevovodih različnih projektov. Kmalu pa smo ugotovili, da takšen način vodenja slik, zaradi specifik projektov, znatno oteži vzdrževanje, saj smo morali veliko slik prilagajati posameznim projektom. Odločili smo se, da bomo izvajalne slike hranili in gradili v vsakemu projektu posebej. Kljub temu pa smo pripravili sliko Docker \texttt{rocky-with-tools}, ki vsebuje operacijski sistem Rocky Linux\footnote{\url{https://rockylinux.org/}} in orodja, ki jih potrebujemo za izvajanje vseh cevovodov. To sliko smo naložili na Dockerhub, tako da jo lahko uporabimo za osnovo katerekoli izvajalne slike.
+Pred razvojem komponente smo izvajalne slike gradili in hranili v enem projektu GitLab. To nam je omogočalo, da smo isto sliko lahko večkrat uporabili v cevovodih različnih projektov. Kmalu pa smo ugotovili, da takšen način vodenja slik, zaradi specifik projektov, znatno oteži vzdrževanje, saj smo morali veliko slik prilagajati posameznim projektom. Odločili smo se, da bomo izvajalne slike hranili in gradili v vsakemu projektu posebej. Kljub temu pa smo pripravili vsebniško sliko \texttt{rocky-with-tools}, ki vsebuje operacijski sistem Rocky Linux\footnote{\url{https://rockylinux.org/}} in orodja, ki jih potrebujemo za izvajanje vseh cevovodov. To sliko smo naložili na Dockerhub, tako da jo lahko uporabimo za osnovo katerekoli izvajalne slike. S tovrstnim pristopom nismo povečali zasedenosti registra vsebnikov, saj register vsebnikov hrani informacije o slikah v vmesnih plasteh, ki vsebujejo metapodatke posameznih slik in se lahko uporabijo za definicijo različnih slik.
 
-Datoteke Docker, na podlagi katerih zgradimo izvajalne slike projekta, hranimo v imeniku \texttt{runner-images}, ki se nahaja v korenskem imeniku projekta. V njih definiramo vse potrebno za izvedbo nalog cevovoda specifičnega projekta: tolmač programske kode, navidezne stroje, certifikate, orodja za gradnjo projekta, orodja za izvajanje testov ipd. Gradnjo izvajalnih slik pa smo avtomatizirali s posebnim projektnim cevovodom, ki se zažene, če pred zagonom cevovoda nastavimo spremenljivko GitLab \texttt{BUILD\_RUNNERS} na \texttt{true} ali pa sporočilo spremembe začnemo z besedilom \texttt{build-runners}. To smo naredili tako, da v datoteki \texttt{.gitlab-ci.yml} s ključnima besedama \texttt{include} in \texttt{rules} pogojno dodamo konfiguracijo glavnega cevovoda, ki se nahaja v \texttt{.gitlab/main.yml} ali pa konfiguracijo cevovoda za gradnjo izvajalnih slik, ki se nahaja v \texttt{.gitlab/build-runners.yml}.
+Datoteke, na podlagi katerih zgradimo izvajalne slike projekta, hranimo v imeniku \texttt{runner-images}, ki se nahaja v korenskem imeniku projekta. V njih definiramo vse potrebno za izvedbo nalog cevovoda specifičnega projekta: tolmač programske kode, navidezne stroje, certifikate, orodja za gradnjo projekta, orodja za izvajanje testov ipd. Gradnjo izvajalnih slik pa smo avtomatizirali s posebnim projektnim cevovodom, ki se zažene, če pred zagonom cevovoda nastavimo spremenljivko GitLab \texttt{BUILD\_RUNNERS} na \texttt{true} ali pa sporočilo spremembe začnemo z besedilom \texttt{build-runners}. To smo naredili tako, da v datoteki \texttt{.gitlab-ci.yml} s ključnima besedama \texttt{include} in \texttt{rules} pogojno dodamo konfiguracijo glavnega cevovoda, ki se nahaja v \texttt{.gitlab/main.yml} ali pa konfiguracijo cevovoda za gradnjo izvajalnih slik, ki se nahaja v \texttt{.gitlab/build-runners.yml}.
 
 \subsection{Datoteka \texttt{config\_file}}
 \label{subsec:datoteka-config-file}
@@ -573,7 +603,7 @@ Platforma GitLab omogoča nastavljanje skupinskih in projektnih spremenljivk, ki
 \begin{itemize}
     \item \texttt{include} - spletni naslov ali ime spremenljivke GitLab, ki vsebuje obstoječo konfiguracijsko datoteko in jo trenutna datoteka razširja.
     \item \texttt{variables} - spremenljivke, ki so na voljo v vseh nalogah.
-    \item \texttt{services} - seznam aplikacij, za katere želimo zgraditi slike Docker. Vsebujejo naslednje atribute:
+    \item \texttt{services} - seznam aplikacij, za katere želimo zgraditi vsebniške slike. Vsebujejo naslednje atribute:
     \begin{itemize}
         \item \texttt{name} - ime aplikacije.
         \item \texttt{dir} - pot do imenika v kateri se aplikacija nahaja.
@@ -626,14 +656,14 @@ it:
 Osnovna enota cevovoda na platformi GitLab je naloga. Najbolj preprosta naloga je sestavljena iz imena naloge in dela \texttt{script}:
 
 \begin{verbatim}
-    hello-world:
-      script:
-        - echo "Hello World!"    
+hello-world:
+  script:
+    - echo "Hello World!"    
 \end{verbatim}
 
 Nalogi pa lahko nastavimo še veliko drugih atributov, ki definirajo njeno delovanje. Najbolj pogosto uporabljeni so:
 \begin{itemize}
-    \item \texttt{artifacts} - Datoteke in imeniki, ki so po uspešno izvedeni nalogi na voljo za prenos.
+    \item \texttt{artifacts} - Datoteke in imeniki, ki so po uspešno izvedeni nalogi na voljo za prenos. V nadaljevanju jih imenujemo artefakti.
     \item \texttt{before\_script} - Množica ukazov, ki se izvedejo preden se izvede naloga.
     \item \texttt{cache} - Seznam datotek, ki se shranijo v začasno shrambo in so na voljo med zaporednimi izvajanji cevovoda.
     \item \texttt{dependencies} - Seznam predhodnih nalog, iz katerih se prenesejo artefakti.
@@ -678,44 +708,44 @@ Naslednji dve nalogi sta gradnja projekta in zagon testov enot. Obe nalogi sta o
 \begin{itemize}
     \item programski jezik Java in orodje Maven,
     \item Python, orodje setuptools in orodje tox,
-    \item Javascript ali TypeScript in orodje npm ter
-    \item Javascript ali TypeScript in orodje pnpm.
+    \item JavaScript ali TypeScript in orodje npm ter
+    \item JavaScript ali TypeScript in orodje pnpm.
 \end{itemize}
-\subsection{Gradnja slik Docker}
 
-Po uspešni gradnji projekta in testih enot se zaženejo naloge, ki zgradijo aplikacijske slike Docker. Če je projekt sestavljen iz več aplikacijskih modulov, je potrebno zgraditi več različnih aplikacijskih slik Docker. To naredimo tako, da v konfiguracijski datoteki \texttt{config\_file} pod ključno besedo \texttt{services} definiramo več servisov. Prva naloga v koraku gradnje slik Docker na podlagi konfiguracijske datoteke in z uporabo orodja \texttt{jsonnet} pripravi konfiguracijsko datoteko GitLab v formatu JSON, ki vsebuje naloge za gradnjo vseh aplikacijskih slik definiranih v konfiguracijski datoteki \texttt{config\_file}. Ta datoteka se nato uporabi v nalogi tipa \texttt{trigger}, ki na podlagi prejete datoteke kreira nov otroški cevovod (ang. child pipeline). Ta cevovod vsebuje naloge, ki zaženejo skript napisan v programskem jeziku Bash, ki na podlagi datoteke Docker in z uporabo orodja \texttt{kaniko} zgradi sliko Docker, jo naloži v projektni register slik Docker ter jo označi s številko SHA trenutnega sporočila. Tako je slika pripravljena za zagon integracijskih testov ali namestitev na testna okolja.
+\subsection{Gradnja vsebniških slik}
+Po uspešni gradnji projekta in testih enot se zaženejo naloge, ki zgradijo vsebniške slike. Če je projekt sestavljen iz več aplikacijskih modulov, je potrebno zgraditi več različnih aplikacijskih vsebniških slik. To naredimo tako, da v konfiguracijski datoteki \texttt{config\_file} pod ključno besedo \texttt{services} definiramo več servisov. Prva naloga v koraku gradnje slik na podlagi konfiguracijske datoteke in z uporabo orodja \texttt{jsonnet} pripravi konfiguracijsko datoteko GitLab v formatu JSON, ki vsebuje naloge za gradnjo vseh aplikacijskih slik, definiranih v konfiguracijski datoteki \texttt{config\_file}. Ta datoteka se nato uporabi v nalogi tipa \texttt{trigger}, ki na podlagi prejete datoteke kreira nov podrejen cevovod (ang. child pipeline). Ta cevovod vsebuje naloge, ki zaženejo skript napisan v programskem jeziku Bash, ki na podlagi datoteke, ki deklarira vsebniško sliko, in z uporabo orodja \texttt{kaniko} zgradi sliko, jo naloži v projektni register vsebniških slik ter jo označi s številko SHA trenutnega sporočila. Tako je slika pripravljena za zagon integracijskih testov ali namestitev na testna okolja.
 
 \subsection{Preverjanje kakovosti kode}
-Vzporedno z gradnjo slik Docker lahko ročno zaženemo nalogo za preverjanje kakovosti kode. Ta je ponovno odvisna od programskega jezika in orodij, ki jih projekt uporablja. Orodja preverjajo, ali koda vsebuje primere slabih praks in znane varnostne pomanjkljivosti. Rezultati teh nalog se naložijo na platformo SonarQube, ki rezultate na pregleden način prikazuje. Zapišejo pa se tudi v datoteke, ki so na voljo med artefakti.
+Vzporedno z gradnjo vsebniških slik lahko ročno zaženemo nalogo za preverjanje kakovosti kode. Ta je ponovno odvisna od programskega jezika in orodij, ki jih projekt uporablja. V nalogi se zažene orodje platforme SonarQube, ki smo ga opisali v poglavju \ref{sec:sonarqube}, ki preveri ali koda vsebuje primere slabih praks in znane varnostne pomanjkljivosti ter rezultate naloži na platformo SonarQube in se zapiše v datoteke, ki so na voljo med artefakti.
 
 % trigger -> nov pipeline -> trigger, ki kreira nov pipeline s deploy it in trigger na druge projekte
 \subsection{Integracijski testi}
-Po uspešni gradnji slik Docker lahko ročno zaženemo nalogo za zagon integracijskih testov. Zaradi daljšega trajanja jih ne želimo avtomatsko zagnati v vseh cevovodih. Za testiranje integracije potrebujemo:
+Po uspešni gradnji vsebniških slik lahko ročno zaženemo nalogo za zagon integracijskih testov. Zaradi daljšega trajanja jih ne želimo avtomatsko zagnati v vseh cevovodih. Za testiranje integracije potrebujemo:
 \begin{itemize}
     \item testno bazo, če aplikacija za delovanje potrebuje bazo,
     \item nameščeno aplikacijo,
     \item nameščene aplikacije, na katere se razvita aplikacija integrira.
 \end{itemize}
-Zato je naloga za zagon integracijskih testov tipa \texttt{trigger} in kreira otroški cevovod. Cevovod je definiran kar z enako konfiguracijsko datoteko GitLab, ki jo uporablja cevovod aplikacije, vendar ima nastavljeno spremenljivko GitLab \texttt{IT\_FORCE} na \texttt{true}. To povzroči, da otroški cevovod vsebuje naslednje naloge:
+Zato je naloga za zagon integracijskih testov tipa \texttt{trigger} in kreira podrejen cevovod. Cevovod je definiran kar z enako konfiguracijsko datoteko GitLab, ki jo uporablja cevovod aplikacije, vendar ima nastavljeno spremenljivko GitLab \texttt{IT\_FORCE} na \texttt{true}. To povzroči, da podrejen cevovod vsebuje naslednje naloge:
 \begin{itemize}
     \item \texttt{initialize-database} - Na podlagi datotek, ki so dodane v repozitorij, pripravi testno bazo.
     \item \texttt{initialize-it-runtime} - Iz konfiguracijske datoteke \texttt{config\_file} pripravi datoteko v formatu \texttt{properties}, ki vsebuje spremenljivke za zagon integracijskih testov - spletni naslov aplikacije, naslov baze ipd.
-    \item \texttt{prepare-deploy-it} - Naloga tipa \texttt{trigger}, ki na podlagi konfiguracije pod ključno besedo \texttt{it} v konfiguracijski datoteki \texttt{config\_file}, kreira otroški cevovod z nalogami, ki namestijo vse odvisne aplikacije. Naloge za namestitve drugih aplikacij, so zopet tipa \texttt{trigger}, saj zaženejo cevovod druge aplikacije s tako nastavljenimi spremenljivkami, da se namestijo v enako okolje kot testirana aplikacija.
+    \item \texttt{prepare-deploy-it} - Naloga tipa \texttt{trigger}, ki na podlagi konfiguracije pod ključno besedo \texttt{it} v konfiguracijski datoteki \texttt{config\_file}, kreira podrejen cevovod z nalogami, ki namestijo vse odvisne aplikacije. Naloge za namestitve drugih aplikacij, so zopet tipa \texttt{trigger}, saj zaženejo cevovod druge aplikacije s tako nastavljenimi spremenljivkami, da se namestijo v enako okolje kot testirana aplikacija.
     \item \texttt{test} - Po uspešni namestitvi aplikacij s pomočjo orodja za testiranje zažene integracijske teste
     \item \texttt{clean-up-database} - Po končanem izvajanju testov izbriše testno bazo.
     \item \texttt{clean-up-namespace} - Po končanem izvajanju testov izbriše testno okolje na gruči platforme Kubernetes.
 \end{itemize}
 
-\subsection{Izdaja paketov in slik Docker}
-Nekatere naloge želimo izvesti samo na določenih vejah repozitorija. To lahko naredimo s ključnima besedama \texttt{rules} in \texttt{if} s katerima določimo logični pogoj, ki definira, kdaj naj se naloga doda v cevovod. Takšni nalogi sta tudi izdaja paketov in izdaja slik Docker, ki ju dodamo v cevovod samo ob spremembah na vejah imenovanih \texttt{dev} ali \texttt{main} in novih značkah.
+\subsection{Izdaja paketov in vsebniških slik}
+Nekatere naloge želimo izvesti samo na določenih vejah repozitorija. To lahko naredimo s ključnima besedama \texttt{rules} in \texttt{if} s katerima določimo logični pogoj, ki definira, kdaj naj se naloga doda v cevovod. Takšni nalogi sta tudi \textit{Izdaja paketov} in \textit{Izdaja vsebniških slik}, ki ju dodamo v cevovod samo ob spremembah na vejah imenovanih \texttt{dev} ali \texttt{main} in novih značkah.
 
 Izdaja paketov je del cevovoda projektov, ki se uporabljajo kot knjižnice v drugih projektih. Naloga zapakira kodo v paket in ga naloži na centralni repozitorij Nexus, od koder ga lahko ostali projekti prenesejo in uporabijo. Na ta način se na centralnem repozitoriju vedno nahajajo vse verzije kot tudi trenutna razvojna verzija projekta, ki se nahaja v veji \texttt{dev} ali \texttt{main}.
 
-Podobno velja tudi za nalogo \textit{Izdaja slik Docker}, ki pa se uporablja za vse projekte, ki gradijo aplikacijske slike Docker. V koraku gradnje za namene testiranja slike najprej označimo s številko SHA trenutnega sporočila. Ta naloga pa po uspešno izvedenih testih enako sliko označi s trenutno številko različice projekta. Na ta način lahko enostavno zamenjamo različico aplikacije, ki je nameščena.
+Podobno velja tudi za nalogo \textit{Izdaja vsebniških slik}, ki pa se uporablja za vse projekte, ki gradijo aplikacijske vsebniške slike. V koraku gradnje za namene testiranja slike najprej označimo s številko SHA trenutnega sporočila. Ta naloga pa po uspešno izvedenih testih enako sliko označi s trenutno številko različice projekta. Na ta način lahko enostavno zamenjamo različico aplikacije, ki je nameščena.
 
 \subsection{Namestitev aplikacije}
 \label{subsec:namestitev-aplikacije}
-Naloge za namestitev aplikacije v različna okolja se podobno kot pri gradnji slik Docker in integracijskih testih dodajo dinamično s pomočjo naloge tipa \texttt{trigger}. Ta naloga prebere konfiguracijo okolij, ki je za vsak servis posebej definirana v konfiguracijski datoteki \texttt{config\_file} in kreira nove naloge za namestitev aplikacije v različna okolja. Ustvarjene naloge najprej zaženejo skript \texttt{init-kube-openshift.sh}, ki pripravi konfiguracijsko datoteko za povezavo na gručo platforme Kubernetes, nato pa še skript \texttt{job-deploy.sh}, ki naredi naslednje:
+Naloge za namestitev aplikacije v različna okolja se podobno kot pri gradnji vsebniških slik in integracijskih testih dodajo dinamično s pomočjo naloge tipa \texttt{trigger}. Ta naloga prebere konfiguracijo okolij, ki je za vsak servis posebej definirana v konfiguracijski datoteki \texttt{config\_file} in kreira nove naloge za namestitev aplikacije v različna okolja. Ustvarjene naloge najprej zaženejo skript \texttt{init-kube-openshift.sh}, ki pripravi konfiguracijsko datoteko za povezavo na gručo platforme Kubernetes, nato pa še skript \texttt{job-deploy.sh}, ki naredi naslednje:
 \begin{itemize}
     \item Prebere datoteko \texttt{/deploy/k8s/deployment.yml.in}, ki se nahaja v repozitoriju in predstavlja predlogo namestitve.
     \item V prebrani datoteki poišče vse besede, ki se začnejo in končajo z dvemi podčrtaji npr. \texttt{\_\_SERVICE\_NAME\_\_}. Te besede predstavljajo spremenljivke, ki jih je potrebno zamenjati z vrednostmi.
@@ -739,30 +769,73 @@ Na koncu naloga zažene še skripta \texttt{gitlab-create-tag-with-notes.sh}, ki
 
 \subsection{Prilagajanje nalog}
 \label{subsec:prilagajanje-nalog}
-V kolikor vnaprej pripravljene predloge cevovodov ne zadoščajo potrebam projekta, lahko vzdrževalec projekta z uporabo predlog posameznih nalog kreira cevovod po meri. Predloge nalog so narejene tako, da ne uporabljajo ključne besede \texttt{before\_script}. To omogoča, da lahko naloge v končnem projektu dodamo preko ključne besede \texttt{include}, nato pa jih prilagodimo z dodajanjem skript v delu \texttt{before\_script}. Obenem je možno naloge konfigurirati tudi s prepisom dela naloge, ki ga želimo prilagoditi, in nastavljanjem spremenljivk, ki so opisane v dokumentaciji.
+V kolikor vnaprej pripravljene predloge cevovodov ne zadoščajo potrebam projekta, lahko vzdrževalec projekta z uporabo predlog posameznih nalog kreira cevovod po meri. Predloge nalog so narejene tako, da ne uporabljajo ključne besede \texttt{before\_script}. To omogoča, da lahko naloge v končnem projektu dodamo preko ključne besede \texttt{include}, nato pa jih prilagodimo z dodajanjem skript v delu \texttt{before\_script}. Obenem je možno naloge konfigurirati tudi s prepisom dela naloge, ki ga želimo prilagoditi, in nastavljanjem spremenljivk, ki so opisane v dokumentaciji komponente.
 
 % \section{Dokumentacija}
 % Dokumentacija projekta \texttt{medius-cd} je narejena z uporabo orodja \texttt{sphinx} in funkcionalnosti \texttt{gitlab-pages} platforme GitLab.
 
-% \section{Postavitev projekta}
-% \label{subsec:postavitev-projekta}
+\section{Vtičnik GitLab Template Lint}
+\label{sec:vtičnik-gitlab-template-lint}
+Med razvojem predlog konfiguracijskih datotek GitLab, ki so del komponente za neprekinjeno integracijo in dostavo, smo večkrat imeli težave s preverjanjem pravilnosti razvite predloge, saj integrirano razvojno okolje IntelliJ, v katerem smo komponento razvijali, ne vsebuje funkcionalnosti za preverjanje pravilnosti takšnih datotek. Predloge smo zato preverjali z orodjem platforme GitLab, ki je integrirano v spletno aplikacijo platforme, ali pa z odrivom spremembe na ločeno vejo v repozitoriju in preverjanjem statusa novo nastalega cevovoda. Oba načina sta precej nerodna, saj je med razvojem potrebno zapustiti integrirano okolje. Zato smo se odločili, da razvijemo vtičnik za integrirano okolje IntelliJ, s katerim dodamo funkcionalnost za preverjanje pravilnosti konfiguracijskih datotek GitLab.
 
-% \subsection{Java in Maven}
-% \label{subsec:java-in-maven}
+Za začetek razvoja vtičnika smo uporabili predlogo za razvoj vtičnika platforme IntelliJ\footnote{\url{https://github.com/JetBrains/intellij-platform-plugin-template}}, ki je javno dostopna na platformi GitHub in uporablja programski jezik Kotlin. Predloga vsebuje vnaprej pripravljeno strukturo projekta, dodane odvisnosti, ki jih za razvoj vtičnika potrebujemo, ter konfiguracijsko datoteko za cevovod CI na platformi GitHub, ki vsebuje naloge za gradnjo vtičnika, izdajo nove verzije vtičnika, zagon testov in rotacijo vsebine v datoteki \texttt{CHANGELOG.md}, ki vsebuje opis vseh sprememb po različicah. Za gradnjo vtičnika je specifirano orodje Gradle.
 
-%\subsection{Java in Gradle}
-%\label{subsec:java-in-gradle}
+\subsection{Ideja}
+\label{sec:vtičnik-gitlab-template-lint-ideja}
+Platforma GitLab za integracijo z drugimi aplikacijami izpostavlja programski vmesnik z arhitekturnim stilom REST. Ena izmed končnih točk, ki jih izpostavlja, je tudi končna točka za preverjanje konfiguracijskih datotek orodja GitLab CI/CD. Ideja vtičnika je bila zato preprosta: ko uporabnik v integriranem razvojnem okolju spremeni konfiguracijsko datoteko, pošlji zahtevek na končno točko za preverjanje konfiguracijskih datotek, iz odgovora programskega vmesnika preberi ali je konfiguracija pravilna in v primeru napake v integriranem okolju prikaži opozorilo.
 
-% \subsection{JavaScript in NPM}
-% \label{subsec:javascript-in-npm}
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=8cm]{figures/gitlab-template-lint-ideja.drawio (2).png}
+    \end{center}
+\caption{Vizualizacija ideje vtičnika.}
+\label{fig:monorepo}
+\end{figure}
 
-% \subsection{Python in Setuptools}
-% \label{subsec:python-in-setuptools}
+\subsection{Avtentikacija z vmesnikom}
+Programski vmesnik platforme GitLab za avtentikacijo zahtevkov omogoča več načinov. V našem primeru se je za najbolj preprost in praktičen način izkazala avtentikacija z žetonom, ki ga uporabniki vtičnika lahko pridobijo na platformi GitLab in ga morajo vnesti v nastavitve vtičnika.
 
-%\section{Vtičnik GitLab Template Lint}
-%\label{sec:vtičnik-gitlab-template-lint}
+\subsection{Nastavitve vtičnika}
+\label{sec:vtičnik-gitlab-template-lint-nastavitve}
+Integrirano orodje IntelliJ za razvoj uporabniških vmesnikov vtičnikov nudi domensko specifičen jezik (ang. Domain-Specific Language - DSL) imenovan Kotlin UI, ki omogoča razvoj uporabniških vmesnikov v kodi napisani v programskem jeziku Kotlin. Slednje smo uporabili tudi sami, da smo oblikovali uporabniški vmesnik za nastavitve našega vtičnika, ki ga lahko vidimo na sliki \ref{fig:gitlab-template-lint-nastavitve}. Glavni nastavitvi vtičnika sta:
+\begin{itemize}
+    \item pogostost preverjanja (ang. lint frequency) - kako pogosto se pošlje zahtevek na programski vmesnik platforme GitLab. Možnosti so: ob vsaki spremembi v datoteki, ko se datoteka shrani in ko uporabnik ročno zažene akcijo za preverjanje.
+    \item žeton za avtentikacijo s platformo GitLab (ang. Gitlab API token) - urejanje žetona za posamezen spletni naslov platforme GitLab je omogočeno preko tabele, v katero lahko uporabniki vnesejo več različnih žetonov za različne instance platforme GitLab.
+\end{itemize}
 
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=13.5cm]{figures/gitlab-template-lint-nastavitve-1.png}
+    \end{center}
+\caption{Nastavitve vtičnika.}
+\label{fig:gitlab-template-lint-nastavitve}
+\end{figure}
 
+\subsection{Preverjanje konfiguracijskih datotek}
+\label{sec:vtičnik-gitlab-template-lint-razvoj}
+Preverjanje konfiguracijskih datotek smo razvili v obliki cevovoda, ki vsebuje naslednje korake:
+\begin{enumerate}
+    \item Razreševanje konteksta - glede na to, katera datoteka je trenutno odprta v urejevalniku, poskusimo ugotoviti spletni naslov repozitorija in spletni naslov do programskega vmesnika GitLab instance, v kateri se repozitorij nahaja.
+    \item Razreševanje žetona za avtentikacijo - iz nastavitev vtičnika poskusimo prebrati žeton za avtentikacijo s programskim vmesnikom GitLab, ki je nastavljen za spletni naslov programskega vmesnika, ki smo ga razrešili v prejšnjem koraku.
+    \item Razreševanje identifikacijske številke projekta - s spletnim naslovom repozitorija, ki smo ga pridobili v prvem koraku, in žetonom, ki smo ga pridobili v drugem koraku, naredimo poizvedbo na programski vmesnik platforme GitLab, da pridobimo identifikacijsko številko projekta.
+    \item Preverjanje konfiguracijske datoteke - vsebino trenutno odprte datoteke skupaj z žetonom pošljemo na končno točko za preverjanje konfiguracijskih datotek orodja GitLab CI/CD, preberemo odgovor in v primeru napake v trenutno odprtem urejevalniku prikažemo napako.
+\end{enumerate}
+
+\subsection{Prikaz združene konfiguracije}
+Kot omenjeno v poglavju \ref{sec:razvoj-komponente-medius-cd}, lahko v konfiguracijskih datotekah s ključno besedo \texttt{include} v konfiguracijsko datoteko dodajamo obstoječe predloge, s ključno besedo \texttt{extend} pa lahko posamezne naloge razširjamo z že obstoječimi nalogami. To je zelo uporabno za zmanjšanje podvojenosti konfiguracije, vendar pa lahko oteži razhroščevanje v primeru napak, ker v konfiguracijski datoteki ne vidimo celotne vsebine, ki jo orodje GitLab CI/CD uporabi za kreiranje cevovoda.
+
+Zato smo kmalu po razviti funkcionalnosti za preverjanje konfiguracije v vtičnik dodali še funkcionalnost za prikazovanje vsebine združene konfiguracije. To je bilo dokaj preprosto, saj v odgovoru na zahtevek za preverjanje konfiguracijske datoteke dobimo tudi vsebino združene konfiguracijske datoteke. Pregled združene konfiguracijske datoteke smo dodali tako, da smo razširili obstoječi urejevalnik kode, ki se uporablja za urejanje konfiguracijskih datotek, z predogledom združene konfiguracijske datoteke na desni strani urejevalnika. Delovanje vtičnika je prikazano na sliki \ref{fig:gitlab-template-lint-primer-1}.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=13.5cm]{figures/gitlab-template-lint-primer-1.png}
+    \end{center}
+\caption{Primer delovanja vtičnika.}
+\label{fig:gitlab-template-lint-primer-1}
+\end{figure}
+
+\subsection{Javna objava vtičnika}
+Vsa koda razvitega vtičnika je javno objavljena na platformi GitHub\footnote{\url{https://github.com/Blarc/gitlab-template-lint-plugin}}, kjer se ob vsaki izdaji nove različice zažene tudi cevovod za objavo na tržnico vtičnikov podjetja JetBrains\footnote{\url{https://plugins.jetbrains.com/plugin/19411-gitlab-template-lint}}. Na ta način lahko uporabniki integriranih okolji podjetja JetBrains vtičnik enostavno namestijo v svoje okolje preko vgrajene funkcionalnosti za namestitev vtičnikov.
 
 %----------------------------------------------------------------
 % Poglavje 5 - Rezultati
@@ -780,7 +853,7 @@ V poglavju bomo najprej opisali, kako smo izboljšali pripravo izvajalnih slik. 
 % \label{sec:primer-uporabe-na-projektu}
 \section{Gradnja izvajalnih slik}
 \label{sec:gradnja-izvajalnih-slik}
-V poglavju \ref{sec:razvoj-komponente-za-neprekinjeno-dostavo-in integracijsko-testiranje-medius-cd} smo opisali, kako zgradimo izvajalne slike, ki jih uporabljajo izvajalci nalog GitLab ali pa jih potrebujemo za gradnjo aplikacijskih slik Docker. Omenili smo tudi, da smo pred razvojem komponente Medius CD te slike gradili in hranili v enem projektu, kar je otežilo njihovo vzdrževanje. Večino končnih izvajalnih slik je bilo zgrajenih na osnovi drugih slik, ki pa so bile zgrajene na osnovi še drugih in tako dalje. Tako se je cevovod zelo razvejal, kar lahko vidimo tudi na sliki \ref{fig:gradnja-izvajalnih-slik-pred}. V primeru, da se je spremenila osnovna slika v korenu hierarhije, je bilo potrebno skoraj vse slike ponovno zgraditi, kar je lahko trajalo tudi več kot 30 minut. 
+V poglavju \ref{sec:razvoj-komponente-medius-cd} smo opisali, kako zgradimo izvajalne slike, ki jih uporabljajo izvajalci nalog GitLab ali pa jih potrebujemo za gradnjo aplikacijskih vsebniških slik. Omenili smo tudi, da smo pred razvojem komponente Medius CD te slike gradili in hranili v enem projektu, kar je otežilo njihovo vzdrževanje. Večino končnih izvajalnih slik je bilo zgrajenih na osnovi drugih slik, ki pa so bile zgrajene na osnovi še drugih in tako dalje. Tako se je cevovod zelo razvejal, kar lahko vidimo tudi na sliki \ref{fig:gradnja-izvajalnih-slik-pred}. V primeru, da se je spremenila osnovna slika v korenu hierarhije, je bilo potrebno skoraj vse slike ponovno zgraditi, kar je lahko trajalo tudi več kot 30 minut. 
 
 \begin{figure}
     \begin{center}
@@ -793,7 +866,7 @@ V poglavju \ref{sec:razvoj-komponente-za-neprekinjeno-dostavo-in integracijsko-t
 V razviti komponenti smo uvedli poseben cevovod za gradnjo izvajalnih slik, ki je del vsakega projekta in ga lahko ročno zaženemo. To nam zelo olajša vzdrževanje izvajalnih slik, saj cevovod vsebuje samo naloge za gradnjo slik, ki jih posamezen projekt potrebuje. Tako cevovod ostane obvladljiv in se tudi hitreje izvede. Obenem zgrajeno sliko hranimo v registru projekta in jo uporabljamo samo za projekt, v katerem je bila zgrajena. To nam omogoča, da lahko sliko čim bolj prilagodimo potrebam projekta.
 
 \section{Prilagajanje cevovoda}
-V poglavju \ref{subsec:datoteka-config-file} smo predstavili datoteko \texttt{config\_file}, ki nam omogoča konfiguracijo cevovoda z datoteko v formatu YAML. Poleg olajšanja vzdrževanja vseh spremenljivk, ki so potrebne za prilagoditev cevovoda projektnim specifikam, nam ta datoteka olajša tudi prilagajanje cevovoda stranki. Stranka največkrat uporablja svoj centralni repozitorij, konfiguracijski strežnik, register slik Docker in drugo. Hkrati se namestitvena okolja v podjetju in pri stranki razlikujejo. Konfiguracijska datoteka omogoča, da lahko stranka sama enostavno spremeni nastavitve svojega cevovoda. To znatno olajša razvoj aplikacije, saj konfiguracija cevovoda ni dodana v sistem za nadzor različic in za spremembo obnašanja cevovoda ni potrebno izdajati nove različice aplikacije.
+V poglavju \ref{subsec:datoteka-config-file} smo predstavili datoteko \texttt{config\_file}, ki nam omogoča konfiguracijo cevovoda z datoteko v formatu YAML. Poleg olajšanja vzdrževanja vseh spremenljivk, ki so potrebne za prilagoditev cevovoda projektnim specifikam, nam ta datoteka olajša tudi prilagajanje cevovoda stranki. Stranka največkrat uporablja svoj centralni repozitorij, konfiguracijski strežnik, register vsebniških slik in drugo. Hkrati se namestitvena okolja v podjetju in pri stranki razlikujejo. Konfiguracijska datoteka omogoča, da lahko stranka sama enostavno spremeni nastavitve svojega cevovoda. To znatno olajša razvoj aplikacije, saj konfiguracija cevovoda ni dodana v sistem za nadzor različic in za spremembo obnašanja cevovoda ni potrebno izdajati nove različice aplikacije.
 
 \section{Cevovod aplikacije}
 \label{sec:projekt-aplikacije}
@@ -842,7 +915,7 @@ services:
 \end{verbatim}
 V datoteki najprej nastavimo nekaj globalnih spremenljivk, ki se uporabijo v vseh nalogah cevovoda in spremenijo privzete nastavitve:
 \begin{itemize}
-    \item \texttt{KUBECONFIG\_CONSUL\_PATH} - pot do konfiguracijske datoteke \texttt{kubeconfig} na konfiguracijskem strežniku Consul, ki vsebuje podatke za povezavo in avtentikacijo na gručo platforme Kubernetes na katero želimo aplikacijo namestiti.
+    \item \texttt{KUBECONFIG\_CONSUL\_PATH} - pot do konfiguracijske datoteke imenovane \texttt{kubeconfig} na konfiguracijskem strežniku Consul, ki vsebuje podatke za povezavo in avtentikacijo na gručo platforme Kubernetes na katero želimo aplikacijo namestiti.
     \item \texttt{K8S\_DEPLOY\_DIR} - pot do imenika v repozitoriju, kjer se nahajajo konfiguracijske datoteke za namestitev aplikacije z uporabo orodja \texttt{kubectl}. S spreminjanjem poti lahko spreminjamo konfiguracijske datoteke, ki se uporabljajo za namestitev. Na ta način, lahko aplikacijo nameščamo na gruče Kubernetes različnih verzij.
     \item \texttt{EXPOSED\_SUFFIX} - pripona spletnega naslova, na kateri bo aplikacija dostopna.
 \end{itemize}
@@ -862,22 +935,22 @@ Pri stranki se uporablja enak cevovod vendar brez uporabe konfiguracijskega stre
     \item \texttt{KUBECONFIG\_FILE\_1} - Nastavitve za povezavo in avtentikacijo z orodjem \texttt{kubectl} na gručo na platformi Kubernetes.
 \end{itemize}
 
-\subsection{izvajalne slike}
+\subsection{Izvajalne slike}
 \label{subsec:java-projekt-izvajalne-slike}
-Ker izvajalec nalog GitLab nima dostopa do interneta, smo najprej ročno prenesli naslednji sliki Docker: 
+Ker izvajalec nalog GitLab nima dostopa do interneta, smo najprej ročno prenesli naslednji vsebniški sliki: 
 \begin{itemize}
-    \item \texttt{kaniko-tools} - vsebuje orodje \texttt{kaniko} in osnovna orodja potrebna za gradnjo slik Docker.
+    \item \texttt{kaniko-tools} - vsebuje orodje \texttt{kaniko} in osnovna orodja potrebna za gradnjo vsebniških slik.
     \item \texttt{rocky-with-tools} - vsebuje operacijski sistem Rocky Linux in orodja, ki jih naloge potrebujejo. Uporablja se za osnovno pri gradnji izvajalnih in aplikacijskih slik.
 \end{itemize}
 Nato smo sliki naložili v register slik, ki je dostopen v izvajalcu nalog GitLab in nastavili naslednji spremenljivki GitLab:
 \begin{itemize}
-    \item \texttt{DOCKER\_BUILDER\_IMAGE} - Naslov do slike \texttt{kaniko-tools}, ki se uporabi za izvajanje naloge, ki zgradi slike Docker.
-    \item \texttt{DOCKER\_FROM\_REGISTRY} - Naslov do registra slik Docker, ki vsebuje slike, ki se uporabljajo kot osnova pri gradnji izvajalnih in aplikacijskih slik.
+    \item \texttt{DOCKER\_BUILDER\_IMAGE} - Naslov do slike \texttt{kaniko-tools}, ki se uporabi za izvajanje naloge, ki zgradi vsebniške slike.
+    \item \texttt{DOCKER\_FROM\_REGISTRY} - Naslov do registra vsebniških slik, ki se uporabljajo kot osnova pri gradnji izvajalnih in aplikacijskih vsebniških slik.
 \end{itemize}
-Potem smo v imenik \texttt{runner-images} dodali dve datoteki Docker, ki definirata dve izvajalni sliki:
+Potem smo v imenik \texttt{runner-images} dodali dve datoteki, ki definirata izvajalni vsebniški sliki:
 \begin{itemize}
     \item \texttt{jdk} - vsebuje razvojno okolje Java in orodje Maven. Uporablja se za zagon vseh nalog v cevovodu.
-    \item \texttt{wildfly} - osnova za gradnjo aplikacijske slike Docker, ki prav tako vsebuje razvojno okolje Java in orodje Maven ter dodatno še aplikacijski strežnik Wildfly. Uporablja se kot osnova za gradnjo aplikacijske slike.
+    \item \texttt{wildfly} - osnova za gradnjo aplikacijske vsebniške slike, ki prav tako vsebuje razvojno okolje Java in orodje Maven ter dodatno še aplikacijski strežnik Wildfly. Uporablja se kot osnova za gradnjo aplikacijske slike.
 \end{itemize}
 Obe datoteki pod ključno besedo \texttt{FROM} za predpono osnovne slike uporabita spremenljivko \texttt{DOCKER\_FROM\_REGISTRY}, ki smo jo shranili kot spremenljivko GitLab in se pri gradnji slik poda kot argument gradnje:
 
@@ -886,11 +959,11 @@ ARG DOCKER_FROM_REGISTRY=""
 FROM $DOCKER_FROM_REGISTRY/mediussi/rocky-with-tools:9.2
 \end{verbatim}
 
-Na ta način se pri gradnji slik Docker za osnovo uporabijo slike iz registra, ki je dostopen v izvajalcu nalog GitLab.
+Na ta način se pri gradnji vsebniških slik za osnovo uporabijo slike iz registra, ki je dostopen v izvajalcu nalog GitLab.
 
-\subsection{Aplikacijska slika Docker}
-\label{subsec:java-projekt-aplikacijska-slika-docker}
-Datoteka Docker, ki definira aplikacijsko sliko Docker se nahaja v imeniku \texttt{deploy/docker}. Za osnovo, pod ključno besedo \texttt{FROM}, uporablja zgrajeno izvajalno sliko \texttt{wildfly}. Ostali ukazi iz repozitorija skopirajo vse potrebne datoteke za zagon aplikacije in nastavijo skript, ki se ob zagonu slike Docker zažene.
+\subsection{Aplikacijska vsebniška slika}
+\label{subsec:java-projekt-aplikacijska-vsebniška-slika}
+Datoteka, ki definira aplikacijsko vsebniško sliko se nahaja v imeniku \texttt{deploy/docker}. Za osnovo, pod ključno besedo \texttt{FROM}, uporablja zgrajeno izvajalno sliko \texttt{wildfly}. Ostali ukazi iz repozitorija skopirajo vse potrebne datoteke za zagon aplikacije in nastavijo skript, ki se ob zagonu vsebnika zažene.
 
 \subsection{Konfiguracijske datoteke platforme Kubernetes}
 \label{subsec:java-projekt-k8s}
@@ -924,10 +997,10 @@ Za zagon cevovoda aplikacije potrebujemo izvajalne slike. Zgradimo jih lahko tak
 \begin{itemize}
     \item Priprava komponente Medius CD
     \item Gradnja aplikacije - aplikacija se zgradi z orodjem Maven, ki po gradnji zažene tudi teste enot.
-    \item Gradnja slik Docker - naloga zažene otroški cevovod, ki vsebuje nalogo za gradnjo aplikacijske slike.
-    \item Preverjanje kakovosti - naloga, ki z orodjem Maven zažene TODO in jo lahko ročno zaženemo.
-    \item Objava slik Docker
-    \item Namestitev aplikacije - naloga zažene otroški cevovod, ki vsebuje naloge za namestitev aplikacije v različna okolja na gruči Kubernetes.
+    \item Gradnja vsebniških slik - naloga zažene podrejen cevovod, ki vsebuje nalogo za gradnjo aplikacijske slike.
+    \item Preverjanje kakovosti - naloga, ki z orodjem Maven zažene vtičnik platforme SonarQube za preverjanje kakovosti.
+    \item Objava vsebniških slik
+    \item Namestitev aplikacije - naloga zažene podrejen cevovod, ki vsebuje naloge za namestitev aplikacije v različna okolja na gruči Kubernetes.
     \item Naloge za izdajo nove verzije
 \end{itemize}
 
@@ -969,11 +1042,11 @@ it:
 
 Ponovno smo nastavili globalni spremenljivki \texttt{KUBECONFIG\_CONSUL\_PATH} in \texttt{EXPOSED\_SUFFIX} ter dodali servis, ki predstavlja čelno aplikacijo. Servisu smo s ključno besedo \texttt{dir} nastavili imenik v repozitoriju, v katerem se nahaja in dodali spremenljivko \texttt{coreBasePath}, ki jo potrebuje za namestitev. Nato smo pod ključno besedo \texttt{it} definirali še namestitvi, ki jih cevovod potrebuje za izvajanje integracijskih testov. Prva namestitev je čelna aplikacija, druga namestitev pa zaledna aplikacija, s katero čelna aplikacija komunicira.
 
-\subsection{izvajalne slike}
+\subsection{Izvajalne slike}
 V imenik \texttt{runner-images} smo dodali datoteko Docker, ki definira izvajalno sliko imenovano \texttt{node-pnpm} za izvajanje nalog v cevovodu. Za osnovo uporablja sliko \texttt{rocky-with-tools}, nato sledijo ukazi za namestitev dodatnih orodji, ki jih potrebujemo za izvajanje nalog, med drugimi tudi Node in pnpm.
 
-\subsection{Aplikacijska slika Docker}
-Datoteka Docker, ki definira aplikacijsko sliko Docker za osnovo uporablja sliko \texttt{nginx}. Ostali ukazi skopirajo vse potrebne datoteke za zagon aplikacije in nastavijo skript, ki se ob zagonu slike zažene.
+\subsection{Aplikacijska vsebniška slika}
+Datoteka, ki definira aplikacijsko vsebniško sliko za osnovo uporablja sliko \texttt{nginx}. Ostali ukazi skopirajo vse potrebne datoteke za zagon aplikacije in nastavijo skript, ki se ob zagonu vsebnika zažene.
 
 \subsection{Konfiguracijske datoteke platforme Kubernetes}
 Konfiguracijske datoteke za namestitev aplikacije na gručo platforme Kubernetes so zelo podobne tistim v prejšnjem projektu. Razlika je zgolj v tem, da se tu vse nahajajo v imeniku \texttt{k8s}, saj aplikacijo vedno nameščamo na gručo iste verzije.
@@ -1026,13 +1099,13 @@ Potem, ko smo zgradili izvajalne slike s cevovodom za gradnjo izvajalnih slik, l
     \item Gradnja aplikacije
     \item Statična analiza kode (ang. lint)
     \item Testi enot
-    \item Gradnja slik Docker - naloga zažene otroški cevovod, ki vsebuje nalogo za gradnjo aplikacijske slike.
-    \item Namestitev aplikacij v okolje za integracijsko testiranje - naloga zažene otroški cevovod, ki zažene nalogo za namestitev čelne aplikacije in zažene otroški cevovod za namestitev zaledne aplikacije, ki jo čelna aplikacija uporablja v projektu, ki vsebuje zaledno aplikacijo. Cevovod je prikazan na sliki \ref{fig:typescript-projekt-it-cevovod}
+    \item Gradnja vsebniških slik - naloga zažene podrejen cevovod, ki vsebuje nalogo za gradnjo aplikacijske slike.
+    \item Namestitev aplikacij v okolje za integracijsko testiranje - naloga zažene podrejen cevovod, ki zažene nalogo za namestitev čelne aplikacije in zažene podrejen cevovod za namestitev zaledne aplikacije, ki jo čelna aplikacija uporablja v projektu, ki vsebuje zaledno aplikacijo. Cevovod je prikazan na sliki \ref{fig:typescript-projekt-it-cevovod}
     \item Zagon integracijskih testov
     \item Preverjanje kakovosti kode
-    \item Izdaja slike Docker
+    \item Izdaja vsebniških slik
     \item Naloge za izdajo paketa na centralni repozitorij Nexus in javni register npm
-    \item Namestitev aplikacij - naloga zažene otroški cevovod, ki vsebuje naloge za namestitev aplikacije v različna okolja na gruči Kubernetes.
+    \item Namestitev aplikacij - naloga zažene podrejen cevovod, ki vsebuje naloge za namestitev aplikacije v različna okolja na gruči Kubernetes.
     \item Brisanje okolja integracijskih testov
     \item Naloge za izdajo novih verzij
 \end{itemize}
@@ -1041,7 +1114,7 @@ Potem, ko smo zgradili izvajalne slike s cevovodom za gradnjo izvajalnih slik, l
     \begin{center}
         \includegraphics[width=13.5cm]{figures/typescript-projekt-it-cevovod.png}
     \end{center}
-\caption{Otroški cevovod za namestitev aplikacij v okolje za integracijsko testiranje.}
+\caption{podrejen cevovod za namestitev aplikacij v okolje za integracijsko testiranje.}
 \label{fig:typescript-projekt-it-cevovod}
 \end{figure}
 
@@ -1101,14 +1174,14 @@ Zopet smo nastavili globalno spremenljivko \texttt{EXPOSED\_SUFFIX} in dodali dv
 \end{itemize}
 Ker projekt vsebuje dve aplikaciji, smo pod ključno besedo \texttt{services} definirali dva servisa: \texttt{anonymizer} in \texttt{analyzer}. Obema smo s spremenljivko \texttt{DOCKERFILE\_PATH} spremenili privzeto pot do aplikacijske datoteke Docker in nastavili še nekaj spremenljivk, ki jih potrebujeta za namestitev. Pri servisu \texttt{analyzer} smo dodali tudi spremenljivko \texttt{BUILD\_ARGS}, ki vsebuje argumente v formatu \texttt{ime\_spremenljivke=vrednost}, ločene z vejico, ki se uporabijo ob gradnji slike. Oba servisa imata tri okolja: \texttt{prod}, \texttt{dev} in \texttt{stg}. Vsako okolje uporablja drugo gručo Kubernetes, zato ima vsako okolje s spremenljivko \texttt{KUBECONFIG} nastavljeno svojo konfiguracijsko datoteko za povezavo in avtentikacijo na gručo Kubernetes. Za okolje \texttt{prod} smo prepisali globalno spremenljivko \texttt{AUTO\_DEPLOY} z vrednostjo \texttt{false}, saj ne želimo, da se naloga za namestitev na produkcijsko okolje avtomatsko zažene.
 
-\subsection{izvajalne slike}
-V imenik \texttt{runner-images} smo dodali datoteko Docker, ki definira izvajalno sliko \texttt{python} za izvajanje nalog v cevovodu. Za osnovo uporablja \texttt{rocky-wi\-th-tools}, nato sledijo ukazi za namestitev prevajalnika za programski jezik Python in knjižnic wheel, twine in tox.
+\subsection{Izvajalne slike}
+V imenik \texttt{runner-images} smo dodali datoteko, ki definira izvajalno vsebniško sliko \texttt{python} za izvajanje nalog v cevovodu. Za osnovo uporablja \texttt{rocky-wi\-th-tools}, nato sledijo ukazi za namestitev prevajalnika za programski jezik Python in knjižnic wheel, twine in tox.
 
-\subsection{Aplikacijski sliki Docker}
-Servisa uporabljata vsak svojo sliko Docker, ki se nahajata v korenskem imeniku projekta. V konfiguracijski datoteki cevovoda \texttt{config\_file} smo zato spremenili privzeti poti do slik. Obe datoteki Docker, ki se uporabljata za namestitev servisov, za osnovo uporabljata sliko \texttt{python:3.9-slim} in sta sestavljeni iz več delov: priprava okolja, namestitev odvisnosti in gradnja aplikacije ter zagon aplikacije. Posebnost teh dveh datotek Docker je, da ne potrebujeta vnaprej zgrajene aplikacije, vendar aplikacijo zgradita v procesu gradnje slike.
+\subsection{Aplikacijski vsebniški sliki}
+Servisa uporabljata vsak svojo vsebniško sliko, ki se nahajata v korenskem imeniku projekta. V konfiguracijski datoteki cevovoda \texttt{config\_file} smo zato spremenili privzeti poti do slik. Obe datoteki sliki, ki se uporabljata za namestitev servisov, za osnovo uporabljata sliko \texttt{python:3.9-slim} in sta sestavljeni iz več delov: priprava okolja, namestitev odvisnosti in gradnja aplikacije ter zagon aplikacije. Posebnost teh dveh slik je, da ne potrebujeta vnaprej zgrajene aplikacije, vendar aplikacijo zgradita v procesu gradnje slike.
 
 \subsection{Konfiguracijske datoteke platforme Kubernetes}
-Tudi tu so konfiguracijske datoteke za namestitev aplikacije podobne tistim v prejšnjima projektoma. Nahajajo se v imeniku \texttt{k8s} in se uporabljajo za oba servisa. Vse vrednosti, ki se morda razlikujejo med servisoma, so v konfiguracijske datoteke dodane kot spremenljivke, ki se pred namestitvijo na gručo Kubernetes nadomestijo s ustreznimi vrednostmi, kot smo opisali v poglavju \ref{subsec:namestitev-aplikacije}.
+Tudi tu so konfiguracijske datoteke za namestitev aplikacije podobne tistim, ki smo jih uporabili v prejšnjih dveh projektih. Nahajajo se v imeniku \texttt{k8s} in se uporabljajo za oba servisa. Vse vrednosti, ki se morda razlikujejo med servisoma, so v konfiguracijske datoteke dodane kot spremenljivke, ki se pred namestitvijo na gručo Kubernetes nadomestijo s ustreznimi vrednostmi, kot smo opisali v poglavju \ref{subsec:namestitev-aplikacije}.
 
 \subsection{Konfiguracijske datoteke cevovoda}
 Za vzpostavitev cevovoda smo ponovno dodali enake datoteke kot prej, vendar smo v datoteki \texttt{.gitlab/.build-runners.yml} uporabili predlogo za gradnjo izvajalne slike \texttt{python}:
@@ -1119,7 +1192,7 @@ include:
     file:
       - '/gitlab-ci/templates/runners/jobs/.python.yaml' 
 \end{verbatim}
-V datoteki \texttt{.gitlab/.main.yml} pa smo uporabili predlogo za cevovod aplikacije, ki uporablja programski jezik Python. Ker naloga za gradnjo slik Docker ne potrebuje zgrajene aplikacije, smo nastavili vrednost spremenljivke \texttt{DOCKER\_NEEDS\_BUILD} na \texttt{false} in s pravili odstranili nalogo za gradnjo aplikacije. Odstranili pa smo tudi nalogo za izvajanje testov enot, ker projekt trenutno še nima testov enot.
+V datoteki \texttt{.gitlab/.main.yml} pa smo uporabili predlogo za cevovod aplikacije, ki uporablja programski jezik Python. Ker naloga za gradnjo vsebniških slik ne potrebuje zgrajene aplikacije, smo nastavili vrednost spremenljivke \texttt{DOCKER\_NEEDS\_BUILD} na \texttt{false} in s pravili odstranili nalogo za gradnjo aplikacije. Odstranili pa smo tudi nalogo za izvajanje testov enot, ker projekt trenutno še nima testov enot.
 \begin{verbatim}
 include:
   - project: 'medius/ci-tools/medius-cd'
@@ -1140,12 +1213,12 @@ test:
 \end{verbatim}
 
 \subsection{Delovanje cevovoda}
-Po zgrajenih izvajalnih slikah lahko zaženemo cevovod aplikacije, ki vsebuje naslednje naloge:
+Po zgrajenih izvajalnih vsebniških slikah lahko zaženemo cevovod aplikacije, ki vsebuje naslednje naloge:
 \begin{itemize}
     \item Priprava komponente Medius CD
-    \item Gradnja slik Docker - naloga zažene otroški cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-build-docker-cevovod} in vsebuje nalogi za gradnjo obeh aplikacijskih slik.
-    \item Izdaja slik Docker
-    \item Namestitev aplikacij - naloga zažene otroški cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-namestitev-aplikacij} in vsebuje naloge za namestitev aplikacij v različna okolja.
+    \item Gradnja vsebniški slik - naloga zažene podrejen cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-build-docker-cevovod} in vsebuje nalogi za gradnjo obeh aplikacijskih slik.
+    \item Izdaja vsebniških slik
+    \item Namestitev aplikacij - naloga zažene podrejen cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-namestitev-aplikacij} in vsebuje naloge za namestitev aplikacij v različna okolja.
     \item Naloge za izdajo novih verzij
 \end{itemize}
 
@@ -1153,7 +1226,7 @@ Po zgrajenih izvajalnih slikah lahko zaženemo cevovod aplikacije, ki vsebuje na
     \begin{center}
         \includegraphics[width=13cm]{figures/python-projekt-build-docker-cevovod.png}
     \end{center}
-\caption{Otroški cevovod za gradnjo slik Docker.}
+\caption{podrejen cevovod za gradnjo vsebniških slik.}
 \label{fig:python-projekt-build-docker-cevovod}
 \end{figure}
 
@@ -1161,14 +1234,25 @@ Po zgrajenih izvajalnih slikah lahko zaženemo cevovod aplikacije, ki vsebuje na
     \begin{center}
         \includegraphics[width=13cm]{figures/python-projekt-deploy-cevovod.png}
     \end{center}
-\caption{Otroški cevovod za namestitev aplikacij.}
+\caption{podrejen cevovod za namestitev aplikacij.}
 \label{fig:python-projekt-namestitev-aplikacij}
 \end{figure}
 
+\section{Vtičnik GitLab Template Lint}
+\label{sec:rezultati-vtičnik-gitlab-template-lint}
+Vtičnik GitLab Template Lint je znatno olajšal in pospešil razvoj komponente Medius CD. Pred razvojem vtičnika smo konfiguracijske datoteke orodja GitLab CI/CD preverjali tako, da smo vsebino datotek kopirali v orodje platforme GitLab ali pa spremembe kar odrinili v repozitorij in spremljali status cevovoda. Z vtičnikom odkrijemo napake že v integriranem okolju med pisanjem konfiguracije, kar lahko vidimo tudi na sliki \ref{fig:gitlab-template-lint-rezultati-1}. Obenem vtičnik v urejevalniku kode konfiguracijskih datotek prikazuje predogled vsebine združene konfiguracijske datoteke kar olajša iskanje napak.
 
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=13.5cm]{figures/gitlab-template-lint-rezultati-1.png}
+    \end{center}
+\caption{Delovanje vtičnika.}
+\label{fig:gitlab-template-lint-rezultati-1}
+\end{figure}
 
-% \section{Monorepo projekt}
-% \label{sec:monorepo-projekt}
+\subsection{Omejitev vtičnika}
+\label{subsec:rezultati-vtičnik-gitlab-template-lint-omejitve}
+Končni točki za preverjanje konfiguracijskih datotek GitLab CI/CD lahko v zahtevku pošljemo samo eno konfiguracijsko datoteko naenkrat. Vse datoteke, ki so v poslani datoteki dodane s ključno besedo \texttt{include} se preberejo iz repozitorija oziroma spletnega naslova, ki je nastavljen. To pomeni, da če spreminjamo več konfiguracijskih datotek hkrati, vtičnik ne deluje pravilno, saj končna točka za preverjanje uporablja starejše različice datotek.
 
 
 %----------------------------------------------------------------
@@ -1180,7 +1264,7 @@ Po zgrajenih izvajalnih slikah lahko zaženemo cevovod aplikacije, ki vsebuje na
 \label{ch:zaključek}
 V predstavljenem delu smo opisali poslovno kritične aplikacije in njihove lastnosti. Predstavili smo proces neprekinjene integracije in dostave ter zakaj predstavlja pomemben del pri razvoju poslovno kritičnih aplikacijah. Opisali smo tudi dva primera strukture projekta, ki vplivata na organizacijo razvoja in tehnologije, ter orodja in ogrodja, ki smo jih uporabili za razvoj cevovoda neprekinjene integracije in dostave.
 
-Razvili smo komponento za vzpostavitev neprekinjene integracije in dostave na platformi GitLab imenovano Medius CD. Cilj komponente je poenotenje cevovodov, zmanjšanje podvojene konfiguracije in kode ter olajšanje vzdrževanja. To smo dosegli z uporabo konfiguracijskih datotek GitLab, ki definirajo naloge v cevovodu in skript napisanih v jeziku Bash, ki so v pomoč izvedbi konfiguriranih nalog. Uvedli smo nov način gradnje izvajalnih slik, ki olajša vzdrževanje le teh, in konfiguracijsko datoteko \texttt{config\_file}, ki olajša vzdrževanje spremenljivk, s katerimi prilagajamo cevovod. Na ta način lahko v cevovodu enostavno zgradimo več različnih aplikacijskih slik Docker, zaženemo integracijske teste in namestimo aplikacijo v različna okolja. Za enostavno postavitev cevovoda smo pripravili več datotek s predlogami GitLab za različne programske jezike, ki jih lahko v projektih uporabimo.
+Razvili smo komponento za vzpostavitev neprekinjene integracije in dostave na platformi GitLab imenovano Medius CD. Cilj komponente je poenotenje cevovodov, zmanjšanje podvojene konfiguracije in kode ter olajšanje vzdrževanja. To smo dosegli z uporabo konfiguracijskih datotek GitLab, ki definirajo naloge v cevovodu in skript napisanih v jeziku Bash, ki so v pomoč izvedbi konfiguriranih nalog. Uvedli smo nov način gradnje izvajalnih slik, ki olajša vzdrževanje le teh, in konfiguracijsko datoteko \texttt{config\_file}, ki olajša vzdrževanje spremenljivk, s katerimi prilagajamo cevovod. Na ta način lahko v cevovodu enostavno zgradimo več različnih aplikacijskih vsebniških slik, zaženemo integracijske teste in namestimo aplikacijo v različna okolja. Za enostavno postavitev cevovoda smo pripravili več datotek s predlogami GitLab za različne programske jezike, ki jih lahko v projektih uporabimo.
 
 Uporabo komponente smo prestavili na cevovodih treh projektov, ki vsebujejo aplikacije v različnih programskih jezikih. Opisali smo kako lahko cevovod uporabljamo v okolju, ki zaradi varnosti nima dostopa do interneta, kako vzpostavimo cevovod v projektu, ki vsebuje programsko knjižnico in aplikacijo hkrati, ter kako lahko v cevovodu enega projekta zgradimo in namestimo več aplikacij naenkrat. Pokazali smo kako lahko cevovod takšnim različnim zahtevam enostavno prilagodimo s konfiguracijsko datoteko brez večjih posegov v kodo.
 
