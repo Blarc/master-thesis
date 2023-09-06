@@ -83,7 +83,7 @@
 % Shahin
 % Fitz
 % Lepp
-Zaradi visoke konkurence na trgu programske opreme, organizacije namenjajo veliko pozornosti pospešitvi razvoja in dostave kvalitetne programske kode~\cite{Phillips2015}. Neprekinjena integracija (ang. Continuous Integration - CI) je v industriji razvoja programske opreme razširjena razvojna praksa, ki vzpodbuja redno dodajanje in združevanje sprememb programske kode, na primer večkrat na dan~\cite{Shahin2017}. CI omogoča podjetjem, ki razvijajo programsko kodo, da skrajšajo čas in povečajo pogostost razvojnega cikla, izboljšajo kvaliteto programske kode in povečajo produktivnost razvojne ekipe~\cite{Fitzgerald2017}. Glavna dela CI sta avtomatska gradnja in testiranje programske opreme~\cite{Leppanen2015}.
+Zaradi visoke konkurence na trgu programske opreme, organizacije namenjajo veliko pozornosti pospešitvi razvoja in dostave kakovostne programske kode~\cite{Phillips2015}. Neprekinjena integracija (ang. Continuous Integration - CI) je v industriji razvoja programske opreme razširjena razvojna praksa, ki vzpodbuja redno dodajanje in združevanje sprememb programske kode, na primer večkrat na dan~\cite{Shahin2017}. CI omogoča podjetjem, ki razvijajo programsko kodo, da skrajšajo čas in povečajo pogostost razvojnega cikla, izboljšajo kakovost programske kode in povečajo produktivnost razvojne ekipe~\cite{Fitzgerald2017}. Glavna dela CI sta avtomatska gradnja in testiranje programske opreme~\cite{Leppanen2015}.
 
 Pri razvoju obsežnejše programske opreme ali aplikacije je programje navadno razdeljeno na več zaključenih enot, ki jih različne razvojne skupine ali razvojna podjetja neodvisno razvijajo~\cite{Abrahamsson_2002}. Neprekinjena dostava (ang. Continuous Deployment - CD) je metodologija sestavljen iz praks CI in avtomatske dostave programske opreme, ki si prizadeva zagotoviti, da je aplikacija po uspešno izvedenih testih in preverjanju kakovosti vedno pripravljena za namestitev~\cite{Weber2016}. Za slednje sta pred delitvijo nalog vnaprej izbrana in specificirana produkcijsko ter razvojno okolje, ki si ga ponudnik vzpostavi sam ali pa je zagotovljeno na infrastrukturi naročnika. Na ta način si lahko razvojne skupine, za preverjanje realizacije izvedenega dela, pripravijo razvojno okolje, ki ima čim bolj podobno infrastrukturo, kot je na voljo v produkcijskem okolju. Samo tako so posamezne skupine lahko dovolj samozavestne, da bo njihovo programje pravilno delovalo tudi v produkcijskem okolju~\cite{smith_2020}.
 
@@ -124,13 +124,13 @@ V~\cite{Chen2015} je podrobno opisana neprekinjena dostava po posameznih korakih
     \item uporaben produkt - pogostejša izdaja novih verzij omogoča hitrejšo povratno informacijo. Na ta način razvojna ekipa hitreje izve katere funkcionalnosti aplikacije so uporabne in si jih uporabniki želijo in katere ne in lahko razvoj temu primerno prilagodijo.
     \item produktivnost in efektivnost - razvijalci in testerji porabijo manj časa za postavitev testnih okolji in objavo novih različic v produkcijsko okolje.
     \item zanesljiva objava novih verzij - namestitev aplikacije je pred objavo v produkcijsko okolje večkrat testirana in s tem bolj zanesljiva.
-    \item kvalitetnejši produkt - z avtomatskimi testi je večina napak odkritih pred objavo kar poveča kvaliteto produkta.
+    \item kvalitetnejši produkt - z avtomatskimi testi je večina napak odkritih pred objavo kar poveča kakovost produkta.
     \item zadovoljstvo strank - zaradi zanesljivejše objave in kvalitetnejšega produkta so stranke bolj zadovoljne.
 \end{itemize}
 
-V~\cite{Pooya2023} predstavijo orodja za vzpostavitev CI/CD, ki se največ uporabljajo, glavne razloge za uporabo praks CI/CD, katere aktivnosti so največkrat avtomatizirane z uporabo orodji neprekinjene integracije in kaj so prednosti in slabosti posameznih orodji. Med najbolj uporabljenimi orodji za neprekinjeno integracijo navedejo GitHub Actions, Jenkins, GitLab CI/CD, CircleCI in Azure DevOps. Kot glavne razloge za vpeljavo orodji naštejejo večjo zanesljivost, boljšo kvaliteto kode, večjo produktivnost, hitrejšo dostavo produktov, zmanjšanje finančnih stroškov in dela, hitrejšo povratno informacijo ter večjo transparentnost procesa gradnje projekta. Aktivnosti, ki jih orodja največkrat avtomatizirajo so: gradnja projekta, zagon testov enot, zagon integracijskih testov, zagon testov od konca do konca (ang. end-to-end), analiza pokritosti kode s testi, analiza kvalitete kode, analiza varnosti, pakiranje in namestitev ter upravljanje z odvisnostmi. Kot najbolj pomembne funkcionalnosti orodji navedejo dobro integracijo s platformo, ki gostuje kodo, enostavnost uporabe, podporo za specifične operacijske sisteme in možnost namestitve na lastni infrastrukturi. Kot najbolj popularno orodje se izkaže GitHub Actions, predvsem zaradi dobre integracije s platformo GitHub, ki je zelo razširjena in priljubljena med razvijalci. Glavna prednost orodja GitLab CI/CD, ki ga tudi sami uporabimo in ga razlikuje od orodja GitHub Actions, pa je možnost namestitve na lastni infrastrukturi. Poleg tega nudi tudi dobro integracijo s platformo GitLab, ki jo uporabljamo, enostavno uporabo privatnih računalniških virov za zagon procesov in dobro podporo za vsebnike.
+V~\cite{Pooya2023} predstavijo orodja za vzpostavitev CI/CD, ki se največ uporabljajo, glavne razloge za uporabo praks CI/CD, katere aktivnosti so največkrat avtomatizirane z uporabo orodji neprekinjene integracije in kaj so prednosti in slabosti posameznih orodji. Med najbolj uporabljenimi orodji za neprekinjeno integracijo navedejo GitHub Actions, Jenkins, GitLab CI/CD, CircleCI in Azure DevOps. Kot glavne razloge za vpeljavo orodji naštejejo večjo zanesljivost, boljšo kakovost kode, večjo produktivnost, hitrejšo dostavo produktov, zmanjšanje finančnih stroškov in dela, hitrejšo povratno informacijo ter večjo transparentnost procesa gradnje projekta. Aktivnosti, ki jih orodja največkrat avtomatizirajo so: gradnja projekta, zagon testov enot, zagon integracijskih testov, zagon testov od konca do konca (ang. end-to-end), analiza pokritosti kode s testi, analiza kakovosti kode, analiza varnosti, pakiranje in namestitev ter upravljanje z odvisnostmi. Kot najbolj pomembne funkcionalnosti orodji navedejo dobro integracijo s platformo, ki gostuje kodo, enostavnost uporabe, podporo za specifične operacijske sisteme in možnost namestitve na lastni infrastrukturi. Kot najbolj popularno orodje se izkaže GitHub Actions, predvsem zaradi dobre integracije s platformo GitHub, ki je zelo razširjena in priljubljena med razvijalci. Glavna prednost orodja GitLab CI/CD, ki ga tudi sami uporabimo in ga razlikuje od orodja GitHub Actions, pa je možnost namestitve na lastni infrastrukturi. Poleg tega nudi tudi dobro integracijo s platformo GitLab, ki jo uporabljamo, enostavno uporabo privatnih računalniških virov za zagon procesov in dobro podporo za vsebnike.
 
-V~\cite{Donca2022} so vzporedno z nami razvili generator cevovoda neprekinjene integracije in dostave za gibčne (ang. agile) projekte programske opreme, ki na podoben način rešuje problematiko kreiranja cevovodov. V članku predlagajo rešitev v obliki generatorja, ki v repozitoriju Git avtomatsko prepozna datoteke potrebne za gradnjo in namestitev projekta in avtomatsko kreira cevovod, ki to tudi naredi. Generator je napisan v programskem jeziku Bash, kar omogoča lažjo integracijo v različne platforme, in pripravi konfiguracijsko datoteko na podlagi katere se kreira cevovod na platformi GitLab, ki jo uporabimo tudi sami. Tako kot mi, za gradnjo vsebniških slik uporabijo orodje Kaniko in aplikacije namestijo na gručo platforme Kubernetes. Kot glavne prednosti navedejo zmanjšanje potrebnega časa za pripravo cevovodov, izboljšana struktura cevovodov, zmanjšanje podvojenosti konfiguracije cevovodov, zmanjšanje finančnih stroškov, ker se razvijalcem ni potrebno ukvarjati s kreiranjem, upravljanjem, popravljanjem in nadzorom cevovodov ter zmanjšanje dvoumnosti glede principov CI/CD, kar poveča standardizacijo in kvaliteto procesov v podjetju. Bistvena razlika med našim pristopom in njihovim pa je, da oni za kreiranje cevovoda razvijejo generator medtem, ko mi cevovode sestavimo iz vnaprej pripravljenih predlog.
+V~\cite{Donca2022} so vzporedno z nami razvili generator cevovoda neprekinjene integracije in dostave za gibčne (ang. agile) projekte programske opreme, ki na podoben način rešuje problematiko kreiranja cevovodov. V članku predlagajo rešitev v obliki generatorja, ki v repozitoriju Git avtomatsko prepozna datoteke potrebne za gradnjo in namestitev projekta in avtomatsko kreira cevovod, ki to tudi naredi. Generator je napisan v programskem jeziku Bash, kar omogoča lažjo integracijo v različne platforme, in pripravi konfiguracijsko datoteko na podlagi katere se kreira cevovod na platformi GitLab, ki jo uporabimo tudi sami. Tako kot mi, za gradnjo vsebniških slik uporabijo orodje Kaniko in aplikacije namestijo na gručo platforme Kubernetes. Kot glavne prednosti navedejo zmanjšanje potrebnega časa za pripravo cevovodov, izboljšana struktura cevovodov, zmanjšanje podvojenosti konfiguracije cevovodov, zmanjšanje finančnih stroškov, ker se razvijalcem ni potrebno ukvarjati s kreiranjem, upravljanjem, popravljanjem in nadzorom cevovodov ter zmanjšanje dvoumnosti glede principov CI/CD, kar poveča standardizacijo in kakovost procesov v podjetju. Bistvena razlika med našim pristopom in njihovim pa je, da oni za kreiranje cevovoda razvijejo generator medtem, ko mi cevovode sestavimo iz vnaprej pripravljenih predlog.
 
 % V~\cite{KOCEVAR_2019} so predstavljene raziskave na področju oblačnega računalništva in uporaba principov razvoja ter operacij na oblačni programski rešitvi. Na osnovi tega, so opisane dve arhitekturni zasnovi. V rezultatih se izkaže, da je proces namestitve nove programske opreme veliko lažji in hitrejši, če ga avtomatiziramo in upoštevamo principe razvoja in operacij. Opiše tudi slabosti in prednosti tehnologije Kubernetes, ki jo bomo pri implementaciji tudi sami uporabljali. 
 
@@ -183,7 +183,7 @@ Pri razvoju poslovno kritičnih aplikacij so zato pomembne naslednje lastnosti~\
 % \label{sec:devops}
 % Kratica DevOps združuje besedi razvoj in operativo (ang. Development and Operations) in predstavlja orodja, filozofijo in način razvoja programske opreme, ki avtomatizira in povezuje procese med razvijalci programske opreme in operaterji informacijske tehnologije. Sestavljajo ga nabori dobrih praks kot so: neprekinjena integracija, neprekinjena dostava, infrastruktura kot koda (ang. Infrastructure as Code - IaC), avtomatizacija, sodelovanje, nadzor in spremljanje povratne informacije in nadzor različic~\cite{ebert2016devops}.
 
-% Z uvedbo naštetih praks lahko v podjetju dosežemo hitrejše razvojne cikle, hitrejšo objavo aplikacij v produkcijsko okolje, boljšo kvaliteto programske opreme in usklajenost implementacije s poslovnimi zahtevami. Obenem razvojnim ekipam omogočimo hitrejšo odzivnost na povratno informacijo strank in na zahteve trga~\cite{ebert2016devops}.
+% Z uvedbo naštetih praks lahko v podjetju dosežemo hitrejše razvojne cikle, hitrejšo objavo aplikacij v produkcijsko okolje, boljšo kakovost programske opreme in usklajenost implementacije s poslovnimi zahtevami. Obenem razvojnim ekipam omogočimo hitrejšo odzivnost na povratno informacijo strank in na zahteve trga~\cite{ebert2016devops}.
 
 \section{Neprekinjena integracija}
 \label{sec:neprekinjena-integracija}
@@ -268,7 +268,7 @@ Na projektno strukturo močno vpliva tudi sistem za spremljanje različic kode, 
 \label{subsec:monorepo}
 Monorepo ali monolitni repozitorij je poimenovanje organizacije in upravljanje različic izvorne kode z enim repozitorijem. Ta lahko vsebuje več projektov, paketov ali modulov in razvijalcem omogoča širok dostop do izvorne kode, skupnih orodji in skupne množice odvisnosti na enem mestu. Prednosti monolitnega repozitorija so~\cite{Jaspan2018, Shakikhanli2022}:
 \begin{itemize}
-    \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost razvijanja in kvaliteto kode. 
+    \item Boljša preglednost izvorne kode: Razvijalci lažje najdejo relevantno dokumentacijo, primere implementacij in uporabe, kar pozitivno vpliva na hitrost razvijanja in kakovost kode. 
     \item Enostavne odvisnosti: Vsi paketi in moduli v repozitoriju imajo lahko enako različico in ni potrebno skrbeti katere različice so med seboj kompatibilne.
     \item Lažje spreminjanje odvisnih delov kode: Pri popravljanju in posodabljanju kode lahko popravimo vse dele kode, ki so med seboj odvisni in vse skupaj oddamo v repozitorij kot eno spremembo.
 \end{itemize}
@@ -316,6 +316,17 @@ Slabosti uporabe več repozitorijev so~\cite{Shakikhanli2022}:
 
 Oba pristopa imata prednosti in slabosti in tisto, kar en razvijalec šteje za prednost, lahko drugemu predstavlja slabost. Na primer, nekateri razvijalci lahko vidijo enostavnost upravljanja enega samega repozitorija kot prednost uporabe monolitnega repozitorija, medtem ko drugi lahko zaradi potencialne povečane zapletenosti vidijo to kot slabost. Podobno lahko nekateri razvijalci vidijo sposobnost enostavnega deljenja kode in virov med projekti kot prednost uporabe več repozitorijev, medtem ko drugi lahko vidijo potrebo po upravljanju več repozitorijev kot slabost. Zato je izbira med uporabo monolitnega repozitorija ali več repozitorijev največkrat stvar osebnega okusa in je odvisna od specifičnih potreb ter narave projekta kot tudi delovnih navad podjetja.
 
+\section{Vrsta projekta}
+\label{sec:vrsta-projekta}
+V poglavju bomo predstavili dve vrsti projektov: aplikacije in knjižnice. Razlikovanje je pomembno, ker vrsta projekta vpliva na cevovod CI/CD, ki se za razvoj projekta uporablja.
+
+\subsection{Aplikacija}
+\label{subsec:aplikacija}
+Aplikacije so samostojno izvršljivi programi, ki so zasnovani za izvajanje določenih nalog ali zagotavljanje posebnih fukcionalnosti končnim uporabnikom. Uporabniki lahko aplikacije uporabljajo preko spletnih strežnikov, ki aplikacije strežejo, namestitve aplikacije na osebni računalnik, namestitve aplikacije na mobilni telefon in druge načine. Zato je programsko kodo aplikacije potrebno ustrezno pripraviti tudi za namestitev v končno okolje. Primeri aplikacij so: računalniške igre, zaledni strežniki, čelne aplikacije, orodja za urejanje besedil, integrirana razvojna okolja in podobno.
+
+\subsection{Knjižnica}
+\label{subsec:knjižnica}
+Knjižnice so zbirke vnaprej napisanih programskih modulov, funkcij in razredov, ki jih razvijalci lahko večkrat uporabijo, da si olajšajo razvoj aplikacij. Knjižnic končni uporabniki neposredno ne uporabljajo in jih zato ni potrebno namestiti v končna okolja. Da pa lahko razvijalci knjižnice uporabijo za razvoj aplikacije, pa jih je potrebno naložiti na repozitorij iz katerega lahko orodja za gradnjo ob gradnji aplikacije knjižnice prenesejo. Primeri knjižnic so: knjižnice za delo z grafičnimi vmesniki, knjižnice za izračun matematičnih funkcij, knjižnice za izvajanje spletnih zahtevkov in podobno.
 
 %----------------------------------------------------------------
 % Poglavje 3 - Tehnologije
@@ -491,7 +502,7 @@ V tem poglavju bomo predstavili orodja za zagotavljanje kakovosti kode. To so or
 \label{sec:sonarqube}
 SonarQube\footnote{https://www.sonarsource.com/products/sonarqube/} je odprtokodna platforma za avtomatsko preverjanje kakovosti kode z namenom zaznave napak, slabo napisane kode (ang. code smell) in varnostnih pomanjkljivosti v programski kodi. Podpira več kot 25 programskih jezikov in se uporablja v več kot 85000 organizacijah. Orodje deluje na osnovi pravil in konfiguracij, ki jih lahko tudi sami dodamo ter služijo kot standardi programske kode. V primeru da del kode krši katerega izmed pravil, nas orodje opozori na napako. Poleg že vgrajenih pravil, uporablja tudi pravila drugih popularnih orodji za preverjanje kakovosti kode kot sta \textit{FindBugs} in \textit{PMD}~\cite{Marcilio2019}.
 
-Platforma je sestavljena iz orodji in programskih vtičnikov, ki jih lahko uporabimo za zagon analize kvalitete kode lokalno ali v cevovodu CI, ter spletnega vmesnika, ki prikazuje podrobna poročila in metrike kakovosti kode, kar razvojnim ekipam olajša spremljanje napredka in dodeljevanje nalog za izboljšanje kakovosti.
+Platforma je sestavljena iz orodji in programskih vtičnikov, ki jih lahko uporabimo za zagon analize kakovosti kode lokalno ali v cevovodu CI, ter spletnega vmesnika, ki prikazuje podrobna poročila in metrike kakovosti kode, kar razvojnim ekipam olajša spremljanje napredka in dodeljevanje nalog za izboljšanje kakovosti.
 
 \subsection{ESLint}
 ESLint\footnote{https://eslint.org/} je najbolj priljubljeno odprtokodno orodje za statično analizo programske kode, ki je napisana v programskih jezikih JavaScript, TypeScript ali ECMAScript. Orodje sestavlja 236 osnovnih pravil, ki jih razvijalci lahko poljubno vklopijo ali izklopijo in razvijalce opozarjajo na potencialno problematične dele kode~\cite{Tomasdottir2017}.
@@ -533,7 +544,7 @@ IntelliJ IDEA\footnote{\url{https://www.jetbrains.com/idea/}} je integrirano raz
 
 \chapter{Implementacija}
 \label{ch:implementacija}
-V tem poglavju bomo najprej predstavili potek integracije in dostave po korakih, ki so del razvitega cevovoda. Nato bomo predstavili kako se ta cevovod uporablja v podjetju, kjer se aplikacijska koda razvija in kako se cevovod uporablja pri stranki, ki ji aplikacijsko kodo oddamo. Nekaj besed bomo namenili tudi različnim načinom dostave kode stranki, nato pa bomo opisali komponento Medius CD, ki je bila razvita za namen vzpostavitev cevovoda. 
+V tem poglavju bomo najprej predstavili potek integracije in dostave po korakih, ki so del razvitega cevovoda. Nato bomo predstavili kako se ta cevovod uporablja v podjetju, kjer se aplikacijska koda razvija in kako se cevovod uporablja pri stranki, ki ji aplikacijsko kodo oddamo. Nato bomo opisali komponento Medius CD, ki je bila razvita za namen vzpostavitev cevovoda.
 
 % Na koncu bomo predstavili še vtičnik GitLab Template Lint za integrirano razvojno okolje IntelliJ IDEA, ki smo ga razvili in nudi pomoč pri pisanju konfiguracijskih datotek za vzpostavitev cevovoda na spletni platformi GitLab.
 
@@ -551,7 +562,7 @@ V poglavju \ref{sec:neprekinjena-integracija} smo omenili, da je neprekinjena in
 
 
 % manjka kaj so testi enot in kaj so integracijski testi
-Temu sledi gradnja aplikacijske vsebniške slike in njen odriv v register vsebniških slik. Zgrajeno sliko nato uporabimo za namestitev aplikacije na gručo platforme Kubernetes, ki je namenjena izvajanju integracijskih testov, ki jih po uspešni namestitvi na gručo tudi zaženemo. Na tem mestu lahko ročno zaženemo tudi orodja za preverjanje kakvosti in varnosti kode. V kolikor so bili vsi predhodni koraki do sedaj uspešni, se aplikacijska vsebniška slika označi z ustrezno številko različice. Nato se ustvarijo naloge za namestitev aplikacije v različna testna okolja, ki omogočajo razvijalcem in zaposlenim, ki skrbijo za zagotavljanje kvalitete, da aplikacijo tudi sami preizkusijo in pogledajo. Čisto na koncu cevovoda pa so na voljo tudi naloge za izdajanje novih verzij, ki jih razvijalci lahko ročno zaženejo.
+Temu sledi gradnja aplikacijske vsebniške slike in njen odriv v register vsebniških slik. Zgrajeno sliko nato uporabimo za namestitev aplikacije na gručo platforme Kubernetes, ki je namenjena izvajanju integracijskih testov, ki jih po uspešni namestitvi na gručo tudi zaženemo. Na tem mestu lahko ročno zaženemo tudi orodja za preverjanje kakvosti in varnosti kode. V kolikor so bili vsi predhodni koraki do sedaj uspešni, se aplikacijska vsebniška slika označi z ustrezno številko različice. Nato se ustvarijo naloge za namestitev aplikacije v različna testna okolja, ki omogočajo razvijalcem in zaposlenim, ki skrbijo za zagotavljanje kakovosti, da aplikacijo tudi sami preizkusijo in pogledajo. Čisto na koncu cevovoda pa so na voljo tudi naloge za izdajanje novih verzij, ki jih razvijalci lahko ročno zaženejo.
 
 \subsection{Proces v podjetju}
 \label{subsec:proces-v-podjetju}
@@ -880,11 +891,11 @@ Z novo razvito komponento je cevovod za razvoj aplikacije enostavno dodati. V ko
 \end{itemize}
 
 \section{Cevovod programske knjižnice}
-Za postavitev cevovoda projekta, ki vsebuje programsko knjižnico potrebujemo enake imenike in datoteke, z izjemo imenika \texttt{deploy}, ki ga ne potrebujemo. Tudi vsebina datotek ostane v večini enaka, edina razlika je v datoteki \texttt{.main.yml}, v kateri moramo uporabiti predlogo cevovoda za programsko knjižnico.
+Za postavitev cevovoda projekta, ki vsebuje programsko knjižnico potrebujemo enake imenike in datoteke, z izjemo imenika \texttt{deploy}, ki ga ne potrebujemo, saj knjižnice ne moremo namestiti na gručo platforme Kubernetes. Tudi vsebina datotek ostane v večini enaka, edina razlika je v datoteki \texttt{.main.yml}, v kateri moramo uporabiti predlogo cevovoda za programsko knjižnico. V primeru, da se za testiranje knjižnice potrebuje testno aplikacijo, ki knjižnico uporablja, se v imenik \texttt{deploy} doda konfiguracijske datoteke za namestitev testne aplikacije. Namesto namestitve, pa knjižnico na koncu cevovoda naložimo v centralni repozitorij za upravljanje različic. Na ta način jo lahko enostavno uporabimo v drugih aplikacijah.
 
 \section{Projekt v programskem jeziku Java}
 \label{sec:java-projekt}
-V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje aplikacijo, napisano v programskem jeziku Java in za gradnjo aplikacije uporablja orodje Maven. Aplikacija uporablja aplikacijski strežnik Wildfly\footnote{\url{https://www.wildfly.org/}} in preko programskega vmesnika izpostavlja končne točke za izvajanje poslovnih operacij. Za shranjevanje podatkov uporablja podatkovno bazo Oracle\footnote{\url{https://www.oracle.com/database/}}.
+V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje aplikacijo, napisano v programskem jeziku Java in za gradnjo aplikacije uporablja orodje Maven. Aplikacija uporablja aplikacijski strežnik Wildfly\footnote{\url{https://www.wildfly.org/}} in preko programskega vmesnika izpostavlja končne točke za pridobivanje podatkov o izvedenih denarnih transakcijah podjetja, ki se prikazujejo v čelni aplikaciji. Za shranjevanje podatkov uporablja podatkovno bazo Oracle\footnote{\url{https://www.oracle.com/database/}}.
 
 Stranka ima postavljeno svojo instanco platforme GitLab, na kateri izvaja cevovod, ki smo ga razvili. Zaradi varnosti je stranka zahtevala, da se celoten cevovod izvaja brez povezave na internet. To pomeni, da morajo biti vse odvisnosti projekta dostopne preko internih repozitorijev in registrov, do katerih skripti v nalogah lahko dostopajo.
 
@@ -967,7 +978,7 @@ Datoteka, ki definira aplikacijsko vsebniško sliko se nahaja v imeniku \texttt{
 
 \subsection{Konfiguracijske datoteke platforme Kubernetes}
 \label{subsec:java-projekt-k8s}
-V imeniku \texttt{deploy} se nahajata imenika \texttt{k8s.v15} in \texttt{k8s.v25}, ki vsebujeta konfiguracijske datoteke za namestitev na različni verziji gruče Kubernetes. Obe vsebujeta datoteko \texttt{deployment.yml.in}, ki vsebuje naslednje gradnike platforme Kubernetes: namestitev, servis in Ingress. Oba imenika vsebujeta tudi gnezdena imenika:
+V imeniku \texttt{deploy} se nahajata imenika \texttt{k8s.v15} in \texttt{k8s.v25}, ki vsebujeta konfiguracijske datoteke za namestitev na različni verziji gruče Kubernetes. Obe vsebujeta datoteko \texttt{deployment.yml.in}, ki vsebuje naslednje gradnike platforme Kubernetes: namestitev, servis in Ingress, ki upravlja zunanji dostop do storitev v gruči. Oba imenika vsebujeta tudi gnezdena imenika:
 \begin{itemize}
     \item \texttt{config} - vsebuje datoteko \texttt{config.yml.in} z gradnikom \texttt{ConfigMap}, ki hrani naslove do podatkovne baze in druge neobčutljive podatke.
     \item \texttt{secrets} - vsebuje datoteko \texttt{secrets.yml.in} z gradnikom \texttt{Secrets}, ki hrani uporabniška imena in gesla.
@@ -998,7 +1009,7 @@ Za zagon cevovoda aplikacije potrebujemo izvajalne slike. Zgradimo jih lahko tak
     \item Priprava komponente Medius CD
     \item Gradnja aplikacije - aplikacija se zgradi z orodjem Maven, ki po gradnji zažene tudi teste enot.
     \item Gradnja vsebniških slik - naloga zažene podrejen cevovod, ki vsebuje nalogo za gradnjo aplikacijske slike.
-    \item Preverjanje kakovosti - naloga, ki z orodjem Maven zažene vtičnik platforme SonarQube za preverjanje kakovosti.
+    \item Preverjanje kakovosti - naloga, ki z orodjem Maven zažene vtičnik za preverjanje kakovosti platforme SonarQube.
     \item Objava vsebniških slik
     \item Namestitev aplikacije - naloga zažene podrejen cevovod, ki vsebuje naloge za namestitev aplikacije v različna okolja na gruči Kubernetes.
     \item Naloge za izdajo nove verzije
@@ -1006,10 +1017,10 @@ Za zagon cevovoda aplikacije potrebujemo izvajalne slike. Zgradimo jih lahko tak
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=10cm]{figures/java-projekt-cevovod-izvajalne-slike.png}
+        \includegraphics[width=13.5cm]{figures/java-cevovod.png}
     \end{center}
-\caption{Cevovod za gradnjo izvajalnih slik.}
-\label{fig:java-projekt-gradnja-izvajalnih-slik}
+\caption{Cevovod projekta v programskem jeziku Java.}
+\label{fig:java-cevovod}
 \end{figure}
 
 \section{Projekt v programskem jeziku TypeScript}
@@ -1112,15 +1123,15 @@ Potem, ko smo zgradili izvajalne slike s cevovodom za gradnjo izvajalnih slik, l
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=13.5cm]{figures/typescript-projekt-it-cevovod.png}
+        \includegraphics[width=13.5cm]{figures/typescript-cevovod.png}
     \end{center}
-\caption{podrejen cevovod za namestitev aplikacij v okolje za integracijsko testiranje.}
-\label{fig:typescript-projekt-it-cevovod}
+\caption{Cevovod projekta v programskem jeziku TypeScript.}
+\label{fig:typescript-cevovod}
 \end{figure}
 
 \section{Projekt v programskem jeziku Python}
 \label{sec:python-projekt}
-V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje dve aplikaciji napisani v programskem jeziku Python. Aplikaciji uporabljata knjižnico FastAPI, s katero izpostavljata končne točke za izvajanje poslovnih operacij.
+V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje dve aplikaciji napisani v programskem jeziku Python. Aplikaciji uporabljata knjižnico FastAPI, s katero izpostavljata končne točke za prepoznavanje in redakcijo občutljivih podatkov v besedilu s pomočjo modelov strojnega učenja.
 
 % Stranka ne uporablja platforme GitLab, zato se cevovod izvaja samo v podjetju. TODO
 
@@ -1216,27 +1227,20 @@ test:
 Po zgrajenih izvajalnih vsebniških slikah lahko zaženemo cevovod aplikacije, ki vsebuje naslednje naloge:
 \begin{itemize}
     \item Priprava komponente Medius CD
-    \item Gradnja vsebniški slik - naloga zažene podrejen cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-build-docker-cevovod} in vsebuje nalogi za gradnjo obeh aplikacijskih slik.
+    \item Gradnja vsebniški slik - naloga zažene podrejen cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-cevovod} in vsebuje nalogi za gradnjo obeh aplikacijskih slik.
     \item Izdaja vsebniških slik
-    \item Namestitev aplikacij - naloga zažene podrejen cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-namestitev-aplikacij} in vsebuje naloge za namestitev aplikacij v različna okolja.
+    \item Namestitev aplikacij - naloga zažene podrejen cevovod, ki ga lahko vidimo na sliki \ref{fig:python-projekt-cevovod} in vsebuje naloge za namestitev aplikacij v različna okolja.
     \item Naloge za izdajo novih verzij
 \end{itemize}
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=13cm]{figures/python-projekt-build-docker-cevovod.png}
+        \includegraphics[width=13.5cm]{figures/python-cevovod.png}
     \end{center}
-\caption{podrejen cevovod za gradnjo vsebniških slik.}
-\label{fig:python-projekt-build-docker-cevovod}
+\caption{Cevovod projekta.}
+\label{fig:python-projekt-cevovod}
 \end{figure}
 
-\begin{figure}
-    \begin{center}
-        \includegraphics[width=13cm]{figures/python-projekt-deploy-cevovod.png}
-    \end{center}
-\caption{podrejen cevovod za namestitev aplikacij.}
-\label{fig:python-projekt-namestitev-aplikacij}
-\end{figure}
 
 \section{Vtičnik GitLab Template Lint}
 \label{sec:rezultati-vtičnik-gitlab-template-lint}
