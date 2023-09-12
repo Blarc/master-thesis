@@ -9,11 +9,18 @@
 \noindent\textbf{Naslov:} \ttitle
 \bigskip
 
-Opišemo poslovno kritične aplikacije in proces neprekinjene integracije in dostave. Predstavimo izbrane tehnologije in aplikacije, ki jih v nadaljevanju uporabimo za vzpostavitev cevovoda neprekinjene integracije in dostave. Poseben poudarek je namenjen razvoju komponente Medius CD, ki olajšuje vzpostavitev cevovoda neprekinjene integracije in dostave v okviru platforme Gitlab.
+Opišemo poslovno kritične aplikacije in njihove lastnosti. Predstavimo proces neprekinjene integracije in dostave, ki predstavlja pomemben del razvoja poslovno kritičnih aplikacij. Opišemo tehnologije, ki nam omogočajo vpeljavo dobrih praks razvoja in jih v okviru procesa CI/CD uporabimo.
 
-Razvita komponenta je sestavljena iz dveh ključnih delov: prvi del vključuje pripravljene predloge za uporabo v okviru projektov GitLab, medtem ko drugi del obsega skripte v programskem jeziku Bash. Te skripte se uporabljajo za izvajanje bolj kompleksnih nalog v okviru opredeljenih predlog. Ena izmed glavnih prednosti razvite komponente je njena visoka prilagodljivost, saj omogoča prilagajanje različnim zahtevam projektov. Dodana konfiguracijska datoteka igra ključno vlogo pri določanju specifičnih zahtev za posamezen projekt.
+Razvijemo komponento za vzpostavitev CI/CD z orodjem GitLab CI/CD imenovano Medius CD. S komponento poenotimo cevovode CI/CD, zmanjšamo podvajanje konfiguracije in kode ter olajšamo vzdrževanje. Razvita komponenta je zelo prilagodljiva različnim zahtevam naročnikov in omogoča enostavno vzpostavitev cevovoda CI/CD tako v razvojnem okolju kot tudi v okolju naročnika.
 
-V sklopu naloge koncepte in funkcionalnosti komponente ponazorimo s pomočjo študij primerov iz realnih projektov. S tem pokažemo praktično uporabnost razvite rešitve ter njeno sposobnost prilagajanja različnim scenarijem v poslovnem okolju.
+V sklopu naloge koncepte in funkcionalnosti komponente ponazorimo s pomočjo študij primerov iz resničnih projektov poslovno kritičnih aplikacij, ki uporabljajo različne programske jezike. S tem pokažemo praktično uporabnost razvite rešitve ter njeno sposobnost prilagajanja različnim scenarijem v poslovnem okolju.
+
+Med razvojem odkrijemo potrebo po vtičniku za integrirano okolje IntelliJ, ki preverja konfiguracijske datoteke orodja GitLab CI/CD. Zato razvijemo odprtokoden vtičnik Gitlab Template Lint, ki v integriranem okolju prikazuje napake in združeno vsebino konfiguracijskih datotek. Razvit vtičnik objavimo na tržnico vtičnikov JetBrains in na ta način omogočimo njegovo uporabo velikemu številu razvijalcem DevOps po vsem svetu.
+
+
+% Opišemo poslovno kritične aplikacije in proces neprekinjene integracije in dostave. Predstavimo izbrane tehnologije in aplikacije, ki jih v nadaljevanju uporabimo za vzpostavitev cevovoda neprekinjene integracije in dostave. Poseben poudarek namenimu razvoju komponente Medius CD, ki olajšuje vzpostavitev cevovoda neprekinjene integracije in dostave z orodjem Gitlab CI/CD.
+
+% Razvita komponenta je sestavljena iz dveh ključnih delov: prvi del vključuje pripravljene predloge za uporabo v okviru projektov GitLab, medtem ko drugi del obsega skripte v programskem jeziku Bash. Te skripte se uporabljajo za izvajanje bolj kompleksnih nalog v okviru opredeljenih predlog. Ena izmed glavnih prednosti razvite komponente je njena visoka prilagodljivost, saj omogoča prilagajanje različnim zahtevam projektov. Dodana konfiguracijska datoteka igra ključno vlogo pri določanju specifičnih zahtev za posamezen projekt.
 
 % Razvijemo komponento Medius CD, ki olajša vzpostavitev cevovoda neprekinjene integracije in dostave na platformi Gitlab. Komponento razdelimo na dva dela: predloge Gitlab, ki jih lahko enostavno pouporabimo v projektih in skripte v programskem jeziku Bash, ki jih predloge uporabljajo za izvajanje bolj kompleksnih nalog. Razvita komponenta omogoča visoko prilagodljivost različnim projektnim zahtevam, ki jih je mogoče definirati v konfiguracijski datoteki. Slednje pokažemo na primerih projektov iz resničnega sveta. 
 
