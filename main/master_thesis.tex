@@ -87,20 +87,20 @@ Zaradi visoke konkurence na trgu programske opreme, organizacije namenjajo velik
 
 Pri razvoju obsežnejše programske opreme ali aplikacije je programje navadno razdeljeno na več zaključenih enot, ki jih različne razvojne skupine ali razvojna podjetja neodvisno razvijajo~\cite{Abrahamsson_2002}. Neprekinjena dostava (ang. Continuous Deployment - CD) je metodologija sestavljen iz praks CI in avtomatske dostave programske opreme, ki si prizadeva zagotoviti, da je aplikacija po uspešno izvedenih testih in preverjanju kakovosti vedno pripravljena za namestitev~\cite{Weber2016}. Za slednje sta pred delitvijo nalog vnaprej izbrana in specificirana produkcijsko ter razvojno okolje, ki si ga ponudnik vzpostavi sam ali pa je zagotovljeno na infrastrukturi naročnika. Na ta način si lahko razvojne skupine, za preverjanje realizacije izvedenega dela, pripravijo razvojno okolje, ki ima čim bolj podobno infrastrukturo, kot je na voljo v produkcijskem okolju. Samo tako so posamezne skupine lahko dovolj samozavestne, da bo njihovo programje pravilno delovalo tudi v produkcijskem okolju~\cite{smith_2020}.
 
-Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje stranke, ki se velikokrat pojavi pri poslovno kritičnih aplikacijah. Poslovno kritične aplikacije so tiste aplikacije, ki so ključne za delovanje poslovnega procesa podjetja~\cite{Hinchey2010, Syng2016}. V takšnem primeru je zaradi varnosti produkcijsko okolje pogosto razvijalcem nedostopno, kot tudi celotno omrežje stranke. S tem je dostava programske kode v omrežje stranke s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces neprekinjene dostave prilagoditi in upoštevati morebitne dodatne zaplete pri izdaji programske opreme v produkcijsko okolje.
+Poseben primer produkcijskega okolja predstavlja zaprto produkcijsko okolje naročnika, ki se velikokrat pojavi pri poslovno kritičnih aplikacijah. Poslovno kritične aplikacije so tiste aplikacije, ki so ključne za delovanje poslovnega procesa podjetja~\cite{Hinchey2010, Syng2016}. V takšnem primeru je zaradi varnosti produkcijsko okolje pogosto razvijalcem nedostopno, kot tudi celotno omrežje naročnika. S tem je dostava programske kode v omrežje naročnika s strani razvijalcev nemogoča. Za takšen primer razvijanja programske opreme je potrebno celoten proces neprekinjene dostave prilagoditi in upoštevati morebitne dodatne zaplete pri izdaji programske opreme v produkcijsko okolje.
 
-Vse omenjene prakse pa združuje zbirka praks razvoja programske opreme imenovana DevOps, ki združuje mentaliteto razvoja s preostalimi funkcijami v organizaciji. Glavni poudarek pristopa DevOps je delitev odgovornosti med vse ekipe celotnega življenjskega cikla razvoja programske opreme. V okviru tega se meje med različnimi vlogami postopno zabrisujejo, saj člani operativne ekipe prevzemajo naloge, ki so tradicionalno bolj usmerjene v razvijalce, in člani razvojne ekipe prevzemajo naloge, ki so tradicionalno bolj namenjene članom operativne ekipe. Čeprav se izraz DevOps najpogosteje povezuje z razvojem (ang. Development - Dev) in operacijami (ang. Operations - Ops) informacijske tehnologije, pa lahko ta pristop razširimo tudi na druge skupine znotraj organizacije, kot so varnost, kontrola kakovosti (ang. Quality Analysis - QA), upravljanje podatkovnih baz ter omrežne storitve. Zato je poleg programske opreme, ki deluje po specifikaciji, ključno dostaviti stranki tudi operativne funkcije za delo s kodo, enostavno namestitev aplikacij v več različnih okolji, možnost prenosa kode k drugemu izvajalcu in podobno~\cite{smith_2020}.
+Vse omenjene prakse pa združuje zbirka praks razvoja programske opreme imenovana DevOps, ki združuje mentaliteto razvoja s preostalimi funkcijami v organizaciji. Glavni poudarek pristopa DevOps je delitev odgovornosti med vse ekipe celotnega življenjskega cikla razvoja programske opreme. V okviru tega se meje med različnimi vlogami postopno zabrisujejo, saj člani operativne ekipe prevzemajo naloge, ki so tradicionalno bolj usmerjene v razvijalce, in člani razvojne ekipe prevzemajo naloge, ki so tradicionalno bolj namenjene članom operativne ekipe. Čeprav se izraz DevOps najpogosteje povezuje z razvojem (ang. Development - Dev) in operacijami (ang. Operations - Ops) informacijske tehnologije, pa lahko ta pristop razširimo tudi na druge skupine znotraj organizacije, kot so varnost, kontrola kakovosti (ang. Quality Analysis - QA), upravljanje podatkovnih baz ter omrežne storitve. Zato je poleg programske opreme, ki deluje po specifikaciji, ključno dostaviti naročniku tudi operativne funkcije za delo s kodo, enostavno namestitev aplikacij v več različnih okolji, možnost prenosa kode k drugemu izvajalcu in podobno~\cite{smith_2020}.
 
 \section{Cilji in doprinosi}
 \label{sec:cilji-in-doprinosi}
 
-Namen magistrskega dela je predstaviti izzive pri razvoju poslovno kritičnih aplikacij in dobre prakse razvoja programske opreme, ki nam pomagajo pri reševanju teh izzivov. V delu predstavimo strategije in tehnologije, ki nam omogočajo postavitev razvojnega okolja v katerem lahko prakse DevOps izvajamo. Bolj podrobno opišemo proces neprekinjene integracije in dostave v okolje, kjer nimamo dostopa do omrežja stranke in posledično nimamo dostopa do izvajalnega okolja ter možnosti nameščanje programske opreme v izvajalno okolje. Na koncu predstavimo tudi razviti vtičnik Gitlab Template Lint, ki v integrirano okolje IntelliJ doda funkcionalnost, ki smo jo med razvojem komponente za neprekinjeno integracijo in dostavo pogrešali.
+Namen magistrskega dela je predstaviti izzive pri razvoju poslovno kritičnih aplikacij in dobre prakse razvoja programske opreme, ki nam pomagajo pri reševanju teh izzivov. V delu predstavimo strategije in tehnologije, ki nam omogočajo postavitev razvojnega okolja v katerem lahko prakse DevOps izvajamo. Bolj podrobno opišemo proces neprekinjene integracije in dostave v okolje, kjer nimamo dostopa do omrežja naročnika in posledično nimamo dostopa do izvajalnega okolja ter možnosti nameščanje programske opreme v izvajalno okolje. Na koncu predstavimo tudi razviti vtičnik Gitlab Template Lint, ki v integrirano okolje IntelliJ doda funkcionalnost, ki smo jo med razvojem komponente za neprekinjeno integracijo in dostavo pogrešali.
 
 Konkretni cilji predlaganega dela so:
 \begin{enumerate}
     \item Razviti prilagodljivo komponento, ki poenoti in poenostavi vzpostavitev cevovoda za neprekinjeno integracijo in dostavo poslovno kritičnih aplikacij z uporabo orodja GitLab CI/CD ter rešuje problematiko podvojenosti konfiguracije.
     \item Prikazati uporabnost razvite komponente s študijo primerov realnih projektov.
-    \item Razviti odprtokodni vtičnik za integrirano okolje IntelliJ, ki znotraj okolja preverja konfiguracijske datoteke GitLab CI/CD in prikazuje združeno vsebino vseh dodanih predlog.
+    \item Razviti odprtokodni vtičnik za integrirano okolje IntelliJ IDEA, ki znotraj okolja preverja konfiguracijske datoteke GitLab CI/CD in prikazuje združeno vsebino vseh dodanih predlog.
 \end{enumerate}
 
 \section{Pregled sorodnih del}
@@ -124,7 +124,7 @@ V~\cite{Chen2015} je podrobno opisana neprekinjena dostava po posameznih korakih
     \item produktivnost in efektivnost - razvijalci in testerji porabijo manj časa za postavitev testnih okolji in objavo novih različic v produkcijsko okolje.
     \item zanesljiva objava novih verzij - namestitev aplikacije je pred objavo v produkcijsko okolje večkrat testirana in s tem bolj zanesljiva.
     \item kvalitetnejši produkt - z avtomatskimi testi je večina napak odkritih pred objavo kar poveča kakovost produkta.
-    \item zadovoljstvo strank - zaradi zanesljivejše objave in kvalitetnejšega produkta so stranke bolj zadovoljne.
+    \item zadovoljstvo naročnika - zaradi zanesljivejše objave in kvalitetnejšega produkta je naročnik bolj zadovoljen.
 \end{itemize}
 
 V~\cite{Pooya2023} predstavijo orodja za vzpostavitev CI/CD, ki se največ uporabljajo, glavne razloge za uporabo praks CI/CD, katere aktivnosti so največkrat avtomatizirane z uporabo orodji neprekinjene integracije in kaj so prednosti in slabosti posameznih orodji. Med najbolj uporabljenimi orodji za neprekinjeno integracijo navedejo GitHub Actions, Jenkins, GitLab CI/CD, CircleCI in Azure DevOps. Kot glavne razloge za vpeljavo orodji naštejejo večjo zanesljivost, boljšo kakovost kode, večjo produktivnost, hitrejšo dostavo produktov, zmanjšanje finančnih stroškov in dela, hitrejšo povratno informacijo ter večjo transparentnost procesa gradnje projekta. Aktivnosti, ki jih orodja največkrat avtomatizirajo so: gradnja projekta, zagon testov enot, zagon integracijskih testov, zagon testov od konca do konca (ang. end-to-end), analiza pokritosti kode s testi, analiza kakovosti kode, analiza varnosti, pakiranje in namestitev ter upravljanje z odvisnostmi. Kot najbolj pomembne funkcionalnosti orodji navedejo dobro integracijo s platformo, ki gostuje kodo, enostavnost uporabe, podporo za specifične operacijske sisteme in možnost namestitve na lastni infrastrukturi. Kot najbolj popularno orodje se izkaže GitHub Actions, predvsem zaradi dobre integracije s platformo GitHub, ki je zelo razširjena in priljubljena med razvijalci. Glavna prednost orodja GitLab CI/CD, ki ga tudi sami uporabimo in ga razlikuje od orodja GitHub Actions, pa je možnost namestitve na lastni infrastrukturi. Poleg tega nudi tudi dobro integracijo s platformo GitLab, ki jo uporabljamo, enostavno uporabo privatnih računalniških virov za zagon procesov in dobro podporo za vsebnike.
@@ -225,15 +225,16 @@ Cilj neprekinjene dostave je zmanjšanje časa med pisanjem kode in njene dostav
 
 \subsection{Dostava izvorne kode}
 \label{subsec:dostava-izvorne-kode}
-Ključen del neprekinjene dostave je tudi dostava izvorne kode stranki ali končnim uporabnikom. Proces prenosa kode mora biti dobro zasnovan, da zagotovimo, da se izvorna koda pravilno in učinkovito prenese. Dostava izvorne kode sicer ni nujna za vsak projekt in je odvisna od pogodbe med podjetjem in naročnikom ter poslovnega modela podjetja, ki je kodo napisalo. Vseeno pa se večkrat izkaže kot pomembna zahteva pri poslovno kritičnih aplikacijah, ker so bistvene za poslovanje podjetja in si zato podjetje želi ostati neodvisno od podjetja, ki je kodo napisalo.
+Ključni del neprekinjene dostave je tudi dostava izvorne kode naročniku ali končnim uporabnikom. Proces prenosa kode mora biti dobro zasnovan, da zagotovimo, da se izvorna koda pravilno in učinkovito prenese. Dostava izvorne kode sicer ni nujna za vsak projekt in je odvisna od pogodbe med podjetjem in naročnikom ter poslovnega modela podjetja, ki je kodo napisalo. Vseeno pa se večkrat izkaže kot pomembna zahteva pri poslovno kritičnih aplikacijah, ker so bistvene za poslovanje podjetja in si zato podjetje želi ostati neodvisno od podjetja, ki je kodo napisalo.
 
-% Skupaj lahko dostava izvorne kode stranki zagotovi večjo neodvisnost in prilagodljivost pri uporabi programske opreme, pa tudi priložnost prilagoditve programske opreme lastnim specifičnim potrebam in zahtevam (Humble et al., 2010).
-
-Dostava izvorne kode stranki je lahko koristna tako za stranko kot tudi za podjetje, ki je napisalo izvorno kodo. Za stranko je koristna, ker ni več odvisna od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del prevzame sama. To se izkaže zelo uporabno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore. Dostava izvorne kode pa je smiselna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz dveh vidikov~\cite{Humble2010}:
+Dostava izvorne kode naročniku je lahko koristna tako za naročnika kot tudi za podjetje, ki je napisalo izvorno kodo. Za naročnika je koristna, ker ni več odvisna od podjetja iz vidika posodobitev, vzdrževanja in podpore, vendar za to lahko najame drugo podjetje ali pa ta del prevzame sama. To se izkaže zelo uporabno predvsem takrat, ko podjetje, ki je ustvarilo izvorno kodo, preneha s svojim poslovanjem ali pa ni zmožno zagotoviti podpore. Dostava izvorne kode pa je smiselna tudi za podjetje, ki je izvorno kodo naredilo predvsem iz dveh vidikov~\cite{Humble2010}:
 \begin{itemize}
-    \item Prenos odgovornosti: z dostavo izvorne kode stranki lahko podjetje prenese del odgovornosti vzdrževanja programske opreme na stranko. To je še posebej koristno, če stranka načrtuje prilagoditve ali spremembe programske opreme, saj podjetje ni odgovorno za morebitne težave ali napake, ki bi lahko nastale zaradi teh sprememb.
-    \item Zmanjšanje bremena vzdrževanja in podpore: če ima stranka dostop do izvorne kode, lahko sama odpravi težave in jih popravi, namesto, da bi se zanašala na podjetje za podporo.
+    \item Prenos odgovornosti: z dostavo izvorne kode naročniku lahko podjetje prenese del odgovornosti vzdrževanja programske opreme na naročnika. To je še posebej koristno, če naročnik načrtuje prilagoditve ali spremembe programske opreme, saj podjetje ni odgovorno za morebitne težave ali napake, ki bi lahko nastale zaradi teh sprememb.
+    \item Zmanjšanje bremena vzdrževanja in podpore: če ima naročnik dostop do izvorne kode, lahko sama odpravi težave in jih popravi, namesto, da bi se zanašala na podjetje za podporo.
 \end{itemize}
+
+Največji izziv pri tovrstni dostavi izvorne kode naročniku, pa je reproducibility... Izkaže se da ob razvoju knjižnic z orodji za gradnjo (kot je npm) preverja hash paketa ob vključevanju teh knjižnic v aplikacijo. Če izdamo tukaj mi to in naročniku oddamo tudi package-json-lock, se mora sha ujemati. Gradnja ne sme vsebovati timestampov, sha-jev od git commita ... 
+
 
 \subsection{Neprekinjena namestitev}
 \label{subsec:neprekinjena-namestitev}
@@ -542,11 +543,12 @@ IntelliJ IDEA\footnote{\url{https://www.jetbrains.com/idea/}} je integrirano raz
 \chapter{Implementacija}
 \label{ch:implementacija}
 
-V tem poglavju bomo predstavili implementacijo procesa integracije in dostave po posameznih korakih. Skupaj sestavljajo cevovod, ki je osnovan na večletnih izkušnjah razvoja aplikacij in programske opreme po naročilu v podjetju Medius d.o.o. Vse dobro prakse smo zbrali v skupni komponenti z imenom Medius CD. Komponenta zajema tako CI, kot CD prakse v razvojem okolju izvajalca in produkcijskem okolju naročnika. Na koncu bomo predstavili še vtičnik GitLab Template Lint za integrirano razvojno okolje IntelliJ IDEA. Vtičnik nudi pomoč pri pisanju konfiguracijskih datotek za vzpostavitev cevovoda z orodjem GitLab CI/CD.
+V tem poglavju bomo predstavili implementacijo procesa integracije in dostave po posameznih korakih. Skupaj sestavljajo cevovod, ki je osnovan na večletnih izkušnjah razvoja aplikacij in programske opreme po naročilu v podjetju Medius d.o.o. Vse dobre prakse smo zbrali v skupni komponenti z imenom Medius CD. Komponenta zajema tako CI, kot CD prakse v razvojem okolju izvajalca in produkcijskem okolju naročnika. Na koncu bomo predstavili še vtičnik GitLab Template Lint za integrirano razvojno okolje IntelliJ IDEA. Vtičnik nudi pomoč pri pisanju konfiguracijskih datotek za vzpostavitev cevovoda z orodjem GitLab CI/CD.
 
 \section{Potek integracije in dostave}
 \label{sec:potek-integracije-in-dostave}
-V poglavju \ref{sec:neprekinjena-integracija} smo omenili, da je neprekinjena integracija praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Preden pa spremembe združimo v glavno vejo, je pomembno da preverimo, ali je nova koda sintaktično in semantično pravilna. V razvitem cevovodu smo to naredili tako, da ob vsakem odrivu (ang. push) kode na katerokoli vejo v repozitoriju zaženemo cevovod, ki to kodo preveri z gradnjo aplikacije, testi enot in integracijskimi testi.
+V poglavju \ref{sec:neprekinjena-integracija} smo omenili, da je neprekinjena integracija praksa razvoja programske opreme, pri kateri programerji redno združujejo svoje spremembe kode v centralni repozitorij. Preden pa spremembe združimo v glavno vejo, je pomembno da preverimo, ali je nova koda sintaktično in semantično pravilna. V razvitem cevovodu to naredimo tako, da ob vsakem odrivu (ang. push) kode na katerokoli vejo v repozitoriju zaženemo cevovod, ki odrinjeno kodo preveri z gradnjo aplikacije, testi enot in integracijskimi testi.
+
 
 \begin{figure}
     \begin{center}
@@ -556,13 +558,11 @@ V poglavju \ref{sec:neprekinjena-integracija} smo omenili, da je neprekinjena in
 \label{fig:osnoven-cevovod}
 \end{figure}
 
-
-% manjka kaj so testi enot in kaj so integracijski testi
-Temu sledi gradnja aplikacijske vsebniške slike in njen odriv v register vsebniških slik. Zgrajeno sliko nato uporabimo za namestitev aplikacije na gručo platforme Kubernetes, ki je namenjena izvajanju integracijskih testov, ki jih po uspešni namestitvi na gručo tudi zaženemo. Na tem mestu lahko ročno zaženemo tudi orodja za preverjanje kakvosti in varnosti kode. V kolikor so bili vsi predhodni koraki do sedaj uspešni, se aplikacijska vsebniška slika označi z ustrezno številko različice. Nato se ustvarijo naloge za namestitev aplikacije v različna testna okolja, ki omogočajo razvijalcem in zaposlenim, ki skrbijo za zagotavljanje kakovosti, da aplikacijo tudi sami preizkusijo in pogledajo. Čisto na koncu cevovoda pa so na voljo tudi naloge za izdajanje novih verzij, ki jih razvijalci lahko ročno zaženejo. Potek osnovnega cevovoda je prikazan na sliki \ref{fig:osnoven-cevovod}.
+Temu sledi gradnja aplikacijske vsebniške slike in njen odriv v register vsebniških slik. Zgrajeno sliko nato uporabimo za namestitev aplikacije na gručo platforme Kubernetes, ki je namenjena izvajanju integracijskih testov. Na tem mestu lahko ročno zaženemo tudi orodja za preverjanje kakovosti in varnosti kode. V kolikor so bili vsi predhodni koraki do sedaj uspešni, se aplikacijska vsebniška slika označi z ustrezno številko različice. Nato se ustvarijo naloge za namestitev aplikacije v različna testna okolja, ki omogočajo razvijalcem in zaposlenim, ki skrbijo za zagotavljanje kakovosti, da aplikacijo tudi sami preizkusijo in pogledajo. Čisto na koncu cevovoda pa so na voljo tudi naloge za izdajanje novih verzij, ki jih razvijalci lahko ročno zaženejo. Potek osnovnega cevovoda je prikazan na sliki \ref{fig:osnoven-cevovod}.
 
 \subsection{Proces v podjetju}
 \label{subsec:proces-v-podjetju}
-Razvoj aplikacije v podjetju največkrat poteka po nalogah, ki jih dodelimo razvijalcem. Spletna platforma GitLab omogoča, da te naloge ustvarimo, opišemo njihov cilj, jim dodelimo prioritetno stopnjo, jih komentiramo, jim dodelimo zadolženega razvijalca in drugo. Implementacija naloge poteka v naslednjih korakih:
+Vodja projekta ali glavni razvijalec pripravi arhitekturo in organizacijo projekta, ki je lahko polirepo ali monorepo. Razvoj aplikacije v podjetju največkrat poteka po nalogah, ki jih vodja projekta dodeli razvijalcem v spletni platformi GitLab. Ta omogoča, da te naloge ustvarimo, opišemo njihov cilj, jim dodelimo prioritetno stopnjo, jih komentiramo, jim dodelimo zadolženega razvijalca in drugo. Implementacija naloge poteka v naslednjih korakih:
 \begin{enumerate}
     \item Razvijalec prebere opis naloge in doda morebitna vprašanja glede razvoja naloge.
     \item Ko se vprašanja razrešijo, ustvari v repozitoriju novo vejo, na kateri bo razvil nalogo.
@@ -579,17 +579,12 @@ Razvoj aplikacije v podjetju največkrat poteka po nalogah, ki jih dodelimo razv
 \label{subsec:proces-pri-naročniku}
 V poglavju \ref{subsec:dostava-izvorne-kode} smo opisali, zakaj je dostava izvorne kode naročniku koristna tako za naročnika kot tudi za podjetje. Da bi bil naročnik čim bolj neodvisen od podjetja, izvedemo enak cevovod z manjšimi prilagoditvami tudi na primerku spletne platforme GitLab pri naročniku. Ob izdaji nove verzije se zgodi naslednje:
 \begin{itemize}
-    \item Vse spremembe v repozitoriju od zadnje izdane verzije stisnemo (ang. squash) v eno spremembo in jo dodamo na posebno vejo imenovano \texttt{release}, namenjeno verzioniranju izdaj.
+    \item Vse spremembe v repozitoriju od zadnje izdane verzije stisnemo (ang. squash) v eno spremembo in jo dodamo na posebno vejo imenovano \texttt{release}, namenjeno upravljanju različic.
     \item Vsem odgovornim v podjetju preko elektronske pošte avtomatsko sporočimo, da smo izdali novo različico.
-    \item Naročnik zažene posebno nalogo, ki je del strankinega cevovoda in prenese spremembe v svoj repozitorij.
-    \item Ko se sprememba prenese, se zažene enak cevovod kot v podjetju z nalogami za namestitev v strankina testna in produkcijska okolja.
+    \item Naročnik zažene posebno nalogo, ki je del naročnikovega cevovoda in prenese spremembe v svoj repozitorij.
+    \item Ko se sprememba prenese, se zažene enak cevovod kot v podjetju z nalogami za namestitev v naročnikova testna in produkcijska okolja.
 \end{itemize}
-Na ta način smo stranki omogočili, da lahko sama enostavno namesti aplikacijo v svoja okolja in je zato manj odvisna od podjetja, ki je aplikacijo razvilo. V kolikor stranka ne uporablja spletne platforme GitLab za upravljanje in nadzor različic aplikacij, pa se dogovorimo za drugačen način prevzema sprememb in namestitve aplikacij v strankina okolja.
-
-%\subsection{Proces neprekinjene dostave stranki}
-%\label{subsec:proces-neprekinjene-dostave-stranki}
-
-% Verzioniranje aplikacij?
+Na ta način smo naročniku omogočili, da lahko sama enostavno namesti aplikacijo v svoja okolja in je zato manj odvisna od podjetja, ki je aplikacijo razvilo. V kolikor naročnik ne uporablja spletne platforme GitLab za upravljanje in nadzor različic aplikacij, pa se dogovorimo za drugačen način prevzema sprememb in namestitve aplikacij v okolja naročnika.
 
 \section{Razvoj komponente Medius CD}
 \label{sec:razvoj-komponente-medius-cd}
@@ -599,14 +594,34 @@ Kot omenjeno v poglavju \ref{subsec:orodje-gitlab-ci-cd} je cevovod definiran z 
 
 Naloge v cevovodu poganjajo izvajalci nalog GitLab, ki smo jih opisali v poglavju \ref{subsec:orodje-gitlab-ci-cd}. V konfiguraciji cevovoda pa lahko s ključno besedo \texttt{image} nastavimo tudi vsebniško sliko, v kateri izvajalec nalogo zažene. Takšne slike imenujemo izvajalne slike. Na ta način lahko v naprej pripravimo okolje, v katerem se naloge izvajajo. Izvajalne slike pa je potrebno naprej zgraditi in naložiti na register vsebniških slik, s katerega lahko izvajalci slike prenesejo.
 
-Pred razvojem komponente smo izvajalne slike gradili in hranili v enem projektu GitLab. To nam je omogočalo, da smo isto sliko lahko večkrat uporabili v cevovodih različnih projektov. Kmalu pa smo ugotovili, da takšen način vodenja slik, zaradi specifik projektov, znatno oteži vzdrževanje, saj smo morali veliko slik prilagajati posameznim projektom. Odločili smo se, da bomo izvajalne slike hranili in gradili v vsakemu projektu posebej. Kljub temu pa smo pripravili vsebniško sliko \texttt{rocky-with-tools}, ki vsebuje operacijski sistem Rocky Linux\footnote{\url{https://rockylinux.org/}} in orodja, ki jih potrebujemo za izvajanje vseh cevovodov. To sliko smo naložili na Dockerhub, tako da jo lahko uporabimo za osnovo katerekoli izvajalne slike. S tovrstnim pristopom nismo povečali zasedenosti registra vsebnikov, saj register vsebnikov hrani informacije o slikah v vmesnih plasteh, ki vsebujejo metapodatke posameznih slik in se lahko uporabijo za definicijo različnih slik.
+Pred razvojem komponente smo izvajalne slike gradili in hranili v enem projektu GitLab. To nam je omogočalo, da smo isto sliko lahko večkrat uporabili v cevovodih različnih projektov. Kmalu pa smo ugotovili, da takšen način vodenja slik, zaradi specifik projektov, znatno oteži vzdrževanje, saj smo morali veliko slik prilagajati posameznim projektom. Odločili smo se, da bomo izvajalne slike hranili in gradili v vsakemu projektu posebej. Kljub temu pa smo pripravili vsebniško sliko \texttt{rocky-with-tools}, ki vsebuje operacijski sistem Rocky Linux\footnote{\url{https://rockylinux.org/}} in orodja, ki jih potrebujemo za izvajanje vseh cevovodov:
+\begin{itemize}
+    \item crane\footnote{\url{https://michaelsauter.github.io/crane/}} - orodje za orkestracijo vsebnikov z dodatnimi funkcionalnostmi in pametnejšim delovanjem. V razvitem cevovodu ga uporabljamo za spreminjanje oznake že zgrajene in shranjene vsebniške slike v registru slik. To znatno pohitri izvajanje cevovoda, ker vsebniške slike ne rabimo ponovno naložiti v register slik.
+    \item gettext\footnote{\url{https://www.gnu.org/software/gettext/}} - knjižnica in orodje za prevajanje besedil v različne jezike. Velikokrat jo potrebujemo za uporabo drugih orodji.
+    \item git\footnote{\url{https://git-scm.com/}} - vmesnik za ukazno vrstico za delo s sistemom za upravljanje različic Git.
+    \item git-lfs\footnote{\url{https://git-lfs.com/}} - orodje za shranjevanje velikih datotek v repozitoriju v obliki kazalcev.
+    \item jq\footnote{\url{https://jqlang.github.io/jq/}} - orodje za procesiranje podatkov zapisanih v formatu JSON.
+    \item jsonnet\footnote{\url{https://jsonnet.org/}} - izvajalno okolje za programski jezik Jsonnet, ki smo ga omenili v poglavju \ref{subsec:jsonnet}.
+    \item kubectl\footnote{\url{https://kubernetes.io/docs/tasks/tools/\#kubectl}} - vmesnik za ukazno vrstico za upravljanje z gručami na platformi Kubernetes.
+    \item oc\footnote{\url{https://docs.openshift.com/container-platform/4.13/cli_reference}} - vmesnik za ukazno vrstico za upravljanje z gručami na platformi OpenShift.
+    \item unzip - orodje za razširjanje datotek.
+    \item wget\footnote{\url{https://www.gnu.org/software/wget/}} - orodje za prenos datotek preko najbolj razširjenih internetnih protokolov.
+    \item which\footnote{\url{https://carlowood.github.io/which/}} - program za ukazno vrstico, ki izpiše absolutno pot do lokacije izvršljive datoteke podanega programa.
+    \item xz\footnote{\url{https://github.com/tukaani-project/xz}} - knjižnica in orodja za stiskanje datotek.
+    \item yq\footnote{\url{https://github.com/mikefarah/yq}} - orodje za procesiranje podatkov zapisanih v formatu YAML.
+\end{itemize}
+To sliko smo naložili na Dockerhub, tako da jo lahko uporabimo za osnovo katerekoli izvajalne slike.
 
-Datoteke, na podlagi katerih zgradimo izvajalne slike projekta, hranimo v imeniku \texttt{runner-images}, ki se nahaja v korenskem imeniku projekta. V njih definiramo vse potrebno za izvedbo nalog cevovoda specifičnega projekta: tolmač programske kode, navidezne stroje, certifikate, orodja za gradnjo projekta, orodja za izvajanje testov ipd. Gradnjo izvajalnih slik pa smo avtomatizirali s posebnim projektnim cevovodom, ki se zažene, če pred zagonom cevovoda nastavimo spremenljivko GitLab \texttt{BUILD\_RUNNERS} na \texttt{true} ali pa sporočilo spremembe začnemo z besedilom \texttt{build-runners}. To smo naredili tako, da v datoteki \texttt{.gitlab-ci.yml} s ključnima besedama \texttt{include} in \texttt{rules} pogojno dodamo konfiguracijo glavnega cevovoda, ki se nahaja v \texttt{.gitlab/main.yml} ali pa konfiguracijo cevovoda za gradnjo izvajalnih slik, ki se nahaja v \texttt{.gitlab/build-runners.yml}.
+Podobno velja tudi za nalogo \textit{Izdaja vsebniških slik}, ki pa se uporablja za vse projekte, ki gradijo aplikacijske vsebniške slike. V koraku gradnje za namene testiranja slike najprej označimo s številko SHA trenutnega sporočila. Ta naloga pa po uspešno izvedenih testih enako sliko označi s trenutno številko različice projekta. Na ta način lahko enostavno zamenjamo različico aplikacije, ki je nameščena.
+
+Vsebniške slike so sestavljene iz opisa (metapodatkov) in binarnih zapisov posameznih vmesnih plasti. Organizacija registra sledi temu načelu in ne podvaja hrambe posameznih vmesnih plasti, zato s tovrstnim pristopom nismo povečali zasedenosti registra vsebnikov~\cite{Skourtis2019}.
+
+Datoteke, na podlagi katerih zgradimo izvajalne slike projekta, hranimo v imeniku \texttt{runner-images}, ki se nahaja v korenskem imeniku projekta. V njih definiramo vse potrebno za izvedbo nalog cevovoda specifičnega projekta: tolmač programske kode, navidezne stroje, strežniške certifikate, orodja za gradnjo projekta, orodja za izvajanje testov ipd. Gradnjo izvajalnih slik pa smo avtomatizirali s posebnim projektnim cevovodom, ki se zažene, če pred zagonom cevovoda nastavimo spremenljivko GitLab \texttt{BUILD\_RUNNERS} na \texttt{true} ali pa sporočilo spremembe začnemo z besedilom \texttt{build-runners}. To smo naredili tako, da v datoteki \texttt{.gitlab-ci.yml} s ključnima besedama \texttt{include} in \texttt{rules} pogojno dodamo konfiguracijo glavnega cevovoda, ki se nahaja v \texttt{.gitlab/main.yml} ali pa konfiguracijo cevovoda za gradnjo izvajalnih slik, ki se nahaja v \texttt{.gitlab/build-runners.yml}.
 
 \subsection{Datoteka \texttt{config\_file}}
 \label{subsec:datoteka-config-file}
 
-Platforma GitLab omogoča nastavljanje skupinskih in projektnih spremenljivk, ki so na voljo med izvajanjem nalog. Na ta način lahko v naloge dodamo občutljive podatke, kot so gesla in certifikati, ali pa nastavimo vrednosti, ki so potrebne za delovanje cevovoda. Ker smo želeli, da bi bil razvit cevovod uporaben za vse projekte, smo morali upoštevati različne zahteve, ki jih prinesejo različne specifike projektov. To smo večinoma reševali z dodajanjem spremenljivk GitLab, ki so spremenile izvajanje posameznih nalog. Ker je bilo takšnih spremenljivk veliko, je postalo vzdrževanje le teh oteženo. Zato smo razvili mehanizem za nastavljanje spremenljivk v cevovodu preko datoteke v formatu YAML, ki jo na začetku cevovoda prenesemo iz konfiguracijskega strežnika ali spremenljivke GitLab. Datoteko smo poimenovali \texttt{config\_file} in lahko vsebuje naslednje lastnosti:
+Platforma GitLab omogoča nastavljanje skupinskih in projektnih spremenljivk, ki so na voljo med izvajanjem nalog. Na ta način lahko v naloge dodamo občutljive podatke, kot so gesla in certifikati, ali pa nastavimo vrednosti, ki so potrebne za delovanje cevovoda. Ker smo želeli, da bi bil razvit cevovod uporaben za vse projekte, smo morali upoštevati različne zahteve, ki jih prinesejo različne specifike projektov. To smo večinoma reševali z dodajanjem spremenljivk GitLab, ki so spremenile izvajanje posameznih nalog. Ker je bilo takšnih spremenljivk veliko, je postalo vzdrževanje le teh močno zamudno, predvsem pa nepregledno. Zato smo razvili mehanizem za nastavljanje spremenljivk v cevovodu preko datoteke v formatu YAML, ki jo na začetku cevovoda prenesemo iz konfiguracijskega strežnika ali spremenljivke GitLab. Datoteko smo poimenovali \texttt{config\_file} in lahko vsebuje naslednje lastnosti:
 \begin{itemize}
     \item \texttt{include} - spletni naslov ali ime spremenljivke GitLab, ki vsebuje obstoječo konfiguracijsko datoteko in jo trenutna datoteka razširja.
     \item \texttt{variables} - spremenljivke, ki so na voljo v vseh nalogah.
@@ -683,7 +698,7 @@ Nalogi pa lahko nastavimo še veliko drugih atributov, ki definirajo njeno delov
     \item \texttt{when} - Kdaj se naloga zažene.
 \end{itemize}
 
-V delu \texttt{script} lahko uporabimo jezik Bash, da definiramo, kaj naloga naredi. Tak način definicije nalog je dober za preproste naloge, ki ne potrebujejo kompleksne logike. Za definicijo bolj kompleksnih nalog pa se boljše izkažejo skripti, ki jih napišemo v ločeni datoteki in jih v okviru naloge zaženemo. Na ta način lahko skripte tudi testiramo in uporabimo na več mestih. Zato smo logiko bolj kompleksnih nalog definirali v samostojnih skriptah, napisanih v jeziku Bash. V okviru cevovoda projekta Medius CD jih zapakiramo v različne formate, ki jih naložimo na centralni repozitorij Nexus, od koder jih lahko enostavno prenesemo in uporabljamo.
+V delu \texttt{script} lahko uporabimo jezik Bash, s katerim definiramo kaj naloga naredi. Tak način definicije nalog je dober za preproste naloge, ki ne potrebujejo kompleksne logike. Za definicijo bolj kompleksnih nalog pa se boljše izkažejo skripti, ki jih napišemo v ločeni datoteki in jih v okviru naloge zaženemo. Na ta način lahko skripte tudi testiramo in uporabimo na več mestih. Zato smo logiko bolj kompleksnih nalog definirali v samostojnih skriptah, napisanih v jeziku Bash. V okviru cevovoda projekta Medius CD jih zapakiramo v različne formate, ki jih naložimo na centralni repozitorij Nexus, od koder jih lahko enostavno prenesemo in uporabljamo.
 
 Ker se projekti lahko močno razlikujejo tako vsebinsko kot tudi tehnično - programski jezik, orodja za gradnjo, orodja za zagon testov - smo pripravili več manjših predlog GitLab, ki jih lahko večkrat uporabimo, da kreiramo različne cevovode. Pripravljene predloge se nahajajo v repozitoriju komponente Medius CD in jih lahko dodamo v predloge ostalih projektov s ključno besedo \texttt{include}. Ta nam omogoča dodajanje predlog na tri načine:
 \begin{itemize}
@@ -756,21 +771,21 @@ Naloge za namestitev aplikacije v različna okolja se podobno kot pri gradnji vs
 \begin{itemize}
     \item Prebere datoteko \texttt{/deploy/k8s/deployment.yml.in}, ki se nahaja v repozitoriju in predstavlja predlogo namestitve.
     \item V prebrani datoteki poišče vse besede, ki se začnejo in končajo z dvemi podčrtaji npr. \texttt{\_\_SERVICE\_NAME\_\_}. Te besede predstavljajo spremenljivke, ki jih je potrebno zamenjati z vrednostmi.
-    \item Vse spremenljivke v datoteki zamenja z vrednostmi, ki jih imajo okoljske spremenljivke z enakim imenom, vendar brez podčrtajev npr. \texttt{SERVICE\_NAME} in ustvari novo konfiguracijsko datoteko za namestitev na gručo platforme Kubernetes imenovano \texttt{deployment.yml}.
+    \item Vse spremenljivke v datoteki zamenja z vrednostmi, ki jih imajo okoljske spremenljivke z enakim imenom, vendar brez podčrtajev, kot je na primer \texttt{SERVICE\_NAME}, in ustvari novo konfiguracijsko datoteko za namestitev na gručo platforme Kubernetes imenovano \texttt{deployment.yml}.
     \item S programom \texttt{kubectl} in ustvarjeno datoteko kreira novo namestitev na gruči platforme Kubernetes.
     \item S programom \texttt{kubectl} preverja stanje namestitve dokler aplikacija ni uspešno nameščena ali pa preteče 10 minut, ko se naloga neuspešno zaključi.
 \end{itemize}
 
 \subsection{Izdaja nove različice}
-Naloga za izdajo nove različice se nahaja v zadnjem koraku cevovoda in jo je potrebno zagnati ročno. Naloga zažene skript \texttt{job-release-src-to-branch.sh}, ki naredi naslednje:
+Nova različica se izdaja periodično ali pa ob posamezni zaključeni enoti, zato je nalogo za izdajo nove različice potrebno ročno zagnati. Naloga pa zažene skripto \texttt{job-release-src-to-branch.sh}, ki avtomatizira izdajo izdelane kode naročniku. Skripta izvede naslednje korake:
 \begin{itemize}
     \item Stisne vse spremembe od zadnje izdane verzije v eno spremembo.
-    \item Datoteki \texttt{.gitlab/main.yml} in \texttt{.gitlab/build-runners.yml}, oziroma datoteke, ki so nastavljene s spremenljivko \texttt{GITLAB\_CI\_PATH}, posodobi z uporabo končne točke programskega vmesnika GitLab, ki vse dodane predloge preko ključne besede \texttt{include} in ostalo vsebino združi v eno datoteko. Na ta način lahko stranka zažene cevovod tudi v svoji instanci platforme GitLab, ki nima dostopa do predlog, ki se nahajajo v projektu Medius CD.
+    \item Datoteki \texttt{.gitlab/main.yml} in \texttt{.gitlab/build-runners.yml}, oziroma datoteke, ki so nastavljene s spremenljivko \texttt{GITLAB\_CI\_PATH}, posodobi z uporabo končne točke programskega vmesnika GitLab, ki vse dodane predloge preko ključne besede \texttt{include} in ostalo vsebino združi v eno datoteko. Na ta način lahko naročnik zažene cevovod tudi v svoji instanci platforme GitLab, ki nima dostopa do predlog, ki se nahajajo v projektu Medius CD.
     \item Iz številke različice aplikacije odstrani \texttt{-SNAPSHOT} oziroma \texttt{-rc}.
     \item Doda številko različice v datoteko \texttt{CHANGELOG.md}, ki vsebuje povzetek sprememb, ki so bile narejene v tej verziji.
     \item Vse našteto doda kot eno spremembo v vejo \texttt{release}.
 \end{itemize}
-Na ta način se v veji \texttt{release} za vsako različico nahaja po ena sprememba, kar omogoča, da si lahko stranka spremembe enostavno prenese v svoj repozitorij.
+Na ta način se v veji \texttt{release} za vsako različico nahaja po ena sprememba, kar omogoča, da si lahko naročnik spremembe enostavno prenese v svoj repozitorij.
 
 Na koncu naloga zažene še skripta \texttt{gitlab-create-tag-with-notes.sh}, ki ustvari novo značko Git s pripono \texttt{-SNAPSHOT} ali \texttt{-rc}, in \texttt{bump-version.sh}, ki poveča trenutno številko različice v razvoju, npr. iz \texttt{0.3.0-SNAPSHOT} v \texttt{0.4.0-SNAPSHOT} ter doda spremembo v vejo, na kateri je bil cevovod pognan.
 
@@ -783,9 +798,9 @@ V kolikor vnaprej pripravljene predloge cevovodov ne zadoščajo potrebam projek
 
 \section{Vtičnik GitLab Template Lint}
 \label{sec:vtičnik-gitlab-template-lint}
-Med razvojem predlog konfiguracijskih datotek orodja GitLab CI/CD smo zaradi velikega števila dodanih datotek s ključno besedo \texttt{include}, večkrat imeli težave s preverjanjem pravilnosti predlog. Predloge smo zato preverjali z orodjem platforme GitLab, ali pa z odrivom spremembe na ločeno vejo v repozitoriju in preverjanjem statusa novo nastalega cevovoda. Oba načina sta zelo časovno potratna in okorna, saj je med razvojem potrebno zapustiti integrirano okolje. Zato smo se odločili, da razvijemo vtičnik za integrirano okolje IntelliJ, s katerim dodamo funkcionalnost za preverjanje pravilnosti konfiguracijskih datotek GitLab in s tem znatno pohitrimo razvoj.
+Med razvojem predlog konfiguracijskih datotek orodja GitLab CI/CD smo s ključno besedo \texttt{include} zmanjšali podvojenost konfiguracije in kode. S tem pa smo zmanjšali preglednost konfiguracije in otežili razhroščevanje in preverjanje pravilnosti predlog. Predloge smo zato preverjali z orodjem platforme GitLab, ali pa z odrivom spremembe na ločeno vejo v repozitoriju in preverjanjem statusa novo nastalega cevovoda. Oba načina sta zelo časovno potratna in okorna, saj je med razvojem potrebno zapustiti integrirano okolje. Zato smo se odločili, da razvijemo vtičnik za integrirano okolje IntelliJ IDEA, s katerim dodamo funkcionalnost za preverjanje pravilnosti konfiguracijskih datotek GitLab in s tem znatno pohitrimo razvoj.
 
-Razvoja vtičnika smo začeli s predlogo za razvoj vtičnika platforme IntelliJ\footnote{\url{https://github.com/JetBrains/intellij-platform-plugin-template}}, ki je javno dostopna na platformi GitHub in uporablja programski jezik Kotlin ter za gradnjo orodje Gradle. Predloga vsebuje vnaprej pripravljeno:
+Razvoja vtičnika smo začeli s predlogo za razvoj vtičnika platforme IntelliJ IDEA\footnote{\url{https://github.com/JetBrains/intellij-platform-plugin-template}}, ki je javno dostopna na platformi GitHub in uporablja programski jezik Kotlin ter za gradnjo orodje Gradle. Predloga vsebuje vnaprej pripravljeno:
 \begin{itemize}
     \item strukturo projekta,
     \item dodane odvisnosti, ki jih za razvoj vtičnika potrebujemo,
@@ -797,8 +812,8 @@ Razvoja vtičnika smo začeli s predlogo za razvoj vtičnika platforme IntelliJ\
 Platforma GitLab za integracijo z drugimi aplikacijami izpostavlja programski vmesnik z arhitekturnim stilom REST. Izpostavlja tudi končno točko za preverjanje konfiguracijskih datotek platforme GitLab. Ideja vtičnika je preprosta, saj izvede zgolj en klic na programski vmesnik: 
 \begin{enumerate}
     \item Uporabnik v integriranem razvojnem okolju spremeni konfiguracijsko datoteko,
-    \item pošlji zahtevek z žetonom za avtentikacijo na končno točko za preverjanje konfiguracijskih datotek,
-    \item iz odgovora programskega vmesnika preberi ali je konfiguracija pravilna in v primeru napake v integriranem okolju prikaži opozorilo.
+    \item vtičnik zazna spremembo in pošlje zahtevek z žetonom za avtentikacijo na končno točko za preverjanje konfiguracijskih datotek,
+    \item vtičnik iz odgovora programskega vmesnika prebere ali je konfiguracija pravilna in v primeru napake v integriranem okolju prikaže opozorilo.
 \end{enumerate}
 
 \begin{figure}
@@ -809,17 +824,22 @@ Platforma GitLab za integracijo z drugimi aplikacijami izpostavlja programski vm
 \label{fig:vizualizacija-gitlab-template-lint}
 \end{figure}
 
-Preprosta ideje pa ni bilo tako enostavno razviti, saj smo imeli še nekaj izzivov. V naslednji podpoglavjih opišemo kakšne težave smo imeli in kako smo ji rešili.
-
-\subsubsection{Avtentikacija z vmesnikom}
-Programski vmesnik platforme GitLab za avtentikacijo zahtevkov omogoča več načinov. V našem primeru se je za najbolj preprost in praktičen način izkazala avtentikacija z žetonom, ki ga uporabniki vtičnika lahko pridobijo na platformi GitLab in ga morajo vnesti v nastavitve vtičnika.
+Preproste ideje pa ni bilo tako enostavno razviti, saj smo pri izdelavi naleteli še na nekaj izzivov. V naslednjih podpoglavjih opišemo kakšne težave smo imeli in kako smo jih rešili.
 
 \subsection{Nastavitve vtičnika}
 \label{sec:vtičnik-gitlab-template-lint-nastavitve}
-Integrirano orodje IntelliJ za razvoj uporabniških vmesnikov vtičnikov nudi domensko specifičen jezik (ang. Domain-Specific Language - DSL) imenovan Kotlin UI, ki omogoča razvoj uporabniških vmesnikov v kodi napisani v programskem jeziku Kotlin. Slednje smo uporabili tudi sami, da smo oblikovali uporabniški vmesnik za nastavitve našega vtičnika, ki ga lahko vidimo na sliki \ref{fig:gitlab-template-lint-nastavitve}. Glavni nastavitvi vtičnika sta:
+Programski vmesnik platforme GitLab za avtentikacijo zahtevkov omogoča več načinov. V našem primeru se je za najbolj preprost in praktičen način izkazala avtentikacija z žetonom, ki ga uporabniki vtičnika lahko pridobijo na platformi GitLab in vnesejo v nastavitve vtičnika.
+
+Integrirano orodje IntelliJ IDEA za razvoj uporabniških vmesnikov vtičnikov nudi domensko specifičen jezik (ang. Domain-Specific Language - DSL) imenovan Kotlin UI, ki omogoča razvoj uporabniških vmesnikov v programskem jeziku Kotlin. Slednje smo uporabili tudi sami, da smo oblikovali uporabniški vmesnik za nastavitve našega vtičnika, ki ga lahko vidimo na sliki \ref{fig:gitlab-template-lint-nastavitve}. Glavni nastavitvi vtičnika sta:
 \begin{itemize}
-    \item pogostost preverjanja (ang. lint frequency) - kako pogosto se pošlje zahtevek na programski vmesnik platforme GitLab. Možnosti so: ob vsaki spremembi v datoteki, ko se datoteka shrani in ko uporabnik ročno zažene akcijo za preverjanje.
-    \item žeton za avtentikacijo s platformo GitLab (ang. Gitlab API token) - urejanje žetona za posamezen spletni naslov platforme GitLab je omogočeno preko tabele, v katero lahko uporabniki vnesejo več različnih žetonov za različne instance platforme GitLab.
+    \item pogostost preverjanja (ang. lint frequency) - kako pogosto se pošlje zahtevek na programski vmesnik platforme GitLab. Možnosti so: 
+    \begin{itemize}
+        \item ob vsaki spremembi v datoteki,
+        \item po shranjevanju datoteke,
+        \item ko uporabnik ročno zažene akcijo za preverjanje. 
+    \end{itemize}
+    Na ta način omogočimo uporabnikom, da zmanjšajo število zahtevkov na programski vmesnik platforme GitLab in na ta način zmanjšajo obremenjenost platforme.
+    \item žeton za avtentikacijo s platformo GitLab (ang. Gitlab API token) - urejanje žetona za posamezen spletni naslov platforme GitLab je omogočeno preko tabele, v katero lahko uporabniki vnesejo več različnih žetonov za različne instance platforme GitLab. S tem omogočimo, da imajo uporabniki lahko v razvojnem okolju odprtih več projektov, katerih oddaljeni repozitoriji se nahajajo na različnih instancah platforme GitLab.
 \end{itemize}
 
 \begin{figure}
@@ -843,7 +863,7 @@ Preverjanje konfiguracijskih datotek smo razvili v obliki cevovoda, ki vsebuje n
 \subsection{Prikaz združene konfiguracije}
 Kot omenjeno v poglavju \ref{sec:razvoj-komponente-medius-cd}, lahko v konfiguracijskih datotekah s ključno besedo \texttt{include} v konfiguracijsko datoteko dodajamo obstoječe predloge, s ključno besedo \texttt{extend} pa lahko posamezne naloge razširjamo z že obstoječimi nalogami. To je zelo uporabno za zmanjšanje podvojenosti konfiguracije, vendar pa lahko oteži razhroščevanje v primeru napak, ker v konfiguracijski datoteki ne vidimo celotne vsebine, ki jo orodje GitLab CI/CD uporabi za kreiranje cevovoda.
 
-Zato smo kmalu po razviti funkcionalnosti za preverjanje konfiguracije v vtičnik dodali še funkcionalnost za prikazovanje vsebine združene konfiguracije. To je bilo dokaj preprosto, saj v odgovoru na zahtevek za preverjanje konfiguracijske datoteke dobimo tudi vsebino združene konfiguracijske datoteke. Pregled združene konfiguracijske datoteke smo dodali tako, da smo razširili obstoječi urejevalnik kode, ki se uporablja za urejanje konfiguracijskih datotek, z predogledom združene konfiguracijske datoteke na desni strani urejevalnika. Delovanje vtičnika je prikazano na sliki \ref{fig:gitlab-template-lint-primer-1}.
+Zato smo kmalu po razviti funkcionalnosti za preverjanje konfiguracije v vtičnik dodali še funkcionalnost za prikazovanje vsebine združene konfiguracije. To je bilo dokaj preprosto, saj v odgovoru na zahtevek za preverjanje konfiguracijske datoteke dobimo tudi vsebino združene konfiguracijske datoteke. Pregled združene konfiguracijske datoteke smo dodali tako, da smo razširili obstoječi urejevalnik kode, ki se uporablja za urejanje konfiguracijskih datotek, s predogledom združene konfiguracijske datoteke na desni strani urejevalnika. Delovanje vtičnika je prikazano na sliki \ref{fig:gitlab-template-lint-primer-1}.
 
 \begin{figure}
     \begin{center}
@@ -860,16 +880,11 @@ Zato smo kmalu po razviti funkcionalnosti za preverjanje konfiguracije v vtični
 
 \chapter{Rezultati}
 \label{ch:rezultati}
-V poglavju bomo najprej opisali, kako smo izboljšali pripravo izvajalnih slik. Nato bomo predstavili še eno prednost uporabe konfiguracijske datoteke \texttt{config\_file} in kako lahko z uporabo razvite komponente enostavno postavimo cevovod projekta za razvoj aplikacije ter projekta za razvoj programske knjižnice. Na koncu bomo pokazali uporabo razvite komponente na treh resničnih projektih, ki se še razvijajo ali pa so že v fazi produkcije in vsebujejo programje v različnih programskih jezikih ter imajo različne zahteve.
+V tem poglavju bomo razpravljali o ključnih rezultatih doseženih v okviru naše magistrske naloge. Najprej se bomo osredotočili na izboljšanje priprave izvajalnih slik, ki igrajo ključno vlogo pri izvajanju cevovoda projekta. Nato bomo opisali še eno pomembno prednost uporabe konfiguracijske datoteke \texttt{config\_file} in pokazali, kako enostavno lahko z uporabo razvite komponente vzpostavimo cevovod za razvoj aplikacije in programske knjižnice. Poleg tega bomo predstavili praktične primere uporabe te komponente na treh resničnih projektih, ki se trenutno razvijajo ali pa so že v fazi produkcije. Ti projekti uporabljajo različne programske jezike in imajo raznolike zahteve, kar nam omogoča, da pokažemo univerzalnost naše rešitve. Na koncu bomo ocenili uspeh vtičnika Gitlab Template Lint in razpravljali o njegovih prednostih in izpostavili tudi njegove omejitve.
 
-% \section{Predstavitev projekta}
-% \label{sec:predstavitev-projekta}
-
-% \section{Primer uporabe na projektu}
-% \label{sec:primer-uporabe-na-projektu}
 \section{Gradnja izvajalnih slik}
 \label{sec:gradnja-izvajalnih-slik}
-V poglavju \ref{sec:razvoj-komponente-medius-cd} smo opisali, kako zgradimo izvajalne slike, ki jih uporabljajo izvajalci nalog GitLab ali pa jih potrebujemo za gradnjo aplikacijskih vsebniških slik. Omenili smo tudi, da smo pred razvojem komponente Medius CD te slike gradili in hranili v enem projektu, kar je otežilo njihovo vzdrževanje. Večino končnih izvajalnih slik je bilo zgrajenih na osnovi drugih slik, ki pa so bile zgrajene na osnovi še drugih in tako dalje. Tako se je cevovod zelo razvejal, kar lahko vidimo tudi na sliki \ref{fig:gradnja-izvajalnih-slik-pred}. V primeru, da se je spremenila osnovna slika v korenu hierarhije, je bilo potrebno skoraj vse slike ponovno zgraditi, kar je lahko trajalo tudi več kot 30 minut. 
+V poglavju \ref{sec:razvoj-komponente-medius-cd} smo opisali, kako zgradimo izvajalne slike, ki jih uporabljajo izvajalci nalog GitLab ali pa jih potrebujemo za gradnjo aplikacijskih vsebniških slik. Omenili smo tudi, da smo pred razvojem komponente Medius CD te slike gradili in hranili v enem projektu, kar je otežilo njihovo vzdrževanje. Večino končnih izvajalnih slik je bilo zgrajenih na osnovi starševskih slik, ki so imele odvisnosti tudi na svoje starševske slike in tako dalje. Tako se je cevovod zelo razvejal, kar lahko vidimo tudi na sliki \ref{fig:gradnja-izvajalnih-slik-pred}. V primeru, da se je spremenila osnovna slika v korenu hierarhije, je bilo potrebno skoraj vse slike ponovno zgraditi, kar je lahko trajalo tudi več kot 30 minut.
 
 \begin{figure}
     \begin{center}
@@ -879,17 +894,18 @@ V poglavju \ref{sec:razvoj-komponente-medius-cd} smo opisali, kako zgradimo izva
 \label{fig:gradnja-izvajalnih-slik-pred}
 \end{figure}
 
-V razviti komponenti smo uvedli poseben cevovod za gradnjo izvajalnih slik, ki je del vsakega projekta in ga lahko ročno zaženemo. To nam zelo olajša vzdrževanje izvajalnih slik, saj cevovod vsebuje samo naloge za gradnjo slik, ki jih posamezen projekt potrebuje. Tako cevovod ostane obvladljiv in se tudi hitreje izvede. Obenem zgrajeno sliko hranimo v registru projekta in jo uporabljamo samo za projekt, v katerem je bila zgrajena. To nam omogoča, da lahko sliko čim bolj prilagodimo potrebam projekta.
+V razviti komponenti smo uvedli poseben cevovod za gradnjo izvajalnih slik, ki je del vsakega projekta in ga lahko ročno zaženemo. To nam zelo olajša vzdrževanje izvajalnih slik, saj cevovod vsebuje samo naloge za gradnjo slik, ki jih posamezen projekt potrebuje. Tako cevovod ostane obvladljiv in se tudi hitreje izvede. Obenem zgrajeno sliko hranimo v registru projekta in jo uporabljamo samo za projekt, v katerem je bila zgrajena. To omogoča fleksibilnost, da lahko sliko čim bolj prilagodimo potrebam projekta. Rešimo tudi problem starševstva tako, da zmanjšamo število staršev z uporabo slike \texttt{rocky-with-tools}, ki smo jo omenili v poglavju \ref{sec:razvoj-komponente-medius-cd} in vsebuje vsa potrebna orodja za izvajanje cevovoda. To sliko uporabimo kot starševsko sliko v vseh zagonskih in aplikacijskih slikah. Za varnostne posodobitve pa poskrbimo z rednimi avtomatskimi zagoni cevovoda za gradnjo vsebniških slik.
+
 
 \section{Prilagajanje cevovoda}
-V poglavju \ref{subsec:datoteka-config-file} smo predstavili datoteko \texttt{config\_file}, ki nam omogoča konfiguracijo cevovoda z datoteko v formatu YAML. Poleg olajšanja vzdrževanja vseh spremenljivk, ki so potrebne za prilagoditev cevovoda projektnim specifikam, nam ta datoteka olajša tudi prilagajanje cevovoda stranki. Stranka največkrat uporablja svoj centralni repozitorij, konfiguracijski strežnik, register vsebniških slik in drugo. Hkrati se namestitvena okolja v podjetju in pri stranki razlikujejo. Konfiguracijska datoteka omogoča, da lahko stranka sama enostavno spremeni nastavitve svojega cevovoda. To znatno olajša razvoj aplikacije, saj konfiguracija cevovoda ni dodana v sistem za nadzor različic in za spremembo obnašanja cevovoda ni potrebno izdajati nove različice aplikacije.
+V poglavju \ref{subsec:datoteka-config-file} smo predstavili datoteko \texttt{config\_file}, ki nam omogoča konfiguracijo cevovoda z datoteko v formatu YAML. Poleg olajšanja vzdrževanja vseh spremenljivk, ki so potrebne za prilagoditev cevovoda projektnim specifikam, nam ta datoteka olajša tudi prilagajanje cevovoda naročniku. Naročnik največkrat uporablja svoj centralni repozitorij, konfiguracijski strežnik, register vsebniških slik in drugo. Hkrati se namestitvena okolja v podjetju in pri naročniku razlikujejo. Konfiguracijska datoteka omogoča, da lahko naročnik sam enostavno spremeni nastavitve svojega cevovoda. To znatno olajša razvoj aplikacije, saj konfiguracija cevovoda ni dodana v sistem za nadzor različic in za spremembo obnašanja cevovoda ni potrebno izdajati nove različice aplikacije.
 
 \section{Cevovod aplikacije}
 \label{sec:projekt-aplikacije}
 Z novo razvito komponento je cevovod za razvoj aplikacije enostavno dodati. V korenski imenik projekta dodamo naslednje imenike in datoteke:
 \begin{itemize}
-    \item Imenik \texttt{runner-images} v katerega dodamo datoteke Docker, ki vsebujejo ukaze za namestitev orodij, ki jih potrebujemo za gradnjo aplikacije ali aplikacijske slike Docker. Za osnovno lahko uporabimo pripravljeno sliko \texttt{rocky-with-tools}, ki že vsebuje vsa osnovna orodja, potrebna za izvajanje nalog.
-    \item Imenik \texttt{deploy/docker} v katerega dodamo datoteko Docker, ki vsebuje ukaze za namestitev in zagon aplikacije v vsebniku.
+    \item Imenik \texttt{runner-images} v katerega dodamo datoteke, ki definirajo vsebniške slike in vsebujejo ukaze za namestitev orodij, ki jih potrebujemo za gradnjo aplikacije ali aplikacijske vsebniške slike. Za osnovno lahko uporabimo pripravljeno sliko \texttt{rocky-with-tools}, ki že vsebuje vsa osnovna orodja, potrebna za izvajanje nalog.
+    \item Imenik \texttt{deploy/docker} v katerega dodamo datoteko, ki definira aplikacijsko vsebniško sliko in vsebuje ukaze za namestitev in zagon aplikacije v vsebniku.
     \item Imenik \texttt{deploy/k8s} v katerega dodamo predlogo \texttt{deployment.yml.in}, ki vsebuje konfiguracijo za namestitev na gručo na platformi Kubernetes.
     \item Vnaprej pripravljeno datoteko \texttt{.gitlab-ci.yml}, ki pogojno doda konfiguracijski datoteki za cevovod za gradnjo izvajalnih slik ali aplikacijski cevovod.
     \item Imenik \texttt{.gitlab}, v katerega dodamo datoteki \texttt{.build-runners.yml}, ki uporabi predlogo za gradnjo izvajalnih slik, in \texttt{.main.yml}, ki uporabi predlogo aplikacijskega cevovoda.
@@ -902,11 +918,11 @@ Za postavitev cevovoda projekta, ki vsebuje programsko knjižnico potrebujemo en
 \label{sec:java-projekt}
 V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje aplikacijo, napisano v programskem jeziku Java in za gradnjo aplikacije uporablja orodje Maven. Aplikacija uporablja aplikacijski strežnik Wildfly\footnote{\url{https://www.wildfly.org/}} in preko programskega vmesnika izpostavlja končne točke za pridobivanje podatkov o izvedenih denarnih transakcijah podjetja, ki se prikazujejo v čelni aplikaciji. Za shranjevanje podatkov uporablja podatkovno bazo Oracle\footnote{\url{https://www.oracle.com/database/}}.
 
-Stranka ima postavljeno svojo instanco platforme GitLab, na kateri izvaja cevovod, ki smo ga razvili. Zaradi varnosti je stranka zahtevala, da se celoten cevovod izvaja brez povezave na internet. To pomeni, da morajo biti vse odvisnosti projekta dostopne preko internih repozitorijev in registrov, do katerih skripti v nalogah lahko dostopajo.
+Kot smo že omenili v prejšnjih poglavjih, je razvoj poslovno kritičnih aplikacij zelo odvisen od zahtev naročnika. Zaradi zmanjšanje odvisnosti naročnika od podjetja, kot smo omenili v poglavju \ref{sec:neprekinjena-dostava}, pa želimo izvajanje cevovoda omogočiti tudi na naročnikovi instanci platforme GitLab. V primeru tega projekta, je naročnika zaradi varnosti zahteval, da se celoten cevovod izvaja brez povezave na internet. To pomeni, da morajo biti vse odvisnosti projekta dostopne preko internih repozitorijev in registrov, do katerih skripti v nalogah lahko dostopajo. To smo upoštevali tudi pri zasnovi komponente Medius CD in izdelali cevovod, ki ga lahko takšnim zahtevam prilagodimo.
 
 \subsection{Cevovod v podjetju}
 \label{subsec:java-projekt-cevovod-v-projektu}
-Ker želimo, da je cevovod v podjetju čim bolj podoben cevovodu pri stranki, smo v podjetju pripravili izvajalec nalog GitLab, ki nima dostopa do interneta. Dodali smo mu posebno značko in ime značke shranili v projektno spremenljivko GitLab imenovano \texttt{RUNNER\_TAGS}. Na ta način cevovod ve, katerega izmed deljenih izvajalcev nalog lahko uporabi.
+Ker želimo, da je cevovod v podjetju čim bolj podoben cevovodu pri naročnik, smo v podjetju pripravili izvajalec nalog GitLab, ki nima dostopa do interneta. Dodali smo mu posebno značko in ime značke shranili v projektno spremenljivko GitLab imenovano \texttt{RUNNER\_TAGS}. Na ta način cevovod ve, katerega izmed deljenih izvajalcev nalog lahko uporabi.
 
 Na konfiguracijski strežnik Consul smo dodali konfiguracijsko datoteko \texttt{config\_file}, ki vsebuje zgolj vrstico s ključno besedo \texttt{include}, ki doda vsebino konfiguracijske datoteke, ki se nahaja na podanem spletnem naslovu:
 \begin{verbatim}
@@ -941,13 +957,13 @@ Nato pa nastavimo še storitve in okolja namestitve servisov. V tem primeru imam
     \item \texttt{AUTO\_DEPLOY} - logična vrednost, ki določi ali se aplikacija avtomatsko namesti ob zagonu cevovoda na glavni veji (npr. \texttt{dev} ali \texttt{main}). 
 \end{itemize}
 
-\subsection{Cevovod pri stranki}
-\label{subsec:java-projekt-cevovod-pri-stranki}
-Pri stranki se uporablja enak cevovod vendar brez uporabe konfiguracijskega strežnika Consul. To pomeni, da morajo vse datoteke, ki se sicer privzeto prenesejo iz konfiguracijskega strežnika, shraniti v spremenljivke GitLab tipa datoteka. Nastaviti morajo naslednje spremenljivke:
+\subsection{Cevovod pri naročniku}
+\label{subsec:java-projekt-cevovod-pri-naročniku}
+Pri naročniku se uporablja enak cevovod vendar brez uporabe konfiguracijskega strežnika Consul. To pomeni, da morajo vse datoteke, ki se sicer privzeto prenesejo iz konfiguracijskega strežnika, shraniti v spremenljivke GitLab tipa datoteka. Nastaviti morajo naslednje spremenljivke:
 \begin{itemize}
     \item \texttt{DNF\_REPOS\_FILE} - Nastavitve za povezavo in avtentikacijo z repozitoriji DNF, ki jih uporablja proces gradnje izvajalne in aplikacijske slike za namestitev orodji in drugih paketov.
     \item \texttt{MAVEN\_SETTINGS\_FILE} - Nastavitve za povezavo in avtentikacijo z orodjem Maven na centralni repozitorij, ki ga uporablja proces gradnje aplikacije za prenos paketov, ki jih aplikacija potrebuje.
-    \item \texttt{CONFIG\_FILE} - Vsebina konfiguracijske datoteke \texttt{config\_file}, ki je zelo podobna tisti, ki se uporablja v podjetju. Razlikuje se zgolj v okoljih, ki jih stranka uporablja za namestitve in imenih spremenljivk GitLab, ki vsebujejo datoteke za konfiguracijo povezave in avtentikacije na gručo platforme Kubernetes.
+    \item \texttt{CONFIG\_FILE} - Vsebina konfiguracijske datoteke \texttt{config\_file}, ki je zelo podobna tisti, ki se uporablja v podjetju. Razlikuje se zgolj v okoljih, ki jih naročnik uporablja za namestitve in imenih spremenljivk GitLab, ki vsebujejo datoteke za konfiguracijo povezave in avtentikacije na gručo platforme Kubernetes.
     \item \texttt{KUBECONFIG\_FILE\_1} - Nastavitve za povezavo in avtentikacijo z orodjem \texttt{kubectl} na gručo na platformi Kubernetes.
 \end{itemize}
 
@@ -1040,7 +1056,7 @@ Nato lahko zaženemo cevovod aplikacije, ki je prikazan na sliki \ref{fig:java-c
 
 \section{Projekt v programskem jeziku TypeScript}
 \label{sec:typescript-projekt}
-V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje programje napisano v programskem jeziku TypeScript in za gradnjo uporablja orodje pnpm. Projekt vsebuje interno razvito knjižnico za razvoj čelnih aplikacij z ogrodjem Angular in čelno aplikacijo, ki se uporablja za demonstracijo uporabe knjižnice. Čelna aplikacija se povezuje na zaledni sistem, ki je del drugega projekta.
+V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje programje napisano v programskem jeziku TypeScript in za gradnjo uporablja orodje pnpm. Projekt vsebuje interno razvito knjižnico za razvoj čelnih aplikacij z ogrodjem Angular in čelno aplikacijo, ki se uporablja za demonstracijo uporabe knjižnice. Čelna aplikacija se povezuje na zaleTole je typscriptdni sistem, ki je del drugega projekta.
 
 \subsection{Konfiguracija cevovoda}
 Podobno kot pri prejšnjem projektu, smo na konfiguracijski strežnik Consul dodali datoteko \texttt{config\_file} z naslednjo vsebino:
@@ -1148,7 +1164,7 @@ Potem, ko smo zgradili izvajalne slike s cevovodom za gradnjo izvajalnih slik, l
 \label{sec:python-projekt}
 V tem poglavju bomo predstavili postavitev cevovoda projekta, ki vsebuje dve aplikaciji napisani v programskem jeziku Python. Aplikaciji uporabljata knjižnico FastAPI, s katero izpostavljata končne točke za prepoznavanje in redakcijo občutljivih podatkov v besedilu s pomočjo modelov strojnega učenja.
 
-% Stranka ne uporablja platforme GitLab, zato se cevovod izvaja samo v podjetju. TODO
+% Naročnik ne uporablja platforme GitLab, zato se cevovod izvaja samo v podjetju. TODO
 
 \subsection{Konfiguracija cevovoda}
 Zaradi večje občutljivosti projekta, smo pri temu projektu datoteko \texttt{config\_file} raje shranili v spremenljivko GitLab. Datoteka ima naslednjo vsebino:
@@ -1290,7 +1306,7 @@ Razvili smo komponento za vzpostavitev neprekinjene integracije in dostave na pl
 \begin{itemize}
     \item zgradimo aplikacijo
     \item zaženemo teste enot
-    \item zgradimo več različnih apkikacijskih vsebniških slik
+    \item zgradimo več različnih aplikacijskih vsebniških slik
     \item zaženemo integracijske teste
     \item namestimo aplikacijo v različna okolja
     \item izdamo novo različico projekta
@@ -1302,9 +1318,9 @@ Na podlagi analize predlagamo novo umestitev procesa gradnje in shranjevanja izv
 
 Uporabo komponente smo predstavili na cevovodih treh projektov, ki vsebujejo aplikacije razvite v različnih programskih jezikih. Opisali smo kako lahko cevovod uporabljamo v okolju, ki zaradi varnosti nima dostopa do interneta, kako vzpostavimo cevovod v projektu, ki vsebuje programsko knjižnico in aplikacijo hkrati ter kako lahko v cevovodu enega projekta zgradimo in namestimo več aplikacij naenkrat. Pokazali smo kako lahko cevovod takšnim različnim zahtevam enostavno prilagodimo s konfiguracijsko datoteko brez večjih posegov v kodo.
 
-Razvita komponenta je zelo stabilna in pripravljena za uporabo, vendar ima še veliko prostora za izboljšave. Skript, ki ga uporabljamo za ustvarjanje konfiguracijskih datotek za namestitev na gručo Kubernetes omenjen v poglavju \ref{subsec:namestitev-aplikacije}, bi lahko nadomestili z orodjem kustomize\footnote{\url{https://kustomize.io/}}. Trenutno so cevovodi pripravljeni za gradnjo vsebnikov z orodjema kaniko in Docker, lahko pa bi podprli tudi druga orodja, kot so: Podman, Buildah, BuildKit, containerd idr.
+Razvita komponenta je zelo stabilna in pripravljena za uporabo, vendar ima še veliko prostora za izboljšave. Skript, ki ga uporabljamo za ustvarjanje konfiguracijskih datotek za namestitev na gručo Kubernetes omenjen v poglavju \ref{subsec:namestitev-aplikacije}, bi lahko nadomestili z orodjem kustomize\footnote{\url{https://kustomize.io/}}. Trenutno so cevovodi pripravljeni za gradnjo vsebnikov z orodjema kaniko in Docker, lahko pa bi podprli tudi druga orodja, kot so: Podman, Buildah, BuildKit, containerd idr. Pomemben manjkajoči del pa predstavlja tudi vodenje različic zagonskih slik. Trenutno zagonske slike redno posodabljamo brez da spremenimo številko različice zagonske slike. To lahko privede do težav, če želimo zagnati cevovod aplikacije, ki je starejše različice.
 
-Predstavljeno magistrsko delo povzema metodologijo za vzpostavitev CI/CD in s tem izpostavlja izzive, napake in izboljšave na primeru resničnih projektov poslovno kritičnih aplikacij. Opiše obstoječa orodja, ki so del napredne uporabe neprekinjene integracije in dostave v visoko tehnoloških razvojnih podjetjih. Izpostavi kompromise in jih v praksi udejanji v predstavljeni komponenti za razvoj cevovodov neprekinjene integracije in dostave - Medius CD. Kot dodatno orodje za razvoj cevovodov z orodjem GitLab CI/CD avtor razvije tudi vtičnik Gitlab Template Lint za uporabo v integriranem okolju IntelliJ. Vtičnik uporablja širša interesna skupina razvijalcev DevOps po vsem svetu.
+Predstavljeno magistrsko delo povzema metodologijo za vzpostavitev CI/CD in s tem izpostavlja izzive, napake in izboljšave na primeru resničnih projektov poslovno kritičnih aplikacij. Opiše obstoječa orodja, ki so del napredne uporabe neprekinjene integracije in dostave v visoko tehnoloških razvojnih podjetjih. Izpostavi kompromise in jih v praksi udejanji v predstavljeni komponenti za razvoj cevovodov neprekinjene integracije in dostave - Medius CD. Kot dodatno orodje za razvoj cevovodov z orodjem GitLab CI/CD avtor razvije tudi vtičnik Gitlab Template Lint za uporabo v integriranem okolju IntelliJ IDEA. Vtičnik uporablja širša interesna skupina razvijalcev DevOps po vsem svetu.
 
 % Razvite konfiguracijske datoteke GitLab in skripti v programskem jeziku Bash se uporabljajo za vzpostavitev cevovodov na projektih poslovno kritičnih aplikacij iz resničnega sveta. Predstavljeno delo lahko zato nudi dobro izhodišče za razvoj cevovodov za neprekinjeno integracijo in dostavo in služi kot opozorilo, na kaj moramo biti pri razvijanju in vzpostavljanju takšnih cevovodov pozorni. 
 
