@@ -1,1 +1,9 @@
-# master-thesis
+# Continuous integration and deployment of business critical applications
+
+In this master's thesis we present the process of continuous integration and delivery (CI/CD), which is a crucial part of developing business-critical applications. There are many applications and tools worldwide designed for this purpose. However, not all of them are suitable for developing business-critical applications. We first highlighted the technologies commonly used within the CI/CD process. We examined them and selected those suitable for implementation in business-critical application projects. Additionally, we emphasized their advantages and drawbacks in their usage. Based on these findings, we developed a component that facilitates the seamless integration of the selected technologies and aims to address the identified shortcomings.
+
+We developed a component for establishing CI/CD using the GitLab CI/CD tool, named Medius CD. With this component, we standardized CI/CD pipelines, reduced configuration and code duplication, and simplified maintenance. The developed component is highly adaptable to various customer requirements and enables easy setup of CI/CD pipelines in both the development environment and the customer's environment.
+
+During development, we identified the need for a plugin for the integrated development environment IntelliJ IDEA that verifies the configuration files of the GitLab CI/CD tool. Therefore, we developed an open-source plugin called Gitlab Template Lint, which displays errors and consolidated content of configuration files in the integrated environment. We published the plugin on the JetBrains plugin marketplace, thus enabling its use to a large number of DevOps developers worldwide.
+
+As part of the assignment, we illustrated the concepts and functionalities of the component through case studies from real projects of business-critical applications that use different programming languages. This demonstrated the practical usability of the developed solution and its ability to adapt to various scenarios and programming languages in the business environment.
