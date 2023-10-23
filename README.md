@@ -1,4 +1,4 @@
-# Continuous integration and deployment of business critical applications
+# Continuous integration and delivery for business critical applications
 
 In this master's thesis we present the process of continuous integration and delivery (CI/CD), which is a crucial part of developing business-critical applications. There are many applications and tools worldwide designed for this purpose. However, not all of them are suitable for developing business-critical applications. We first highlighted the technologies commonly used within the CI/CD process. We examined them and selected those suitable for implementation in business-critical application projects. Additionally, we emphasized their advantages and drawbacks in their usage. Based on these findings, we developed a component that facilitates the seamless integration of the selected technologies and aims to address the identified shortcomings.
 
